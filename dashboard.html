@@ -1,0 +1,1543 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════
+         BARRA DE ANUNCIOS (mismo que instructores.html)
+      ══════════════════════════════════════════════ */
+      .fac-announcements {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        overflow: hidden;
+        min-width: 0;
+        height: 36px;
+      }
+      .fac-announcements-icon {
+        display: flex;
+        align-items: center;
+        color: var(--fum-color-verde);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .fac-announcements-icon i {
+        display: flex;
+      }
+      .fac-announcements-track {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .fac-announcement-item {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateX(30px);
+        opacity: 0;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        pointer-events: none;
+      }
+      .fac-announcement-item.active {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+      .fac-announcement-item.leaving {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+      }
+      .fac-announcement-item strong {
+        color: var(--fum-color-text-primary);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      @media (max-width: 1024px) {
+        .fac-announcement-item {
+          display: none !important;
+        }
+        .fac-announcements-ticker {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          animation: fac-ticker-scroll 32s linear infinite;
+          font-size: var(--fum-font-size-sm);
+          color: var(--fum-color-text-secondary);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          will-change: transform;
+        }
+        .fac-announcements-ticker strong {
+          color: var(--fum-color-text-primary);
+          font-weight: var(--fum-font-weight-semibold);
+        }
+        .fac-ticker-sep {
+          display: inline-block;
+          margin: 0 20px;
+          color: var(--fum-color-verde);
+          opacity: 0.45;
+          font-size: 10px;
+        }
+        @keyframes fac-ticker-scroll {
+          0% {
+            transform: translateY(-50%) translateX(0);
+          }
+          100% {
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+      }
+      @media (min-width: 1025px) {
+        .fac-announcements-ticker {
+          display: none;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         STATS CARDS
+      ══════════════════════════════════════════════ */
+      .fac-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--fum-space-5);
+        margin-bottom: var(--fum-space-10);
+      }
+      .fac-stat-card {
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-lg);
+        padding: var(--fum-space-5);
+        display: flex;
+        flex-direction: row;
+        gap: var(--fum-space-4);
+      }
+      .fac-stat-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .fac-stat-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--fum-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+      .fac-stat-card-icon i {
+        display: flex;
+      }
+      .fac-stat-card-icon-green {
+        background: var(--fum-color-verde);
+        color: var(--fum-color-blanco);
+      }
+      .fac-stat-card-trend {
+        font-size: var(--fum-font-size-2xs);
+        font-weight: var(--fum-font-weight-semibold);
+        padding: 2px 7px;
+        border-radius: var(--fum-radius-pill);
+      }
+      .fac-stat-card-value {
+        font-size: var(--fum-font-size-2xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        letter-spacing: var(--fum-letter-spacing-tight);
+        line-height: 1;
+      }
+      .fac-stat-card-label {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* ══════════════════════════════════════════════
+         BANNER BIENVENIDA - CON IMAGEN CUBRIENDO DERECHA (como tu original)
+      ══════════════════════════════════════════════ */
+      .fac-welcome-banner {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 0;
+        margin-bottom: var(--fum-space-10);
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--fum-radius-lg);
+        border: 1px solid var(--fum-color-border);
+        background: var(--fum-color-blanco);
+      }
+
+      /* Contenedor del texto - ancho fijo de 500px en desktop */
+      .fac-welcome-banner-text {
+        flex: 0 0 500px;
+        position: relative;
+        z-index: 2;
+        padding: var(--fum-space-8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--fum-color-negro);
+      }
+
+      /* OVERLAY BLANCO A TRANSPARENTE (de izquierda a derecha, cubre 20% del ancho total) */
+      .fac-welcome-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+        border-radius: var(--fum-radius-lg) 0 0 var(--fum-radius-lg);
+      }
+
+      /* Contenedor de la imagen - ocupa el resto del espacio y se alinea a la derecha */
+      .fac-welcome-banner-image {
+        flex: 1;
+        position: relative;
+        min-width: 0;
+        display: flex;
+        justify-content: flex-end;
+        overflow: hidden;
+        border-radius: 0 var(--fum-radius-lg) var(--fum-radius-lg) 0;
+      }
+
+      .fac-welcome-banner-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        object-position: right center;
+      }
+
+      /* Texto interno */
+      .fac-welcome-banner-greeting {
+        font-size: var(--fum-font-size-2xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--fum-color-verde);
+        margin-bottom: var(--fum-space-2);
+      }
+
+      .fac-welcome-banner-title {
+        font-size: var(--fum-font-size-4xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        letter-spacing: var(--fum-letter-spacing-tight);
+        line-height: var(--fum-line-height-snug);
+        margin-bottom: var(--fum-space-2);
+      }
+
+      .fac-welcome-banner-sub {
+        font-size: var(--fum-font-size-sm);
+        opacity: 0.85;
+        line-height: var(--fum-line-height-relaxed);
+        max-width: 420px;
+      }
+
+      .fac-welcome-banner-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--fum-space-2);
+        margin-top: var(--fum-space-5);
+        padding: 8px var(--fum-space-6);
+        background: var(--fum-color-verde);
+        color: #fff;
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-bold);
+        transition: background var(--fum-transition-fast);
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        width: fit-content;
+      }
+
+      .fac-welcome-banner-cta i {
+        display: flex;
+      }
+
+      .fac-welcome-banner-cta:hover {
+        background: var(--fum-color-verde-hover);
+      }
+
+      /* Responsive banner */
+      @media (max-width: 1024px) {
+        .fac-welcome-banner {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .fac-welcome-banner-text {
+          flex: auto;
+          width: 100%;
+          max-width: 100%;
+          padding: var(--fum-space-6);
+        }
+        .fac-welcome-banner-image {
+          width: 100%;
+          border-radius: 0 0 var(--fum-radius-lg) var(--fum-radius-lg);
+        }
+        .fac-welcome-banner-image img {
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        .fac-welcome-banner::before {
+          width: 30%;
+          border-radius: var(--fum-radius-lg) 0 0 0;
+        }
+        .fac-stat-card {
+          flex-direction: column;
+          align-items: center;
+        }
+        .fac-stat-card-value {
+          text-align: center;
+          font-size: var(--fum-font-size-xl);
+          margin-bottom: var(--fum-space-2);
+        }
+        .fac-stat-card-label {
+          text-align: center;
+          font-size: var(--fum-font-size-sm);
+        }
+        .fac-stat-card-icon {
+          height: 36px;
+          width: 36px;
+        }
+      }
+
+      @media (min-width: 1025px) and (max-width: 1280px) {
+        .fac-welcome-banner-text {
+          flex: 0 0 420px;
+          padding: var(--fum-space-6) var(--fum-space-8);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .fac-stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .fac-welcome-banner-text {
+          padding: var(--fum-space-6);
+        }
+        .fac-welcome-banner-sub {
+          max-width: 100%;
+        }
+        .fac-welcome-banner-title {
+          font-size: var(--fum-font-size-xl);
+        }
+        .fac-stat-card {
+          flex-direction: row;
+          align-items: center;
+        }
+        .fac-stat-card-value {
+          text-align: start;
+          font-size: var(--fum-font-size-xl);
+        }
+        .fac-stat-card-label {
+          text-align: start;
+          font-size: var(--fum-font-size-sm);
+        }
+        .fac-stat-card-icon {
+          height: 36px;
+          width: 36px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .fac-stat-card {
+          flex-direction: column;
+          align-items: center;
+        }
+        .fac-stat-card-value {
+          text-align: center;
+          font-size: var(--fum-font-size-xl);
+        }
+        .fac-stat-card-label {
+          text-align: center;
+          font-size: var(--fum-font-size-sm);
+        }
+        .fac-stat-card-icon {
+          height: 36px;
+          width: 36px;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         DOS COLUMNAS
+      ══════════════════════════════════════════════ */
+      .fac-dashboard-cols {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: var(--fum-space-8);
+        margin-bottom: var(--fum-space-10);
+      }
+      @media (max-width: 1024px) {
+        .fac-dashboard-cols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         CURSOS EN PROGRESO
+      ══════════════════════════════════════════════ */
+      .fac-progress-course {
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-4);
+        padding: var(--fum-space-4) 0;
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-progress-course:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .fac-progress-course:first-child {
+        padding-top: 0;
+      }
+      .fac-progress-course-thumb {
+        width: 56px;
+        height: 40px;
+        border-radius: var(--fum-radius-sm);
+        background: var(--fum-color-bg-surface);
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .fac-progress-course-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fac-progress-course-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-progress-course-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 6px;
+      }
+      .fac-progress-course-bar {
+        height: 4px;
+        background: rgba(86, 164, 70, 0.15);
+        border-radius: var(--fum-radius-pill);
+        overflow: hidden;
+        margin-bottom: 4px;
+      }
+      .fac-progress-course-fill {
+        height: 100%;
+        background: var(--fum-color-verde);
+        border-radius: var(--fum-radius-pill);
+      }
+      .fac-progress-course-pct {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+      .fac-progress-course-btn {
+        flex-shrink: 0;
+        padding: 5px 12px;
+        background: var(--fum-color-verde);
+        color: #fff;
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-bold);
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background var(--fum-transition-fast);
+      }
+      .fac-progress-course-btn:hover {
+        background: var(--fum-color-verde-hover);
+      }
+
+      /* ══════════════════════════════════════════════
+         PANEL CARD GENÉRICO
+      ══════════════════════════════════════════════ */
+      .fac-panel-card {
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-lg);
+        padding: var(--fum-space-5);
+        margin-bottom: var(--fum-space-5);
+      }
+      .fac-panel-card:last-child {
+        margin-bottom: 0;
+      }
+      .fac-panel-card-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        margin-bottom: var(--fum-space-4);
+      }
+
+      /* ══════════════════════════════════════════════
+         ACTIVIDAD RECIENTE
+      ══════════════════════════════════════════════ */
+      .fac-activity-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--fum-space-3);
+        padding: var(--fum-space-3) 0;
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-activity-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .fac-activity-item:first-child {
+        padding-top: 0;
+      }
+      .fac-activity-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: var(--fum-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .fac-activity-dot-green i {
+        display: flex;
+      }
+      .fac-activity-dot-green {
+        background: var(--fum-color-verde);
+        color: var(--fum-color-blanco);
+      }
+      .fac-activity-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-activity-desc {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-normal);
+      }
+      .fac-activity-desc strong {
+        color: var(--fum-color-negro);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      .fac-activity-time {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        margin-top: 2px;
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* ══════════════════════════════════════════════
+         PRÓXIMOS EVENTOS
+      ══════════════════════════════════════════════ */
+      .fac-event-item {
+        display: flex;
+        gap: var(--fum-space-3);
+        padding: var(--fum-space-3) 0;
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-event-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .fac-event-item:first-child {
+        padding-top: 0;
+      }
+      .fac-event-date-box {
+        width: 40px;
+        flex-shrink: 0;
+        text-align: center;
+        background: var(--fum-color-bg-surface);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        padding: 5px 4px;
+      }
+      .fac-event-date-day {
+        font-size: var(--fum-font-size-lg);
+        font-weight: var(--fum-font-weight-black);
+        color: var(--fum-color-negro);
+        line-height: 1;
+      }
+      .fac-event-date-month {
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--fum-color-verde);
+        margin-top: 1px;
+      }
+      .fac-event-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-event-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: var(--fum-line-height-snug);
+        margin-bottom: 2px;
+      }
+      .fac-event-meta {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* ══════════════════════════════════════════════
+         CURSOS RECOMENDADOS
+      ══════════════════════════════════════════════ */
+      .fac-rec-course {
+        display: flex;
+        gap: var(--fum-space-3);
+        padding: var(--fum-space-3) 0;
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-rec-course:first-child {
+        padding-top: 0;
+      }
+      .fac-rec-course:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .fac-rec-course-thumb {
+        width: 60px;
+        height: 44px;
+        border-radius: var(--fum-radius-sm);
+        overflow: hidden;
+        background: var(--fum-color-bg-surface);
+        flex-shrink: 0;
+      }
+      .fac-rec-course-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fac-rec-course-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-rec-course-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: var(--fum-line-height-snug);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 3px;
+      }
+      .fac-rec-course-meta {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* Títulos de sección sin emojis */
+      .fac-section-title {
+        font-size: var(--fum-font-size-xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        letter-spacing: var(--fum-letter-spacing-hero);
+      }
+
+      /* ══════════════════════════════════════════════
+         BANNER STATS (inline dentro del banner)
+      ══════════════════════════════════════════════ */
+      .fac-banner-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--fum-space-4) var(--fum-space-6);
+        margin-top: var(--fum-space-5);
+        padding-top: var(--fum-space-5);
+        border-top: 1px solid var(--fum-color-border);
+      }
+      .fac-banner-stat {
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-3);
+      }
+      .fac-banner-stat-value {
+        font-size: var(--fum-font-size-xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: 1;
+        letter-spacing: var(--fum-letter-spacing-tight);
+        text-align: center;
+      }
+      .fac-banner-stat-label {
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+        margin-top: 2px;
+      }
+
+      /* ══════════════════════════════════════════════
+         CURSOS COMO CARDS
+      ══════════════════════════════════════════════ */
+      .fac-course-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--fum-space-5);
+        margin-bottom: var(--fum-space-5);
+      }
+      @media (max-width: 1400px) {
+        .fac-course-cards-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 1100px) {
+        .fac-course-cards-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .fac-course-cards-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .fac-course-cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .fac-course-card {
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-lg);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow var(--fum-transition-fast);
+      }
+      .fac-course-card-thumb {
+        position: relative;
+        overflow: hidden;
+        background: var(--fum-color-bg-surface);
+      }
+      .fac-course-card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fac-course-card-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--fum-color-verde);
+        color: #fff;
+        font-size: var(--fum-font-size-2xs);
+        font-weight: var(--fum-font-weight-bold);
+        padding: 2px 9px;
+        border-radius: var(--fum-radius-pill);
+        letter-spacing: 0.04em;
+      }
+      .fac-course-card-body {
+        padding: var(--fum-space-4) var(--fum-space-5);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--fum-space-2);
+      }
+      .fac-course-card-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: var(--fum-line-height-snug);
+      }
+      .fac-course-card-meta {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+      .fac-course-card-bar {
+        height: 5px;
+        background: rgba(86, 164, 70, 0.15);
+        border-radius: var(--fum-radius-pill);
+        overflow: hidden;
+        margin-top: var(--fum-space-1);
+      }
+      .fac-course-card-fill {
+        height: 100%;
+        background: var(--fum-color-verde);
+        border-radius: var(--fum-radius-pill);
+      }
+      .fac-course-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: var(--fum-space-1);
+      }
+      .fac-course-card-pct {
+        font-size: var(--fum-font-size-2xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* ══════════════════════════════════════════════
+         ACTIVIDAD RECIENTE SIN BORDERS
+      ══════════════════════════════════════════════ */
+      .fac-activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: var(--fum-space-5);
+      }
+      .fac-activity-list .fac-activity-item {
+        border-bottom: none;
+        padding: var(--fum-space-3) 0;
+      }
+
+      /* ══════════════════════════════════════════════
+         RESPONSIVE FIXES GENERALES
+      ══════════════════════════════════════════════ */
+      @media (max-width: 1024px) {
+        .fac-main {
+          margin-left: 0;
+        }
+        .fac-topbar-mobile-toggle {
+          display: flex;
+        }
+        .fac-sidebar {
+          transform: translateX(-100%);
+        }
+        .fac-sidebar.is-open {
+          transform: translateX(0);
+        }
+        .fac-content {
+          padding: var(--fum-space-6);
+          /* prevent overflow on mobile */
+          overflow-x: hidden;
+          max-width: 100%;
+        }
+        .fac-welcome-banner-text {
+          flex: auto;
+          width: 100%;
+          max-width: 100%;
+        }
+        .fac-banner-stats {
+          gap: var(--fum-space-3) var(--fum-space-5);
+        }
+      }
+      @media (max-width: 600px) {
+        .fac-content {
+          padding: var(--fum-space-6);
+        }
+        .fac-welcome-banner-title {
+          font-size: var(--fum-font-size-2xl);
+        }
+        .fac-banner-stats {
+          gap: var(--fum-space-3) var(--fum-space-4);
+        }
+        .fac-banner-stat-value {
+          font-size: var(--fum-font-size-base);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="fac-layout">
+      <!-- SIDEBAR (idéntico a instructores.html) -->
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu" style="margin-top: 6px">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a href="notificaciones.html" class="fac-nav-item"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="soporte.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="fac-main">
+        <!-- TOPBAR (idéntico a instructores.html) -->
+        <header class="fac-topbar">
+          <button
+            class="fac-topbar-mobile-toggle"
+            id="sidebarToggle"
+            aria-label="Abrir menú"
+          >
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+
+          <!-- ── Barra de anuncios ── -->
+          <div class="fac-announcements" role="marquee" aria-live="polite">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active" data-type="info"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item" data-type="promo"
+                >Descuento del <strong>20 % en todos los cursos</strong> hasta
+                el 31 de enero. Usa el código <strong>ENERO25</strong></span
+              >
+              <span class="fac-announcement-item" data-type="warning"
+                >Mantenimiento programado el
+                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+                estará en pausa.</span
+              >
+              <span class="fac-announcement-item" data-type="info"
+                >Nuevo curso disponible:
+                <strong>Bioindicadores Acuáticos</strong> — ya puedes
+                inscribirte</span
+              >
+              <span class="fac-announcement-item" data-type="cancel"
+                >Clase del <strong>miércoles 15</strong> cancelada por ajuste de
+                agenda. Reprogramada para el viernes.</span
+              >
+              <span class="fac-announcements-ticker" aria-hidden="true">
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Mantenimiento programado el
+                <strong>sábado 18 de enero de 2–4 AM</strong>.
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+                Clase del <strong>miércoles 15</strong> cancelada.
+                <span class="fac-ticker-sep">◆</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div
+                class="fac-topbar-avatar-btn"
+                id="profileToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Perfil"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px; font-size: 11px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Allan Izaguirre"
+                    class="fac-avatar-img"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.querySelector(
+                        '.fac-avatar-initials',
+                      ).style.display = 'flex';
+                    "
+                  />
+                  <span class="fac-avatar-initials" style="display: none"
+                    >MR</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="fac-profile-dropdown"
+                id="profileDropdown"
+                role="menu"
+              >
+                <div class="fac-profile-dropdown-header">
+                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div class="fac-profile-dropdown-info">
+                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
+                    <p class="fac-profile-dropdown-role">
+                      Estudiante · Plan Pro
+                    </p>
+                  </div>
+                </div>
+                <div class="fac-profile-dropdown-divider"></div>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-user"></i>
+                  Mi perfil
+                </a>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-diploma"></i>
+                  Mis certificados
+                </a>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-settings"></i>
+                  Configuración
+                </a>
+                <div class="fac-profile-dropdown-divider"></div>
+                <button
+                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-sign-out-alt"></i>
+                  Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="fac-content">
+          <!-- BANNER BIENVENIDA (con overlay blanco e imagen cubriendo derecha, como tu original) -->
+          <div class="fac-welcome-banner">
+            <div class="fac-welcome-banner-text">
+              <p class="fac-welcome-banner-greeting">Bienvenid@ de vuelta</p>
+              <h1 class="fac-welcome-banner-title">Hola, Allan 👋</h1>
+              <p class="fac-welcome-banner-sub">
+                Tienes 2 cursos en progreso. Continúa donde lo dejaste y sigue
+                avanzando hacia tus certificaciones.
+              </p>
+              <button class="fac-welcome-banner-cta">
+                <i class="fi fi-rs-play-circle"></i>
+                Continuar aprendiendo
+              </button>
+
+              <!-- STATS inline inside banner -->
+              <div class="fac-banner-stats">
+                <div class="fac-banner-stat">
+                  <div>
+                    <p class="fac-banner-stat-value">41</p>
+                    <p class="fac-banner-stat-label">Lecciones</p>
+                  </div>
+                </div>
+                <div class="fac-banner-stat">
+                  <div>
+                    <p class="fac-banner-stat-value">3</p>
+                    <p class="fac-banner-stat-label">Certificados</p>
+                  </div>
+                </div>
+                <div class="fac-banner-stat">
+                  <div>
+                    <p class="fac-banner-stat-value">100%</p>
+                    <p class="fac-banner-stat-label">Asistencia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fac-welcome-banner-image">
+              <img src="banner.webp" alt="Equipo FUMIZA trabajando" />
+            </div>
+          </div>
+
+          <!-- CONTENIDO PRINCIPAL -->
+          <div class="fac-dashboard-main">
+            <!-- Sección única -->
+            <div>
+              <!-- Cursos en progreso -->
+              <div
+                class="fac-section-header"
+                style="margin-bottom: var(--fum-space-4)"
+              >
+                <h2 class="fac-section-title">Cursos en progreso</h2>
+              </div>
+              <div class="fac-course-cards-grid">
+                <!-- Card 1 -->
+                <div class="fac-course-card">
+                  <div class="fac-course-card-thumb">
+                    <img src="curso.webp" alt="" />
+                    <span class="fac-course-card-badge">En progreso</span>
+                  </div>
+                  <div class="fac-course-card-body">
+                    <p class="fac-course-card-title">
+                      Gestión Sostenible del Recurso Hídrico
+                    </p>
+                    <p class="fac-course-card-meta">Lección 9 de 14</p>
+                    <div class="fac-course-card-bar">
+                      <div
+                        class="fac-course-card-fill"
+                        style="width: 68%"
+                      ></div>
+                    </div>
+                    <div class="fac-course-card-footer">
+                      <span class="fac-course-card-pct">68% completado</span>
+                      <button class="fac-progress-course-btn">Continuar</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="fac-course-card">
+                  <div class="fac-course-card-thumb">
+                    <img src="curso.webp" alt="" />
+                    <span class="fac-course-card-badge">En progreso</span>
+                  </div>
+                  <div class="fac-course-card-body">
+                    <p class="fac-course-card-title">
+                      Cambio Climático: Fundamentos y Estrategias
+                    </p>
+                    <p class="fac-course-card-meta">Lección 4 de 12</p>
+                    <div class="fac-course-card-bar">
+                      <div
+                        class="fac-course-card-fill"
+                        style="width: 30%"
+                      ></div>
+                    </div>
+                    <div class="fac-course-card-footer">
+                      <span class="fac-course-card-pct">30% completado</span>
+                      <button class="fac-progress-course-btn">Continuar</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="fac-course-card">
+                  <div class="fac-course-card-thumb">
+                    <img src="curso.webp" alt="" />
+                    <span class="fac-course-card-badge">En progreso</span>
+                  </div>
+                  <div class="fac-course-card-body">
+                    <p class="fac-course-card-title">
+                      Cambio Climático: Fundamentos y Estrategias
+                    </p>
+                    <p class="fac-course-card-meta">Lección 4 de 12</p>
+                    <div class="fac-course-card-bar">
+                      <div
+                        class="fac-course-card-fill"
+                        style="width: 30%"
+                      ></div>
+                    </div>
+                    <div class="fac-course-card-footer">
+                      <span class="fac-course-card-pct">30% completado</span>
+                      <button class="fac-progress-course-btn">Continuar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PRÓXIMOS EVENTOS — debajo de cursos y actividad -->
+              <div style="margin-top: var(--fum-space-8)">
+                <!-- Próximos eventos -->
+                <div
+                  class="fac-section-header"
+                  style="margin-bottom: var(--fum-space-4)"
+                >
+                  <h2 class="fac-section-title">Próximos eventos</h2>
+                </div>
+                <div class="fac-event-cards-grid-horizontal">
+                  <!-- Evento 1 -->
+                  <div class="fac-event-card">
+                    <div class="fac-event-card-thumb">
+                      <div
+                        class="fac-event-card-cover fac-event-card-cover--green"
+                      >
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="24"
+                            cy="24"
+                            r="24"
+                            fill="rgba(255,255,255,0.12)"
+                          />
+                          <path
+                            d="M24 12C17.373 12 12 17.373 12 24s5.373 12 12 12 12-5.373 12-12S30.627 12 24 12zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S14 29.523 14 24 18.477 14 24 14zm-1 4v7.586l4.707 4.707 1.414-1.414L25 24.414V18h-2z"
+                            fill="rgba(255,255,255,0.9)"
+                          />
+                        </svg>
+                      </div>
+                      <div class="fac-event-card-date-badge">
+                        <span class="fac-event-card-date-day">18</span>
+                        <span class="fac-event-card-date-month">ABR</span>
+                      </div>
+                      <span class="fac-event-card-type-badge">En línea</span>
+                    </div>
+                    <div class="fac-event-card-body">
+                      <p class="fac-event-card-title">
+                        Webinar: Reforestación urbana en Centroamérica
+                      </p>
+                      <p class="fac-event-card-meta">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <polyline points="12,6 12,12 16,14" />
+                        </svg>
+                        10:00 AM · En línea
+                      </p>
+                      <div class="fac-event-card-footer">
+                        <button class="fac-event-card-btn">Ver detalles</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Evento 2 -->
+                  <div class="fac-event-card">
+                    <div class="fac-event-card-thumb">
+                      <div
+                        class="fac-event-card-cover fac-event-card-cover--blue"
+                      >
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="24"
+                            cy="24"
+                            r="24"
+                            fill="rgba(255,255,255,0.12)"
+                          />
+                          <path
+                            d="M20 14h-2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V16a2 2 0 00-2-2h-2m-4 0a2 2 0 00-4 0m4 0a2 2 0 01-4 0m0 8l2 2 4-4"
+                            stroke="rgba(255,255,255,0.9)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <div class="fac-event-card-date-badge">
+                        <span class="fac-event-card-date-day">22</span>
+                        <span class="fac-event-card-date-month">ABR</span>
+                      </div>
+                      <span class="fac-event-card-type-badge">Evaluación</span>
+                    </div>
+                    <div class="fac-event-card-body">
+                      <p class="fac-event-card-title">
+                        Evaluación final — Gestión Hídrica
+                      </p>
+                      <p class="fac-event-card-meta">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <polyline points="12,6 12,12 16,14" />
+                        </svg>
+                        Plazo límite · Módulo 12
+                      </p>
+                      <div class="fac-event-card-footer">
+                        <button class="fac-event-card-btn">Ver detalles</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Evento 3 -->
+                  <div class="fac-event-card">
+                    <div class="fac-event-card-thumb">
+                      <div
+                        class="fac-event-card-cover fac-event-card-cover--earth"
+                      >
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            cx="24"
+                            cy="24"
+                            r="24"
+                            fill="rgba(255,255,255,0.12)"
+                          />
+                          <path
+                            d="M12 32l6-8 4 4 4-6 8 10H12z"
+                            fill="rgba(255,255,255,0.9)"
+                          />
+                          <circle
+                            cx="32"
+                            cy="18"
+                            r="3"
+                            fill="rgba(255,255,255,0.9)"
+                          />
+                        </svg>
+                      </div>
+                      <div class="fac-event-card-date-badge">
+                        <span class="fac-event-card-date-day">30</span>
+                        <span class="fac-event-card-date-month">ABR</span>
+                      </div>
+                      <span class="fac-event-card-type-badge">Presencial</span>
+                    </div>
+                    <div class="fac-event-card-body">
+                      <p class="fac-event-card-title">
+                        Taller presencial de Suelos en Tegucigalpa
+                      </p>
+                      <p class="fac-event-card-meta">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"
+                          />
+                          <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        9:00 AM · FUMIZA HQ
+                      </p>
+                      <div class="fac-event-card-footer">
+                        <button class="fac-event-card-btn">Ver detalles</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actividad reciente -->
+              <div
+                class="fac-section-header"
+                style="margin-top: var(--fum-space-8)"
+              >
+                <h2 class="fac-section-title">Actividad reciente</h2>
+              </div>
+              <div class="fac-activity-list">
+                <div class="fac-activity-item">
+                  <div class="fac-activity-dot fac-activity-dot-green">
+                    <i class="fi fi-rs-check"></i>
+                  </div>
+                  <div class="fac-activity-text">
+                    <p class="fac-activity-desc">
+                      Completaste la lección
+                      <strong>"Ciclo hidrológico y cuencas"</strong>
+                    </p>
+                    <p class="fac-activity-time">Hace 2 horas</p>
+                  </div>
+                </div>
+                <div class="fac-activity-item">
+                  <div class="fac-activity-dot fac-activity-dot-green">
+                    <i class="fi fi-rs-diploma"></i>
+                  </div>
+                  <div class="fac-activity-text">
+                    <p class="fac-activity-desc">
+                      Obtuviste el certificado de
+                      <strong>"Biodiversidad Tropical"</strong>
+                    </p>
+                    <p class="fac-activity-time">Ayer, 4:15 PM</p>
+                  </div>
+                </div>
+                <div class="fac-activity-item">
+                  <div class="fac-activity-dot fac-activity-dot-green">
+                    <i class="fi fi-rs-e-learning"></i>
+                  </div>
+                  <div class="fac-activity-text">
+                    <p class="fac-activity-desc">
+                      Te inscribiste en
+                      <strong
+                        >"Cambio Climático: Fundamentos y Estrategias"</strong
+                      >
+                    </p>
+                    <p class="fac-activity-time">Hace 3 días</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span
+                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
+              >
+              <span
+                >Plataforma desarrollada por
+                <a href="https://nickramen.com/" target="_blank"
+                  >nickramen</a
+                ></span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const toggle = document.getElementById("sidebarToggle");
+
+      function openSidebar() {
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+      );
+      overlay.addEventListener("click", closeSidebar);
+
+      // Profile dropdown
+      const profileToggle = document.getElementById("profileToggle");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openProfile() {
+        profileMenu.classList.add("is-open");
+        profileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeProfile() {
+        profileMenu.classList.remove("is-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.contains("is-open")
+          ? closeProfile()
+          : openProfile();
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target)) closeProfile();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProfile();
+      });
+
+      // Rotación de anuncios
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (!items.length) return;
+        let current = 0;
+
+        function next() {
+          const prev = current;
+          current = (current + 1) % items.length;
+          items[prev].classList.add("leaving");
+          items[prev].classList.remove("active");
+          items[current].classList.add("active");
+          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+        }
+
+        setInterval(next, 5000);
+      })();
+    </script>
+  </body>
+</html>

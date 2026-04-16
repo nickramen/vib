@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soporte y Ayuda — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════
+         BARRA DE ANUNCIOS (mismo código que perfil/config)
+      ══════════════════════════════════════════════ */
+      .fac-announcements {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        overflow: hidden;
+        min-width: 0;
+        height: 36px;
+      }
+      .fac-announcements-icon {
+        display: flex;
+        align-items: center;
+        color: var(--fum-color-verde);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .fac-announcements-icon i {
+        display: flex;
+      }
+      .fac-announcements-track {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .fac-announcement-item {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateX(30px);
+        opacity: 0;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        pointer-events: none;
+      }
+      .fac-announcement-item.active {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+      .fac-announcement-item.leaving {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+      }
+      .fac-announcement-item strong {
+        color: var(--fum-color-text-primary);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      @media (max-width: 1024px) {
+        .fac-announcement-item {
+          display: none !important;
+        }
+        .fac-announcements-ticker {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          animation: fac-ticker-scroll 32s linear infinite;
+          font-size: var(--fum-font-size-sm);
+          color: var(--fum-color-text-secondary);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          will-change: transform;
+        }
+        .fac-announcements-ticker strong {
+          color: var(--fum-color-text-primary);
+          font-weight: var(--fum-font-weight-semibold);
+        }
+        .fac-ticker-sep {
+          display: inline-block;
+          margin: 0 20px;
+          color: var(--fum-color-verde);
+          opacity: 0.45;
+          font-size: 10px;
+        }
+        @keyframes fac-ticker-scroll {
+          0% {
+            transform: translateY(-50%) translateX(0);
+          }
+          100% {
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+      }
+      @media (min-width: 1025px) {
+        .fac-announcements-ticker {
+          display: none;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         PANEL CARD (mismo estilo global)
+      ══════════════════════════════════════════════ */
+      .fac-panel-card {
+        background: var(--fum-color-bg-card);
+        border-radius: var(--fum-radius-lg);
+        margin-bottom: var(--fum-space-12);
+      }
+      .fac-panel-card:last-child {
+        margin-bottom: 0;
+      }
+      .fac-panel-card-title {
+        font-size: var(--fum-font-size-xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        margin-bottom: var(--fum-space-5);
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-2);
+      }
+      .fac-panel-card-title i {
+        color: var(--fum-color-verde);
+        font-size: 18px;
+      }
+
+      /* Canales de contacto (tarjetas horizontales) */
+      .fac-channels-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--fum-space-5);
+        margin-bottom: var(--fum-space-2);
+      }
+      .fac-channel-card {
+        background: var(--fum-color-blanco);
+        border-radius: var(--fum-radius-md);
+        border: 1px solid var(--fum-color-border);
+        padding: var(--fum-space-5);
+        transition: all var(--fum-transition-fast);
+      }
+      .fac-channel-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--fum-color-bg-card);
+        border-radius: var(--fum-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: var(--fum-color-verde);
+        margin-bottom: var(--fum-space-4);
+        border: 1px solid var(--fum-color-border);
+      }
+      .fac-channel-icon i {
+        display: flex;
+      }
+      .fac-channel-title {
+        font-size: var(--fum-font-size-md);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        margin-bottom: 6px;
+      }
+      .fac-channel-detail {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-relaxed);
+        margin-bottom: var(--fum-space-3);
+        word-break: break-word;
+      }
+      .fac-channel-note {
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-muted);
+        border-top: 1px solid var(--fum-color-border);
+        padding-top: var(--fum-space-3);
+        margin-top: var(--fum-space-2);
+      }
+
+      /* Preguntas frecuentes (acordeón minimalista) */
+      .fac-faq-item {
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-faq-question {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--fum-space-4);
+        padding: var(--fum-space-4) 0;
+        cursor: pointer;
+        font-weight: var(--fum-font-weight-regular);
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-primary);
+        transition: color var(--fum-transition-fast);
+      }
+      .fac-faq-question:hover {
+        color: var(--fum-color-verde);
+      }
+      .fac-faq-question i {
+        font-size: 12px;
+        color: var(--fum-color-text-muted);
+        transition: transform 0.2s ease;
+      }
+      .fac-faq-item.active .fac-faq-question i {
+        transform: rotate(180deg);
+      }
+      .fac-faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-out;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-relaxed);
+        padding-right: var(--fum-space-4);
+      }
+      .fac-faq-item.active .fac-faq-answer {
+        max-height: 320px;
+        padding-bottom: var(--fum-space-5);
+      }
+      .fac-faq-answer a {
+        color: var(--fum-color-verde);
+        text-decoration: underline;
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* Categorías FAQ — estilo fac-sort-select */
+      .fac-faq-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: var(--fum-space-6);
+        border-bottom: 1px solid var(--fum-color-border);
+        padding-bottom: var(--fum-space-4);
+        align-items: center;
+      }
+      .fac-faq-cat {
+        appearance: none;
+        height: 34px;
+        padding: 0 12px;
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        font-family: var(--fum-font-family);
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-medium);
+        color: var(--fum-color-text-secondary);
+        cursor: pointer;
+        outline: none;
+        transition:
+          border-color var(--fum-transition-fast),
+          color var(--fum-transition-fast),
+          background var(--fum-transition-fast);
+      }
+      .fac-faq-cat:focus {
+        border-color: var(--fum-color-verde);
+      }
+      .fac-faq-cat.active {
+        background-color: var(--fum-color-verde);
+        border-color: var(--fum-color-verde);
+        color: #fff;
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      .fac-faq-group {
+        display: block;
+      }
+      .fac-faq-group.hidden {
+        display: none;
+      }
+
+      /* Mensaje de atención al pie */
+      .fac-support-note {
+        display: flex;
+        background: var(--fum-color-blanco);
+        border: 1px solid var(--fum-color-border);
+        padding: var(--fum-space-5);
+        border-radius: var(--fum-radius-sm);
+        margin-top: var(--fum-space-6);
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+      }
+      .fac-support-note strong {
+        color: var(--fum-color-negro);
+      }
+      .fac-support-note i {
+        display: flex;
+        margin-right: 8px;
+        color: var(--fum-color-verde);
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        .fac-channels-grid {
+          grid-template-columns: 1fr;
+        }
+        .fac-faq-question {
+          font-size: var(--fum-font-size-xs);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="fac-layout">
+      <!-- SIDEBAR (idéntico a todas las páginas) -->
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu" style="margin-top: 6px">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a href="notificaciones.html" class="fac-nav-item"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="soporte.html" class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="fac-main">
+        <!-- TOPBAR -->
+        <header class="fac-topbar">
+          <button
+            class="fac-topbar-mobile-toggle"
+            id="sidebarToggle"
+            aria-label="Abrir menú"
+          >
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+
+          <!-- Barra de anuncios -->
+          <div class="fac-announcements" role="marquee" aria-live="polite">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active" data-type="info"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item" data-type="promo"
+                >Descuento del <strong>20 % en todos los cursos</strong> hasta
+                el 31 de enero. Usa el código <strong>ENERO25</strong></span
+              >
+              <span class="fac-announcement-item" data-type="info"
+                >Nuevo curso disponible:
+                <strong>Bioindicadores Acuáticos</strong> — ya puedes
+                inscribirte</span
+              >
+              <span class="fac-announcements-ticker" aria-hidden="true">
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div
+                class="fac-topbar-avatar-btn"
+                id="profileToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Perfil"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px; font-size: 11px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Allan Izaguirre"
+                    class="fac-avatar-img"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.querySelector(
+                        '.fac-avatar-initials',
+                      ).style.display = 'flex';
+                    "
+                  />
+                  <span class="fac-avatar-initials" style="display: none"
+                    >MR</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="fac-profile-dropdown"
+                id="profileDropdown"
+                role="menu"
+              >
+                <div class="fac-profile-dropdown-header">
+                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div class="fac-profile-dropdown-info">
+                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
+                    <p class="fac-profile-dropdown-role">
+                      Estudiante · Plan Pro
+                    </p>
+                  </div>
+                </div>
+                <div class="fac-profile-dropdown-divider"></div>
+                <a
+                  href="perfil.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-user"></i>
+                  Mi perfil
+                </a>
+                <a
+                  href="certificados.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-diploma"></i>
+                  Mis certificados
+                </a>
+                <a
+                  href="configuracion.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-settings"></i>
+                  Configuración
+                </a>
+                <div class="fac-profile-dropdown-divider"></div>
+                <button
+                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-sign-out-alt"></i>
+                  Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="fac-content">
+          <!-- Page header -->
+          <div class="fac-page-header">
+            <h1 class="fac-page-title">Centro de ayuda</h1>
+            <p class="fac-page-subtitle">
+              Canales de soporte y respuestas a preguntas frecuentes sobre la
+              plataforma, cursos y más
+            </p>
+          </div>
+
+          <!-- CANALES DE SOPORTE (solo informativos) -->
+          <div class="fac-panel-card">
+            <p class="fac-panel-card-title">Canales de atención</p>
+            <div class="fac-channels-grid">
+              <!-- Correo electrónico -->
+              <div class="fac-channel-card">
+                <div class="fac-channel-icon">
+                  <i class="fi fi-rs-envelope"></i>
+                </div>
+                <h3 class="fac-channel-title">Correo electrónico</h3>
+                <div class="fac-channel-detail">
+                  soporte@vibacademy.hn<br />
+                  <span
+                    style="font-size: 12px; color: var(--fum-color-text-muted)"
+                    >Respuesta en 24-48 horas hábiles</span
+                  >
+                </div>
+                <div class="fac-channel-note">
+                  Para consultas sobre certificados, facturación o incidencias
+                  técnicas.
+                </div>
+              </div>
+              <!-- WhatsApp (solo informativo) -->
+              <div class="fac-channel-card">
+                <div class="fac-channel-icon">
+                  <i class="fi fi-brands-whatsapp"></i>
+                </div>
+                <h3 class="fac-channel-title">WhatsApp</h3>
+                <div class="fac-channel-detail">
+                  +504 9876-5432<br />
+                  <span
+                    style="font-size: 12px; color: var(--fum-color-text-muted)"
+                    >Horario: Lun a Vie 9:00 a.m. - 5:00 p.m.</span
+                  >
+                </div>
+                <div class="fac-channel-note">
+                  Solo mensajes de texto. No se gestionan tickets ni
+                  automatizaciones.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PREGUNTAS FRECUENTES (FAQ por categorías) -->
+          <div class="fac-panel-card">
+            <p class="fac-panel-card-title">
+              <i class="fi fi-rs-circle-question"></i> Preguntas frecuentes
+            </p>
+
+            <!-- Filtros por categoría -->
+            <div class="fac-faq-categories" id="faqCategories">
+              <button class="fac-faq-cat active" data-cat="todos">Todos</button>
+              <button class="fac-faq-cat" data-cat="tecnicos">Técnicos</button>
+              <button class="fac-faq-cat" data-cat="educativos">
+                Educativos
+              </button>
+              <button class="fac-faq-cat" data-cat="certificados">
+                Certificados
+              </button>
+              <button class="fac-faq-cat" data-cat="financieros">
+                Financieros
+              </button>
+              <button class="fac-faq-cat" data-cat="cuenta">Cuenta</button>
+            </div>
+
+            <!-- Grupo: Técnicos -->
+            <div class="fac-faq-group" data-cat="tecnicos">
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Qué requisitos técnicos necesita mi computadora?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Navegador actualizado (Chrome, Edge, Firefox o Safari),
+                  conexión estable a internet (mínimo 5 Mbps) y JavaScript
+                  habilitado. Para clases en vivo recomendamos auriculares y
+                  cámara opcional.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  No puedo reproducir los videos del curso, ¿qué hago?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Verifica que tu navegador esté actualizado, limpia la caché y
+                  desactiva extensiones que bloqueen contenido multimedia. Si el
+                  problema persiste, escríbenos a soporte@vibacademy.hn.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿La plataforma funciona en dispositivos móviles?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Sí, la plataforma es completamente responsive. Puedes acceder
+                  desde el navegador de tu teléfono o tablet sin necesidad de
+                  instalar aplicaciones adicionales.
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo: Educativos -->
+            <div class="fac-faq-group hidden" data-cat="educativos">
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Cuánto tiempo tengo para completar un curso?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Cada curso tiene disponibilidad de 6 meses a partir de la
+                  fecha de inscripción. Puedes revisar la fecha exacta de
+                  vencimiento en la sección "Mis cursos".
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Puedo descargar materiales de estudio?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Las presentaciones, PDF complementarios y lecturas están
+                  disponibles para descarga directa desde cada lección. Los
+                  videos solo se pueden reproducir en línea.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Cómo accedo a las clases en vivo?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Las sesiones en vivo aparecen en tu cronograma. Recibirás un
+                  enlace de acceso 24 horas antes y un recordatorio por correo.
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo: Certificados -->
+            <div class="fac-faq-group hidden" data-cat="certificados">
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Cómo obtengo mi certificado de finalización?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Una vez que hayas completado el 100% del curso y aprobado la
+                  evaluación final, podrás descargar tu certificado desde
+                  <strong>Certificados</strong> en el menú lateral. Está
+                  disponible en formato PDF.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  Mi certificado tiene un error en mi nombre, ¿cómo lo corrijo?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Escríbenos a soporte@vibacademy.hn con tu nombre completo (tal
+                  como debe aparecer) y el curso correspondiente. Lo
+                  actualizaremos en un plazo de 3 días hábiles.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Los certificados tienen validez internacional?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Nuestros certificados son de extensión educativa, avalados por
+                  FUMIZA y pueden ser presentados como formación complementaria.
+                  Incluyen código QR de verificación.
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo: Financieros -->
+            <div class="fac-faq-group hidden" data-cat="financieros">
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Cuáles son los métodos de pago aceptados?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Aceptamos tarjetas de crédito/débito (Visa, MasterCard),
+                  transferencia bancaria, depósito en cuenta y pago por PayPal.
+                  Al finalizar la inscripción se muestran las instrucciones.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Existe política de reembolso?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Puedes solicitar reembolso dentro de los primeros 7 días
+                  posteriores a la inscripción siempre que no hayas avanzado más
+                  del 20% del curso. Escríbenos a facturacion@vibacademy.hn.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Cómo obtengo mi factura?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Una vez realizado el pago, puedes solicitar tu factura desde
+                  la sección <strong>Configuración > Facturación</strong>.
+                  Llenando el formulario con tus datos fiscales.
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo: Cuenta -->
+            <div class="fac-faq-group hidden" data-cat="cuenta">
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Puedo cambiar mi correo electrónico asociado?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Sí, ve a <strong>Mi perfil</strong> y actualiza tu correo.
+                  Recibirás un enlace de verificación para confirmar el cambio.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  Olvidé mi contraseña, ¿cómo la recupero?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  En la pantalla de inicio de sesión haz clic en "¿Olvidaste tu
+                  contraseña?". Recibirás un enlace para restablecerla en tu
+                  correo registrado.
+                </div>
+              </div>
+              <div class="fac-faq-item">
+                <div class="fac-faq-question">
+                  ¿Puedo eliminar mi cuenta permanentemente?
+                  <i class="fi fi-rs-angle-down"></i>
+                </div>
+                <div class="fac-faq-answer">
+                  Para solicitar la baja definitiva envía un correo a
+                  privacidad@vibacademy.hn. Ten en cuenta que perderás el acceso
+                  a certificados y progreso.
+                </div>
+              </div>
+            </div>
+
+            <!-- Grupo "todos" muestra todos los items (JS se encarga) -->
+            <div class="fac-faq-group hidden" data-cat="todos"></div>
+          </div>
+
+          <!-- Nota adicional de soporte -->
+          <div class="fac-support-note">
+            <i class="fi fi-rs-info"></i>
+            ¿No encontraste lo que buscabas? Comunícate con nuestro equipo
+            humano a través del correo soporte@vibacademy.hn o WhatsApp +504
+            9876-5432. Respondemos en un máximo de 48 horas.
+          </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span>&copy; 2026 FUMIZA · Todos los derechos reservados</span>
+              <span
+                >Plataforma desarrollada por
+                <a href="https://nickramen.com/" target="_blank"
+                  >nickramen</a
+                ></span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const toggle = document.getElementById("sidebarToggle");
+
+      function openSidebar() {
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+      );
+      overlay.addEventListener("click", closeSidebar);
+
+      // Profile dropdown
+      const profileToggle = document.getElementById("profileToggle");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openProfile() {
+        profileMenu.classList.add("is-open");
+        profileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeProfile() {
+        profileMenu.classList.remove("is-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.contains("is-open")
+          ? closeProfile()
+          : openProfile();
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target)) closeProfile();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProfile();
+      });
+
+      // Rotación de anuncios
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (!items.length) return;
+        let current = 0;
+        function next() {
+          const prev = current;
+          current = (current + 1) % items.length;
+          items[prev].classList.add("leaving");
+          items[prev].classList.remove("active");
+          items[current].classList.add("active");
+          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+        }
+        setInterval(next, 5000);
+      })();
+
+      // FAQ: acordeón por pregunta
+      const faqItems = document.querySelectorAll(".fac-faq-item");
+      faqItems.forEach((item) => {
+        const question = item.querySelector(".fac-faq-question");
+        question.addEventListener("click", () => {
+          item.classList.toggle("active");
+        });
+      });
+
+      // Filtro por categorías (FAQ)
+      const catButtons = document.querySelectorAll(".fac-faq-cat");
+      const groups = document.querySelectorAll(".fac-faq-group");
+      // Función para mostrar solo el grupo seleccionado y resetear acordeones
+      function filterFAQs(category) {
+        // Ocultar todos los grupos
+        groups.forEach((group) => {
+          group.classList.add("hidden");
+        });
+        if (category === "todos") {
+          // Mostrar todos los grupos excepto el grupo "todos" (vacío)
+          groups.forEach((group) => {
+            if (group.getAttribute("data-cat") !== "todos") {
+              group.classList.remove("hidden");
+            }
+          });
+        } else {
+          const targetGroup = document.querySelector(
+            `.fac-faq-group[data-cat="${category}"]`,
+          );
+          if (targetGroup) targetGroup.classList.remove("hidden");
+        }
+        // Opcional: cerrar todos los acordeones al cambiar de categoría (mejor UX)
+        faqItems.forEach((item) => {
+          item.classList.remove("active");
+        });
+      }
+
+      catButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          catButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const cat = btn.getAttribute("data-cat");
+          filterFAQs(cat);
+        });
+      });
+
+      // Inicial: mostrar todos los grupos técnicos, educativos, certificados, financieros, cuenta
+      filterFAQs("todos");
+    </script>
+  </body>
+</html>

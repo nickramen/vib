@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión · VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --fum-color-border: rgba(60, 60, 56, 0.12);
+      }
+      body {
+        font-family: "Geist", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .fac-login-container {
+        display: flex;
+        max-width: 1100px;
+        width: 100%;
+        background: #fff;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid var(--fum-color-border);
+      }
+      .fac-login-left {
+        flex: 1;
+        background: linear-gradient(145deg, #1a1f5e 0%, #141952 100%);
+        padding: 48px 40px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .fac-login-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #7fd047;
+        margin-bottom: 48px;
+      }
+      .fac-login-logo i {
+        font-size: 28px;
+      }
+      .fac-login-left h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      .fac-login-left p {
+        font-size: 15px;
+        opacity: 0.8;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+      .fac-feature-list {
+        list-style: none;
+        margin-top: 32px;
+      }
+      .fac-feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .fac-feature-list li i {
+        color: #7fd047;
+        font-size: 18px;
+      }
+      .fac-login-right {
+        flex: 1;
+        padding: 48px 44px;
+        background: white;
+      }
+      .fac-tabs {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 32px;
+        border-bottom: 2px solid #eef2f0;
+      }
+      .fac-tab {
+        padding-bottom: 12px;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+        color: #8a8e8a;
+        transition: all 0.2s;
+      }
+      .fac-tab.active {
+        color: #7fd047;
+        border-bottom: 2px solid #7fd047;
+        margin-bottom: -2px;
+      }
+      .fac-form-panel {
+        display: none;
+      }
+      .fac-form-panel.active {
+        display: block;
+      }
+      .fac-form-group {
+        margin-bottom: 24px;
+      }
+      .fac-form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #232323;
+        margin-bottom: 8px;
+      }
+      .fac-form-group input {
+        width: 100%;
+        height: 48px;
+        padding: 0 16px;
+        background: #f7f9f7;
+        border: 1px solid rgba(60, 60, 56, 0.12);
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: inherit;
+        transition: all 0.2s;
+      }
+      .fac-form-group input:focus {
+        outline: none;
+        border-color: #7fd047;
+        box-shadow: 0 0 0 3px rgba(127, 208, 71, 0.1);
+      }
+      .fac-forgot {
+        text-align: right;
+        margin-bottom: 24px;
+      }
+      .fac-forgot a {
+        font-size: 13px;
+        color: #7fd047;
+        text-decoration: none;
+      }
+      .fac-btn-login {
+        width: 100%;
+        height: 48px;
+        background: #7fd047;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .fac-btn-login:hover {
+        background: #6bb83a;
+      }
+
+      .fac-terms {
+        text-align: center;
+        font-size: 12px;
+        color: #8a8e8a;
+        margin-top: 32px;
+      }
+      .fac-terms a {
+        color: #7fd047;
+        text-decoration: none;
+      }
+      @media (max-width: 800px) {
+        .fac-login-container {
+          flex-direction: column;
+          border-radius: 20px;
+        }
+        .fac-login-left {
+          padding: 32px 24px;
+          text-align: center;
+        }
+        .fac-feature-list {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-login-container">
+      <div class="fac-login-left">
+        <div>
+          <div class="fac-login-logo">
+            <i class="fi fi-rs-sun-plant-wilt"></i>
+            <span>VIB ACADEMY</span>
+          </div>
+          <h1>Transforma tu futuro profesional</h1>
+          <p>
+            Accede a cursos especializados en sostenibilidad, seguridad
+            ambiental y desarrollo profesional con certificación oficial.
+          </p>
+          <ul class="fac-feature-list">
+            <li>
+              <i class="fi fi-rs-check-circle"></i> +50 cursos disponibles
+            </li>
+            <li>
+              <i class="fi fi-rs-diploma"></i> Certificados avalados por el
+              Colegio de Ingenieros
+            </li>
+            <li>
+              <i class="fi fi-rs-user-graduate"></i> Instructores expertos en
+              cada materia
+            </li>
+            <li><i class="fi fi-rs-clock"></i> Aprendizaje a tu ritmo, 24/7</li>
+          </ul>
+        </div>
+        <div style="font-size: 12px; opacity: 0.6; margin-top: 40px">
+          &copy; 2026 VIB ACADEMY · Todos los derechos reservados
+        </div>
+      </div>
+      <div class="fac-login-right">
+        <div class="fac-tabs">
+          <div class="fac-tab" data-tab="login">Iniciar sesión</div>
+          <div class="fac-tab active" data-tab="register">Crear cuenta</div>
+        </div>
+
+        <!-- Panel Login -->
+        <div id="loginPanel" class="fac-form-panel">
+          <form id="loginForm">
+            <div class="fac-form-group">
+              <label>Correo electrónico</label>
+              <input
+                type="email"
+                placeholder="tu@email.com"
+                id="loginEmail"
+                required
+              />
+            </div>
+            <div class="fac-form-group">
+              <label>Contraseña</label>
+              <input
+                type="password"
+                placeholder="••••••••"
+                id="loginPassword"
+                required
+              />
+            </div>
+            <div class="fac-forgot">
+              <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="fac-btn-login">
+              <a
+                style="color: white; text-decoration: none"
+                href="dashboard.html"
+                >Ingresar a la plataforma</a
+              >
+            </button>
+          </form>
+          <div class="fac-terms">
+            Al iniciar sesión aceptas nuestros <a href="#">Términos de uso</a> y
+            <a href="#">Política de privacidad</a>.
+          </div>
+        </div>
+
+        <!-- Panel Registro -->
+        <div id="registerPanel" class="fac-form-panel active">
+          <form id="registerForm">
+            <div class="fac-form-group">
+              <label>Nombre completo</label>
+              <input
+                type="text"
+                placeholder="María Rodríguez"
+                id="regName"
+                required
+              />
+            </div>
+            <div class="fac-form-group">
+              <label>Correo electrónico</label>
+              <input
+                type="email"
+                placeholder="tu@email.com"
+                id="regEmail"
+                required
+              />
+            </div>
+            <div class="fac-form-group">
+              <label>Contraseña</label>
+              <input
+                type="password"
+                placeholder="Crea una contraseña segura"
+                id="regPassword"
+                required
+              />
+            </div>
+            <div class="fac-form-group">
+              <label>Confirmar contraseña</label>
+              <input
+                type="password"
+                placeholder="Repite tu contraseña"
+                id="regConfirmPassword"
+                required
+              />
+            </div>
+            <button type="submit" class="fac-btn-login">
+              Registrarme ahora
+            </button>
+          </form>
+          <div class="fac-terms">
+            Al registrarte aceptas nuestros <a href="#">Términos de uso</a> y
+            <a href="#">Política de privacidad</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Tabs
+      const tabs = document.querySelectorAll(".fac-tab");
+      const loginPanel = document.getElementById("loginPanel");
+      const registerPanel = document.getElementById("registerPanel");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          if (tab.dataset.tab === "login") {
+            loginPanel.classList.add("active");
+            registerPanel.classList.remove("active");
+          } else {
+            registerPanel.classList.add("active");
+            loginPanel.classList.remove("active");
+          }
+        });
+      });
+
+      // Login handler
+      document.getElementById("loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+        if (!email || !password) {
+          alert("Por favor ingresa tu correo y contraseña");
+          return;
+        }
+        // Simulación de login exitoso
+        alert(
+          `Bienvenido de vuelta, ${email.split("@")[0]}! Redirigiendo al dashboard...`,
+        );
+        window.location.href = "dashboard.html";
+      });
+
+      // Register handler
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("regName").value;
+          const email = document.getElementById("regEmail").value;
+          const pwd = document.getElementById("regPassword").value;
+          const confirm = document.getElementById("regConfirmPassword").value;
+          if (!name || !email || !pwd) {
+            alert("Por favor completa todos los campos");
+            return;
+          }
+          if (pwd !== confirm) {
+            alert("Las contraseñas no coinciden");
+            return;
+          }
+          if (pwd.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres");
+            return;
+          }
+          alert(
+            `¡Cuenta creada exitosamente, ${name}! Ahora puedes iniciar sesión.`,
+          );
+          // Cambiar al panel de login
+          tabs[0].click();
+          document.getElementById("loginEmail").value = email;
+          document.getElementById("loginPassword").value = "";
+        });
+    </script>
+  </body>
+</html>

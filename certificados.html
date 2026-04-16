@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificados — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════
+         BARRA DE ANUNCIOS
+      ══════════════════════════════════════════════ */
+      .fac-announcements {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        overflow: hidden;
+        min-width: 0;
+        height: 36px;
+      }
+      .fac-announcements-icon {
+        display: flex;
+        align-items: center;
+        color: var(--fum-color-verde);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .fac-announcements-icon i {
+        display: flex;
+      }
+      .fac-announcements-track {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .fac-announcement-item {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateX(30px);
+        opacity: 0;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        pointer-events: none;
+      }
+      .fac-announcement-item.active {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+      .fac-announcement-item.leaving {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+      }
+      .fac-announcement-item strong {
+        color: var(--fum-color-text-primary);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      @media (max-width: 1024px) {
+        .fac-announcement-item {
+          display: none !important;
+        }
+        .fac-announcements-ticker {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          animation: fac-ticker-scroll 32s linear infinite;
+          font-size: var(--fum-font-size-sm);
+          color: var(--fum-color-text-secondary);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          will-change: transform;
+        }
+        .fac-announcements-ticker strong {
+          color: var(--fum-color-text-primary);
+          font-weight: var(--fum-font-weight-semibold);
+        }
+        .fac-ticker-sep {
+          display: inline-block;
+          margin: 0 20px;
+          color: var(--fum-color-verde);
+          opacity: 0.45;
+          font-size: 10px;
+        }
+        @keyframes fac-ticker-scroll {
+          0% {
+            transform: translateY(-50%) translateX(0);
+          }
+          100% {
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+      }
+      @media (min-width: 1025px) {
+        .fac-announcements-ticker {
+          display: none;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         VALIDADOR DE CERTIFICADO
+      ══════════════════════════════════════════════ */
+      .fac-validator-section {
+        background: var(--fum-color-blanco);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-lg);
+        padding: var(--fum-space-8);
+        margin-bottom: var(--fum-space-10);
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-10);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .fac-validator-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-validator-title {
+        font-size: var(--fum-font-size-xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+      .fac-validator-subtitle {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-normal);
+      }
+
+      .fac-validator-form {
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-3);
+        flex-shrink: 0;
+      }
+      .fac-validator-input-wrap {
+        position: relative;
+      }
+      .fac-validator-input {
+        width: 280px;
+        height: 44px;
+        padding: 0 14px 0 40px;
+        background: var(--fum-color-blanco);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-muted);
+        font-family: var(--fum-font-family);
+        outline: none;
+        transition:
+          border-color var(--fum-transition-fast),
+          background var(--fum-transition-fast);
+        letter-spacing: 0.04em;
+      }
+      .fac-validator-input::placeholder {
+        color: var(--fum-color-text-muted);
+        letter-spacing: 0;
+      }
+      .fac-validator-input:focus {
+        border-color: var(--fum-color-verde);
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .fac-validator-input-icon {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: var(--fum-color-verde);
+        pointer-events: none;
+        display: flex;
+      }
+      .fac-validator-input-icon i {
+        display: flex;
+      }
+      .fac-validator-btn {
+        height: 44px;
+        padding: 0 var(--fum-space-6);
+        background: var(--fum-color-verde);
+        color: #fff;
+        border: none;
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-bold);
+        font-family: var(--fum-font-family);
+        cursor: pointer;
+        transition:
+          background var(--fum-transition-fast),
+          transform var(--fum-transition-fast);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .fac-validator-btn:hover {
+        background: var(--fum-color-verde-hover);
+      }
+      .fac-validator-btn i {
+        display: flex;
+      }
+
+      /* Resultado de validación */
+      .fac-validator-result {
+        margin-top: var(--fum-space-5);
+        display: none;
+        align-items: flex-start;
+        gap: var(--fum-space-4);
+        padding: var(--fum-space-5) var(--fum-space-6);
+        border-radius: var(--fum-radius-md);
+        animation: fac-result-in 0.3s ease;
+      }
+      @keyframes fac-result-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fac-validator-result.is-valid {
+        display: flex;
+        background: rgba(127, 208, 71, 0.12);
+        border: 1px solid rgba(127, 208, 71, 0.3);
+      }
+      .fac-validator-result.is-invalid {
+        display: flex;
+        background: rgba(227, 30, 36, 0.1);
+        border: 1px solid rgba(227, 30, 36, 0.25);
+      }
+      .fac-validator-result-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+        display: flex;
+        margin-top: 2px;
+      }
+      .is-valid .fac-validator-result-icon {
+        color: var(--fum-color-verde);
+      }
+      .is-invalid .fac-validator-result-icon {
+        color: var(--fum-color-rojo);
+      }
+      .fac-validator-result-body {
+      }
+      .fac-validator-result-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-blanco);
+        margin-bottom: 3px;
+      }
+      .fac-validator-result-desc {
+        font-size: var(--fum-font-size-xs);
+        color: rgba(255, 255, 255, 0.6);
+        line-height: var(--fum-line-height-normal);
+      }
+      .fac-validator-result-detail {
+        margin-top: var(--fum-space-3);
+        display: flex;
+        gap: var(--fum-space-5);
+        flex-wrap: wrap;
+      }
+      .fac-validator-result-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .fac-validator-result-label {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .fac-validator-result-value {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-blanco);
+      }
+
+      /* Responsive validador */
+      @media (max-width: 1024px) {
+        .fac-validator-section {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--fum-space-6);
+          padding: var(--fum-space-8);
+        }
+        .fac-validator-form {
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .fac-validator-input {
+          width: 100%;
+        }
+        .fac-validator-btn {
+          justify-content: center;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         CARDS DE CERTIFICADOS CON IMAGEN HTML
+      ══════════════════════════════════════════════ */
+      .fac-cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--fum-space-5);
+      }
+
+      .fac-cert-card {
+        background: var(--fum-color-bg-card);
+        border-radius: var(--fum-radius-lg);
+        border: 1px solid var(--fum-color-border);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          box-shadow var(--fum-transition-base),
+          transform var(--fum-transition-base);
+      }
+
+      /* Cabecera de la tarjeta con imagen real */
+      .fac-cert-card-header {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Imagen real dentro del HTML */
+      .fac-cert-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Overlay oscuro para mejorar legibilidad del texto superpuesto */
+      .fac-cert-card-header .fac-img-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      /* Badge de estado: esquina sup derecha */
+      .fac-cert-card-status {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 4px 10px;
+        border-radius: var(--fum-radius-pill);
+      }
+      .fac-cert-card-status--emitido {
+        background: var(--fum-color-verde);
+        color: #fff;
+      }
+      .fac-cert-card-status--pendiente {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* ID flotante: esquina sup izq */
+      .fac-cert-card-id {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: rgba(255, 255, 255, 0.85);
+        background: var(--fum-color-azul);
+        padding: 2px 8px;
+        border-radius: 20px;
+        font-family: monospace;
+        backdrop-filter: blur(2px);
+      }
+
+      /* Body */
+      .fac-cert-card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: var(--fum-space-5);
+        gap: var(--fum-space-3);
+      }
+
+      .fac-cert-card-course {
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-medium);
+        color: var(--fum-color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .fac-cert-card-title {
+        font-size: var(--fum-font-size-md);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: var(--fum-line-height-snug);
+        letter-spacing: -0.01em;
+      }
+
+      .fac-cert-card-meta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--fum-space-3) var(--fum-space-4);
+        padding-top: var(--fum-space-2);
+        border-top: 1px solid var(--fum-color-border);
+      }
+      .fac-cert-meta-item {
+      }
+      .fac-cert-meta-label {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--fum-color-text-muted);
+        margin-bottom: 2px;
+      }
+      .fac-cert-meta-value {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+      }
+
+      /* Footer */
+      .fac-cert-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: var(--fum-space-4);
+        gap: var(--fum-space-3);
+      }
+      .fac-cert-card-download-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px var(--fum-space-4);
+        background: var(--fum-color-verde);
+        color: #fff;
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-bold);
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background var(--fum-transition-fast);
+      }
+      .fac-cert-card-download-btn:hover {
+        background: var(--fum-color-verde-hover);
+      }
+      .fac-cert-card-download-btn i {
+        display: flex;
+        font-size: 12px;
+      }
+
+      .fac-cert-card-share-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px var(--fum-space-4);
+        background: transparent;
+        color: var(--fum-color-text-secondary);
+        border: 1.5px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-bold);
+        cursor: pointer;
+        font-family: inherit;
+        transition: all var(--fum-transition-fast);
+      }
+      .fac-cert-card-share-btn:hover {
+        border-color: var(--fum-color-verde);
+        color: var(--fum-color-verde-dark);
+      }
+      .fac-cert-card-share-btn i {
+        display: flex;
+        font-size: 12px;
+      }
+
+      @media (max-width: 1024px) {
+        .fac-cert-grid {
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        }
+      }
+      @media (max-width: 480px) {
+        .fac-cert-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Loading spinner para el botón */
+      .fac-validator-btn.is-loading .btn-text {
+        display: none;
+      }
+      .fac-validator-btn .btn-spinner {
+        display: none;
+      }
+      .fac-validator-btn.is-loading .btn-spinner {
+        display: flex;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="fac-layout">
+      <!-- SIDEBAR -->
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu" style="margin-top: 6px">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a href="notificaciones.html" class="fac-nav-item"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user-headset"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="fac-main">
+        <!-- TOPBAR -->
+        <header class="fac-topbar">
+          <button
+            class="fac-topbar-mobile-toggle"
+            id="sidebarToggle"
+            aria-label="Abrir menú"
+          >
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+
+          <!-- Barra de anuncios -->
+          <div class="fac-announcements" role="marquee" aria-live="polite">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active" data-type="info"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item" data-type="promo"
+                >Descuento del <strong>20 % en todos los cursos</strong> hasta
+                el 31 de enero. Usa el código <strong>ENERO25</strong></span
+              >
+              <span class="fac-announcement-item" data-type="info"
+                >Nuevo curso disponible:
+                <strong>Bioindicadores Acuáticos</strong> — ya puedes
+                inscribirte</span
+              >
+              <span class="fac-announcements-ticker" aria-hidden="true">
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div
+                class="fac-topbar-avatar-btn"
+                id="profileToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Perfil"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px; font-size: 11px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Allan Izaguirre"
+                    class="fac-avatar-img"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.querySelector(
+                        '.fac-avatar-initials',
+                      ).style.display = 'flex';
+                    "
+                  />
+                  <span class="fac-avatar-initials" style="display: none"
+                    >MR</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="fac-profile-dropdown"
+                id="profileDropdown"
+                role="menu"
+              >
+                <div class="fac-profile-dropdown-header">
+                  <div
+                    class="fac-avatar fac-profile-dropdown-avatar"
+                    style="font-size: 11px"
+                  >
+                    MR
+                  </div>
+                  <div class="fac-profile-dropdown-info">
+                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
+                    <p class="fac-profile-dropdown-role">Estudiante</p>
+                  </div>
+                </div>
+                <div class="fac-profile-dropdown-divider"></div>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-user"></i>Mi perfil
+                </a>
+                <a
+                  href="certificados.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-diploma"></i>Mis certificados
+                </a>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-settings"></i>Configuración
+                </a>
+                <div class="fac-profile-dropdown-divider"></div>
+                <button
+                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-sign-out-alt"></i>Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="fac-content">
+          <!-- Page header -->
+          <div class="fac-page-header">
+            <h1 class="fac-page-title">Certificados</h1>
+            <p class="fac-page-subtitle">
+              Tus logros certificados por VIB ACADEMY — descarga, comparte o
+              valida la autenticidad de cualquier certificado
+            </p>
+          </div>
+
+          <div class="fac-validator-section">
+            <div class="fac-validator-text">
+              <p class="fac-validator-title">Validar un certificado</p>
+              <p class="fac-validator-subtitle">
+                Ingresa el código único del certificado para verificar su
+                autenticidad en nuestra base de datos.
+              </p>
+              <!-- Resultado (oculto por defecto, visible tras validar) -->
+              <div class="fac-validator-result" id="validatorResult"></div>
+            </div>
+            <div class="fac-validator-form">
+              <div class="fac-validator-input-wrap">
+                <span class="fac-validator-input-icon">
+                  <i class="fi fi-rs-search"></i>
+                </span>
+                <input
+                  type="text"
+                  class="fac-validator-input"
+                  id="validatorInput"
+                  placeholder="Ej: FAC-2024-001234"
+                  maxlength="20"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+              </div>
+              <button
+                class="fac-validator-btn"
+                id="validatorBtn"
+                onclick="validateCert()"
+              >
+                <span class="btn-text">Verificar</span>
+                <span class="btn-spinner"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ═══════════════════════════════════════
+               MIS CERTIFICADOS CON IMÁGENES HTML
+          ═══════════════════════════════════════ -->
+          <section aria-labelledby="certs-title">
+            <div class="fac-section-header">
+              <h2 class="fac-section-title" id="certs-title">
+                Mis certificados
+              </h2>
+            </div>
+
+            <div class="fac-cert-grid">
+              <!-- ── Certificado 1: Biodiversidad Tropical ── -->
+              <article class="fac-cert-card">
+                <div class="fac-cert-card-header">
+                  <img
+                    class="fac-cert-card-img"
+                    src="certificado.webp"
+                    alt="Bosque tropical con biodiversidad"
+                    loading="lazy"
+                  />
+                  <div class="fac-img-overlay"></div>
+                  <span class="fac-cert-card-id">FAC-2024-000981</span>
+                  <span
+                    class="fac-cert-card-status fac-cert-card-status--emitido"
+                    >Emitido</span
+                  >
+                </div>
+                <div class="fac-cert-card-body">
+                  <p class="fac-cert-card-course">
+                    Certificado de finalización
+                  </p>
+                  <h3 class="fac-cert-card-title">
+                    Biodiversidad Tropical y Conservación
+                  </h3>
+                  <div class="fac-cert-card-meta-grid">
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Emisión</p>
+                      <p class="fac-cert-meta-value">14 Abr 2024</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Duración</p>
+                      <p class="fac-cert-meta-value">48 horas</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Instructor</p>
+                      <p class="fac-cert-meta-value">Biol. Ana Castillo</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Calificación</p>
+                      <p class="fac-cert-meta-value">96 / 100</p>
+                    </div>
+                  </div>
+                  <div class="fac-cert-card-footer">
+                    <button class="fac-cert-card-download-btn">
+                      <i class="fi fi-rs-download"></i> Descargar PDF
+                    </button>
+                    <button class="fac-cert-card-share-btn">
+                      <i class="fi fi-rs-share"></i> Compartir
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Certificado 2: Gestión Hídrica ── -->
+              <article class="fac-cert-card">
+                <div class="fac-cert-card-header">
+                  <img
+                    class="fac-cert-card-img"
+                    src="certificado.webp"
+                    alt="Agua limpia en la naturaleza"
+                    loading="lazy"
+                  />
+                  <div class="fac-img-overlay"></div>
+                  <span class="fac-cert-card-id">FAC-2024-000756</span>
+                  <span
+                    class="fac-cert-card-status fac-cert-card-status--emitido"
+                    >Emitido</span
+                  >
+                </div>
+                <div class="fac-cert-card-body">
+                  <p class="fac-cert-card-course">
+                    Certificado de finalización
+                  </p>
+                  <h3 class="fac-cert-card-title">
+                    Gestión Sostenible del Recurso Hídrico
+                  </h3>
+                  <div class="fac-cert-card-meta-grid">
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Emisión</p>
+                      <p class="fac-cert-meta-value">02 Feb 2024</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Duración</p>
+                      <p class="fac-cert-meta-value">60 horas</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Instructor</p>
+                      <p class="fac-cert-meta-value">Ing. José Méndez</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Calificación</p>
+                      <p class="fac-cert-meta-value">88 / 100</p>
+                    </div>
+                  </div>
+                  <div class="fac-cert-card-footer">
+                    <button class="fac-cert-card-download-btn">
+                      <i class="fi fi-rs-download"></i> Descargar PDF
+                    </button>
+                    <button class="fac-cert-card-share-btn">
+                      <i class="fi fi-rs-share"></i> Compartir
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Certificado 3: Cambio Climático ── -->
+              <article class="fac-cert-card">
+                <div class="fac-cert-card-header">
+                  <img
+                    class="fac-cert-card-img"
+                    src="certificado.webp"
+                    alt="Glaciar derritiéndose por cambio climático"
+                    loading="lazy"
+                  />
+                  <div class="fac-img-overlay"></div>
+                  <span class="fac-cert-card-id">FAC-2023-000512</span>
+                  <span
+                    class="fac-cert-card-status fac-cert-card-status--emitido"
+                    >Emitido</span
+                  >
+                </div>
+                <div class="fac-cert-card-body">
+                  <p class="fac-cert-card-course">
+                    Certificado de finalización
+                  </p>
+                  <h3 class="fac-cert-card-title">
+                    Cambio Climático: Fundamentos y Estrategias
+                  </h3>
+                  <div class="fac-cert-card-meta-grid">
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Emisión</p>
+                      <p class="fac-cert-meta-value">18 Nov 2023</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Duración</p>
+                      <p class="fac-cert-meta-value">36 horas</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Instructora</p>
+                      <p class="fac-cert-meta-value">Dra. Rosa Aguilar</p>
+                    </div>
+                    <div class="fac-cert-meta-item">
+                      <p class="fac-cert-meta-label">Calificación</p>
+                      <p class="fac-cert-meta-value">92 / 100</p>
+                    </div>
+                  </div>
+                  <div class="fac-cert-card-footer">
+                    <button class="fac-cert-card-download-btn">
+                      <i class="fi fi-rs-download"></i> Descargar PDF
+                    </button>
+                    <button class="fac-cert-card-share-btn">
+                      <i class="fi fi-rs-share"></i> Compartir
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span
+                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
+              >
+              <span
+                >Plataforma desarrollada por
+                <a href="https://nickramen.com/" target="_blank"
+                  >nickramen</a
+                ></span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // ── Sidebar ──
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const toggle = document.getElementById("sidebarToggle");
+
+      function openSidebar() {
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+      );
+      overlay.addEventListener("click", closeSidebar);
+
+      // ── Profile dropdown ──
+      const profileToggle = document.getElementById("profileToggle");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openProfile() {
+        profileMenu.classList.add("is-open");
+        profileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeProfile() {
+        profileMenu.classList.remove("is-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.contains("is-open")
+          ? closeProfile()
+          : openProfile();
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target)) closeProfile();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProfile();
+      });
+
+      // ── Rotación de anuncios ──
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (!items.length) return;
+        let current = 0;
+        function next() {
+          const prev = current;
+          current = (current + 1) % items.length;
+          items[prev].classList.add("leaving");
+          items[prev].classList.remove("active");
+          items[current].classList.add("active");
+          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+        }
+        setInterval(next, 5000);
+      })();
+
+      // ── Validador de certificados ──
+      // Base de datos simulada de certificados válidos
+      const CERT_DB = {
+        "FAC-2024-000981": {
+          curso: "Biodiversidad Tropical y Conservación",
+          estudiante: "Allan Izaguirre",
+          fecha: "14 de abril de 2024",
+          instructor: "Biol. Ana Castillo",
+        },
+        "FAC-2024-000756": {
+          curso: "Gestión Sostenible del Recurso Hídrico",
+          estudiante: "Allan Izaguirre",
+          fecha: "02 de febrero de 2024",
+          instructor: "Ing. José Méndez",
+        },
+        "FAC-2023-000512": {
+          curso: "Cambio Climático: Fundamentos y Estrategias",
+          estudiante: "Allan Izaguirre",
+          fecha: "18 de noviembre de 2023",
+          instructor: "Dra. Rosa Aguilar",
+        },
+        "FAC-2024-001105": {
+          curso: "Manejo Integrado de Plagas",
+          estudiante: "Carlos Fuentes",
+          fecha: "05 de marzo de 2024",
+          instructor: "Ing. Laura Pineda",
+        },
+      };
+
+      function validateCert() {
+        const input = document.getElementById("validatorInput");
+        const btn = document.getElementById("validatorBtn");
+        const result = document.getElementById("validatorResult");
+        const code = input.value.trim().toUpperCase();
+
+        if (!code) {
+          input.focus();
+          input.style.borderColor = "rgba(227,30,36,0.6)";
+          setTimeout(() => (input.style.borderColor = ""), 1500);
+          return;
+        }
+
+        // Mostrar loading
+        btn.classList.add("is-loading");
+        btn.disabled = true;
+        result.className = "fac-validator-result";
+        result.style.display = "none";
+
+        // Simular consulta a base de datos (1.2 seg)
+        setTimeout(() => {
+          btn.classList.remove("is-loading");
+          btn.disabled = false;
+
+          const cert = CERT_DB[code];
+
+          if (cert) {
+            result.className = "fac-validator-result is-valid";
+            result.innerHTML = `
+              <span class="fac-validator-result-icon"><i class="fi fi-rs-shield-check"></i></span>
+              <div class="fac-validator-result-body">
+                <p class="fac-validator-result-title">✓ Certificado válido — ${code}</p>
+                <p class="fac-validator-result-desc">Este certificado está registrado y verificado en la base de datos de VIB ACADEMY.</p>
+                <div class="fac-validator-result-detail">
+                  <div class="fac-validator-result-item">
+                    <span class="fac-validator-result-label">Curso</span>
+                    <span class="fac-validator-result-value">${cert.curso}</span>
+                  </div>
+                  <div class="fac-validator-result-item">
+                    <span class="fac-validator-result-label">Estudiante</span>
+                    <span class="fac-validator-result-value">${cert.estudiante}</span>
+                  </div>
+                  <div class="fac-validator-result-item">
+                    <span class="fac-validator-result-label">Fecha de emisión</span>
+                    <span class="fac-validator-result-value">${cert.fecha}</span>
+                  </div>
+                  <div class="fac-validator-result-item">
+                    <span class="fac-validator-result-label">Instructor</span>
+                    <span class="fac-validator-result-value">${cert.instructor}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            result.className = "fac-validator-result is-invalid";
+            result.innerHTML = `
+              <span class="fac-validator-result-icon"><i class="fi fi-rs-shield-exclamation"></i></span>
+              <div class="fac-validator-result-body">
+                <p class="fac-validator-result-title">Certificado no encontrado — ${code}</p>
+                <p class="fac-validator-result-desc">
+                  No encontramos ningún certificado con ese código en nuestra base de datos.<br>
+                  Verifica que el código esté escrito correctamente o contacta a soporte en <strong style="color:rgba(255,255,255,0.8)">soporte@fumiza.hn</strong>.
+                </p>
+              </div>
+            `;
+          }
+        }, 1200);
+      }
+
+      // Validar también con Enter
+      document
+        .getElementById("validatorInput")
+        .addEventListener("keydown", (e) => {
+          if (e.key === "Enter") validateCert();
+        });
+    </script>
+  </body>
+</html>

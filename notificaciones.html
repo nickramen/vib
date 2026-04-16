@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notificaciones — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════
+         BARRA DE ANUNCIOS (mismo código que otras páginas)
+      ══════════════════════════════════════════════ */
+      .fac-announcements {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        overflow: hidden;
+        min-width: 0;
+        height: 36px;
+      }
+      .fac-announcements-icon {
+        display: flex;
+        align-items: center;
+        color: var(--fum-color-verde);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .fac-announcements-icon i {
+        display: flex;
+      }
+      .fac-announcements-track {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .fac-announcement-item {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateX(30px);
+        opacity: 0;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        pointer-events: none;
+      }
+      .fac-announcement-item.active {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+      .fac-announcement-item.leaving {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+      }
+      .fac-announcement-item strong {
+        color: var(--fum-color-text-primary);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      @media (max-width: 1024px) {
+        .fac-announcement-item {
+          display: none !important;
+        }
+        .fac-announcements-ticker {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          animation: fac-ticker-scroll 32s linear infinite;
+          font-size: var(--fum-font-size-sm);
+          color: var(--fum-color-text-secondary);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          will-change: transform;
+        }
+        .fac-announcements-ticker strong {
+          color: var(--fum-color-text-primary);
+          font-weight: var(--fum-font-weight-semibold);
+        }
+        .fac-ticker-sep {
+          display: inline-block;
+          margin: 0 20px;
+          color: var(--fum-color-verde);
+          opacity: 0.45;
+          font-size: 10px;
+        }
+        @keyframes fac-ticker-scroll {
+          0% {
+            transform: translateY(-50%) translateX(0);
+          }
+          100% {
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+      }
+      @media (min-width: 1025px) {
+        .fac-announcements-ticker {
+          display: none;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         NOTIFICACIONES: BARRA DE FILTROS Y LISTA
+      ══════════════════════════════════════════════ */
+      .fac-notifications-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--fum-space-4);
+        margin-bottom: var(--fum-space-6);
+      }
+      .fac-notifications-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      /* ── Filtros con estilo fac-sort-select ── */
+      .fac-notif-filter {
+        appearance: none;
+        height: 34px;
+        padding: 0 12px;
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        font-family: var(--fum-font-family);
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-medium);
+        color: var(--fum-color-text-secondary);
+        cursor: pointer;
+        outline: none;
+        transition:
+          border-color var(--fum-transition-fast),
+          color var(--fum-transition-fast),
+          background var(--fum-transition-fast);
+      }
+      .fac-notif-filter:focus {
+        border-color: var(--fum-color-verde);
+      }
+      .fac-notif-filter.active {
+        background-color: var(--fum-color-verde);
+
+        border-color: var(--fum-color-verde);
+        color: #fff;
+        font-weight: var(--fum-font-weight-semibold);
+      }
+
+      .fac-mark-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 34px;
+        padding: 0 12px;
+        font-size: var(--fum-font-size-xs);
+        font-weight: var(--fum-font-weight-medium);
+        font-family: var(--fum-font-family);
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-sm);
+        color: var(--fum-color-text-secondary);
+        cursor: pointer;
+        transition: all var(--fum-transition-fast);
+      }
+      .fac-mark-read-btn:hover {
+        border-color: var(--fum-color-verde);
+        color: var(--fum-color-verde);
+      }
+      .fac-mark-read-btn i {
+        display: flex;
+      }
+
+      /* Lista de notificaciones */
+      .fac-notifications-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--fum-space-4);
+      }
+      .fac-notification-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--fum-space-4);
+        padding: var(--fum-space-4) var(--fum-space-5);
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-md);
+        transition:
+          box-shadow var(--fum-transition-fast),
+          background var(--fum-transition-fast);
+        cursor: pointer;
+      }
+      .fac-notification-item.unread {
+        background: var(--fum-color-blanco);
+        border-color: var(--fum-color-verde);
+      }
+      .fac-notification-item.unread .fac-notification-icon {
+        background: var(--fum-color-verde);
+        color: var(--fum-color-blanco);
+      }
+      .fac-notification-item.unread .fac-notification-title {
+        color: var(--fum-color-verde);
+      }
+      .fac-notification-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--fum-radius-sm);
+        background: var(--fum-color-bg-input);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 17px;
+        color: var(--fum-color-verde);
+      }
+      .fac-notification-icon i {
+        display: flex;
+      }
+      .fac-notification-content {
+        flex: 1;
+        min-width: 0;
+      }
+      .fac-notification-title {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-text-primary);
+        margin-bottom: 3px;
+      }
+      .fac-notification-message {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-relaxed);
+        margin-bottom: 5px;
+      }
+      .fac-notification-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-3);
+        flex-wrap: wrap;
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-muted);
+      }
+      .fac-notification-meta i {
+        font-size: 10px;
+        margin-right: 2px;
+      }
+      .fac-notification-badge {
+        background: var(--fum-color-verde);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+      .fac-empty-notifications {
+        text-align: center;
+        padding: var(--fum-space-12) var(--fum-space-6);
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-md);
+        color: var(--fum-color-text-muted);
+      }
+      .fac-empty-notifications i {
+        font-size: 40px;
+        margin-bottom: var(--fum-space-4);
+        opacity: 0.4;
+      }
+      @media (max-width: 768px) {
+        .fac-notification-item {
+          padding: var(--fum-space-4);
+        }
+        .fac-notification-icon {
+          width: 32px;
+          height: 32px;
+          font-size: 14px;
+        }
+        .fac-notifications-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="fac-layout">
+      <!-- SIDEBAR (idéntico a todas las páginas) -->
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu" style="margin-top: 6px">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a
+              href="notificaciones.html"
+              class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="soporte.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="fac-main">
+        <!-- TOPBAR -->
+        <header class="fac-topbar">
+          <button
+            class="fac-topbar-mobile-toggle"
+            id="sidebarToggle"
+            aria-label="Abrir menú"
+          >
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+
+          <!-- Barra de anuncios -->
+          <div class="fac-announcements" role="marquee" aria-live="polite">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active" data-type="info"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item" data-type="promo"
+                >Descuento del <strong>20 % en todos los cursos</strong> hasta
+                el 31 de enero. Usa el código <strong>ENERO25</strong></span
+              >
+              <span class="fac-announcement-item" data-type="info"
+                >Nuevo curso disponible:
+                <strong>Bioindicadores Acuáticos</strong> — ya puedes
+                inscribirte</span
+              >
+              <span class="fac-announcements-ticker" aria-hidden="true">
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div
+                class="fac-topbar-avatar-btn"
+                id="profileToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Perfil"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px; font-size: 11px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Allan Izaguirre"
+                    class="fac-avatar-img"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.querySelector(
+                        '.fac-avatar-initials',
+                      ).style.display = 'flex';
+                    "
+                  />
+                  <span class="fac-avatar-initials" style="display: none"
+                    >MR</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="fac-profile-dropdown"
+                id="profileDropdown"
+                role="menu"
+              >
+                <div class="fac-profile-dropdown-header">
+                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div class="fac-profile-dropdown-info">
+                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
+                    <p class="fac-profile-dropdown-role">
+                      Estudiante · Plan Pro
+                    </p>
+                  </div>
+                </div>
+                <div class="fac-profile-dropdown-divider"></div>
+                <a
+                  href="perfil.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-user"></i>
+                  Mi perfil
+                </a>
+                <a
+                  href="certificados.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-diploma"></i>
+                  Mis certificados
+                </a>
+                <a
+                  href="configuracion.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-settings"></i>
+                  Configuración
+                </a>
+                <div class="fac-profile-dropdown-divider"></div>
+                <button
+                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-sign-out-alt"></i>
+                  Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="fac-content">
+          <div class="fac-page-header">
+            <h1 class="fac-page-title">Notificaciones</h1>
+            <p class="fac-page-subtitle">
+              Mantente al día con tus cursos, certificados y novedades de la
+              plataforma
+            </p>
+          </div>
+
+          <!-- Filtros y acciones -->
+          <div class="fac-notifications-header">
+            <div class="fac-notifications-filters" id="notifFilters">
+              <button class="fac-notif-filter active" data-filter="todas">
+                Todas
+              </button>
+              <button class="fac-notif-filter" data-filter="no-leidas">
+                No leídas
+              </button>
+              <button class="fac-notif-filter" data-filter="curso">
+                Cursos
+              </button>
+              <button class="fac-notif-filter" data-filter="certificado">
+                Certificados
+              </button>
+              <button class="fac-notif-filter" data-filter="evento">
+                Eventos
+              </button>
+              <button class="fac-notif-filter" data-filter="sistema">
+                Sistema
+              </button>
+              <button class="fac-mark-read-btn" id="markAllReadBtn">
+                <i class="fi fi-rs-check-circle"></i> Marcar todas como leídas
+              </button>
+            </div>
+          </div>
+
+          <!-- Lista dinámica de notificaciones -->
+          <div id="notificationsContainer" class="fac-notifications-list"></div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span
+                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
+              >
+              <span
+                >Plataforma desarrollada por
+                <a href="https://nickramen.com/" target="_blank"
+                  >nickramen</a
+                ></span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // ═══════════════════════════════════════════════════════════════
+      // 1. Sidebar y dropdown (mismo código que todas las páginas)
+      // ═══════════════════════════════════════════════════════════════
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const toggle = document.getElementById("sidebarToggle");
+
+      function openSidebar() {
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+      );
+      overlay.addEventListener("click", closeSidebar);
+
+      const profileToggle = document.getElementById("profileToggle");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openProfile() {
+        profileMenu.classList.add("is-open");
+        profileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeProfile() {
+        profileMenu.classList.remove("is-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.contains("is-open")
+          ? closeProfile()
+          : openProfile();
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target)) closeProfile();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProfile();
+      });
+
+      // Rotación de anuncios
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (!items.length) return;
+        let current = 0;
+        function next() {
+          const prev = current;
+          current = (current + 1) % items.length;
+          items[prev].classList.add("leaving");
+          items[prev].classList.remove("active");
+          items[current].classList.add("active");
+          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+        }
+        setInterval(next, 5000);
+      })();
+
+      // ═══════════════════════════════════════════════════════════════
+      // 2. DATOS DE NOTIFICACIONES (simulados, estructura realista)
+      // ═══════════════════════════════════════════════════════════════
+      let notifications = [
+        {
+          id: 1,
+          type: "curso",
+          title: "Progreso actualizado",
+          message:
+            "Has completado el módulo 'Introducción a la Gestión Ambiental' del curso Evaluación de Impacto Ambiental.",
+          time: "Hace 10 minutos",
+          read: false,
+          icon: "fi fi-rs-e-learning",
+          link: "cursos.html",
+        },
+        {
+          id: 2,
+          type: "certificado",
+          title: "Certificado disponible",
+          message:
+            "¡Felicidades! Tu certificado del curso 'Manejo Integrado de Plagas' ya está listo para descargar.",
+          time: "Hace 2 horas",
+          read: false,
+          icon: "fi fi-rs-diploma",
+          link: "certificados.html",
+        },
+        {
+          id: 3,
+          type: "evento",
+          title: "Próxima clase en vivo",
+          message:
+            "Clase: 'Bioindicadores Acuáticos' — Lunes 20 de enero, 7:00 PM. No olvides conectarte.",
+          time: "Ayer, 10:30 AM",
+          read: true,
+          icon: "fi fi-rs-calendar",
+          link: "#",
+        },
+        {
+          id: 4,
+          type: "curso",
+          title: "Nuevo curso recomendado",
+          message:
+            "Te sugerimos 'Cambio Climático y Adaptación' basado en tus intereses. ¡Inscríbete ahora!",
+          time: "Ayer, 8:15 AM",
+          read: true,
+          icon: "fi fi-rs-sparkles",
+          link: "cursos.html",
+        },
+        {
+          id: 5,
+          type: "sistema",
+          title: "Actualización de la plataforma",
+          message:
+            "Hemos mejorado el reproductor de video y corregido errores menores. ¡Disfruta la experiencia!",
+          time: "2 días atrás",
+          read: true,
+          icon: "fi fi-rs-settings",
+          link: "#",
+        },
+        {
+          id: 6,
+          type: "certificado",
+          title: "Recordatorio de validez",
+          message:
+            "Tu certificado de 'Gestión de Residuos Sólidos' caduca en 30 días. Puedes renovarlo con un 15% de descuento.",
+          time: "3 días atrás",
+          read: false,
+          icon: "fi fi-rs-diploma",
+          link: "certificados.html",
+        },
+        {
+          id: 7,
+          type: "evento",
+          title: "Webinar gratuito",
+          message:
+            "Inscríbete al webinar 'Estrategias de Sostenibilidad Corporativa' — 25 de enero, 11:00 AM.",
+          time: "5 días atrás",
+          read: true,
+          icon: "fi fi-rs-video-camera",
+          link: "#",
+        },
+        {
+          id: 8,
+          type: "sistema",
+          title: "Seguridad de la cuenta",
+          message:
+            "Recomendamos activar la verificación en dos pasos desde Configuración > Seguridad.",
+          time: "1 semana atrás",
+          read: true,
+          icon: "fi fi-rs-shield",
+          link: "configuracion.html",
+        },
+      ];
+
+      // Función para renderizar notificaciones según filtro
+      let currentFilter = "todas";
+
+      function renderNotifications() {
+        const container = document.getElementById("notificationsContainer");
+        if (!container) return;
+
+        let filtered = [...notifications];
+        if (currentFilter === "no-leidas") {
+          filtered = filtered.filter((n) => !n.read);
+        } else if (currentFilter !== "todas") {
+          filtered = filtered.filter((n) => n.type === currentFilter);
+        }
+
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div class="fac-empty-notifications">
+              <i class="fi fi-rs-bell-slash"></i>
+              <p>No tienes notificaciones en esta categoría</p>
+              <p style="font-size: var(--fum-font-size-sm); margin-top: 8px;">Marca otras opciones para ver más actividades</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = filtered
+          .map(
+            (notif) => `
+          <div class="fac-notification-item ${!notif.read ? "unread" : ""}" data-id="${notif.id}" data-link="${notif.link}">
+            <div class="fac-notification-icon">
+              <i class="${notif.icon}"></i>
+            </div>
+            <div class="fac-notification-content">
+              <div class="fac-notification-title">${notif.title}</div>
+              <div class="fac-notification-message">${notif.message}</div>
+              <div class="fac-notification-meta">
+                <span><i class="fi fi-rs-clock"></i> ${notif.time}</span>
+                <span><i class="fi fi-rs-tag"></i> ${getTypeLabel(notif.type)}</span>
+              </div>
+            </div>
+            ${!notif.read ? '<div class="fac-notification-badge"></div>' : ""}
+          </div>
+        `,
+          )
+          .join("");
+
+        // Agregar eventos de click a cada notificación para marcarlas como leídas y redirigir
+        document.querySelectorAll(".fac-notification-item").forEach((el) => {
+          el.addEventListener("click", (e) => {
+            // Evitar que si se hace clic dentro de algún enlace interno se duplique
+            e.stopPropagation();
+            const notifId = parseInt(el.getAttribute("data-id"));
+            const linkUrl = el.getAttribute("data-link");
+            // Marcar como leída si estaba sin leer
+            const notif = notifications.find((n) => n.id === notifId);
+            if (notif && !notif.read) {
+              notif.read = true;
+              renderNotifications(); // re-render
+            }
+            // Redirigir si el link no es "#"
+            if (linkUrl && linkUrl !== "#") {
+              window.location.href = linkUrl;
+            }
+          });
+        });
+      }
+
+      function getTypeLabel(type) {
+        const labels = {
+          curso: "Curso",
+          certificado: "Certificado",
+          evento: "Evento",
+          sistema: "Sistema",
+        };
+        return labels[type] || "General";
+      }
+
+      // Marcar todas como leídas
+      function markAllAsRead() {
+        let changed = false;
+        notifications.forEach((n) => {
+          if (!n.read) {
+            n.read = true;
+            changed = true;
+          }
+        });
+        if (changed) {
+          renderNotifications();
+        }
+      }
+
+      // Configurar filtros
+      function setupFilters() {
+        const filterBtns = document.querySelectorAll(".fac-notif-filter");
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentFilter = btn.getAttribute("data-filter");
+            renderNotifications();
+          });
+        });
+
+        const markAllBtn = document.getElementById("markAllReadBtn");
+        if (markAllBtn) {
+          markAllBtn.addEventListener("click", markAllAsRead);
+        }
+      }
+
+      // Inicializar todo
+      renderNotifications();
+      setupFilters();
+    </script>
+  </body>
+</html>

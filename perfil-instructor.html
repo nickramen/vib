@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil del Instructor — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Estilos específicos para perfil de instructor */
+      .fac-instructor-header {
+        background: linear-gradient(
+          135deg,
+          var(--fum-color-azul) 0%,
+          #0f1352 100%
+        );
+        border-radius: var(--fum-radius-lg);
+        padding: var(--fum-space-8);
+        margin-bottom: var(--fum-space-8);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .fac-instructor-header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(127, 208, 71, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .fac-instructor-header-content {
+        display: flex;
+        align-items: center;
+        gap: var(--fum-space-6);
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+      .fac-instructor-avatar-large {
+        width: 140px;
+        height: 140px;
+        border-radius: var(--fum-radius-lg);
+        background: var(--fum-color-verde);
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .fac-instructor-avatar-large img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fac-instructor-header-info h1 {
+        font-size: var(--fum-font-size-3xl);
+        font-weight: var(--fum-font-weight-bold);
+        margin-bottom: var(--fum-space-2);
+      }
+      .fac-instructor-header-title {
+        font-size: var(--fum-font-size-md);
+        opacity: 0.85;
+        margin-bottom: var(--fum-space-3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .fac-instructor-badge {
+        background: var(--fum-color-verde);
+        padding: 4px 12px;
+        border-radius: var(--fum-radius-pill);
+        font-size: 11px;
+        font-weight: bold;
+      }
+      .fac-instructor-stats {
+        display: flex;
+        gap: var(--fum-space-5);
+        flex-wrap: wrap;
+        margin-top: var(--fum-space-4);
+      }
+      .fac-instructor-stat {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--fum-font-size-sm);
+        opacity: 0.9;
+      }
+      .fac-instructor-stat i {
+        font-size: 16px;
+      }
+      .fac-instructor-social {
+        display: flex;
+        gap: var(--fum-space-3);
+        margin-top: var(--fum-space-4);
+      }
+      .fac-instructor-social a {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: var(--fum-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--fum-transition-fast);
+        color: white;
+      }
+      .fac-instructor-social a:hover {
+        background: var(--fum-color-verde);
+        transform: translateY(-2px);
+      }
+      .fac-instructor-section {
+        background: var(--fum-color-bg-card);
+        border: 1px solid var(--fum-color-border);
+        border-radius: var(--fum-radius-lg);
+        padding: var(--fum-space-6);
+        margin-bottom: var(--fum-space-6);
+      }
+      .fac-instructor-section-title {
+        font-size: var(--fum-font-size-xl);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        margin-bottom: var(--fum-space-4);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .fac-instructor-section-title i {
+        color: var(--fum-color-verde);
+      }
+      .fac-skill-tag {
+        display: inline-block;
+        background: var(--fum-color-bg-surface);
+        border: 1px solid var(--fum-color-border);
+        padding: 6px 14px;
+        border-radius: var(--fum-radius-pill);
+        font-size: var(--fum-font-size-sm);
+        margin: 0 8px 8px 0;
+      }
+      .fac-timeline-item {
+        display: flex;
+        gap: var(--fum-space-4);
+        margin-bottom: var(--fum-space-5);
+        padding-bottom: var(--fum-space-4);
+        border-bottom: 1px solid var(--fum-color-border);
+      }
+      .fac-timeline-year {
+        min-width: 80px;
+        font-weight: var(--fum-font-weight-bold);
+        color: var(--fum-color-verde);
+      }
+      .fac-timeline-content h4 {
+        font-weight: var(--fum-font-weight-semibold);
+        margin-bottom: 4px;
+      }
+      .fac-timeline-content p {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+      }
+      .fac-course-mini-card {
+        display: flex;
+        gap: var(--fum-space-4);
+        padding: var(--fum-space-4);
+        background: var(--fum-color-bg-surface);
+        border-radius: var(--fum-radius-md);
+        margin-bottom: var(--fum-space-3);
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .fac-course-mini-img {
+        width: 60px;
+        height: 60px;
+        background: var(--fum-color-azul);
+        border-radius: var(--fum-radius-sm);
+        flex-shrink: 0;
+      }
+      .fac-course-mini-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--fum-radius-sm);
+      }
+      .fac-course-mini-info {
+        flex: 1;
+      }
+      .fac-course-mini-info h4 {
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+      .fac-course-mini-info p {
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-muted);
+      }
+      .fac-testimonial-card {
+        background: var(--fum-color-bg-surface);
+        border-radius: var(--fum-radius-md);
+        padding: var(--fum-space-5);
+        margin-bottom: var(--fum-space-4);
+        border-left: 3px solid var(--fum-color-verde);
+      }
+      .fac-testimonial-text {
+        font-size: var(--fum-font-size-sm);
+        line-height: 1.6;
+        color: var(--fum-color-text-secondary);
+        font-style: italic;
+        margin-bottom: var(--fum-space-3);
+      }
+      .fac-testimonial-author {
+        font-weight: var(--fum-font-weight-semibold);
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-primary);
+      }
+      @media (max-width: 768px) {
+        .fac-instructor-header {
+          padding: var(--fum-space-5);
+        }
+        .fac-instructor-avatar-large {
+          width: 100px;
+          height: 100px;
+        }
+        .fac-instructor-header-info h1 {
+          font-size: var(--fum-font-size-xl);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="fac-layout">
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a href="notificaciones.html" class="fac-nav-item"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="soporte.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="fac-main">
+        <header class="fac-topbar">
+          <button class="fac-topbar-mobile-toggle" id="sidebarToggle">
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+          <div class="fac-announcements" role="marquee">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item"
+                >Descuento del <strong>20% en todos los cursos</strong> hasta el
+                31 de enero</span
+              >
+            </div>
+          </div>
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div class="fac-topbar-avatar-btn" id="profileToggle">
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span
+                  ><span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Avatar"
+                    style="display: none"
+                  /><span class="fac-avatar-initials">AI</span>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown" id="profileDropdown">...</div>
+            </div>
+          </div>
+        </header>
+
+        <main class="fac-content">
+          <!-- Header del instructor -->
+          <div class="fac-instructor-header">
+            <div class="fac-instructor-header-content">
+              <div class="fac-instructor-avatar-large">
+                <img
+                  src="instructor-ivan-tamariz.webp"
+                  alt="Lic. Iván Tamariz"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/140x140/1a1f5e/white?text=IT'
+                  "
+                />
+              </div>
+              <div class="fac-instructor-header-info">
+                <h1>Lic. Iván Tamariz</h1>
+                <div class="fac-instructor-header-title">
+                  <span
+                    >Especialista en Seguridad Química y Materiales
+                    Peligrosos</span
+                  >
+                  <span class="fac-instructor-badge"
+                    >Instructor Certificado</span
+                  >
+                </div>
+                <div class="fac-instructor-stats">
+                  <span class="fac-instructor-stat"
+                    ><i class="fi fi-rs-e-learning"></i> 8 cursos
+                    impartidos</span
+                  >
+                  <span class="fac-instructor-stat"
+                    ><i class="fi fi-rs-user-graduate"></i> +1,200
+                    estudiantes</span
+                  >
+                  <span class="fac-instructor-stat"
+                    ><i class="fi fi-rs-star"></i> 4.9 ★ (368 reseñas)</span
+                  >
+                  <span class="fac-instructor-stat"
+                    ><i class="fi fi-rs-calendar"></i> 12 años de
+                    experiencia</span
+                  >
+                </div>
+                <div class="fac-instructor-social">
+                  <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+                  <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+                  <a href="#"><i class="fi fi-brands-facebook"></i></a>
+                  <a href="#"><i class="fi fi-brands-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid 2 columnas: Biografía + Especialidades -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: var(--fum-space-6);
+              margin-bottom: var(--fum-space-6);
+            "
+          >
+            <div class="fac-instructor-section">
+              <h3 class="fac-instructor-section-title">
+                <i class="fi fi-rs-user"></i> Biografía
+              </h3>
+              <p
+                style="line-height: 1.7; color: var(--fum-color-text-secondary)"
+              >
+                Ingeniero Químico con más de 12 años de experiencia en la
+                gestión de riesgos asociados a materiales y sustancias
+                peligrosas. Ha trabajado como consultor senior en proyectos
+                mineros, industriales y de transporte para empresas del sector
+                energético y logístico.
+              </p>
+              <p
+                style="
+                  line-height: 1.7;
+                  color: var(--fum-color-text-secondary);
+                  margin-top: 12px;
+                "
+              >
+                Instructor certificado por el Colegio de Ingenieros del Perú y
+                capacitador internacional en normas NFPA, GHS y Sistema de
+                Comando de Incidentes (SCI). Ha liderado más de 40 cursos y
+                talleres de respuesta a emergencias con materiales peligrosos.
+              </p>
+            </div>
+            <div class="fac-instructor-section">
+              <h3 class="fac-instructor-section-title">
+                <i class="fi fi-rs-medal"></i> Especialidades
+              </h3>
+              <div>
+                <span class="fac-skill-tag"
+                  >Materiales Peligrosos (MATPEL)</span
+                >
+                <span class="fac-skill-tag">NFPA 472 / 1072</span>
+                <span class="fac-skill-tag">GHS (SGA)</span>
+                <span class="fac-skill-tag"
+                  >Sistema de Comando de Incidentes</span
+                >
+                <span class="fac-skill-tag"
+                  >Hoja de Datos de Seguridad (SDS)</span
+                >
+                <span class="fac-skill-tag"
+                  >Respuesta a Emergencias Químicas</span
+                >
+                <span class="fac-skill-tag">Normativa RNAT / ADR</span>
+                <span class="fac-skill-tag">Evaluación de Riesgos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiencia profesional -->
+          <div class="fac-instructor-section">
+            <h3 class="fac-instructor-section-title">
+              <i class="fi fi-rs-briefcase"></i> Experiencia profesional
+            </h3>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2020 — Actualidad</div>
+              <div class="fac-timeline-content">
+                <h4>Consultor Senior en Seguridad Química | VIB Consulting</h4>
+                <p>
+                  Asesoría a empresas mineras e industriales en implementación
+                  de sistemas de gestión de sustancias peligrosas, auditorías y
+                  capacitación especializada.
+                </p>
+              </div>
+            </div>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2015 — 2020</div>
+              <div class="fac-timeline-content">
+                <h4>Coordinador de Seguridad Química | EnviroSafe S.A.</h4>
+                <p>
+                  Liderazgo del programa de respuesta a emergencias con
+                  materiales peligrosos, diseño de protocolos y formación de
+                  brigadas de emergencia.
+                </p>
+              </div>
+            </div>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2012 — 2015</div>
+              <div class="fac-timeline-content">
+                <h4>Inspector de Seguridad | Ministerio de Transportes</h4>
+                <p>
+                  Supervisión y fiscalización del transporte de mercancías
+                  peligrosas a nivel nacional, aplicación del RNAT y normativas
+                  internacionales.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cursos que imparte -->
+          <div class="fac-instructor-section">
+            <h3 class="fac-instructor-section-title">
+              <i class="fi fi-rs-e-learning"></i> Cursos que imparte
+            </h3>
+            <div class="fac-course-mini-card">
+              <div class="fac-course-mini-img">
+                <img
+                  src="curso.webp"
+                  alt="MATPEL"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/60x60/7fd047/white?text=MAT'
+                  "
+                />
+              </div>
+              <div class="fac-course-mini-info">
+                <h4>
+                  Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)
+                </h4>
+                <p>4 semanas · 5 módulos · 26 inscritos</p>
+              </div>
+              <a
+                href="curso-pre.html"
+                style="
+                  background: var(--fum-color-verde);
+                  color: white;
+                  padding: 6px 16px;
+                  border-radius: 8px;
+                  font-size: 12px;
+                "
+                >Ver curso</a
+              >
+            </div>
+            <div class="fac-course-mini-card">
+              <div class="fac-course-mini-img">
+                <img
+                  src="curso-ghs.webp"
+                  alt="GHS"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/60x60/1a1f5e/white?text=GHS'
+                  "
+                />
+              </div>
+              <div class="fac-course-mini-info">
+                <h4>Sistema Globalmente Armonizado (GHS) para la Industria</h4>
+                <p>3 semanas · 4 módulos · 58 inscritos</p>
+              </div>
+              <a
+                href="#"
+                style="
+                  background: var(--fum-color-verde);
+                  color: white;
+                  padding: 6px 16px;
+                  border-radius: 8px;
+                  font-size: 12px;
+                "
+                >Ver curso</a
+              >
+            </div>
+            <div class="fac-course-mini-card">
+              <div class="fac-course-mini-img">
+                <img
+                  src="curso-sci.webp"
+                  alt="SCI"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/60x60/7fd047/white?text=SCI'
+                  "
+                />
+              </div>
+              <div class="fac-course-mini-info">
+                <h4>Sistema de Comando de Incidentes (SCI) para Emergencias</h4>
+                <p>2 semanas · 3 módulos · 112 inscritos</p>
+              </div>
+              <a
+                href="#"
+                style="
+                  background: var(--fum-color-verde);
+                  color: white;
+                  padding: 6px 16px;
+                  border-radius: 8px;
+                  font-size: 12px;
+                "
+                >Ver curso</a
+              >
+            </div>
+          </div>
+
+          <!-- Testimonios -->
+          <div class="fac-instructor-section">
+            <h3 class="fac-instructor-section-title">
+              <i class="fi fi-rs-star"></i> Lo que dicen sus estudiantes
+            </h3>
+            <div class="fac-testimonial-card">
+              <p class="fac-testimonial-text">
+                "Excelente instructor, domina completamente el tema de
+                materiales peligrosos. Las clases son muy prácticas y las
+                evaluaciones refuerzan el aprendizaje."
+              </p>
+              <p class="fac-testimonial-author">
+                — María Rodríguez, Ingeniera Ambiental
+              </p>
+            </div>
+            <div class="fac-testimonial-card">
+              <p class="fac-testimonial-text">
+                "El curso de MATPEL superó mis expectativas. Iván tiene una
+                forma clara y dinámica de explicar normativas complejas. Muy
+                recomendado."
+              </p>
+              <p class="fac-testimonial-author">
+                — Carlos Mendoza, Supervisor de Seguridad
+              </p>
+            </div>
+            <div class="fac-testimonial-card">
+              <p class="fac-testimonial-text">
+                "La experiencia del instructor se nota en cada clase. Los casos
+                prácticos y la guía GRE fueron muy útiles para mi trabajo
+                diario."
+              </p>
+              <p class="fac-testimonial-author">
+                — Laura Fernández, Técnico en HSE
+              </p>
+            </div>
+          </div>
+
+          <!-- Certificaciones -->
+          <div class="fac-instructor-section">
+            <h3 class="fac-instructor-section-title">
+              <i class="fi fi-rs-diploma"></i> Certificaciones y formación
+            </h3>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2023</div>
+              <div class="fac-timeline-content">
+                <h4>Certificación NFPA 1072 — Materiales Peligrosos</h4>
+                <p>National Fire Protection Association (EE.UU.)</p>
+              </div>
+            </div>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2021</div>
+              <div class="fac-timeline-content">
+                <h4>Diplomado en Gestión de Riesgos Químicos</h4>
+                <p>Universidad Nacional de Ingeniería</p>
+              </div>
+            </div>
+            <div class="fac-timeline-item">
+              <div class="fac-timeline-year">2018</div>
+              <div class="fac-timeline-content">
+                <h4>Instructor certificado — Colegio de Ingenieros del Perú</h4>
+                <p>Registro CIP N° 12345</p>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span
+                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const sidebar = document.getElementById("sidebar"),
+        overlay = document.getElementById("sidebarOverlay"),
+        toggle = document.getElementById("sidebarToggle");
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open")
+          ? (sidebar.classList.remove("is-open"),
+            overlay.classList.remove("is-active"))
+          : (sidebar.classList.add("is-open"),
+            overlay.classList.add("is-active")),
+      );
+      overlay.addEventListener("click", () => {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+      });
+      const profileToggle = document.getElementById("profileToggle"),
+        profileMenu = document.getElementById("profileMenu");
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.toggle("is-open");
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target))
+          profileMenu.classList.remove("is-open");
+      });
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (items.length) {
+          let current = 0;
+          setInterval(() => {
+            items[current].classList.remove("active");
+            items[current].classList.add("leaving");
+            current = (current + 1) % items.length;
+            items[current].classList.add("active");
+            setTimeout(
+              () =>
+                items[
+                  (current + items.length - 1) % items.length
+                ].classList.remove("leaving"),
+              500,
+            );
+          }, 5000);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructores — VIB ACADEMY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════
+         INSTRUCTOR CARDS — mismo lenguaje que course cards
+      ══════════════════════════════════════════════ */
+
+      /* ══════════════════════════════════════════════
+         BARRA DE ANUNCIOS
+      ══════════════════════════════════════════════ */
+      .fac-announcements {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        overflow: hidden;
+        min-width: 0;
+        height: 36px;
+      }
+      .fac-announcements-icon {
+        display: flex;
+        align-items: center;
+        color: var(--fum-color-verde);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .fac-announcements-icon i {
+        display: flex;
+      }
+      .fac-announcements-track {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+
+      /* ── Desktop: fade + slide entre avisos ── */
+      .fac-announcement-item {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateX(30px);
+        opacity: 0;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        pointer-events: none;
+      }
+      .fac-announcement-item.active {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+      .fac-announcement-item.leaving {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-30px);
+      }
+      .fac-announcement-item strong {
+        color: var(--fum-color-text-primary);
+        font-weight: var(--fum-font-weight-semibold);
+      }
+
+      /* ── Mobile: ticker continuo sliding a la izquierda ── */
+      @media (max-width: 1024px) {
+        .fac-announcement-item {
+          display: none !important;
+        }
+        .fac-announcements-ticker {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          animation: fac-ticker-scroll 32s linear infinite;
+          font-size: var(--fum-font-size-sm);
+          color: var(--fum-color-text-secondary);
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          will-change: transform;
+        }
+        .fac-announcements-ticker strong {
+          color: var(--fum-color-text-primary);
+          font-weight: var(--fum-font-weight-semibold);
+        }
+        .fac-ticker-sep {
+          display: inline-block;
+          margin: 0 20px;
+          color: var(--fum-color-verde);
+          opacity: 0.45;
+          font-size: 10px;
+        }
+        @keyframes fac-ticker-scroll {
+          0% {
+            transform: translateY(-50%) translateX(0);
+          }
+          100% {
+            transform: translateY(-50%) translateX(-50%);
+          }
+        }
+      }
+      @media (min-width: 1025px) {
+        .fac-announcements-ticker {
+          display: none;
+        }
+      }
+
+      /* Fix estrellas: los iconos fi-ss-star necesitan font-size y color en el elemento i */
+      .fac-rating-star {
+        font-size: 11px;
+        color: var(--fac-star-fill) !important;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+      }
+      .fac-rating-star::before {
+        color: var(--fac-star-fill) !important;
+      }
+
+      /* Grid de instructores — igual que .fac-courses-grid */
+      .fac-instructors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--fum-space-5);
+      }
+
+      /* Card del instructor — idéntica estructura a .fac-course-card */
+      .fac-instructor-card {
+        background: var(--fum-color-bg-card);
+        border-radius: var(--fum-radius-lg);
+        border: 1px solid var(--fum-color-border);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Thumb — foto del instructor, mismo aspect-ratio 16/9 que las cards de cursos */
+      .fac-instructor-card-thumb {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: var(--fum-color-bg-surface);
+      }
+      .fac-instructor-card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 0.45s ease;
+      }
+
+      /* Cursos badge — esquina sup izq */
+      .fac-instructor-card-courses-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--fum-color-verde);
+        color: #fff;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: var(--fum-radius-sm);
+        letter-spacing: 0.01em;
+      }
+
+      /* Body */
+      .fac-instructor-card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: var(--fum-space-5);
+        gap: var(--fum-space-3);
+      }
+
+      /* Fila de avatar + nombre — igual que .fac-course-card-instructor */
+      .fac-instructor-card-header {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .fac-instructor-card-role {
+        font-size: var(--fum-font-size-xs);
+        color: var(--fum-color-text-muted);
+        font-weight: var(--fum-font-weight-medium);
+      }
+
+      /* Nombre — igual que .fac-course-card-title */
+      .fac-instructor-card-name {
+        font-size: var(--fum-font-size-md);
+        font-weight: var(--fum-font-weight-semibold);
+        color: var(--fum-color-negro);
+        line-height: var(--fum-line-height-snug);
+        letter-spacing: -0.01em;
+      }
+
+      /* Bio — igual que .fac-course-card-description */
+      .fac-instructor-card-bio {
+        font-size: var(--fum-font-size-base);
+        color: var(--fum-color-text-secondary);
+        line-height: var(--fum-line-height-relaxed);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex: 1;
+      }
+
+      /* Meta — igual que .fac-course-card-meta */
+      .fac-instructor-card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--fum-space-4);
+        flex-wrap: wrap;
+      }
+
+      /* Footer — igual que .fac-course-card-footer */
+      .fac-instructor-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: var(--fum-space-4);
+      }
+
+      /* Botón ver perfil — igual que .fac-course-card-enroll-btn */
+      .fac-instructor-card-btn {
+        padding: var(--fum-space-2) var(--fum-space-5);
+        background: var(--fum-color-verde);
+        color: #fff;
+        border-radius: var(--fum-radius-sm);
+        font-size: var(--fum-font-size-sm);
+        font-weight: var(--fum-font-weight-bold);
+        transition:
+          background var(--fum-transition-fast),
+          transform var(--fum-transition-fast);
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .fac-instructor-card-btn:hover {
+        background: var(--fum-color-verde-hover);
+      }
+
+      /* Estudiantes count */
+      .fac-instructor-students,
+      .fac-instructor-cursos {
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .fac-instructor-students i,
+      .fac-instructor-cursos {
+        display: flex;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-muted);
+      }
+
+      @media (max-width: 1024px) {
+        .fac-instructors-grid {
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        }
+      }
+      @media (max-width: 768px) {
+        .fac-instructors-grid {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+          gap: var(--fum-space-4);
+        }
+      }
+      @media (max-width: 480px) {
+        .fac-instructors-grid {
+          grid-template-columns: 1fr;
+          gap: var(--fum-space-3);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="fac-layout">
+      <!-- SIDEBAR -->
+      <aside class="fac-sidebar" id="sidebar">
+        <div class="fac-sidebar-logo">
+          <span class="fac-sidebar-logo-text"
+            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
+          >
+          <!--
+          <img src="logo.png" alt="FUMIZA" class="fac-sidebar-logo-img" />
+          -->
+        </div>
+        <nav class="fac-sidebar-nav">
+          <div class="fac-sidebar-menu">
+            <p class="fac-sidebar-section-label">Principal</p>
+            <a href="dashboard.html" class="fac-nav-item"
+              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
+            >
+            <a href="cursos.html" class="fac-nav-item"
+              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
+            >
+            <a href="certificados.html" class="fac-nav-item"
+              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
+            >
+            <a href="instructores.html" class="fac-nav-item fac-nav-item-active"
+              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
+            >
+          </div>
+          <div class="fac-sidebar-menu" style="margin-top: 6px">
+            <p class="fac-sidebar-section-label">Cuenta</p>
+            <a href="perfil.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
+            >
+            <a href="notificaciones.html" class="fac-nav-item"
+              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
+              >Configuración</a
+            >
+            <a href="configuracion.html" class="fac-nav-item"
+              ><i class="fi fi-rs-user-headset"></i>Soporte</a
+            >
+          </div>
+        </nav>
+        <div class="fac-sidebar-footer">
+          <!-- Social Icons -->
+          <div class="fac-sidebar-footer-socials">
+            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+            <a href="#"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="fac-main">
+        <!-- TOPBAR -->
+        <header class="fac-topbar">
+          <button
+            class="fac-topbar-mobile-toggle"
+            id="sidebarToggle"
+            aria-label="Abrir menú"
+          >
+            <i class="fi fi-bs-menu-burger"></i>
+          </button>
+
+          <!-- ── Barra de anuncios ── -->
+          <div class="fac-announcements" role="marquee" aria-live="polite">
+            <span class="fac-announcements-icon"
+              ><i class="fi fi-rs-megaphone"></i
+            ></span>
+            <div class="fac-announcements-track" id="announcementsTrack">
+              <span class="fac-announcement-item active" data-type="info"
+                >Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong></span
+              >
+              <span class="fac-announcement-item" data-type="promo"
+                >Descuento del <strong>20 % en todos los cursos</strong> hasta
+                el 31 de enero. Usa el código <strong>ENERO25</strong></span
+              >
+              <span class="fac-announcement-item" data-type="warning"
+                >Mantenimiento programado el
+                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+                estará en pausa.</span
+              >
+              <span class="fac-announcement-item" data-type="info"
+                >Nuevo curso disponible:
+                <strong>Bioindicadores Acuáticos</strong> — ya puedes
+                inscribirte</span
+              >
+              <span class="fac-announcement-item" data-type="cancel"
+                >Clase del <strong>miércoles 15</strong> cancelada por ajuste de
+                agenda. Reprogramada para el viernes.</span
+              >
+              <!-- Ticker mobile: duplicado para loop continuo -->
+              <span class="fac-announcements-ticker" aria-hidden="true">
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Mantenimiento programado el
+                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+                estará en pausa.
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+                Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
+                para el viernes.
+                <span class="fac-ticker-sep">◆</span>
+                Próxima clase: Manejo Integrado de Plagas —
+                <strong>Lunes 20 de enero, 7:00 PM</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Descuento del <strong>20 % en todos los cursos</strong> hasta el
+                31 de enero — código <strong>ENERO25</strong>
+                <span class="fac-ticker-sep">◆</span>
+                Mantenimiento programado el
+                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+                estará en pausa.
+                <span class="fac-ticker-sep">◆</span>
+                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+                puedes inscribirte
+                <span class="fac-ticker-sep">◆</span>
+                Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
+                para el viernes.
+                <span class="fac-ticker-sep">◆</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="fac-topbar-actions">
+            <div class="fac-profile-menu" id="profileMenu">
+              <div
+                class="fac-topbar-avatar-btn"
+                id="profileToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Perfil"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="fac-topbar-user-info">
+                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-userrole">Estudiante</span>
+                </div>
+                <div
+                  class="fac-avatar fac-avatar-img-wrap"
+                  style="width: 34px; height: 34px; font-size: 11px"
+                >
+                  <img
+                    src="team-allan-izaguirre.webp"
+                    alt="Allan Izaguirre"
+                    class="fac-avatar-img"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.querySelector(
+                        '.fac-avatar-initials',
+                      ).style.display = 'flex';
+                    "
+                  />
+                  <span class="fac-avatar-initials" style="display: none"
+                    >MR</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="fac-profile-dropdown"
+                id="profileDropdown"
+                role="menu"
+              >
+                <div class="fac-profile-dropdown-header">
+                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div class="fac-profile-dropdown-info">
+                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
+                    <p class="fac-profile-dropdown-role">
+                      Estudiante · Plan Pro
+                    </p>
+                  </div>
+                </div>
+                <div class="fac-profile-dropdown-divider"></div>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-user"></i>
+                  Mi perfil
+                </a>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-diploma"></i>
+                  Mis certificados
+                </a>
+                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
+                  <i class="fi fi-rs-settings"></i>
+                  Configuración
+                </a>
+                <div class="fac-profile-dropdown-divider"></div>
+                <button
+                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-sign-out-alt"></i>
+                  Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="fac-content">
+          <!-- Page header -->
+          <div class="fac-page-header">
+            <h1 class="fac-page-title">Instructores</h1>
+            <p class="fac-page-subtitle">
+              Aprende de expertos certificados en ciencias ambientales y manejo
+              integrado de plagas
+            </p>
+          </div>
+
+          <!-- ─────────────────────────────────────
+              TODOS LOS INSTRUCTORES
+          ───────────────────────────────────── -->
+          <section aria-labelledby="instructores-title">
+            <div class="fac-section-header">
+              <h2 class="fac-section-title" id="instructores-title">
+                Nuestro equipo docente
+              </h2>
+            </div>
+
+            <div class="fac-instructors-grid">
+              <!-- ── Instructor 1: Dra. Rosa Aguilar ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructora.webp"
+                    alt="Dra. Rosa Aguilar"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >7 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Doctora en Ciencias Ambientales</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Dra. Rosa Aguilar</h3>
+                  <p class="fac-instructor-card-bio">
+                    Especialista en climatología y ecosistemas tropicales con
+                    más de 15 años de experiencia. Investigadora principal en el
+                    Instituto Centroamericano de Ciencias del Clima y docente
+                    universitaria en Honduras.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Instructor 2: Ing. José Méndez ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructor.webp"
+                    alt="Ing. José Méndez"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >5 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Ingeniero Sanitario y Ambiental</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Ing. José Méndez</h3>
+                  <p class="fac-instructor-card-bio">
+                    Experto en gestión sostenible del agua y saneamiento
+                    ambiental. Ha liderado proyectos de tratamiento de aguas
+                    residuales en zonas rurales de Honduras, Guatemala y El
+                    Salvador.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Instructor 3: Biol. Ana Castillo ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructora.webp"
+                    alt="Biol. Ana Castillo"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >6 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Bióloga · Especialista en Ecosistemas</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Biol. Ana Castillo</h3>
+                  <p class="fac-instructor-card-bio">
+                    Investigadora de biodiversidad tropical en Mesoamérica con
+                    enfoque en monitoreo de fauna en bosques húmedos, manglares
+                    y arrecifes de coral. Colaboradora del Programa de Naciones
+                    Unidas para el Medio Ambiente.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Instructor 4: Ing. Roberto Fuentes ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructor.webp"
+                    alt="Ing. Roberto Fuentes"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >4 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Ingeniero Forestal</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Ing. Roberto Fuentes</h3>
+                  <p class="fac-instructor-card-bio">
+                    Especialista en restauración de ecosistemas forestales y
+                    diseño de viveros comunitarios. Ha dirigido proyectos de
+                    reforestación en más de 12,000 hectáreas en Centroamérica y
+                    el Caribe.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Instructor 5: Dr. Gerardo Solano ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructor.webp"
+                    alt="Dr. Gerardo Solano"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >5 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Doctor en Ingeniería Ambiental</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Dr. Gerardo Solano</h3>
+                  <p class="fac-instructor-card-bio">
+                    Especialista en monitoreo de calidad del aire y redes de
+                    sensores IoT aplicados a entornos urbanos e industriales.
+                    Asesor técnico de normativas ambientales para gobiernos de
+                    la región.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- ── Instructor 6: Ing. Laura Pineda ── -->
+              <article class="fac-instructor-card">
+                <div class="fac-instructor-card-thumb">
+                  <img
+                    src="instructora.webp"
+                    alt="Ing. Laura Pineda"
+                    loading="lazy"
+                  />
+                  <span class="fac-instructor-card-courses-badge"
+                    >8 cursos</span
+                  >
+                </div>
+                <div class="fac-instructor-card-body">
+                  <div class="fac-instructor-card-header">
+                    <span class="fac-instructor-card-role"
+                      >Ingeniera Agrónoma · MIP Certificada</span
+                    >
+                  </div>
+                  <h3 class="fac-instructor-card-name">Ing. Laura Pineda</h3>
+                  <p class="fac-instructor-card-bio">
+                    Experta certificada en Manejo Integrado de Plagas con
+                    experiencia en desinsectación, desratización y
+                    desacarización para sectores residencial, comercial y
+                    agroindustrial en Honduras.
+                  </p>
+                  <div class="fac-instructor-card-meta">
+                    <div class="fac-instructor-cursos">
+                      <i class="fi fi-rs-e-learning"></i>
+                      7 cursos
+                    </div>
+                    <span class="fac-instructor-students">
+                      <i class="fi fi-rs-user-graduate"></i>
+                      1,840 estudiantes
+                    </span>
+                  </div>
+                  <div class="fac-instructor-card-footer">
+                    <button class="fac-instructor-card-btn">Ver perfil</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="fac-footer">
+          <div class="fac-footer-inner">
+            <div class="fac-footer-links">
+              <a href="#" class="fac-footer-link">Términos de uso</a>
+              <a href="#" class="fac-footer-link">Política de privacidad</a>
+              <a href="#" class="fac-footer-link">Soporte</a>
+              <a
+                href="https://consultoresvib.com"
+                target="_blank"
+                class="fac-footer-link"
+                >consultoresvib.com</a
+              >
+            </div>
+            <p class="fac-footer-copy">
+              <span
+                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
+              >
+              <span
+                >Plataforma desarrollada por
+                <a href="https://nickramen.com/" target="_blank"
+                  >nickramen</a
+                ></span
+              >
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const toggle = document.getElementById("sidebarToggle");
+
+      function openSidebar() {
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      toggle.addEventListener("click", () =>
+        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+      );
+      overlay.addEventListener("click", closeSidebar);
+
+      // Filter tabs
+      document.querySelectorAll(".fac-filter-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".fac-filter-tab").forEach((t) => {
+            t.classList.remove("active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+        });
+      });
+
+      // Profile dropdown
+      const profileToggle = document.getElementById("profileToggle");
+      const profileDropdown = document.getElementById("profileDropdown");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openProfile() {
+        profileMenu.classList.add("is-open");
+        profileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeProfile() {
+        profileMenu.classList.remove("is-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      profileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileMenu.classList.contains("is-open")
+          ? closeProfile()
+          : openProfile();
+      });
+      document.addEventListener("click", (e) => {
+        if (!profileMenu.contains(e.target)) closeProfile();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeProfile();
+      });
+      // ── Rotación de anuncios ──
+      (function () {
+        const items = document.querySelectorAll(".fac-announcement-item");
+        if (!items.length) return;
+        let current = 0;
+
+        function next() {
+          const prev = current;
+          current = (current + 1) % items.length;
+          items[prev].classList.add("leaving");
+          items[prev].classList.remove("active");
+          items[current].classList.add("active");
+          // Limpiar clase leaving después de la transición
+          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+        }
+
+        setInterval(next, 5000);
+      })();
+    </script>
+  </body>
+</html>
