@@ -910,9 +910,9 @@
             <a href="certificados.html" class="fac-nav-item"
               ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
             >
-            <a href="instructores.html" class="fac-nav-item"
+            <!-- <a href="instructores.html" class="fac-nav-item"
               ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
-            >
+            > -->
           </div>
           <div class="fac-sidebar-menu" style="margin-top: 6px">
             <p class="fac-sidebar-section-label">Cuenta</p>
@@ -1014,7 +1014,9 @@
                 aria-expanded="false"
               >
                 <div class="fac-topbar-user-info">
-                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-username" id="navUserName"
+                    >Usuario</span
+                  >
                   <span class="fac-topbar-userrole">Estudiante</span>
                 </div>
                 <div
@@ -1022,8 +1024,9 @@
                   style="width: 34px; height: 34px; font-size: 11px"
                 >
                   <img
-                    src="team-allan-izaguirre.webp"
-                    alt="Allan Izaguirre"
+                    src=""
+                    alt=""
+                    id="navUserPhoto"
                     class="fac-avatar-img"
                     onerror="
                       this.style.display = 'none';
@@ -1032,8 +1035,11 @@
                       ).style.display = 'flex';
                     "
                   />
-                  <span class="fac-avatar-initials" style="display: none"
-                    >MR</span
+                  <span
+                    class="fac-avatar-initials"
+                    id="navUserInitials"
+                    style="display: none"
+                    >??</span
                   >
                 </div>
               </div>
@@ -1044,30 +1050,45 @@
                 role="menu"
               >
                 <div class="fac-profile-dropdown-header">
-                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div
+                    class="fac-avatar fac-profile-dropdown-avatar"
+                    id="dropdownInitials"
+                  >
+                    ??
+                  </div>
                   <div class="fac-profile-dropdown-info">
-                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
-                    <p class="fac-profile-dropdown-role">
-                      Estudiante · Plan Pro
+                    <p class="fac-profile-dropdown-name" id="dropdownName">
+                      Usuario
                     </p>
+                    <p class="fac-profile-dropdown-role">Estudiante</p>
                   </div>
                 </div>
                 <div class="fac-profile-dropdown-divider"></div>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-user"></i>
-                  Mi perfil
+                <a
+                  href="perfil.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-user"></i> Mi perfil
                 </a>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-diploma"></i>
-                  Mis certificados
+                <a
+                  href="certificados.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-diploma"></i> Mis certificados
                 </a>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-settings"></i>
-                  Configuración
+                <a
+                  href="configuracion.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-settings"></i> Configuración
                 </a>
                 <div class="fac-profile-dropdown-divider"></div>
                 <button
                   class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  id="logoutBtn"
                   role="menuitem"
                 >
                   <i class="fi fi-rs-sign-out-alt"></i>
@@ -1084,7 +1105,9 @@
           <div class="fac-welcome-banner">
             <div class="fac-welcome-banner-text">
               <p class="fac-welcome-banner-greeting">Bienvenid@ de vuelta</p>
-              <h1 class="fac-welcome-banner-title">Hola, Allan 👋</h1>
+              <h1 class="fac-welcome-banner-title" id="welcomeName">
+                Hola, Usuario 👋
+              </h1>
               <p class="fac-welcome-banner-sub">
                 Tienes 2 cursos en progreso. Continúa donde lo dejaste y sigue
                 avanzando hacia tus certificaciones.
@@ -1538,6 +1561,14 @@
 
         setInterval(next, 5000);
       })();
+    </script>
+
+    <script src="assets/js/datos-usuario.js"></script>
+
+    <script>
+      const n = localStorage.getItem("vib_user_name") || "Usuario";
+      document.getElementById("welcomeName").textContent =
+        `Hola, ${n.split(" ")[0]} 👋`;
     </script>
   </body>
 </html>

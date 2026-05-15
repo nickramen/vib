@@ -464,7 +464,9 @@
                 aria-expanded="false"
               >
                 <div class="fac-topbar-user-info">
-                  <span class="fac-topbar-username">Allan Izaguirre</span>
+                  <span class="fac-topbar-username" id="navUserName"
+                    >Usuario</span
+                  >
                   <span class="fac-topbar-userrole">Estudiante</span>
                 </div>
                 <div
@@ -472,8 +474,9 @@
                   style="width: 34px; height: 34px; font-size: 11px"
                 >
                   <img
-                    src="team-allan-izaguirre.webp"
-                    alt="Allan Izaguirre"
+                    src=""
+                    alt=""
+                    id="navUserPhoto"
                     class="fac-avatar-img"
                     onerror="
                       this.style.display = 'none';
@@ -482,8 +485,11 @@
                       ).style.display = 'flex';
                     "
                   />
-                  <span class="fac-avatar-initials" style="display: none"
-                    >MR</span
+                  <span
+                    class="fac-avatar-initials"
+                    id="navUserInitials"
+                    style="display: none"
+                    >??</span
                   >
                 </div>
               </div>
@@ -494,30 +500,45 @@
                 role="menu"
               >
                 <div class="fac-profile-dropdown-header">
-                  <div class="fac-avatar fac-profile-dropdown-avatar">MR</div>
+                  <div
+                    class="fac-avatar fac-profile-dropdown-avatar"
+                    id="dropdownInitials"
+                  >
+                    ??
+                  </div>
                   <div class="fac-profile-dropdown-info">
-                    <p class="fac-profile-dropdown-name">Allan Izaguirre</p>
-                    <p class="fac-profile-dropdown-role">
-                      Estudiante · Plan Pro
+                    <p class="fac-profile-dropdown-name" id="dropdownName">
+                      Usuario
                     </p>
+                    <p class="fac-profile-dropdown-role">Estudiante</p>
                   </div>
                 </div>
                 <div class="fac-profile-dropdown-divider"></div>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-user"></i>
-                  Mi perfil
+                <a
+                  href="perfil.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-user"></i> Mi perfil
                 </a>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-diploma"></i>
-                  Mis certificados
+                <a
+                  href="certificados.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-diploma"></i> Mis certificados
                 </a>
-                <a href="#" class="fac-profile-dropdown-item" role="menuitem">
-                  <i class="fi fi-rs-settings"></i>
-                  Configuración
+                <a
+                  href="configuracion.html"
+                  class="fac-profile-dropdown-item"
+                  role="menuitem"
+                >
+                  <i class="fi fi-rs-settings"></i> Configuración
                 </a>
                 <div class="fac-profile-dropdown-divider"></div>
                 <button
                   class="fac-profile-dropdown-item fac-profile-dropdown-logout"
+                  id="logoutBtn"
                   role="menuitem"
                 >
                   <i class="fi fi-rs-sign-out-alt"></i>
@@ -908,5 +929,6 @@
         setInterval(next, 5000);
       })();
     </script>
+    <script src="assets/js/datos-usuario.js"></script>
   </body>
 </html>
