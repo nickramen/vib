@@ -212,6 +212,196 @@
         color: #fff;
       }
     </style>
+
+    <script>
+      // =====================================================
+      // DATOS DE LOS CURSOS (4 cursos)
+      // =====================================================
+      const CURSOS_DISPONIBLES = [
+        {
+          id: 1,
+          nombre:
+            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
+          slug: "matpel-2026",
+          instructor: "Lic. Iván Tamariz",
+          instructorIniciales: "IT",
+          instructorRol: "Especialista en Seguridad Industrial",
+          instructorBio:
+            "Licenciado en Ingeniería Ambiental con más de 12 años de experiencia en gestión de riesgos y MATPEL. Ha capacitado a más de 2,000 profesionales en empresas mineras, industriales y de transporte. Instructor certificado por el Colegio de Ingenieros del Perú.",
+          instructorImagen: "instructor.webp",
+          duracion: 32,
+          duracionSemanas: 4,
+          fechaInicio: "19/05/2026",
+          nivel: "intermedio",
+          precio: 49.0,
+          descripcion:
+            "Domina los protocolos y normativas nacionales e internacionales para identificar, manejar y responder ante incidentes con materiales peligrosos. Curso avalado por el Colegio de Ingenieros del Perú.",
+          imagen: "curso.webp",
+          badge: "Pronto a comenzar",
+          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+          inscritos: 26,
+        },
+        {
+          id: 2,
+          nombre: "Gestión Integral de Residuos Sólidos",
+          slug: "residuos-solidos-2026",
+          instructor: "Ing. María Fernanda Reyes",
+          instructorIniciales: "MR",
+          instructorRol: "Especialista en Gestión Ambiental",
+          instructorBio:
+            "Ingeniera Ambiental con 10 años de experiencia en gestión de residuos sólidos. Ha liderado proyectos de segregación y reciclaje en municipalidades y empresas privadas.",
+          instructorImagen: "instructora.webp",
+          duracion: 40,
+          duracionSemanas: 5,
+          fechaInicio: "02/06/2026",
+          nivel: "basico",
+          precio: 49.0,
+          descripcion:
+            "Aprende las mejores prácticas para la gestión, clasificación, tratamiento y disposición final de residuos sólidos, cumpliendo con la normativa ambiental vigente.",
+          imagen: "curso-1.webp",
+          badge: "Inicio próximo",
+          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+          inscritos: 18,
+        },
+        {
+          id: 3,
+          nombre:
+            "Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST)",
+          slug: "sg-sst-2026",
+          instructor: "Ing. Carlos Mendoza",
+          instructorIniciales: "CM",
+          instructorRol: "Especialista en Seguridad Industrial",
+          instructorBio:
+            "Ingeniero Industrial con certificación ISO 45001. Más de 15 años implementando sistemas de gestión en minería y construcción.",
+          instructorImagen: "instructor.webp",
+          duracion: 48,
+          duracionSemanas: 6,
+          fechaInicio: "09/06/2026",
+          nivel: "avanzado",
+          precio: 69.0,
+          descripcion:
+            "Implementa y audita sistemas de gestión de seguridad y salud ocupacional bajo estándares ISO 45001, preparándote para liderar equipos y procesos.",
+          imagen: "curso.webp",
+          badge: "Nuevo",
+          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+          inscritos: 32,
+        },
+        {
+          id: 4,
+          nombre: "Evaluación de Impacto Ambiental (EIA) para Proyectos",
+          slug: "eia-proyectos-2026",
+          instructor: "Dra. Ana Lucía Torres",
+          instructorIniciales: "AT",
+          instructorRol: "Especialista en Impacto Ambiental",
+          instructorBio:
+            "Doctora en Ciencias Ambientales con 20 años de experiencia en evaluación de impacto ambiental. Ha participado en más de 50 proyectos mineros y de infraestructura.",
+          instructorImagen: "instructora.webp",
+          duracion: 56,
+          duracionSemanas: 7,
+          fechaInicio: "16/06/2026",
+          nivel: "avanzado",
+          precio: 89.0,
+          descripcion:
+            "Domina la metodología para elaborar, evaluar y gestionar Estudios de Impacto Ambiental, cumpliendo con los requisitos legales y técnicos del sector.",
+          imagen: "curso-1.webp",
+          badge: "Próximamente",
+          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+          inscritos: 15,
+        },
+      ];
+
+      // Función para guardar curso activo y redirigir
+      function irAlCurso(curso) {
+        localStorage.setItem(
+          "vib_curso_activo",
+          JSON.stringify({
+            id: curso.id,
+            nombre: curso.nombre,
+            slug: curso.slug,
+            instructor: curso.instructor,
+            instructorRol: curso.instructorRol,
+            instructorBio: curso.instructorBio,
+            instructorImagen: curso.instructorImagen,
+            duracion: curso.duracion,
+            duracionSemanas: curso.duracionSemanas,
+            fechaInicio: curso.fechaInicio,
+            precio: curso.precio,
+            descripcion: curso.descripcion,
+            imagen: curso.imagen,
+            badge: curso.badge,
+            nivel: curso.nivel,
+            whatsappLink: curso.whatsappLink,
+            inscritos: curso.inscritos,
+          }),
+        );
+        window.location.href = "curso-pre.html";
+      }
+
+      function renderCourses() {
+        const container = document.getElementById("coursesGrid");
+        if (!container) return;
+
+        container.innerHTML = CURSOS_DISPONIBLES.map(
+          (curso) => `
+    <div class="fac-course-card" data-curso-id="${curso.id}">
+      <div class="fac-course-card-thumb">
+        <img 
+          src="${curso.imagen}" 
+          alt="${curso.nombre}"
+          onerror="this.src='https://placehold.co/600x400/1a1f5e/white?text=${encodeURIComponent(curso.nombre.substring(0, 30))}'"
+        />
+        <div class="fac-course-card-badges">
+          <span class="fac-badge">${curso.badge}</span>
+        </div>
+        <span class="fac-course-card-duration">
+          <i class="fi fi-rs-clock"></i> ${curso.duracionSemanas} semanas
+        </span>
+      </div>
+      <div class="fac-course-card-body">
+        <div class="fac-course-card-instructor">
+          <div class="fac-instructor-avatar">${curso.instructorIniciales}</div>
+          <span class="fac-course-card-instructor-name">${curso.instructor}</span>
+        </div>
+        <h3 class="fac-course-card-title">${curso.nombre}</h3>
+        <p class="fac-course-card-description">${curso.descripcion}</p>
+        <div class="fac-course-card-meta">
+          <span class="fac-level-pill fac-level-${curso.nivel}">
+            ${curso.nivel === "basico" ? "Básico" : curso.nivel === "intermedio" ? "Intermedio" : "Avanzado"}
+          </span>
+          <span><i class="fi fi-rs-calendar"></i> ${curso.fechaInicio}</span>
+        </div>
+        <div class="fac-course-card-footer">
+          <span class="fac-course-card-price">$${curso.precio}</span>
+          <button class="fac-course-card-btn" data-curso='${JSON.stringify(curso)}'>
+            Ver curso <i class="fi fi-rs-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  `,
+        ).join("");
+
+        // Event listeners para los botones
+        document.querySelectorAll(".fac-course-card-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const curso = JSON.parse(btn.dataset.curso);
+            irAlCurso(curso);
+          });
+        });
+
+        // Clic en toda la tarjeta
+        document.querySelectorAll(".fac-course-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const btn = card.querySelector(".fac-course-card-btn");
+            if (btn) btn.click();
+          });
+        });
+      }
+
+      // Llamar a renderCourses cuando el DOM esté listo
+      document.addEventListener("DOMContentLoaded", renderCourses);
+    </script>
   </head>
   <body>
     <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
@@ -488,9 +678,10 @@
               </div>
             </div>
 
+            <div class="fac-courses-grid" id="coursesGrid"></div>
+
             <!-- Grid -->
-            <div class="fac-courses-grid">
-              <!-- ── Energía Solar ── -->
+            <!-- <div class="fac-courses-grid">
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -532,7 +723,6 @@
                 </div>
               </article>
 
-              <!-- ── Salud del Suelo ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -574,7 +764,6 @@
                 </div>
               </article>
 
-              <!-- ── Economía Circular ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -616,7 +805,6 @@
                 </div>
               </article>
 
-              <!-- ── Evaluación de Impacto Ambiental ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -658,7 +846,6 @@
                 </div>
               </article>
 
-              <!-- ── Fundamentos del Cambio Climático ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -700,7 +887,6 @@
                 </div>
               </article>
 
-              <!-- ── Gestión Sostenible de Recursos Hídricos ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -742,7 +928,6 @@
                 </div>
               </article>
 
-              <!-- ── Biodiversidad Tropical ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -784,7 +969,6 @@
                 </div>
               </article>
 
-              <!-- ── Reforestación ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -826,7 +1010,6 @@
                 </div>
               </article>
 
-              <!-- ── Monitoreo Calidad del Aire ── -->
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -868,7 +1051,7 @@
                   </div>
                 </div>
               </article>
-            </div>
+            </div> -->
           </section>
         </main>
 

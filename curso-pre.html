@@ -734,6 +734,132 @@
         font-weight: var(--fum-font-weight-semibold);
       }
     </style>
+
+    <script>
+      // =====================================================
+      // LEER CURSO DESDE LOCALSTORAGE
+      // =====================================================
+      const CURSO_DATA = (function () {
+        const stored = localStorage.getItem("vib_curso_activo");
+        if (stored) {
+          try {
+            return JSON.parse(stored);
+          } catch (e) {
+            console.error("Error parsing curso data", e);
+          }
+        }
+        // Fallback: curso MATPEL por defecto
+        return {
+          id: 1,
+          nombre:
+            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
+          slug: "matpel-2026",
+          instructor: "Lic. Iván Tamariz",
+          duracion: 32,
+          duracionSemanas: 4,
+          fechaInicio: "19/05/2026",
+          precio: 49.0,
+          descripcion:
+            "Domina los protocolos y normativas nacionales e internacionales para identificar, manejar y responder ante incidentes con materiales peligrosos. Curso avalado por el Colegio de Ingenieros del Perú.",
+          imagen: "curso.webp",
+          badge: "Curso pronto a comenzar",
+          nivel: "intermedio",
+          inscritos: 26,
+        };
+      })();
+
+      // Función para matricularse (guardar y redirigir a curso-post.html)
+      function matricularse() {
+        // Asegurar que los datos estén en localStorage antes de ir al curso
+        localStorage.setItem("vib_curso_activo", JSON.stringify(CURSO_DATA));
+        window.location.href = "curso-post.html";
+      }
+
+      // Función para actualizar el DOM con los datos del curso
+      function actualizarDatosCurso() {
+        // Título
+        const tituloElem = document.querySelector(".fac-curso-info-title");
+        if (tituloElem) tituloElem.textContent = CURSO_DATA.nombre;
+
+        // Descripción
+        const descElem = document.querySelector(".fac-curso-info-desc");
+        if (descElem) descElem.textContent = CURSO_DATA.descripcion;
+
+        // Badge
+        const badgeElem = document.querySelector(".fac-curso-hero-badge");
+        if (badgeElem) badgeElem.textContent = CURSO_DATA.badge;
+
+        // Instructor
+        const instructorElem = document.querySelector(
+          ".fac-curso-meta-row:first-child .fac-curso-meta-item:first-child",
+        );
+        if (instructorElem) {
+          instructorElem.innerHTML = `<i class="fi fi-rs-user"></i> ${CURSO_DATA.instructor}`;
+        }
+
+        // Fecha de inicio
+        const fechaElem = document.querySelector(
+          ".fac-curso-meta-row:first-child .fac-curso-meta-item:last-child",
+        );
+        if (fechaElem) {
+          fechaElem.innerHTML = `<i class="fi fi-rs-calendar"></i> ${CURSO_DATA.fechaInicio}`;
+        }
+
+        // Inscritos (mock, podría venir de API)
+        const inscritosElem = document.querySelector(
+          ".fac-curso-meta-row:last-child .fac-curso-meta-item:first-child",
+        );
+        if (inscritosElem) {
+          inscritosElem.innerHTML = `<i class="fi fi-rs-user-graduate"></i> ${CURSO_DATA.inscritos || 26} inscritos`;
+        }
+
+        // Duración en semanas
+        const duracionElem = document.querySelector(
+          ".fac-curso-meta-row:last-child .fac-curso-meta-item:last-child",
+        );
+        if (duracionElem) {
+          duracionElem.innerHTML = `<i class="fi fi-rs-clock"></i> ${CURSO_DATA.duracionSemanas} Semanas`;
+        }
+
+        // Precio
+        const precioElem = document.querySelector(".fac-curso-price");
+        if (precioElem) {
+          precioElem.textContent = `$${CURSO_DATA.precio.toFixed(2)}`;
+        }
+
+        // Imagen (si existe)
+        const imgElem = document.querySelector(".fac-curso-info-card-img img");
+        if (imgElem && CURSO_DATA.imagen) {
+          imgElem.src = CURSO_DATA.imagen;
+          imgElem.alt = CURSO_DATA.nombre;
+        }
+
+        // Stats en la imagen
+        const statsDuracion = document.querySelector(
+          ".fac-curso-hero-stats .fac-curso-hero-stat:nth-child(2)",
+        );
+        if (statsDuracion) {
+          statsDuracion.innerHTML = `<i class="fi fi-rs-clock"></i> ${CURSO_DATA.duracionSemanas} Semanas`;
+        }
+
+        const statsFecha = document.querySelector(
+          ".fac-curso-hero-stats .fac-curso-hero-stat:nth-child(3)",
+        );
+        if (statsFecha) {
+          statsFecha.innerHTML = `<i class="fi fi-rs-calendar"></i> Inicio ${CURSO_DATA.fechaInicio}`;
+        }
+
+        const statsInscritos = document.querySelector(
+          ".fac-curso-hero-stats .fac-curso-hero-stat:first-child",
+        );
+        if (statsInscritos) {
+          statsInscritos.innerHTML = `<i class="fi fi-rs-user-graduate"></i> ${CURSO_DATA.inscritos || 26} inscritos`;
+        }
+      }
+
+      // Actualizar cuando el DOM esté listo
+      document.addEventListener("DOMContentLoaded", actualizarDatosCurso);
+    </script>
   </head>
 
   <body>
@@ -976,10 +1102,7 @@
                   </div>
                 </div>
                 <div class="fac-curso-price-row">
-                  <button
-                    class="fac-curso-enroll-btn"
-                    onclick="window.location.href = 'curso-post.html'"
-                  >
+                  <button class="fac-curso-enroll-btn" onclick="matricularse()">
                     Matricúlate ahora
                   </button>
                   <span class="fac-curso-price">$49.00</span>

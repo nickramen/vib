@@ -2223,14 +2223,226 @@
       });
     </script>
     <script>
-      const CURSO_DATA = {
-        nombre: "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-        instructor: "Lic. Iván Tamariz",
-        duracion: 32,
-        fechaInicio: "19/05/2026",
-        slug: "matpel-2026",
-      };
+      // =====================================================
+      // LEER CURSO DESDE LOCALSTORAGE
+      // =====================================================
+      const CURSO_DATA = (function () {
+        const stored = localStorage.getItem("vib_curso_activo");
+        if (stored) {
+          try {
+            return JSON.parse(stored);
+          } catch (e) {
+            console.error("Error parsing curso data", e);
+          }
+        }
+        // Fallback por si no hay datos (curso por defecto)
+        return {
+          id: 1,
+          nombre:
+            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
+          slug: "matpel-2026",
+          instructor: "Lic. Iván Tamariz",
+          instructorBio:
+            "Licenciado en Ingeniería Ambiental con más de 12 años de experiencia en gestión de riesgos y MATPEL. Ha capacitado a más de 2,000 profesionales en empresas mineras, industriales y de transporte. Instructor certificado por el Colegio de Ingenieros del Perú.",
+          instructorRol: "Especialista en Seguridad Industrial",
+          instructorImagen: "instructor.webp",
+          duracion: 32,
+          duracionSemanas: 4,
+          fechaInicio: "19/05/2026",
+          precio: 49.0,
+          descripcion:
+            "Este curso te prepara para identificar, manejar y responder ante incidentes con materiales peligrosos aplicando los protocolos y normativas nacionales e internacionales vigentes. Aprenderás a usar herramientas técnicas como las Hojas de Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias (GRE), y a ejecutar acciones de control inicial mediante el Sistema de Comando de Incidentes (SCI). El programa está avalado por el Colegio de Ingenieros del Perú y diseñado para profesionales del sector minero, industrial y de transporte.",
+          imagen: "curso.webp",
+          badge: "Matriculado",
+          nivel: "intermedio",
+          inscritos: 26,
+          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        };
+      })();
 
+      // =====================================================
+      // ACTUALIZAR DOM CON DATOS DEL CURSO
+      // =====================================================
+      function actualizarDatosCurso() {
+        // Hero Banner - Título
+        const tituloElem = document.querySelector(
+          ".fac-curso-hero-banner-title",
+        );
+        if (tituloElem) tituloElem.textContent = CURSO_DATA.nombre;
+
+        // Hero Banner - Stats: Instructor
+        const instructorStat = document.querySelector(
+          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:first-child",
+        );
+        if (instructorStat) {
+          instructorStat.innerHTML = `<i class="fi fi-rs-user"></i> ${CURSO_DATA.instructor}`;
+        }
+
+        // Hero Banner - Stats: Duración
+        const duracionStat = document.querySelector(
+          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(2)",
+        );
+        if (duracionStat) {
+          duracionStat.innerHTML = `<i class="fi fi-rs-clock"></i> ${CURSO_DATA.duracionSemanas} Semanas`;
+        }
+
+        // Hero Banner - Stats: Fecha inicio
+        const fechaStat = document.querySelector(
+          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(3)",
+        );
+        if (fechaStat) {
+          fechaStat.innerHTML = `<i class="fi fi-rs-calendar"></i> Inicio ${CURSO_DATA.fechaInicio}`;
+        }
+
+        // Hero Banner - Stats: Inscritos
+        const inscritosStat = document.querySelector(
+          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(4)",
+        );
+        if (inscritosStat) {
+          inscritosStat.innerHTML = `<i class="fi fi-rs-user-graduate"></i> ${CURSO_DATA.inscritos} inscritos`;
+        }
+
+        // Hero Banner - Imagen
+        const heroImg = document.querySelector(".fac-curso-hero-banner img");
+        if (heroImg && CURSO_DATA.imagen) {
+          heroImg.src = CURSO_DATA.imagen;
+          heroImg.alt = CURSO_DATA.nombre;
+        }
+
+        // Descripción general
+        const descElem = document.querySelector(".fac-info-desc");
+        if (descElem) descElem.textContent = CURSO_DATA.descripcion;
+
+        // Card Instructor - Nombre
+        const instructorName = document.querySelector(".fac-instructor-name");
+        if (instructorName) instructorName.textContent = CURSO_DATA.instructor;
+
+        // Card Instructor - Rol
+        const instructorRol = document.querySelector(".fac-instructor-role");
+        if (instructorRol) instructorRol.textContent = CURSO_DATA.instructorRol;
+
+        // Card Instructor - Bio
+        const instructorBio = document.querySelector(".fac-instructor-bio");
+        if (instructorBio) instructorBio.textContent = CURSO_DATA.instructorBio;
+
+        // Card Instructor - Avatar (si existe la imagen)
+        const instructorAvatar = document.querySelector(
+          ".fac-instructor-avatar img",
+        );
+        if (instructorAvatar && CURSO_DATA.instructorImagen) {
+          instructorAvatar.src = CURSO_DATA.instructorImagen;
+          instructorAvatar.alt = CURSO_DATA.instructor;
+        }
+
+        // WhatsApp link
+        const waLink = document.querySelector(".fac-wa-btn");
+        if (waLink && CURSO_DATA.whatsappLink) {
+          waLink.href = CURSO_DATA.whatsappLink;
+        }
+
+        // Clases - Actualizar textos que dependen del curso
+        // (Manteniendo la estructura fija, solo actualizando datos relevantes)
+        const clase2Titulo = document.querySelector(
+          ".fac-clase-card.is-available .fac-clase-titulo",
+        );
+        if (clase2Titulo) {
+          clase2Titulo.textContent =
+            "Clase 2: Normativa y Estándares Internacionales";
+        }
+
+        const clase2Fecha = document.querySelector(
+          ".fac-clase-card.is-available .fac-clase-meta-item:first-child",
+        );
+        if (clase2Fecha) {
+          // Calcular fecha de semana 2 (fechaInicio + 8 días aprox)
+          const fechaInicio = new Date(
+            CURSO_DATA.fechaInicio.split("/").reverse().join("-"),
+          );
+          const semana2Fecha = new Date(fechaInicio);
+          semana2Fecha.setDate(fechaInicio.getDate() + 8);
+          const fechaFormateada = semana2Fecha
+            .toLocaleDateString("es-ES", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })
+            .replace(".", "");
+          clase2Fecha.innerHTML = `<i class="fi fi-rs-calendar"></i> ${fechaFormateada}, 7:00 PM`;
+        }
+
+        const clase3Titulo = document.querySelectorAll(
+          ".fac-clase-card.is-locked .fac-clase-titulo",
+        )[0];
+        if (clase3Titulo) {
+          clase3Titulo.textContent =
+            "Clase 3: Niveles de Respuesta a Emergencias con MATPEL";
+        }
+
+        const clase4Titulo = document.querySelectorAll(
+          ".fac-clase-card.is-locked .fac-clase-titulo",
+        )[1];
+        if (clase4Titulo) {
+          clase4Titulo.textContent =
+            "Clase 4: Herramientas de Gestión para Incidentes MATPEL";
+        }
+
+        // Sidebar - Próxima clase
+        const proximaTitulo = document.querySelector(".fac-proxima-titulo");
+        if (proximaTitulo) {
+          proximaTitulo.textContent =
+            "Clase 2: Normativa y Estándares Internacionales";
+        }
+
+        // Sidebar - Fecha próxima clase
+        const proximaFecha = document.querySelector(".fac-proxima-fecha");
+        if (proximaFecha) {
+          const fechaInicio = new Date(
+            CURSO_DATA.fechaInicio.split("/").reverse().join("-"),
+          );
+          const semana2Fecha = new Date(fechaInicio);
+          semana2Fecha.setDate(fechaInicio.getDate() + 8);
+          const opciones = {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          };
+          const fechaFormateada = semana2Fecha.toLocaleDateString(
+            "es-ES",
+            opciones,
+          );
+          const fechaCapitalized =
+            fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
+          proximaFecha.innerHTML = `<i class="fi fi-rs-calendar"></i> ${fechaCapitalized}, 7:00 PM`;
+        }
+
+        // Sidebar - Lista de clases (actualizar nombres)
+        const sidebarClases = document.querySelectorAll(
+          ".fac-sidebar-clase-label",
+        );
+        if (sidebarClases.length >= 4) {
+          sidebarClases[0].textContent = "Clase 1: Normativa Legal Nacional";
+          sidebarClases[1].textContent = "Clase 2: Estándares Internacionales";
+          sidebarClases[2].textContent = "Clase 3: Niveles de Respuesta";
+          sidebarClases[3].textContent = "Clase 4: Herramientas de Gestión";
+        }
+
+        // Temario - Actualizar semanas
+        const temarioCount = document.querySelector(".fac-temario-count");
+        if (temarioCount) {
+          temarioCount.textContent = `5 temas · ${CURSO_DATA.duracionSemanas} semanas`;
+        }
+
+        // Clases header
+        const clasesCount = document.querySelector(".fac-clases-count");
+        if (clasesCount) {
+          clasesCount.textContent = `4 clases · ${CURSO_DATA.duracionSemanas} semanas`;
+        }
+      }
+
+      // =====================================================
+      // GENERAR CERTIFICADO
+      // =====================================================
       function generarCodigo() {
         const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
         let id = "";
@@ -2239,20 +2451,33 @@
         return `VIB-CIAH-${new Date().getFullYear()}-${id}`;
       }
 
-      const btnCert = document.getElementById("btnGenerarCert");
-      btnCert.disabled = false;
-      document.querySelector(".fac-gencert-hint").textContent =
-        "Modo demo — habilitado para vista previa";
+      // =====================================================
+      // INICIALIZACIÓN
+      // =====================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        actualizarDatosCurso();
 
-      btnCert.addEventListener("click", () => {
-        const storageKey = `vib_cert_${CURSO_DATA.slug}`;
-        let codigo = localStorage.getItem(storageKey + "_codigo");
-        if (!codigo) {
-          codigo = generarCodigo();
-          localStorage.setItem(storageKey + "_codigo", codigo);
-          localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
+        const btnCert = document.getElementById("btnGenerarCert");
+        if (btnCert) {
+          btnCert.disabled = false;
+          const hintElem = document.querySelector(".fac-gencert-hint");
+          if (hintElem)
+            hintElem.textContent = "Modo demo — habilitado para vista previa";
+
+          btnCert.addEventListener("click", () => {
+            const storageKey = `vib_cert_${CURSO_DATA.slug}`;
+            let codigo = localStorage.getItem(storageKey + "_codigo");
+            if (!codigo) {
+              codigo = generarCodigo();
+              localStorage.setItem(storageKey + "_codigo", codigo);
+              localStorage.setItem(
+                storageKey + "_fecha",
+                new Date().toISOString(),
+              );
+            }
+            window.location.href = "cert-template.html";
+          });
         }
-        window.location.href = "cert-template.html";
       });
     </script>
     <script src="assets/js/datos-usuario.js"></script>

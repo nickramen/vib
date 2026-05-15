@@ -569,14 +569,33 @@
     <script>
       (function () {
         // ── DATOS DEL CURSO (deben coincidir con curso-post.html) ──
-        const CURSO_DATA = {
-          nombre:
-            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-          instructor: "Lic. Iván Tamariz",
-          duracion: 32,
-          fechaInicio: "19/05/2026",
-          slug: "matpel-2026",
-        };
+        const CURSO_DATA = (function () {
+          const stored = localStorage.getItem("vib_curso_activo");
+          if (stored) {
+            try {
+              return JSON.parse(stored);
+            } catch (e) {
+              console.error("Error parsing curso data", e);
+            }
+          }
+          // Fallback por si no hay datos (curso por defecto)
+          return {
+            id: 1,
+            nombre:
+              "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
+            slug: "matpel-2026",
+            instructor: "Lic. Iván Tamariz",
+            duracion: 32,
+            duracionSemanas: 4,
+            fechaInicio: "19/05/2026",
+            precio: 49.0,
+            descripcion:
+              "Domina los protocolos y normativas nacionales e internacionales...",
+            imagen: "curso.webp",
+            badge: "Matriculado",
+            nivel: "intermedio",
+          };
+        })();
 
         // ── HELPERS ──
         function generarCodigo() {
