@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Detalle de Rol - VIB ACADEMY</title>
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--fum-space-6);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--fum-color-verde);
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb-sep {
+      display: flex;
+      font-size: 10px;
+      opacity: .4;
+    }
+
+    .breadcrumb-sep i {
+      display: flex;
+    }
+
+    /* Role info card */
+    .role-info-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--fum-space-8);
+    }
+
+    .role-info-header {
+      padding: var(--fum-space-5) var(--fum-space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--fum-space-3);
+    }
+
+    .role-info-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+    }
+
+    .role-big-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--fum-radius-md);
+      background: var(--fum-color-bg-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--fum-color-gris);
+      border: 1px solid var(--fum-color-border);
+      flex-shrink: 0;
+    }
+
+    .role-big-icon i {
+      display: flex;
+    }
+
+    .role-info-name {
+      font-size: var(--fum-font-size-xl);
+      font-weight: 700;
+      color: var(--fum-color-text-primary);
+      letter-spacing: var(--fum-letter-spacing-tight);
+    }
+
+    .role-info-id {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      margin-top: 2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: var(--fum-radius-pill);
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+    }
+
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge-active {
+      background: rgba(127, 208, 71, .12);
+      color: var(--fum-color-verde);
+    }
+
+    .badge-active::before {
+      background: var(--fum-color-verde);
+    }
+
+    .role-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 36px;
+      padding: 0 var(--fum-space-4);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--fum-color-border);
+      background: var(--fum-color-bg-card);
+      color: var(--fum-color-text-secondary);
+      font-family: var(--fum-font-family);
+      transition: all var(--fum-transition-fast);
+    }
+
+    .btn-back:hover {
+      background: var(--fum-color-bg-hover);
+      color: var(--fum-color-text-primary);
+    }
+
+    .btn-back i {
+      display: flex;
+    }
+
+    .btn-edit {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 36px;
+      padding: 0 var(--fum-space-4);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-family: var(--fum-font-family);
+      transition: background var(--fum-transition-fast);
+    }
+
+    .btn-edit:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .btn-edit i {
+      display: flex;
+    }
+
+    /* Permissions tree */
+    .perms-section {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--fum-space-8);
+    }
+
+    .perms-header {
+      padding: var(--fum-space-4) var(--fum-space-6);
+      border-bottom: 1px solid var(--fum-color-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .perms-header-title {
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .perms-header-title i {
+      display: flex;
+      color: var(--fum-color-verde);
+      font-size: 14px;
+    }
+
+    .perms-body {
+      padding: var(--fum-space-6);
+    }
+
+    /* Tree node */
+    .tree-node {
+      margin-bottom: 2px;
+    }
+
+    .tree-group {
+      margin-left: 24px;
+      border-left: 2px solid var(--fum-color-border);
+      padding-left: 12px;
+      margin-top: 2px;
+    }
+
+    .tree-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: var(--fum-radius-sm);
+      transition: background var(--fum-transition-fast);
+      cursor: default;
+    }
+
+    .tree-item-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid var(--fum-color-verde);
+      background: var(--fum-color-verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tree-item-check i {
+      display: flex;
+      color: #fff;
+      font-size: 9px;
+    }
+
+    .tree-item-check-off {
+      background: var(--fum-color-bg-surface);
+      border-color: var(--fum-color-border);
+    }
+
+    .tree-item-label {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-primary);
+      font-weight: 500;
+    }
+
+    .tree-item-parent {
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+    }
+
+    .tree-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--fum-color-text-muted);
+      font-size: 10px;
+      padding: 0;
+      transition: transform var(--fum-transition-fast);
+    }
+
+    .tree-toggle i {
+      display: flex;
+    }
+
+    .tree-toggle.collapsed {
+      transform: rotate(-90deg);
+    }
+
+    /* Stats row */
+    .role-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--fum-space-5);
+      margin-bottom: var(--fum-space-8);
+    }
+
+    @media(max-width:600px) {
+      .role-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .role-stat-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+    }
+
+    .role-stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--fum-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .role-stat-icon i {
+      display: flex;
+    }
+
+    .role-stat-value {
+      font-size: var(--fum-font-size-2xl);
+      font-weight: 700;
+      color: var(--fum-color-negro);
+      letter-spacing: var(--fum-letter-spacing-tight);
+      line-height: 1;
+    }
+
+    .role-stat-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    /* ── Auditoría ── */
+    .audit-section {
+      margin-top: var(--fum-space-8);
+    }
+
+    .audit-header-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .audit-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: 700;
+      color: var(--fum-color-text-primary);
+    }
+
+    .audit-heading-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 3px;
+    }
+
+    .audit-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fum-font-size-sm);
+    }
+
+    .audit-table thead tr {
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .audit-table th {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .audit-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--fum-color-border);
+      color: var(--fum-color-text-secondary);
+      vertical-align: middle;
+    }
+
+    .audit-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .audit-table tbody tr:hover {
+      background: var(--fum-color-bg-surface);
+    }
+
+    .audit-empty {
+      padding: var(--fum-space-10);
+      text-align: center;
+      color: var(--fum-color-text-muted);
+      font-size: var(--fum-font-size-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .audit-empty i {
+      display: flex;
+      font-size: 28px;
+      opacity: .3;
+    }
+
+    .audit-act {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+    }
+
+    /* ── Anuncios topbar ── */
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity .5s ease, transform .5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: 600;
+    }
+
+    @media(max-width:1024px) {
+      .fac-announcement-item {
+        display: none !important;
+      }
+
+      .fac-announcements-ticker {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: fac-ticker-scroll 32s linear infinite;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        will-change: transform;
+      }
+
+      .fac-ticker-sep {
+        display: inline-block;
+        margin: 0 20px;
+        color: var(--fum-color-verde);
+        opacity: .45;
+        font-size: 10px;
+      }
+
+      @keyframes fac-ticker-scroll {
+        0% {
+          transform: translateY(-50%) translateX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(-50%);
+        }
+      }
+    }
+
+    @media(min-width:1025px) {
+      .fac-announcements-ticker {
+        display: none;
+      }
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="fac-layout">
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Seguridad</p>
+          <a href="usuarios.html" class="fac-nav-item"><i class="fi fi-rs-users fac-nav-item-icon"></i>Usuarios</a>
+          <a href="roles.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-shield fac-nav-item-icon"></i>Roles</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-settings fac-nav-item-icon"></i>Configuracion</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+    <div class="fac-main">
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle"><i class="fi fi-bs-menu-burger"></i></button>
+        <!-- ── Barra de anuncios ── -->
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active" data-type="info">Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong></span>
+            <span class="fac-announcement-item" data-type="promo">Descuento del <strong>20 % en todos los
+                cursos</strong> hasta el 31 de enero. Usa el código <strong>ENERO25</strong></span>
+            <span class="fac-announcement-item" data-type="warning">Mantenimiento programado el <strong>sábado 18 de
+                enero de 2–4 AM</strong>. La plataforma estará en pausa.</span>
+            <span class="fac-announcement-item" data-type="info">Nuevo curso disponible: <strong>Bioindicadores
+                Acuáticos</strong> — ya puedes inscribirte</span>
+            <span class="fac-announcement-item" data-type="cancel">Clase del <strong>miércoles 15</strong> cancelada por
+              ajuste de agenda. Reprogramada para el viernes.</span>
+            <span class="fac-announcements-ticker" aria-hidden="true">
+              Próxima clase: Manejo Integrado de Plagas — <strong>Lunes 20 de enero, 7:00 PM</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Descuento del <strong>20 % en todos los cursos</strong> hasta el 31 de enero — código
+              <strong>ENERO25</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Mantenimiento programado el <strong>sábado 18 de enero de 2–4 AM</strong>.
+              <span class="fac-ticker-sep">◆</span>
+              Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya puedes inscribirte
+              <span class="fac-ticker-sep">◆</span>
+              Clase del <strong>miércoles 15</strong> cancelada.
+              <span class="fac-ticker-sep">◆</span>
+            </span>
+          </div>
+        </div>
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username">Administrador</span>
+                <span class="fac-topbar-userrole">Admin</span>
+              </div>
+              <div class="fac-avatar" style="width:34px;height:34px;font-size:11px;">AD</div>
+            </div>
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar">AD</div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name">Administrador</p>
+                  <p class="fac-profile-dropdown-role">Admin</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-user"></i> Mi perfil</a>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-settings"></i> Configuracion</a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout"><i
+                  class="fi fi-rs-sign-out-alt"></i> Cerrar sesion</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="fac-content">
+        <div class="breadcrumb">
+          <a href="roles.html">Roles</a>
+          <span class="breadcrumb-sep"><i class="fi fi-rs-angle-right"></i></span>
+          <span>Administrador</span>
+        </div>
+
+        <!-- Role header card -->
+        <div class="role-info-card">
+          <div class="role-info-header">
+            <div class="role-info-header-left">
+              <div class="role-big-icon"><i class="fi fi-rs-shield"></i></div>
+              <div>
+                <p class="role-info-name">Administrador</p>
+                <p class="role-info-id">ID #1</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--fum-space-4);">
+              <span class="badge badge-active">Activo</span>
+              <div class="role-actions">
+                <button class="btn-back" onclick="window.location='roles.html'"><i
+                    class="fi fi-rs-angle-circle-left"></i> Volver</button>
+                <button class="btn-edit"><i class="fi fi-rs-pencil"></i> Editar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="role-stats">
+          <div class="role-stat-card">
+            <div class="role-stat-icon" style="background:rgba(127,208,71,.12);color:var(--fum-color-verde-dark);"><i
+                class="fi fi-rs-users"></i></div>
+            <div>
+              <p class="role-stat-value">1</p>
+              <p class="role-stat-label">Usuarios asignados</p>
+            </div>
+          </div>
+          <div class="role-stat-card">
+            <div class="role-stat-icon" style="background:rgba(26,31,94,.08);color:var(--fum-color-azul);"><i
+                class="fi fi-rs-lock"></i></div>
+            <div>
+              <p class="role-stat-value">48</p>
+              <p class="role-stat-label">Permisos habilitados</p>
+            </div>
+          </div>
+          <div class="role-stat-card">
+            <div class="role-stat-icon" style="background:rgba(196,144,74,.12);color:#8b5e10;"><i
+                class="fi fi-rs-apps"></i></div>
+            <div>
+              <p class="role-stat-value">6</p>
+              <p class="role-stat-label">Modulos con acceso</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Permissions tree -->
+        <div class="perms-section">
+          <div class="perms-header">
+            <span class="perms-header-title"><i class="fi fi-rs-lock"></i> Permisos del rol &mdash; Portal
+              administrativo</span>
+          </div>
+          <div class="perms-body">
+            <!-- Base de conocimientos -->
+            <div class="tree-node">
+              <div class="tree-item">
+                <div class="tree-item-check"><i class="fi fi-rs-check"></i></div>
+                <span class="tree-item-label tree-item-parent">Base de conocimientos</span>
+                <button class="tree-toggle" onclick="toggleGroup(this)"><i class="fi fi-rs-angle-down"></i></button>
+              </div>
+              <div class="tree-group">
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de articulos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de articulos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar articulos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar articulos</span>
+                </div>
+              </div>
+            </div>
+            <!-- Catalogos -->
+            <div class="tree-node">
+              <div class="tree-item">
+                <div class="tree-item-check"><i class="fi fi-rs-check"></i></div>
+                <span class="tree-item-label tree-item-parent">Catalogos</span>
+                <button class="tree-toggle" onclick="toggleGroup(this)"><i class="fi fi-rs-angle-down"></i></button>
+              </div>
+              <div class="tree-group">
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de areas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de areas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar areas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar areas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de cargos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de cargos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar cargos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar cargos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de niveles tecnicos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de niveles tecnicos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar niveles tecnicos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar niveles tecnicos</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de marcas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de marcas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar marcas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar marcas</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de tipos de ticket</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de tipos de ticket</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar tipos de ticket</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar tipos de ticket</span>
+                </div>
+              </div>
+            </div>
+            <!-- Seguridad -->
+            <div class="tree-node">
+              <div class="tree-item">
+                <div class="tree-item-check"><i class="fi fi-rs-check"></i></div>
+                <span class="tree-item-label tree-item-parent">Seguridad</span>
+                <button class="tree-toggle" onclick="toggleGroup(this)"><i class="fi fi-rs-angle-down"></i></button>
+              </div>
+              <div class="tree-group">
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de usuarios</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de usuarios</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar usuarios</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar usuarios</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de roles</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de roles</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Modificar roles</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Eliminar roles</span>
+                </div>
+              </div>
+            </div>
+            <!-- Soporte -->
+            <div class="tree-node">
+              <div class="tree-item">
+                <div class="tree-item-check"><i class="fi fi-rs-check"></i></div>
+                <span class="tree-item-label tree-item-parent">Soporte</span>
+                <button class="tree-toggle" onclick="toggleGroup(this)"><i class="fi fi-rs-angle-down"></i></button>
+              </div>
+              <div class="tree-group">
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Listado
+                    de tickets</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Registro de tickets</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Asignar
+                    tickets</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check tree-item-check-off"></div><span class="tree-item-label"
+                    style="color:var(--fum-color-text-muted);">Eliminar tickets</span>
+                </div>
+              </div>
+            </div>
+            <!-- Reportes -->
+            <div class="tree-node">
+              <div class="tree-item">
+                <div class="tree-item-check"><i class="fi fi-rs-check"></i></div>
+                <span class="tree-item-label tree-item-parent">Reportes</span>
+                <button class="tree-toggle" onclick="toggleGroup(this)"><i class="fi fi-rs-angle-down"></i></button>
+              </div>
+              <div class="tree-group">
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span class="tree-item-label">Ver
+                    reportes</span>
+                </div>
+                <div class="tree-item">
+                  <div class="tree-item-check"><i class="fi fi-rs-check"></i></div><span
+                    class="tree-item-label">Exportar reportes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auditoría -->
+        <div class="audit-section">
+          <div class="audit-header-row">
+            <p class="audit-heading-label">Auditoría</p>
+            <span class="audit-title">Historial de acciones</span>
+          </div>
+          <div class="audit-card">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th>Acción</th>
+                  <th>Usuario</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="audit-act audit-act-create">Creación</span></td>
+                  <td>Administrator</td>
+                  <td>5/18/2026 2:40:38 AM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Terminos de uso</a>
+            <a href="#" class="fac-footer-link">Politica de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+          </div>
+          <p class="fac-footer-copy"><span>&copy; 2026 VIB ACADEMY &middot; Todos los derechos reservados</span></p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggle = document.getElementById("sidebarToggle");
+    toggle.addEventListener("click", () => { const o = sidebar.classList.toggle("is-open"); overlay.classList.toggle("is-active", o); document.body.style.overflow = o ? "hidden" : ""; });
+    overlay.addEventListener("click", () => { sidebar.classList.remove("is-open"); overlay.classList.remove("is-active"); document.body.style.overflow = ""; });
+    const pt = document.getElementById("profileToggle"), pm = document.getElementById("profileMenu");
+    pt.addEventListener("click", e => { e.stopPropagation(); pm.classList.toggle("is-open"); });
+    document.addEventListener("click", e => { if (!pm.contains(e.target)) pm.classList.remove("is-open"); });
+    function toggleGroup(btn) {
+      const group = btn.closest(".tree-item").nextElementSibling;
+      if (group && group.classList.contains("tree-group")) {
+        const hidden = group.style.display === "none";
+        group.style.display = hidden ? "" : "none";
+        btn.classList.toggle("collapsed", !hidden);
+      }
+    }
+    // const sidebar=document.getElementById("sidebar"),overlay=document.getElementById("sidebarOverlay"),toggle=document.getElementById("sidebarToggle");
+    // toggle.addEventListener("click",()=>{const o=sidebar.classList.toggle("is-open");overlay.classList.toggle("is-active",o);document.body.style.overflow=o?"hidden":"";});
+    // overlay.addEventListener("click",()=>{sidebar.classList.remove("is-open");overlay.classList.remove("is-active");document.body.style.overflow="";});
+    // const pt=document.getElementById("profileToggle"),pm=document.getElementById("profileMenu");
+    // pt.addEventListener("click",e=>{e.stopPropagation();pm.classList.toggle("is-open");});
+    // document.addEventListener("click",e=>{if(!pm.contains(e.target))pm.classList.remove("is-open");});
+    // // Rotación de anuncios
+    // (function(){
+    //   const items=document.querySelectorAll(".fac-announcement-item");
+    //   if(!items.length)return;
+    //   let current=0;
+    //   function next(){const prev=current;current=(current+1)%items.length;items[prev].classList.add("leaving");items[prev].classList.remove("active");items[current].classList.add("active");setTimeout(()=>items[prev].classList.remove("leaving"),600);}
+    //   setInterval(next,5000);
+    // })();
+  </script>
+</body>
+
+</html>

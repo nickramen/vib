@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Verificar certificado — Academia VIB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      opacity: 1;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: var(--fum-font-weight-semibold);
+    }
+
+    .verify-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 34px;
+      margin-bottom: 28px;
+      color: #111827;
+    }
+
+    .verify-hero-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      color: var(--fum-color-verde);
+    }
+
+    .verify-hero-text {
+      position: relative;
+      z-index: 1;
+      margin: 14px 0 0;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .verify-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) 360px;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 26px;
+    }
+
+    .verify-card,
+    .verify-side-card,
+    .verify-viewer-card {
+      background: #fff;
+      border: 1px solid var(--fum-color-border);
+      border-radius: 24px;
+    }
+
+    .verify-card {
+      padding: 26px;
+    }
+
+    .verify-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 8px;
+      color: var(--fum-color-negro);
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .verify-card-title i {
+      color: var(--fum-color-verde);
+      display: flex;
+    }
+
+    .verify-card-text {
+      margin: 0 0 20px;
+      color: var(--fum-color-text-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .verify-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+    }
+
+    .verify-input-wrap {
+      position: relative;
+      min-width: 0;
+    }
+
+    .verify-input-wrap i {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: var(--fum-color-verde);
+      font-size: 15px;
+    }
+
+    .verify-input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      border-radius: 14px;
+      padding: 0 16px 0 43px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--fum-color-azul);
+      outline: none;
+      background: #fff;
+      letter-spacing: 0.03em;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .verify-input:focus {
+      border-color: var(--fum-color-verde);
+      box-shadow: 0 0 0 4px rgba(126, 211, 33, 0.16);
+    }
+
+    .verify-btn {
+      height: 50px;
+      border: none;
+      border-radius: 14px;
+      padding: 0 24px;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .verify-btn:hover {
+      transform: translateY(-1px);
+      background: var(--fum-color-verde-hover);
+    }
+
+    .verify-alert {
+      display: none;
+      margin-top: 16px;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .verify-alert.valid {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(126, 211, 33, 0.12);
+      border: 1px solid rgba(126, 211, 33, 0.32);
+      color: #236b19;
+    }
+
+    .verify-alert.invalid {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+      color: #991b1b;
+    }
+
+    .verify-side-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .verify-trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .verify-trust-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(126, 211, 33, 0.13);
+      color: var(--fum-color-verde);
+      flex-shrink: 0;
+    }
+
+    .verify-trust-title {
+      margin: 0 0 2px;
+      color: var(--fum-color-negro);
+      font-size: 14px;
+    }
+
+    .verify-trust-text {
+      margin: 0;
+      color: var(--fum-color-text-secondary);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .verify-result {
+      display: none;
+      margin-top: 4px;
+    }
+
+    .verify-result.show {
+      display: block;
+    }
+
+    .verify-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .verify-summary-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--fum-color-border);
+    }
+
+    .verify-summary-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--fum-color-text-muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .verify-summary-value {
+      color: var(--fum-color-negro);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .verify-viewer-card {
+      overflow: hidden;
+    }
+
+    .verify-viewer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--fum-color-border);
+      background: linear-gradient(180deg, #fff, #fbfcff);
+    }
+
+    .verify-viewer-title {
+      margin: 0;
+      color: var(--fum-color-negro);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .verify-viewer-subtitle {
+      margin: 4px 0 0;
+      color: var(--fum-color-text-secondary);
+      font-size: 12px;
+    }
+
+    .verify-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .verify-action {
+      min-height: 40px;
+      border: none;
+      border-radius: 12px;
+      padding: 0 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--fum-color-azul);
+      color: #fff;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .verify-action.green {
+      background: var(--fum-color-verde);
+    }
+
+    .verify-frame-shell {
+      background: #f6f8fc;
+      padding: 18px;
+    }
+
+    .verify-frame {
+      width: 100%;
+      height: 860px;
+      border: 0;
+      display: block;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+    }
+
+    @media (max-width: 1100px) {
+      .verify-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .verify-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+
+      .verify-hero,
+      .verify-card,
+      .verify-side-card {
+        border-radius: 20px;
+        padding: 22px;
+      }
+
+      .verify-form {
+        grid-template-columns: 1fr;
+      }
+
+      .verify-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .verify-viewer-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .verify-actions {
+        justify-content: flex-start;
+      }
+
+      .verify-frame {
+        height: 650px;
+      }
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="fac-layout">
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="cursos.html" class="fac-nav-item"><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="certificados.html" class="fac-nav-item"><i
+              class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top: 6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="perfil.html" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="notificaciones.html" class="fac-nav-item"><i
+              class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a>
+          <a href="configuracion.html" class="fac-nav-item"><i
+              class="fi fi-rs-settings fac-nav-item-icon"></i>Configuración</a>
+          <a href="soporte.html" class="fac-nav-item"><i class="fi fi-rs-user-headset"></i>Soporte</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="fac-main">
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle" aria-label="Abrir menú">
+          <i class="fi fi-bs-menu-burger"></i>
+        </button>
+
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track">
+            <span class="fac-announcement-item">Verificación oficial de certificados emitidos por <strong>Academia
+                VIB</strong>.</span>
+          </div>
+        </div>
+
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0" aria-label="Perfil"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username" id="navUserName">Nicole Ramos</span>
+                <span class="fac-topbar-userrole">Estudiante</span>
+              </div>
+              <div class="fac-avatar" style="width: 34px; height: 34px; font-size: 11px">
+                <span class="fac-avatar-initials" id="navUserInitials">NR</span>
+              </div>
+            </div>
+
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar" id="dropdownInitials">NR</div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name" id="dropdownName">Nicole Ramos</p>
+                  <p class="fac-profile-dropdown-role">Estudiante</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="perfil.html" class="fac-profile-dropdown-item" role="menuitem"><i class="fi fi-rs-user"></i> Mi
+                perfil</a>
+              <a href="certificados.html" class="fac-profile-dropdown-item" role="menuitem"><i
+                  class="fi fi-rs-diploma"></i> Mis certificados</a>
+              <a href="configuracion.html" class="fac-profile-dropdown-item" role="menuitem"><i
+                  class="fi fi-rs-settings"></i> Configuración</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="fac-content">
+        <section class="verify-hero">
+          <h1 class="verify-hero-title">Verifica la autenticidad de un certificado</h1>
+          <p class="verify-hero-text">Ingresa la identidad del estudiante para confirmar si existe un certificado
+            emitido por Academia VIB. Cuando el registro sea válido, podrás revisar el certificado dentro de la
+            plataforma y descargar el PDF.</p>
+        </section>
+
+        <section class="verify-panel" aria-label="Formulario de verificación">
+          <div class="verify-card">
+            <h2 class="verify-card-title"><i class="fi fi-rs-search-alt"></i> Consulta por identidad</h2>
+            <p class="verify-card-text">La verificación está vinculada a la identidad del estudiante. Para esta demo, el
+              registro válido es <strong>0501000000000</strong>.</p>
+
+            <div class="verify-form">
+              <div class="verify-input-wrap">
+                <i class="fi fi-rs-id-badge"></i>
+                <input id="studentIdInput" class="verify-input" type="text" placeholder="Ej: 0501000000000"
+                  maxlength="20" autocomplete="off" spellcheck="false" />
+              </div>
+              <button id="verifyBtn" class="verify-btn" type="button"><i class="fi fi-rs-badge-check"></i>
+                Verificar</button>
+            </div>
+
+            <div id="verifyAlert" class="verify-alert"></div>
+          </div>
+
+          <aside class="verify-side-card" aria-label="Garantías de verificación">
+            <div class="verify-trust-item">
+              <span class="verify-trust-icon"><i class="fi fi-rs-diploma"></i></span>
+              <div>
+                <p class="verify-trust-title">Certificado oficial</p>
+                <p class="verify-trust-text">El resultado muestra el certificado vinculado al estudiante consultado.</p>
+              </div>
+            </div>
+            <div class="verify-trust-item">
+              <span class="verify-trust-icon"><i class="fi fi-rs-qrcode"></i></span>
+              <div>
+                <p class="verify-trust-title">QR de validación</p>
+                <p class="verify-trust-text">El certificado incluye QR y tabla con datos de registro.</p>
+              </div>
+            </div>
+            <div class="verify-trust-item">
+              <span class="verify-trust-icon"><i class="fi fi-rs-download"></i></span>
+              <div>
+                <p class="verify-trust-title">Descarga PDF</p>
+                <p class="verify-trust-text">La descarga conserva el mismo diseño del certificado final.</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="verifyResult" class="verify-result" aria-live="polite">
+          <div class="verify-summary">
+            <div class="verify-summary-item">
+              <span class="verify-summary-label">Estudiante</span>
+              <span class="verify-summary-value" id="summaryStudent">—</span>
+            </div>
+            <div class="verify-summary-item">
+              <span class="verify-summary-label">Identidad</span>
+              <span class="verify-summary-value" id="summaryIdentity">—</span>
+            </div>
+            <div class="verify-summary-item">
+              <span class="verify-summary-label">Curso</span>
+              <span class="verify-summary-value" id="summaryCourse">—</span>
+            </div>
+            <div class="verify-summary-item">
+              <span class="verify-summary-label">Estado</span>
+              <span class="verify-summary-value">Certificado válido</span>
+            </div>
+          </div>
+
+          <div class="verify-viewer-card">
+            <div class="verify-viewer-head">
+              <div>
+                <h2 class="verify-viewer-title">Vista del certificado</h2>
+                <p class="verify-viewer-subtitle" id="verifyResultText">Certificado cargado dentro de Academia VIB.</p>
+              </div>
+              <div class="verify-actions">
+                <button id="downloadFromFrameBtn" class="verify-action green" type="button"><i
+                    class="fi fi-rs-download"></i> Descargar PDF</button>
+                <a id="openCertLink" class="verify-action" href="cert-template.html" target="_blank"><i
+                    class="fi fi-rs-eye"></i> Abrir completo</a>
+              </div>
+            </div>
+            <div class="verify-frame-shell">
+              <iframe id="certFrame" class="verify-frame" title="Certificado verificado"></iframe>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Términos de uso</a>
+            <a href="#" class="fac-footer-link">Política de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+            <a href="https://consultoresvib.com" target="_blank" class="fac-footer-link">consultoresvib.com</a>
+          </div>
+
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const VALID_STUDENT_ID = "0501000000000";
+    const VALID_STUDENT_NAME = "Nicole Ramos";
+
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggle = document.getElementById("sidebarToggle");
+    const profileToggle = document.getElementById("profileToggle");
+    const profileMenu = document.getElementById("profileMenu");
+
+    function openSidebar() {
+      sidebar.classList.add("is-open");
+      overlay.classList.add("is-active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove("is-open");
+      overlay.classList.remove("is-active");
+      document.body.style.overflow = "";
+    }
+
+    if (toggle) toggle.addEventListener("click", () => sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar());
+    if (overlay) overlay.addEventListener("click", closeSidebar);
+
+    if (profileToggle && profileMenu) {
+      profileToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        profileMenu.classList.toggle("is-open");
+        profileToggle.setAttribute("aria-expanded", profileMenu.classList.contains("is-open") ? "true" : "false");
+      });
+      document.addEventListener("click", (event) => {
+        if (!profileMenu.contains(event.target)) {
+          profileMenu.classList.remove("is-open");
+          profileToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    function fallbackCourse() {
+      return {
+        id: 1,
+        nombre: "Gestión Ambiental Municipal: Funciones, Ordenamiento y Desarrollo Sostenible",
+        slug: "gestion-ambiental-municipal-2026",
+        instructor: "Ing. Allan Izaguirre",
+        duracion: 60,
+        duracionSemanas: 12,
+        fechaInicio: "19/05/2026",
+        nivel: "basico",
+        descripcion: "Aprende a operar una UMA con claridad legal, planificación territorial, enfoque ODS y capacidad para acompañar el desarrollo económico local sin sacrificar los recursos naturales del municipio.",
+        modulos: [
+          { titulo: "El ABC de la UMA: funciones y límites", clases: ["Responsabilidades reales de la UMA y competencias del gobierno central", "Organización diaria, semanal y mensual de la oficina ambiental"] },
+          { titulo: "ODS aplicados a la alcaldía", clases: ["Traducción de los ODS a acciones municipales concretas", "Uso de los ODS para justificar proyectos y solicitar presupuesto"] },
+          { titulo: "Ordenamiento territorial ambiental", clases: ["Zonas permitidas y zonas restringidas: recarga hídrica, riesgo y expansión urbana", "Uso de mapas básicos y criterios territoriales para decidir"] },
+          { titulo: "Evaluación de proyectos y dictámenes locales", clases: ["Revisión técnica de proyectos: lotificadoras, beneficios de café y gasolineras", "Dictámenes ágiles sin regalar los recursos naturales"] },
+          { titulo: "Medidas de mitigación y compromisos ambientales", clases: ["Condiciones ambientales para aprobar proyectos municipales", "Compromisos entre alcaldía y empresa privada"] },
+          { titulo: "Economía circular y negocios verdes locales", clases: ["Incentivos municipales para reciclaje, ahorro de agua y energía solar", "Identificación de oportunidades verdes en la economía local"] },
+          { titulo: "Fiscalización y control de la contaminación", clases: ["Inspección de denuncias por agua, basura, humo o ruido", "Requerimientos formales para corregir impactos ambientales"] },
+          { titulo: "Régimen de sanciones y cero tolerancia", clases: ["De la advertencia a la multa: criterios y cálculo", "Paralización o clausura temporal de obras y negocios incumplidos"] }
+        ]
+      };
+    }
+
+    function getActiveCourse() {
+      try {
+        const stored = localStorage.getItem("vib_curso_activo");
+        if (stored) return JSON.parse(stored);
+      } catch (error) {
+        console.warn("No se pudo leer el curso activo", error);
+      }
+      return fallbackCourse();
+    }
+
+    function prepareCertificate(studentId) {
+      const course = getActiveCourse();
+      localStorage.setItem("vib_user_name", VALID_STUDENT_NAME);
+      localStorage.setItem("vib_user_identity", studentId);
+      localStorage.setItem("vib_user_identidad", studentId);
+      localStorage.setItem("vib_curso_activo", JSON.stringify(course));
+      const slug = course.slug || String(course.nombre || "certificado").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const storageKey = `vib_cert_${slug}`;
+      if (!localStorage.getItem(storageKey + "_codigo")) localStorage.setItem(storageKey + "_codigo", "VIB-2026-Z8CRKMAL");
+      if (!localStorage.getItem(storageKey + "_fecha")) localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
+      return course;
+    }
+
+    function setAlert(type, html) {
+      const alertBox = document.getElementById("verifyAlert");
+      alertBox.className = `verify-alert ${type}`;
+      alertBox.innerHTML = html;
+    }
+
+    function verifyStudent() {
+      const input = document.getElementById("studentIdInput");
+      const result = document.getElementById("verifyResult");
+      const frame = document.getElementById("certFrame");
+      const openLink = document.getElementById("openCertLink");
+      const resultText = document.getElementById("verifyResultText");
+      const studentId = input.value.trim();
+
+      result.classList.remove("show");
+      frame.removeAttribute("src");
+
+      if (studentId === VALID_STUDENT_ID) {
+        const course = prepareCertificate(studentId);
+        setAlert("valid", `<i class="fi fi-rs-badge-check"></i><span>Certificado válido encontrado para <strong>${VALID_STUDENT_NAME}</strong>.</span>`);
+        document.getElementById("summaryStudent").textContent = VALID_STUDENT_NAME;
+        document.getElementById("summaryIdentity").textContent = studentId;
+        document.getElementById("summaryCourse").textContent = course.nombre || "Curso certificado";
+        resultText.textContent = `${VALID_STUDENT_NAME} · ${studentId} · ${course.nombre || "Curso certificado"}`;
+        const url = `cert-template.html?verifyId=${encodeURIComponent(studentId)}&embedded=1`;
+        const fullUrl = `cert-template.html?verifyId=${encodeURIComponent(studentId)}`;
+        frame.src = url;
+        openLink.href = fullUrl;
+        result.classList.add("show");
+        setTimeout(() => result.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+      } else {
+        setAlert("invalid", `<i class="fi fi-rs-cross-circle"></i><span>No se encontró ningún certificado asociado a la identidad <strong>${studentId || "ingresada"}</strong>.</span>`);
+      }
+    }
+
+    document.getElementById("verifyBtn").addEventListener("click", verifyStudent);
+    document.getElementById("studentIdInput").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") verifyStudent();
+    });
+
+    document.getElementById("downloadFromFrameBtn").addEventListener("click", () => {
+      const frame = document.getElementById("certFrame");
+      const btn = frame.contentWindow?.document?.getElementById("downloadPDFBtn");
+      if (btn) btn.click();
+      else window.open(document.getElementById("openCertLink").href, "_blank");
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const incomingId = params.get("id");
+    if (incomingId) {
+      document.getElementById("studentIdInput").value = incomingId;
+      verifyStudent();
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Detalle de Usuario - VIB ACADEMY</title>
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--fum-space-6);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-muted);
+    }
+
+    .breadcrumb a {
+      color: var(--fum-color-verde);
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb-sep {
+      display: flex;
+      font-size: 10px;
+      opacity: .4;
+    }
+
+    .breadcrumb-sep i {
+      display: flex;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--fum-space-8);
+      margin-bottom: var(--fum-space-8);
+      align-items: start;
+    }
+
+    @media(max-width:900px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-8) var(--fum-space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--fum-space-4);
+    }
+
+    .profile-avatar-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--fum-color-verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+    }
+
+    .profile-avatar-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(127, 208, 71, .25);
+    }
+
+    .profile-name {
+      font-size: var(--fum-font-size-base);
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+      line-height: 1.3;
+    }
+
+    .profile-role-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      background: var(--fum-color-bg-hover);
+      color: var(--fum-color-text-secondary);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-pill);
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+    }
+
+    .profile-role-chip i {
+      display: flex;
+      font-size: 12px;
+      color: var(--fum-color-text-muted);
+    }
+
+    .profile-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 500;
+    }
+
+    .profile-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--fum-color-verde);
+      flex-shrink: 0;
+    }
+
+    .profile-card-actions {
+      display: flex;
+      gap: var(--fum-space-3);
+      width: 100%;
+      margin-top: var(--fum-space-2);
+    }
+
+    .btn-cancel {
+      flex: 1;
+      height: 38px;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      font-family: var(--fum-font-family);
+      cursor: pointer;
+      border: 1px solid var(--fum-color-border);
+      background: var(--fum-color-bg-card);
+      color: var(--fum-color-text-secondary);
+      transition: all var(--fum-transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-cancel:hover {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-primary);
+    }
+
+    .btn-cancel i {
+      display: flex;
+    }
+
+    .btn-edit {
+      flex: 1;
+      height: 38px;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      font-family: var(--fum-font-family);
+      cursor: pointer;
+      border: none;
+      background: var(--fum-color-verde);
+      color: #fff;
+      transition: background var(--fum-transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-edit:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .btn-edit i {
+      display: flex;
+    }
+
+    .info-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+    }
+
+    .info-card-header {
+      padding: var(--fum-space-4) var(--fum-space-6);
+      border-bottom: 1px solid var(--fum-color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .info-card-title {
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card-title i {
+      display: flex;
+      color: var(--fum-color-verde);
+      font-size: 14px;
+    }
+
+    .info-body {
+      padding: var(--fum-space-6);
+    }
+
+    .info-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--fum-space-5);
+    }
+
+    @media(max-width:600px) {
+      .info-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-field label {
+      display: block;
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 6px;
+    }
+
+    .info-field-value {
+      height: 40px;
+      padding: 0 14px;
+      background: var(--fum-color-bg-hover);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-primary);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-field-value i {
+      display: flex;
+      color: var(--fum-color-text-muted);
+      font-size: 13px;
+    }
+
+    .audit-section {
+      margin-top: var(--fum-space-2);
+    }
+
+    .audit-header-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .audit-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: 700;
+      color: var(--fum-color-text-primary);
+    }
+
+    .audit-heading-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 3px;
+    }
+
+    .audit-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fum-font-size-sm);
+    }
+
+    .audit-table thead tr {
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .audit-table th {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .audit-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--fum-color-border);
+      color: var(--fum-color-text-secondary);
+      vertical-align: middle;
+    }
+
+    .audit-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .audit-table tbody tr:hover {
+      background: var(--fum-color-bg-hover);
+    }
+
+    .audit-empty {
+      padding: var(--fum-space-10);
+      text-align: center;
+      color: var(--fum-color-text-muted);
+      font-size: var(--fum-font-size-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .audit-empty i {
+      display: flex;
+      font-size: 28px;
+      opacity: .3;
+    }
+
+    .audit-act {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 600;
+    }
+
+    /* ── Anuncios topbar ── */
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity .5s ease, transform .5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: 600;
+    }
+
+    @media(max-width:1024px) {
+      .fac-announcement-item {
+        display: none !important;
+      }
+
+      .fac-announcements-ticker {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: fac-ticker-scroll 32s linear infinite;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        will-change: transform;
+      }
+
+      .fac-ticker-sep {
+        display: inline-block;
+        margin: 0 20px;
+        color: var(--fum-color-verde);
+        opacity: .45;
+        font-size: 10px;
+      }
+
+      @keyframes fac-ticker-scroll {
+        0% {
+          transform: translateY(-50%) translateX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(-50%);
+        }
+      }
+    }
+
+    @media(min-width:1025px) {
+      .fac-announcements-ticker {
+        display: none;
+      }
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="fac-layout">
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Seguridad</p>
+          <a href="usuarios.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-users fac-nav-item-icon"></i>Usuarios</a>
+          <a href="roles.html" class="fac-nav-item"><i class="fi fi-rs-shield fac-nav-item-icon"></i>Roles</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-settings fac-nav-item-icon"></i>Configuracion</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+    <div class="fac-main">
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle"><i class="fi fi-bs-menu-burger"></i></button>
+        <!-- ── Barra de anuncios ── -->
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active" data-type="info">Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong></span>
+            <span class="fac-announcement-item" data-type="promo">Descuento del <strong>20 % en todos los
+                cursos</strong> hasta el 31 de enero. Usa el código <strong>ENERO25</strong></span>
+            <span class="fac-announcement-item" data-type="warning">Mantenimiento programado el <strong>sábado 18 de
+                enero de 2–4 AM</strong>. La plataforma estará en pausa.</span>
+            <span class="fac-announcement-item" data-type="info">Nuevo curso disponible: <strong>Bioindicadores
+                Acuáticos</strong> — ya puedes inscribirte</span>
+            <span class="fac-announcement-item" data-type="cancel">Clase del <strong>miércoles 15</strong> cancelada por
+              ajuste de agenda. Reprogramada para el viernes.</span>
+            <span class="fac-announcements-ticker" aria-hidden="true">
+              Próxima clase: Manejo Integrado de Plagas — <strong>Lunes 20 de enero, 7:00 PM</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Descuento del <strong>20 % en todos los cursos</strong> hasta el 31 de enero — código
+              <strong>ENERO25</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Mantenimiento programado el <strong>sábado 18 de enero de 2–4 AM</strong>.
+              <span class="fac-ticker-sep">◆</span>
+              Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya puedes inscribirte
+              <span class="fac-ticker-sep">◆</span>
+              Clase del <strong>miércoles 15</strong> cancelada.
+              <span class="fac-ticker-sep">◆</span>
+            </span>
+          </div>
+        </div>
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username">Administrador</span>
+                <span class="fac-topbar-userrole">Admin</span>
+              </div>
+              <div class="fac-avatar" style="width:34px;height:34px;font-size:11px;">AD</div>
+            </div>
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar">AD</div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name">Administrador</p>
+                  <p class="fac-profile-dropdown-role">Admin</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-user"></i> Mi perfil</a>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-settings"></i> Configuracion</a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout"><i
+                  class="fi fi-rs-sign-out-alt"></i> Cerrar sesion</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="fac-content">
+        <div class="breadcrumb">
+          <a href="usuarios.html">Usuarios</a>
+          <span class="breadcrumb-sep"><i class="fi fi-rs-angle-right"></i></span>
+          <span>Magdaly Zuniga Alvarado</span>
+        </div>
+        <div class="detail-grid">
+          <div class="profile-card">
+            <div class="profile-avatar-wrap">
+              MZ
+              <div class="profile-avatar-ring"></div>
+            </div>
+            <p class="profile-name">Magdaly Zuniga Alvarado</p>
+            <span class="profile-role-chip"><i class="fi fi-rs-shield"></i> Administrador</span>
+            <div class="profile-status">
+              <span class="profile-status-dot"></span>
+              Usuario activo
+            </div>
+            <div class="profile-card-actions">
+              <button class="btn-cancel" onclick="window.location='usuarios.html'"><i
+                  class="fi fi-rs-angle-circle-left"></i> Cancelar</button>
+              <button class="btn-edit"><i class="fi fi-rs-pencil"></i> Editar</button>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-header">
+              <span class="info-card-title"><i class="fi fi-rs-user"></i> Informacion personal</span>
+              <span style="font-size:var(--fum-font-size-xs);color:var(--fum-color-text-muted);">ID #1</span>
+            </div>
+            <div class="info-body">
+              <div class="info-fields">
+                <div class="info-field">
+                  <label>Nombre completo</label>
+                  <div class="info-field-value"><i class="fi fi-rs-user"></i> Magdaly Zuniga Alvarado</div>
+                </div>
+                <div class="info-field">
+                  <label>Nombre de usuario</label>
+                  <div class="info-field-value"><i class="fi fi-rs-at"></i> Administrator</div>
+                </div>
+                <div class="info-field">
+                  <label>Identidad</label>
+                  <div class="info-field-value"><i class="fi fi-rs-id-card"></i> 0607199301183</div>
+                </div>
+                <div class="info-field">
+                  <label>Correo electronico</label>
+                  <div class="info-field-value"><i class="fi fi-rs-envelope"></i> magdaly.zuniga03@hotmail.com</div>
+                </div>
+                <div class="info-field">
+                  <label>Telefono</label>
+                  <div class="info-field-value"><i class="fi fi-rs-phone-call"></i> 87839575</div>
+                </div>
+                <div class="info-field">
+                  <label>Rol asignado</label>
+                  <div class="info-field-value"><i class="fi fi-rs-shield"></i> Administrador</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="audit-section">
+          <div class="audit-header-row">
+            <p class="audit-heading-label">Auditoría</p>
+            <span class="audit-title">Historial de acciones</span>
+          </div>
+          <div class="audit-card">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th>Accion</th>
+                  <th>Usuario</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="audit-act audit-act-create">Creacion</span></td>
+                  <td>Administrator</td>
+                  <td>15 ene 2024, 10:32 AM</td>
+                </tr>
+                <tr>
+                  <td><span class="audit-act audit-act-edit">Modificacion</span></td>
+                  <td>Administrator</td>
+                  <td>20 mar 2024, 3:15 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Terminos de uso</a>
+            <a href="#" class="fac-footer-link">Politica de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+          </div>
+          <p class="fac-footer-copy"><span>&copy; 2026 VIB ACADEMY &middot; Todos los derechos reservados</span></p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggle = document.getElementById("sidebarToggle");
+    toggle.addEventListener("click", () => { const o = sidebar.classList.toggle("is-open"); overlay.classList.toggle("is-active", o); document.body.style.overflow = o ? "hidden" : ""; });
+    overlay.addEventListener("click", () => { sidebar.classList.remove("is-open"); overlay.classList.remove("is-active"); document.body.style.overflow = ""; });
+    const pt = document.getElementById("profileToggle"), pm = document.getElementById("profileMenu");
+    pt.addEventListener("click", e => { e.stopPropagation(); pm.classList.toggle("is-open"); });
+    document.addEventListener("click", e => { if (!pm.contains(e.target)) pm.classList.remove("is-open"); });
+    // Rotación de anuncios
+    (function () {
+      const items = document.querySelectorAll(".fac-announcement-item");
+      if (!items.length) return;
+      let current = 0;
+      function next() { const prev = current; current = (current + 1) % items.length; items[prev].classList.add("leaving"); items[prev].classList.remove("active"); items[current].classList.add("active"); setTimeout(() => items[prev].classList.remove("leaving"), 600); }
+      setInterval(next, 5000);
+    })();
+  </script>
+</body>
+
+</html>

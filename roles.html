@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Roles - VIB ACADEMY</title>
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .sec-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--fum-space-4);
+      margin-bottom: var(--fum-space-6);
+      flex-wrap: wrap;
+    }
+
+    .sec-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      flex-wrap: wrap;
+    }
+
+    .sec-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 36px;
+      padding: 0 var(--fum-space-4);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: var(--fum-font-family);
+      transition: all var(--fum-transition-fast);
+    }
+
+    .sec-btn i {
+      display: flex;
+      font-size: 13px;
+    }
+
+    .sec-btn-primary {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .sec-btn-primary:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .sec-btn-outline {
+      background: var(--fum-color-bg-card);
+      color: var(--fum-color-text-secondary);
+      border: 1px solid var(--fum-color-border);
+    }
+
+    .sec-btn-outline:hover {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-primary);
+    }
+
+    .sec-search {
+      position: relative;
+    }
+
+    .sec-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--fum-color-text-muted);
+      font-size: 13px;
+      display: flex;
+      pointer-events: none;
+    }
+
+    .sec-search-icon i {
+      display: flex;
+    }
+
+    .sec-search-input {
+      height: 36px;
+      padding: 0 14px 0 34px;
+      background: var(--fum-color-bg-hover);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-pill);
+      font-size: var(--fum-font-size-sm);
+      font-family: var(--fum-font-family);
+      color: var(--fum-color-text-primary);
+      outline: none;
+      width: 240px;
+      transition: border-color var(--fum-transition-fast), box-shadow var(--fum-transition-fast);
+    }
+
+    .sec-search-input::placeholder {
+      color: var(--fum-color-text-muted);
+    }
+
+    .sec-search-input:focus {
+      border-color: var(--fum-color-verde);
+      box-shadow: 0 0 0 3px rgba(127, 208, 71, .12);
+      background: #fff;
+      width: 280px;
+    }
+
+    .data-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fum-font-size-sm);
+    }
+
+    .data-table thead tr {
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .data-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--fum-color-border);
+      color: var(--fum-color-text-secondary);
+      vertical-align: middle;
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tbody tr {
+      transition: background var(--fum-transition-fast);
+    }
+
+    .data-table tbody tr:hover {
+      background: var(--fum-color-bg-hover);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: var(--fum-radius-pill);
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+    }
+
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge-active {
+      color: var(--fum-color-verde);
+    }
+
+    .badge-active::before {
+      background: var(--fum-color-verde);
+    }
+
+    .badge-inactive {
+      color: var(--fum-color-rojo);
+    }
+
+    .badge-inactive::before {
+      background: var(--fum-color-rojo);
+    }
+
+    .role-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      color: var(--fum-color-gris);
+      background: var(--fum-color-bg-hover);
+      border: 1px solid var(--fum-color-border);
+    }
+
+    .role-icon i {
+      display: flex;
+      color: var(--fum-color-text-muted);
+    }
+
+    .role-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .role-cell-name {
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+    }
+
+    .row-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .row-action-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: all var(--fum-transition-fast);
+    }
+
+    .row-action-btn i {
+      display: flex;
+    }
+
+    .row-action-edit {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .row-action-view {
+      background: var(--fum-color-gris);
+      color: #fff;
+    }
+
+    .row-action-delete {
+      background: var(--fum-color-rojo);
+      color: #fff;
+    }
+
+    .data-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-top: 1px solid var(--fum-color-border);
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+    }
+
+    .data-footer-info {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 500;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .page-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      cursor: pointer;
+      border: 1px solid var(--fum-color-border);
+      background: var(--fum-color-bg-card);
+      color: var(--fum-color-text-secondary);
+      font-family: var(--fum-font-family);
+      transition: all var(--fum-transition-fast);
+    }
+
+    .page-btn-active {
+      background: var(--fum-color-azul);
+      color: #fff;
+      border-color: var(--fum-color-azul);
+    }
+
+    .page-btn i {
+      display: flex;
+      font-size: 10px;
+    }
+
+    /* ── Anuncios topbar ── */
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity .5s ease, transform .5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: 600;
+    }
+
+    @media(max-width:1024px) {
+      .fac-announcement-item {
+        display: none !important;
+      }
+
+      .fac-announcements-ticker {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: fac-ticker-scroll 32s linear infinite;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        will-change: transform;
+      }
+
+      .fac-ticker-sep {
+        display: inline-block;
+        margin: 0 20px;
+        color: var(--fum-color-verde);
+        opacity: .45;
+        font-size: 10px;
+      }
+
+      @keyframes fac-ticker-scroll {
+        0% {
+          transform: translateY(-50%) translateX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(-50%);
+        }
+      }
+    }
+
+    @media(min-width:1025px) {
+      .fac-announcements-ticker {
+        display: none;
+      }
+    }
+
+    /* ── Título de página ── */
+    .page-heading {
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .page-heading-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 3px;
+    }
+
+    .page-heading-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: 700;
+      color: var(--fum-color-text-primary);
+    }
+
+    /* ── Auditoría ── */
+    .audit-section {
+      margin-top: var(--fum-space-8);
+    }
+
+    .audit-header-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .audit-badge {
+      background: var(--fum-color-azul);
+      color: #fff;
+      font-size: var(--fum-font-size-xs);
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--fum-radius-pill);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .audit-title {
+      font-size: var(--fum-font-size-base);
+      font-weight: 600;
+      color: var(--fum-color-text-primary);
+    }
+
+    .audit-card {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fum-font-size-sm);
+    }
+
+    .audit-table thead tr {
+      background: var(--fum-color-bg-surface);
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .audit-table th {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: var(--fum-font-size-xs);
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .audit-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--fum-color-border);
+      color: var(--fum-color-text-secondary);
+      vertical-align: middle;
+    }
+
+    .audit-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .audit-table tbody tr:hover {
+      background: var(--fum-color-bg-surface);
+    }
+
+    .audit-empty {
+      padding: var(--fum-space-10);
+      text-align: center;
+      color: var(--fum-color-text-muted);
+      font-size: var(--fum-font-size-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .audit-empty i {
+      display: flex;
+      font-size: 28px;
+      opacity: .3;
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="fac-layout">
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Seguridad</p>
+          <a href="usuarios.html" class="fac-nav-item"><i class="fi fi-rs-users fac-nav-item-icon"></i>Usuarios</a>
+          <a href="roles.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-shield fac-nav-item-icon"></i>Roles</a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top:6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-settings fac-nav-item-icon"></i>Configuracion</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+    <div class="fac-main">
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle"><i class="fi fi-bs-menu-burger"></i></button>
+        <!-- ── Barra de anuncios ── -->
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active" data-type="info">Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong></span>
+            <span class="fac-announcement-item" data-type="promo">Descuento del <strong>20 % en todos los
+                cursos</strong> hasta el 31 de enero. Usa el código <strong>ENERO25</strong></span>
+            <span class="fac-announcement-item" data-type="warning">Mantenimiento programado el <strong>sábado 18 de
+                enero de 2–4 AM</strong>. La plataforma estará en pausa.</span>
+            <span class="fac-announcement-item" data-type="info">Nuevo curso disponible: <strong>Bioindicadores
+                Acuáticos</strong> — ya puedes inscribirte</span>
+            <span class="fac-announcement-item" data-type="cancel">Clase del <strong>miércoles 15</strong> cancelada por
+              ajuste de agenda. Reprogramada para el viernes.</span>
+            <span class="fac-announcements-ticker" aria-hidden="true">
+              Próxima clase: Manejo Integrado de Plagas — <strong>Lunes 20 de enero, 7:00 PM</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Descuento del <strong>20 % en todos los cursos</strong> hasta el 31 de enero — código
+              <strong>ENERO25</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Mantenimiento programado el <strong>sábado 18 de enero de 2–4 AM</strong>.
+              <span class="fac-ticker-sep">◆</span>
+              Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya puedes inscribirte
+              <span class="fac-ticker-sep">◆</span>
+              Clase del <strong>miércoles 15</strong> cancelada.
+              <span class="fac-ticker-sep">◆</span>
+            </span>
+          </div>
+        </div>
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username">Administrador</span>
+                <span class="fac-topbar-userrole">Admin</span>
+              </div>
+              <div class="fac-avatar" style="width:34px;height:34px;font-size:11px;">AD</div>
+            </div>
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar">AD</div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name">Administrador</p>
+                  <p class="fac-profile-dropdown-role">Admin</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-user"></i> Mi perfil</a>
+              <a href="#" class="fac-profile-dropdown-item"><i class="fi fi-rs-settings"></i> Configuracion</a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout"><i
+                  class="fi fi-rs-sign-out-alt"></i> Cerrar sesion</button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="fac-content">
+        <!-- Título de página -->
+        <div class="page-heading">
+          <p class="page-heading-label">Seguridad</p>
+          <h1 class="page-heading-title">Listado de roles</h1>
+        </div>
+        <div class="sec-toolbar">
+          <div class="sec-toolbar-left">
+            <button class="sec-btn sec-btn-outline"><i class="fi fi-rs-rotate-right"></i> Recargar</button>
+            <button class="sec-btn sec-btn-outline"><i class="fi fi-rs-download"></i> Exportar</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--fum-space-3);flex-wrap:wrap;">
+            <div class="sec-search">
+              <span class="sec-search-icon"><i class="fi fi-rs-search"></i></span>
+              <input class="sec-search-input" type="text" placeholder="Buscar en la tabla..." id="searchInput" />
+            </div>
+            <button class="sec-btn sec-btn-primary" onclick="window.location='rol-detalle.html'"><i
+                class="fi fi-rs-plus"></i> Nuevo</button>
+          </div>
+        </div>
+        <div class="data-card">
+          <div style="overflow-x:auto;">
+            <table class="data-table" id="rolesTable">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Descripcion</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="rolesBody">
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">1</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-shield"></i></div>
+                      <span class="role-cell-name">Administrador</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"
+                        onclick="window.location='rol-detalle.html'"><i class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"
+                        onclick="window.location='rol-detalle.html'"><i class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">2</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-shop"></i></div>
+                      <span class="role-cell-name">Vendedor</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"><i
+                          class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"><i
+                          class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">3</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-user"></i></div>
+                      <span class="role-cell-name">Cliente</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"><i
+                          class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"><i
+                          class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">4</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-tools"></i></div>
+                      <span class="role-cell-name">Tecnico</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"><i
+                          class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"><i
+                          class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">5</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-headset"></i></div>
+                      <span class="role-cell-name">Agentes</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"><i
+                          class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"><i
+                          class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color:var(--fum-color-text-muted);font-weight:600;">6</td>
+                  <td>
+                    <div class="role-cell">
+                      <div class="role-icon"><i class="fi fi-rs-chart-histogram"></i></div>
+                      <span class="role-cell-name">Analista de soporte</span>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-active">Activo</span></td>
+                  <td>
+                    <div class="row-actions">
+                      <button class="row-action-btn row-action-edit" title="Editar"><i
+                          class="fi fi-rs-pencil"></i></button>
+                      <button class="row-action-btn row-action-view" title="Ver detalles"><i
+                          class="fi fi-rs-eye"></i></button>
+                      <button class="row-action-btn row-action-delete" title="Eliminar"><i
+                          class="fi fi-rs-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="data-footer">
+            <p class="data-footer-info">Mostrando registros del 1 al 6 de un total de 6 registros</p>
+            <div class="pagination">
+              <button class="page-btn"><i class="fi fi-rs-angle-left"></i></button>
+              <button class="page-btn page-btn-active">1</button>
+              <button class="page-btn"><i class="fi fi-rs-angle-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Terminos de uso</a>
+            <a href="#" class="fac-footer-link">Politica de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+          </div>
+          <p class="fac-footer-copy"><span>&copy; 2026 VIB ACADEMY &middot; Todos los derechos reservados</span></p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script>
+    const sidebar = document.getElementById("sidebar"), overlay = document.getElementById("sidebarOverlay"), toggle = document.getElementById("sidebarToggle");
+    toggle.addEventListener("click", () => { const o = sidebar.classList.toggle("is-open"); overlay.classList.toggle("is-active", o); document.body.style.overflow = o ? "hidden" : ""; });
+    overlay.addEventListener("click", () => { sidebar.classList.remove("is-open"); overlay.classList.remove("is-active"); document.body.style.overflow = ""; });
+    const pt = document.getElementById("profileToggle"), pm = document.getElementById("profileMenu");
+    pt.addEventListener("click", e => { e.stopPropagation(); pm.classList.toggle("is-open"); });
+    document.addEventListener("click", e => { if (!pm.contains(e.target)) pm.classList.remove("is-open"); });
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll("#rolesBody tr").forEach(row => { row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none"; });
+    });
+    // Rotación de anuncios
+    (function () {
+      const items = document.querySelectorAll(".fac-announcement-item");
+      if (!items.length) return;
+      let current = 0;
+      function next() { const prev = current; current = (current + 1) % items.length; items[prev].classList.add("leaving"); items[prev].classList.remove("active"); items[current].classList.add("active"); setTimeout(() => items[prev].classList.remove("leaving"), 600); }
+      setInterval(next, 5000);
+    })();
+  </script>
+</body>
+
+</html>

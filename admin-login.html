@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Panel Administrativo · VIB ACADEMY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --fum-color-blanco: #ffffff;
+      --fum-color-negro: #1f2a30;
+      --fum-color-gris: #626b72;
+      --fum-color-verde: #008b72;
+      --fum-color-verde-hover: #00bfa0;
+      --fum-color-azul: #42b8de;
+      --fum-color-text-primary: var(--fum-color-negro);
+      --fum-color-text-secondary: var(--fum-color-gris);
+      --fum-color-border: rgba(60, 60, 56, 0.12);
+      --fum-font-family: "Geist", sans-serif;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--fum-font-family);
+      overflow: hidden;
+    }
+
+    .fac-admin-login-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right,
+          rgba(127, 208, 71, 0.16),
+          transparent 34%),
+        linear-gradient(155deg, #42b8de 30%, #42b8de 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .fac-admin-login-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--fum-color-blanco);
+      border: 1px solid var(--fum-color-border);
+      border-radius: 24px;
+      padding: 42px;
+    }
+
+    .fac-right-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fum-color-verde);
+      margin-bottom: 36px;
+    }
+
+    .fac-right-logo i {
+      font-size: 24px;
+    }
+
+    .fac-admin-login-header {
+      margin-bottom: 28px;
+    }
+
+    .fac-admin-login-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--fum-color-negro);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .fac-admin-login-header p {
+      font-size: 14px;
+      color: var(--fum-color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .fac-form-group {
+      margin-bottom: 22px;
+    }
+
+    .fac-form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fum-color-negro);
+      margin-bottom: 8px;
+    }
+
+    .fac-form-group input {
+      width: 100%;
+      height: 50px;
+      padding: 0 16px;
+      background: #f7f9f7;
+      border: 1px solid rgba(60, 60, 56, 0.12);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .fac-form-group input:focus {
+      outline: none;
+      border-color: var(--fum-color-verde);
+      box-shadow: 0 0 0 3px rgba(127, 208, 71, 0.12);
+    }
+
+    .fac-password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .fac-password-wrapper input {
+      padding-right: 48px;
+    }
+
+    .fac-toggle-password {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--fum-color-gris);
+      display: flex;
+      align-items: center;
+      padding: 0;
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    .fac-toggle-password:hover {
+      color: var(--fum-color-verde);
+    }
+
+    .fac-forgot {
+      text-align: right;
+      margin-bottom: 26px;
+    }
+
+    .fac-forgot a {
+      font-size: 13px;
+      color: var(--fum-color-verde);
+      text-decoration: none;
+    }
+
+    .fac-btn-login {
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: 12px;
+      background: var(--fum-color-verde);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .fac-btn-login:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .fac-terms {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #879199;
+      line-height: 1.6;
+    }
+
+    .fac-copyright {
+      display: block;
+      margin-top: 8px;
+      font-size: 11px;
+      color: #879199;
+    }
+
+    @media (max-width: 500px) {
+      .fac-admin-login-page {
+        padding: 20px;
+      }
+
+      .fac-admin-login-card {
+        padding: 30px 24px;
+        border-radius: 18px;
+      }
+
+      .fac-right-logo {
+        font-size: 17px;
+        margin-bottom: 28px;
+      }
+
+      .fac-right-logo i {
+        font-size: 20px;
+      }
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-admin-login-page">
+    <div class="fac-admin-login-card">
+      <div class="fac-right-logo"><img src="" alt="Academia VIB" class="fac-right-logo-img" /></div>
+
+      <div class="fac-admin-login-header">
+        <h1>Panel administrativo</h1>
+
+        <p>
+          Acceso temporal de demostración. Solo Nicole Ramos puede ingresar a esta plataforma.
+        </p>
+      </div>
+
+      <form id="adminLoginForm">
+        <div class="fac-form-group">
+          <label>Correo electrónico</label>
+
+          <input type="email" placeholder="nicole@nickramen.com" id="adminEmail" required />
+        </div>
+
+        <div class="fac-form-group">
+          <label>Contraseña</label>
+
+          <div class="fac-password-wrapper">
+            <input type="password" placeholder="••••••••" id="adminPassword" required />
+            <button type="button" class="fac-toggle-password" id="togglePassword" aria-label="Mostrar contraseña">
+              <i class="fi fi-rs-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="fac-forgot">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="fac-btn-login">
+          Ingresar al panel
+        </button>
+      </form>
+
+      <div class="fac-terms">
+        Acceso exclusivo para Nicole Ramos durante el demo.
+
+        <span class="fac-copyright">
+          &copy; 2026 VIB ACADEMY · Todos los derechos reservados
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document
+      .getElementById("adminLoginForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = document.getElementById("adminEmail").value;
+        const password = document.getElementById("adminPassword").value;
+
+        if (!window.VIB_DEMO_AUTH.login(email, password)) {
+          alert("Acceso restringido.");
+          return;
+        }
+
+        window.location.href = "dashboard.html";
+      });
+
+    document
+      .getElementById("togglePassword")
+      .addEventListener("click", function () {
+        const input = document.getElementById("adminPassword");
+        const icon = document.getElementById("eyeIcon");
+        const isHidden = input.type === "password";
+
+        input.type = isHidden ? "text" : "password";
+        icon.className = isHidden ? "fi fi-rs-crossed-eye" : "fi fi-rs-eye";
+        this.setAttribute("aria-label", isHidden ? "Ocultar contraseña" : "Mostrar contraseña");
+      });
+  </script>
+</body>
+
+</html>

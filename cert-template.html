@@ -1,709 +1,1686 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=yes"
-    />
-    <title>Certificado CIAH · VIB Academy | Diseño Azul Moderno</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Certificado CIAH · VIB Academy | Diseño Azul Moderno</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
 
-    <!-- html2pdf library (para la generación del PDF) -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Updock&display=swap");
+  <!-- Librerías para generar PDF. Se cargan aquí y también tienen fallback dinámico en JS. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Updock&display=swap");
 
-      :root {
-        /* Paleta corporativa */
-        --fum-color-blanco: #ffffff;
-        --fum-color-negro: #232323;
-        --fum-color-gris: #53555c;
-        --fum-color-verde: #7fd047;
-        --fum-color-verde-hover: #79c643;
-        --fum-color-verde-dark: #2d6a1f;
-        --fum-color-rojo: #e31e24;
-        --fum-color-azul: #1a1f5e;
-        --fum-color-azul-hover: #191d59;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* Fondo exterior para vista en navegador */
+    :root {
+      /* Paleta corporativa */
+      --fum-color-blanco: #ffffff;
+      --fum-color-negro: #1f2a30;
+      --fum-color-gris: #626b72;
+      --fum-color-verde: #008b72;
+      --fum-color-verde-hover: #00bfa0;
+      --fum-color-verde-dark: #006f5b;
+      --fum-color-rojo: #e31e24;
+      --fum-color-azul: #42b8de;
+      --fum-color-azul-hover: #2fa8cf;
+    }
+
+    /* La vista normal del certificado vive dentro del layout de Academia VIB. */
+    body {
+      background: var(--fac-bg, #f5f7fb);
+      min-height: 100vh;
+      font-family:
+        "Plus Jakarta Sans",
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+
+    .certificate-page-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .certificate-page-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--fum-color-verde);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .certificate-page-title {
+      margin: 0;
+      color: var(--fum-color-azul);
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+
+    .certificate-page-text {
+      margin: 8px 0 0;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 760px;
+    }
+
+    .certificate-stage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      opacity: 1;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: var(--fum-font-weight-semibold);
+    }
+
+    /* Contenedor del botón y opciones */
+    .toolbar {
+      background: white;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 60px;
+      padding: 12px 18px;
+      margin-bottom: 0;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-pdf {
+      background: linear-gradient(135deg, #42b8de, #2c3e8f);
+      border: none;
+      padding: 10px 28px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: inherit;
+    }
+
+    .btn-pdf i {
+      font-size: 1.1rem;
+    }
+
+    .pdf-pages {
+      width: min(1100px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: center;
+    }
+
+    /* TAMAÑO CARTA HORIZONTAL (US Letter Landscape: 11in x 8.5in) */
+    .certificate {
+      width: 100%;
+      background: white;
+      overflow: hidden;
+      transition: all 0.2s;
+      aspect-ratio: 11 / 8.5;
+      /* 11:8.5 ratio horizontal */
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-radius: 4px;
+    }
+
+
+
+    body.cert-embedded {
+      background: #f6f8fc;
+      min-height: auto;
+      padding: 18px;
+      justify-content: flex-start;
+    }
+
+    body.cert-embedded .toolbar {
+      display: none;
+    }
+
+    body.cert-embedded .pdf-pages {
+      width: min(1040px, 100%);
+      gap: 18px;
+    }
+
+    body.cert-embedded .certificate {
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    body.cert-embedded .fac-sidebar,
+    body.cert-embedded .fac-sidebar-overlay,
+    body.cert-embedded .fac-topbar,
+    body.cert-embedded .certificate-page-head,
+    body.cert-embedded .fac-footer {
+      display: none !important;
+    }
+
+    body.cert-embedded .fac-main {
+      margin-left: 0 !important;
+      min-height: auto !important;
+    }
+
+    body.cert-embedded .fac-content {
+      padding: 0 !important;
+      max-width: none !important;
+    }
+
+    body.cert-embedded .fac-layout {
+      min-height: auto !important;
+    }
+
+    /* Estilo impresión */
+    @media print {
       body {
-        background: #eef2f9;
-        display: flex;
-        flex-direction: column;
-        justify-align: center;
-        align-items: center;
-        min-height: 100vh;
-        font-family:
-          "Geist",
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif;
-        padding: 32px 20px;
+        background: white;
+        padding: 0;
+        margin: 0;
       }
 
-      /* Contenedor del botón y opciones */
       .toolbar {
-        background: white;
-        border-radius: 60px;
-        padding: 12px 24px;
-        margin-bottom: 28px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        display: none;
       }
 
-      .btn-pdf {
-        background: linear-gradient(135deg, #1a1f5e, #2c3e8f);
-        border: none;
-        padding: 10px 28px;
-        border-radius: 40px;
-        color: white;
-        font-weight: 600;
-        font-size: 0.9rem;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        font-family: inherit;
+      .pdf-pages {
+        width: 11in;
+        gap: 0;
       }
 
-      .btn-pdf i {
-        font-size: 1.1rem;
-      }
-
-      /* TAMAÑO CARTA HORIZONTAL (US Letter Landscape: 11in x 8.5in) */
       .certificate {
-        max-width: 1100px;
-        width: 100%;
-        background: white;
-        overflow: hidden;
-        transition: all 0.2s;
-        aspect-ratio: 11 / 8.5; /* 11:8.5 ratio horizontal */
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        border-radius: 4px;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        aspect-ratio: auto;
+        width: 11in;
+        height: 8.5in;
+        break-inside: avoid;
+        page-break-inside: avoid;
       }
 
-      /* Estilo impresión */
-      @media print {
-        body {
-          background: white;
-          padding: 0;
-          margin: 0;
-        }
-        .toolbar {
-          display: none;
-        }
-        .certificate {
-          box-shadow: none;
-          border-radius: 0;
-          max-width: 100%;
-          aspect-ratio: auto;
-          width: 11in;
-          height: 8.5in;
-          page-break-after: avoid;
-          break-inside: avoid;
-        }
-        @page {
-          size: landscape;
-          margin: 0.3in;
-        }
+      .certificate:not(:last-child) {
+        page-break-after: always;
+        break-after: page;
       }
 
-      /* Contenedor interno flexible */
+      @page {
+        size: landscape;
+        margin: 0.3in;
+      }
+    }
+
+    /* Contenedor interno flexible */
+    .cert-inner {
+      padding: 1.8rem 2.2rem 6rem 2.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* ========= LOGOS SUPERIORES ========= */
+    .logos-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-left {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .logo-right-group {
+      display: flex;
+      gap: 0;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      padding: 6px 12px;
+      transition: all 0.2s;
+    }
+
+    .logo-img {
+      display: block;
+      max-height: 105px;
+      max-width: 340px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .logo-academia-img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 330px !important;
+      max-height: 105px !important;
+      object-fit: contain !important;
+    }
+
+    @media (max-width: 750px) {
       .cert-inner {
-        padding: 1.8rem 2.2rem 6rem 2.2rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+        padding: 1.2rem;
       }
 
-      /* ========= LOGOS SUPERIORES ========= */
-      .logos-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
+      .logo-img {
+        max-height: 52px;
+      }
+
+      .logo-right-group {
         gap: 1rem;
       }
-      .logo-left {
-        flex: 1;
-        display: flex;
-        justify-content: flex-start;
-      }
-      .logo-right-group {
-        display: flex;
-        gap: 0;
-        align-items: center;
-        justify-content: flex-end;
-      }
-      .logo-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fafcff;
-        border-radius: 20px;
-        padding: 6px 12px;
-        transition: all 0.2s;
-      }
-      .logo-img {
-        max-height: 70px;
-        width: auto;
-        object-fit: contain;
-      }
+    }
 
-      @media (max-width: 750px) {
-        .cert-inner {
-          padding: 1.2rem;
-        }
-        .logo-img {
-          max-height: 52px;
-        }
-        .logo-right-group {
-          gap: 1rem;
-        }
-      }
+    /* ========= CONTENIDO PRINCIPAL ========= */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      margin: 0.25rem 0;
+    }
 
-      /* ========= CONTENIDO PRINCIPAL ========= */
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        margin: 0.25rem 0;
-      }
+    .cert-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #42b8de;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
 
-      .cert-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        color: #1a1f5e;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-      }
+    .title-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
 
-      .title-wrapper {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 0.5rem;
-      }
+    .cert-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #008b72;
+      margin: 8px auto 0;
+      border-radius: 4px;
+    }
 
-      .cert-title::after {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 3px;
-        background: #7fd047;
-        margin: 8px auto 0;
-        border-radius: 4px;
-      }
+    .cert-sub {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c3a6e;
+      display: inline-block;
+      padding: 0.35rem 1.5rem;
+      border-radius: 40px;
+      letter-spacing: 0.2px;
+    }
 
-      .cert-sub {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #2c3a6e;
-        display: inline-block;
-        padding: 0.35rem 1.5rem;
-        border-radius: 40px;
-        margin-bottom: 1.6rem;
-        letter-spacing: 0.2px;
+    .recipient-name {
+      font-size: 4rem;
+      font-family: "Updock", cursive;
+      color: #2c3e8f;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #2c3e66;
+      max-width: 90%;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 450;
+    }
+
+    .highlight-blue {
+      color: #42b8de;
+      font-weight: 600;
+      border-bottom: 1px dashed #008b72;
+    }
+
+    .certificate-verification {
+      margin-top: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .certificate-id {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      padding: 0.42rem 1.25rem;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .qr-box {
+      width: 75px;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .id-label {
+      font-weight: 600;
+      color: #1e2a5e;
+      font-size: 0.85rem;
+    }
+
+    .id-value {
+      font-family: "Geist Mono", "JetBrains Mono", monospace;
+      font-weight: 600;
+      background: white;
+      padding: 0.2rem 1rem;
+      border-radius: 36px;
+      color: #0b2b4f;
+      letter-spacing: 0.5px;
+      font-size: 0.85rem;
+      border: 0.5px solid #cddef5;
+    }
+
+    /* ========= SECCIÓN FIRMAS (TRES) ========= */
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .signature-block {
+      flex: 1;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .signature-img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      position: relative;
+      bottom: -15px;
+      transition: all 0.2s;
+    }
+
+    .signature-name {
+      border-top: 1px solid #cbddee;
+      padding: 10px 0;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #111c3d;
+    }
+
+    .signature-title {
+      font-size: 0.7rem;
+      color: #5a6f97;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .certificate::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: linear-gradient(90deg, #008b72, #008b72, #008b72);
+    }
+
+    .certificate::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(90deg, #42b8de, #42b8de, #42b8de);
+    }
+
+
+    .certificate-extra-page {
+      background: #ffffff;
+    }
+
+    .curriculum-page-inner {
+      width: 100%;
+      height: 100%;
+      padding: 1.55rem 2.2rem 4.8rem 2.2rem;
+      box-sizing: border-box;
+      color: #17204f;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .curriculum-logos-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .curriculum-logos-row .logo-item {
+      padding: 2px 0;
+    }
+
+    .curriculum-logos-row .logo-img {
+      max-height: 95px;
+      max-width: 320px;
+    }
+
+    .curriculum-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.35rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .curriculum-header h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #42b8de;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .curriculum-header h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #008b72;
+      margin: 8px auto 0;
+      border-radius: 4px;
+    }
+
+
+    .curriculum-description {
+      font-size: 0.75rem;
+      color: #2c3e66;
+      max-width: 90%;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 450;
+      text-align: center;
+    }
+
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.58rem 1rem;
+      flex: 1;
+      align-content: start;
+      margin-top: 0.2rem;
+    }
+
+    .curriculum-module {
+      padding: 0;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .curriculum-module-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.42rem;
+      margin: 0 0 0.25rem 0;
+      color: #42b8de;
+      font-size: 0.74rem;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .curriculum-module-title span {
+      color: #2a8f44;
+      font-family: "Geist Mono", monospace;
+      font-size: 0.68rem;
+      font-weight: 900;
+      min-width: 1.5rem;
+    }
+
+    .curriculum-module ul {
+      margin: 0;
+      padding-left: 1.05rem;
+      color: #34405f;
+      font-size: 0.62rem;
+      line-height: 1.35;
+    }
+
+    .curriculum-module li+li {
+      margin-top: 0.12rem;
+    }
+
+    .curriculum-objectives {
+      width: min(850px, 90%);
+      margin: 0.05rem auto 0;
+      display: none;
+      text-align: left;
+      border: 1px solid rgba(127, 208, 71, 0.28);
+      border-radius: 16px;
+      padding: 0.55rem 0.75rem;
+      background: rgba(127, 208, 71, 0.055);
+    }
+
+    .curriculum-objectives.is-visible {
+      display: block;
+    }
+
+    .curriculum-objectives-title {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #42b8de;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+
+    .curriculum-objectives ul {
+      margin: 0;
+      padding-left: 1rem;
+      color: #34405f;
+      font-size: 0.62rem;
+      line-height: 1.35;
+    }
+
+
+    .certificate-registry-card {
+      width: min(760px, 78%);
+      margin: 0.05rem auto 0.25rem;
+      border: 1px solid rgba(127, 208, 71, 0.42);
+      overflow: hidden;
+    }
+
+    .registry-title {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.68rem;
+      font-weight: 900;
+      color: #42b8de;
+      padding: 0.32rem 0.5rem;
+      border-bottom: 1px solid rgba(127, 208, 71, 0.28);
+      background: rgba(127, 208, 71, 0.09);
+    }
+
+    .registry-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .registry-table th,
+    .registry-table td {
+      border: 1px solid rgba(127, 208, 71, 0.25);
+      padding: 0.24rem 0.42rem;
+      font-size: 0.62rem;
+      line-height: 1.25;
+      color: #26365f;
+      vertical-align: middle;
+      word-break: break-word;
+    }
+
+    .registry-table th {
+      width: 26%;
+      color: #42b8de;
+      font-weight: 800;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .registry-table td {
+      font-weight: 650;
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    .registry-qr-cell {
+      width: 104px;
+      min-width: 104px;
+      text-align: center !important;
+      background: #ffffff !important;
+      padding: 0.22rem 0.28rem !important;
+    }
+
+    .registry-qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.12rem;
+      min-height: 82px;
+    }
+
+    .registry-qr-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .registry-qr-label {
+      font-size: 0.46rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #42b8de;
+    }
+
+    .curriculum-continuation-label {
+      text-align: center;
+      font-size: 0.62rem;
+      color: #5a6f97;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: -0.15rem;
+    }
+
+    /* Estado temporal usado solo durante la descarga del PDF.
+       Esto elimina gaps/overflow y evita que html2pdf inserte páginas blancas. */
+    body.pdf-exporting {
+      background: #ffffff !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+
+    body.pdf-exporting .toolbar {
+      display: none !important;
+    }
+
+    body.pdf-exporting .pdf-pages {
+      width: 11in !important;
+      max-width: 11in !important;
+      gap: 0 !important;
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      background: #ffffff !important;
+    }
+
+    body.pdf-exporting .certificate {
+      width: 11in !important;
+      height: 8.5in !important;
+      min-height: 8.5in !important;
+      max-height: 8.5in !important;
+      aspect-ratio: auto !important;
+      border-radius: 0 !important;
+      overflow: hidden !important;
+      flex: none !important;
+      box-shadow: none !important;
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+
+    body.pdf-exporting .certificate:not(:last-child) {
+      page-break-after: auto !important;
+      break-after: auto !important;
+    }
+
+    /* Ajustes SOLO para la captura del PDF.
+       El preview queda igual, pero las firmas se separan del footer azul
+       cuando html2canvas renderiza la portada a 11in x 8.5in. */
+    body.pdf-exporting .cert-inner {
+      padding-top: 1.45rem !important;
+      padding-bottom: 7.15rem !important;
+    }
+
+    body.pdf-exporting .logos-row {
+      margin-bottom: 0.45rem !important;
+    }
+
+    body.pdf-exporting .main-content {
+      margin: 0 !important;
+    }
+
+    body.pdf-exporting .cert-sub {
+      margin-bottom: 0.35rem !important;
+      padding-top: 0.2rem !important;
+      padding-bottom: 0.2rem !important;
+    }
+
+    body.pdf-exporting .recipient-name {
+      margin-bottom: 0.35rem !important;
+    }
+
+    body.pdf-exporting .description {
+      line-height: 1.62 !important;
+    }
+
+    body.pdf-exporting .certificate-verification {
+      margin-top: 0.75rem !important;
+      gap: 0.35rem !important;
+    }
+
+    body.pdf-exporting .certificate-id {
+      gap: 0.45rem !important;
+      padding-top: 0.25rem !important;
+      padding-bottom: 0.25rem !important;
+    }
+
+    body.pdf-exporting .qr-box {
+      width: 68px !important;
+      height: 68px !important;
+    }
+
+    body.pdf-exporting .signatures {
+      margin-top: 0.35rem !important;
+      padding-top: 0.25rem !important;
+      transform: translateY(-0.25rem);
+    }
+
+    @media (max-width: 680px) {
+      .description {
+        max-width: 95%;
+        font-size: 0.85rem;
       }
 
       .recipient-name {
-        font-size: 4rem;
-        font-family: "Updock", cursive;
-        color: #2c3e8f;
-        margin: 0.2rem 0 0.6rem 0;
+        font-size: 1.8rem;
       }
 
-      .description {
-        font-size: 1rem;
-        color: #2c3e66;
-        max-width: 80%;
-        margin: 0 auto;
-        line-height: 2;
-        font-weight: 450;
-      }
-
-      .highlight-blue {
-        color: #1a1f5e;
-        font-weight: 600;
-        border-bottom: 1px dashed #7fd047;
-      }
-
-      .certificate-id {
-        margin-top: 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.65rem;
-        flex-wrap: wrap;
-        background: #f6f9fe;
-        padding: 0.5rem 1.4rem;
-        border-radius: 60px;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid #e2eaf5;
-      }
-
-      .id-label {
-        font-weight: 600;
-        color: #1e2a5e;
-        font-size: 0.85rem;
-      }
-
-      .id-value {
-        font-family: "Geist Mono", "JetBrains Mono", monospace;
-        font-weight: 600;
-        background: white;
-        padding: 0.2rem 1rem;
-        border-radius: 36px;
-        color: #0b2b4f;
-        letter-spacing: 0.5px;
-        font-size: 0.85rem;
-        border: 0.5px solid #cddef5;
-      }
-
-      .course-detail {
-        margin-top: 1.2rem;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .detail-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #f8fafd;
-        padding: 0.3rem 1.1rem;
-        border-radius: 50px;
-      }
-
-      .detail-item i {
-        display: flex;
-        align-items: center;
-        color: var(--fum-color-azul);
-      }
-
-      .detail-icon {
-        width: 20px;
-        height: 20px;
-        object-fit: contain;
-        filter: brightness(0) saturate(100%) invert(15%) sepia(45%)
-          saturate(1850%) hue-rotate(205deg) brightness(95%);
-      }
-
-      .detail-text {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #1f2f56;
-      }
-
-      /* ========= SECCIÓN FIRMAS (TRES) ========= */
-      .signatures {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-top: 1rem;
-        padding-top: 0.9rem;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-
-      .signature-block {
-        flex: 1;
-        text-align: center;
-        min-width: 140px;
+      .cert-title {
+        font-size: 1.6rem;
       }
 
       .signature-img {
-        max-width: 300px;
-        width: 100%;
-        height: auto;
-        position: relative;
-        bottom: -15px;
-        transition: all 0.2s;
+        max-width: 110px;
       }
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
 
-      .signature-name {
-        border-top: 1px solid #cbddee;
-        padding: 10px 0;
-        font-weight: 700;
-        font-size: 0.85rem;
-        color: #111c3d;
-      }
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
 
-      .signature-title {
-        font-size: 0.7rem;
-        color: #5a6f97;
-        font-weight: 500;
-        letter-spacing: 0.2px;
-      }
-
-      .certificate::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 15px;
-        background: linear-gradient(90deg, #7fd047, #7fd047, #7fd047);
-      }
-      .certificate::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 40px;
-        background: linear-gradient(90deg, #1a1f5e, #1a1f5e, #1a1f5e);
-      }
-
-      @media (max-width: 680px) {
-        .description {
-          max-width: 95%;
-          font-size: 0.85rem;
-        }
-        .recipient-name {
-          font-size: 1.8rem;
-        }
-        .cert-title {
-          font-size: 1.6rem;
-        }
-        .detail-item {
-          padding: 0.2rem 0.8rem;
-        }
-        .signature-img {
-          max-width: 110px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="toolbar">
-      <button class="btn-pdf" id="downloadPDFBtn">
-        <i class="fi fi-bs-download"></i> Descargar Certificado (PDF)
-      </button>
-    </div>
-
-    <div class="certificate" id="certificateContainer">
-      <div class="cert-inner">
-        <!-- SECCIÓN DE LOGOS: IZQUIERDA VIB ACADEMY | DERECHA: CONSULTORES VIB + COLEGIO CIAH -->
-        <div class="logos-row">
-          <div class="logo-left">
-            <div class="logo-item">
-              <img
-                class="logo-img"
-                src="assets/img/logo-academy.png"
-                alt="Logo VIB Academy"
-                style="border-radius: 18px; padding: 6px 14px; width: 250px"
-              />
-              <!-- Reemplazar con la imagen real -->
-            </div>
-          </div>
-          <div class="logo-right-group">
-            <div class="logo-item">
-              <img
-                class="logo-img"
-                src="assets/img/logo-vib.png"
-                alt="Consultores VIB"
-                style="border-radius: 18px; padding: 6px 12px"
-              />
-            </div>
-            <div class="logo-item">
-              <img
-                class="logo-img"
-                src="assets/img/logo-colegio.png"
-                alt="Colegio CIAH"
-                style="border-radius: 18px; padding: 6px 12px"
-              />
-            </div>
-          </div>
+  <div class="fac-layout">
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="cursos.html" class="fac-nav-item"><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="certificados.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
         </div>
-
-        <!-- ZONA CENTRAL DEL CERTIFICADO (información basada en primera imagen) -->
-        <div class="main-content">
-          <div class="title-wrapper">
-            <div class="cert-title">CERTIFICADO DE APROBACIÓN</div>
-          </div>
-          <div class="cert-sub">Este certificado es presentado a:</div>
-
-          <!-- Nombre del receptor (ahora editable directamente, pero también se puede actualizar desde JS) -->
-          <div class="recipient-name" id="studentName">
-            Nombre del Estudiante
-          </div>
-
-          <div class="description">
-            Por haber culminado satisfactoriamente el programa
-            <span class="highlight-blue" id="certCurso"
-              >“Manejo Seguro de Materiales y Sustancias Peligrosas
-              (MATPEL)”</span
-            >
-            con una carga horaria de
-            <strong id="certDuracion">120 horas</strong>, demostrando excelencia
-            académica y competencias profesionales.
-          </div>
-
-          <!-- NÚMERO IDENTIFICADOR ALFANUMÉRICO ÚNICO -->
-          <div class="certificate-id">
-            <span class="id-label">NÚMERO DE CERTIFICADO:</span>
-            <span class="id-value" id="certIdValue"
-              >VIB-CIAH-2411-9F2G-7H3K</span
-            >
-          </div>
-
-          <!-- DETALLES CON ICONOS DE FLATICON (SVG simulados) -->
-          <div class="course-detail">
-            <div class="detail-item">
-              <i class="fi fi-rs-calendar"></i>
-              <span class="detail-text" id="certEmision"
-                >Emisión del Certificado: 15 de mayo de 2026</span
-              >
-            </div>
-            <div class="detail-item">
-              <i class="fi fi-rs-calendar-clock"></i>
-              <span class="detail-text" id="certInicio"
-                >Inicio: 19/05/2026</span
-              >
-            </div>
-            <div class="detail-item">
-              <i class="fi fi-rs-workshop"></i>
-              <span class="detail-text">Modalidad: Teledocencia</span>
-            </div>
-          </div>
+        <div class="fac-sidebar-menu" style="margin-top: 6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="perfil.html" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="notificaciones.html" class="fac-nav-item"><i
+              class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a>
+          <a href="configuracion.html" class="fac-nav-item"><i
+              class="fi fi-rs-settings fac-nav-item-icon"></i>Configuración</a>
+          <a href="soporte.html" class="fac-nav-item"><i class="fi fi-rs-user-headset"></i>Soporte</a>
         </div>
-
-        <!-- TRES FIRMAS: CONSULTORES VIB, COLEGIO CIAH, INSTRUCTOR -->
-        <div class="signatures">
-          <!-- Firma 1: Consultores VIB -->
-          <div class="signature-block">
-            <img
-              class="signature-img"
-              src="assets/img/firma-vib.png"
-              alt="Firma Consultores VIB"
-            />
-            <div class="signature-name">Ing. Allan Izaguirre</div>
-            <div class="signature-title">GERENTE GENERAL · CONSULTORES VIB</div>
-          </div>
-
-          <!-- Firma 2: Colegio CIAH -->
-          <div class="signature-block">
-            <img
-              class="signature-img"
-              src="assets/img/firma-ciah.png"
-              alt="Firma Colegio CIAH"
-            />
-            <div class="signature-name">Nombre del Representante</div>
-            <div class="signature-title">PRESIDENTE · CIAH</div>
-          </div>
-
-          <!-- Firma 3: Instructor -->
-          <div class="signature-block">
-            <img
-              class="signature-img"
-              src="assets/img/firma-instructor.png"
-              alt="Firma Instructor"
-            />
-            <div class="signature-name" id="certInstructorFirma">
-              Nombre del Instructor
-            </div>
-            <div class="signature-title">INSTRUCTOR</div>
-          </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
         </div>
       </div>
-    </div>
+    </aside>
 
-    <script>
-      (function () {
-        // ── DATOS DEL CURSO (deben coincidir con curso-post.html) ──
-        const CURSO_DATA = (function () {
-          const stored = localStorage.getItem("vib_curso_activo");
-          if (stored) {
+    <div class="fac-main">
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle" aria-label="Abrir menú">
+          <i class="fi fi-bs-menu-burger"></i>
+        </button>
+
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track">
+            <span class="fac-announcement-item">Vista oficial del certificado emitido por <strong>Academia
+                VIB</strong>.</span>
+          </div>
+        </div>
+
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0" aria-label="Perfil"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username" id="navUserName">Nicole Ramos</span>
+                <span class="fac-topbar-userrole">Estudiante</span>
+              </div>
+              <div class="fac-avatar" style="width: 34px; height: 34px; font-size: 11px">
+                <span class="fac-avatar-initials" id="navUserInitials">NR</span>
+              </div>
+            </div>
+
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar" id="dropdownInitials">NR</div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name" id="dropdownName">Nicole Ramos</p>
+                  <p class="fac-profile-dropdown-role">Estudiante</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="perfil.html" class="fac-profile-dropdown-item" role="menuitem"><i class="fi fi-rs-user"></i> Mi
+                perfil</a>
+              <a href="certificados.html" class="fac-profile-dropdown-item" role="menuitem"><i
+                  class="fi fi-rs-diploma"></i> Mis certificados</a>
+              <a href="configuracion.html" class="fac-profile-dropdown-item" role="menuitem"><i
+                  class="fi fi-rs-settings"></i> Configuración</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="fac-content">
+        <div class="certificate-page-head">
+          <div>
+            <div class="certificate-page-kicker"><i class="fi fi-rs-diploma"></i> Certificado oficial</div>
+            <h1 class="certificate-page-title">Vista del certificado</h1>
+            <p class="certificate-page-text">Revisa el certificado dentro de la plataforma y descarga el PDF con el
+              formato final.</p>
+          </div>
+          <div class="toolbar">
+            <button class="btn-pdf" id="downloadPDFBtn">
+              <i class="fi fi-bs-download"></i> Descargar Certificado (PDF)
+            </button>
+          </div>
+        </div>
+
+        <section class="certificate-stage">
+          <div class="pdf-pages" id="certificateExport">
+            <div class="certificate" id="certificateContainer">
+              <div class="cert-inner">
+                <!-- SECCIÓN DE LOGOS: IZQUIERDA VIB ACADEMY | DERECHA: CONSULTORES VIB + COLEGIO CIAH -->
+                <div class="logos-row">
+                  <div class="logo-left">
+                    <div class="logo-item">
+                      <img class="logo-img logo-academia-img" src="assets/img/logo-academia.png" alt="Logo VIB Academy"
+                        style="border-radius: 18px; padding: 6px 14px" />
+                      <!-- Reemplazar con la imagen real -->
+                    </div>
+                  </div>
+                  <div class="logo-right-group">
+                    <div class="logo-item">
+                      <img class="logo-img" src="assets/img/logo-vib.png" alt="Consultores VIB"
+                        style="border-radius: 18px; padding: 6px 12px" />
+                    </div>
+                    <div class="logo-item" style="display: none;">
+                      <img class="logo-img" src="assets/img/colprocah.png" alt="Colegio CIAH"
+                        style="border-radius: 18px; padding: 6px 12px" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ZONA CENTRAL DEL CERTIFICADO (información basada en primera imagen) -->
+                <div class="main-content">
+                  <div class="title-wrapper">
+                    <div class="cert-title">CERTIFICADO DE APROBACIÓN</div>
+                  </div>
+                  <div class="cert-sub">Este certificado es presentado a:</div>
+
+                  <!-- Nombre del receptor (ahora editable directamente, pero también se puede actualizar desde JS) -->
+                  <div class="recipient-name" id="studentName">
+                    Nombre del Estudiante
+                  </div>
+
+                  <div class="description">
+                    Por haber culminado satisfactoriamente el programa
+                    <span class="highlight-blue" id="certCurso">“Manejo Seguro de Materiales y Sustancias Peligrosas
+                      (MATPEL)”</span>
+                    con una carga horaria de
+                    <strong id="certDuracion">120 horas académicas</strong>, demostrando excelencia
+                    académica y competencias profesionales y habiéndolo finalizado con éxito el día <strong
+                      id="certEmision">15
+                      de mayo de
+                      2026</strong>.
+                  </div>
+
+                  <!-- NÚMERO IDENTIFICADOR ALFANUMÉRICO ÚNICO + QR ESTÁTICO DE VERIFICACIÓN -->
+                  <div class="certificate-verification">
+                    <div class="certificate-id">
+                      <span class="id-label">NÚMERO DE CERTIFICADO:</span>
+                      <span class="id-value" id="certIdValue">VIB-2411-9F2G-7H3K</span>
+                    </div>
+                    <div class="qr-box" aria-label="Código QR de verificación del certificado">
+                      <!-- Mockup estático: cambia esta imagen por el QR real cuando ya tengas la URL definitiva -->
+                      <img class="qr-img" id="certQrImage" src="assets/img/qr-cert-mockup.png"
+                        alt="QR de verificación del certificado" />
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- TRES FIRMAS: CONSULTORES VIB, COLEGIO CIAH, INSTRUCTOR -->
+                <div class="signatures">
+                  <!-- Firma 1: Consultores VIB -->
+                  <div class="signature-block">
+                    <img class="signature-img" src="assets/img/firma-vib.png" alt="Firma Consultores VIB" />
+                    <div class="signature-name">Ing. Allan Izaguirre</div>
+                    <div class="signature-title">GERENTE GENERAL · Consultores VIB</div>
+                  </div>
+
+                  <!-- Firma 2: Colegio CIAH -->
+                  <div class="signature-block">
+                    <img class="signature-img" src="assets/img/firma-ciah.png" alt="Firma Colegio CIAH" />
+                    <div class="signature-name">Nombre del Representante</div>
+                    <div class="signature-title">PRESIDENTE · INSTITUCIÓN</div>
+                  </div>
+
+                  <!-- Firma 3: Instructor -->
+                  <div class="signature-block">
+                    <img class="signature-img" src="assets/img/firma-instructor.png" alt="Firma Instructor" />
+                    <div class="signature-name" id="certInstructorFirma">
+                      Nombre del Instructor
+                    </div>
+                    <div class="signature-title">INSTRUCTOR</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Las páginas de temario se generan dinámicamente.
+         Si el contenido crece, se crean páginas adicionales sin deformar el diseño ni meter páginas blancas. -->
+            <div id="curriculumPagesArea"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Términos de uso</a>
+            <a href="#" class="fac-footer-link">Política de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+            <a href="https://consultoresvib.com" target="_blank" class="fac-footer-link">consultoresvib.com</a>
+          </div>
+          <p class="fac-footer-copy">
+            <span>&copy; 2026 Academia VIB · Todos los derechos reservados</span>
+            <span>Plataforma desarrollada por <a href="https://nickramen.com/" target="_blank">nickramen</a></span>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const verifyParams = new URLSearchParams(window.location.search);
+      if (verifyParams.get("embedded") === "1") {
+        document.body.classList.add("cert-embedded");
+      }
+
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebarOverlay");
+      const sidebarToggle = document.getElementById("sidebarToggle");
+      const profileToggle = document.getElementById("profileToggle");
+      const profileMenu = document.getElementById("profileMenu");
+
+      function openSidebar() {
+        if (!sidebar || !overlay) return;
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSidebar() {
+        if (!sidebar || !overlay) return;
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      if (sidebarToggle) sidebarToggle.addEventListener("click", () => sidebar && sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar());
+      if (overlay) overlay.addEventListener("click", closeSidebar);
+
+      if (profileToggle && profileMenu) {
+        profileToggle.addEventListener("click", (event) => {
+          event.stopPropagation();
+          profileMenu.classList.toggle("is-open");
+          profileToggle.setAttribute("aria-expanded", profileMenu.classList.contains("is-open") ? "true" : "false");
+        });
+        document.addEventListener("click", (event) => {
+          if (!profileMenu.contains(event.target)) {
+            profileMenu.classList.remove("is-open");
+            profileToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // QR mockup estático. Reemplaza este archivo por el QR definitivo o cambia la ruta aquí.
+      const CERT_QR_IMAGE = "assets/img/qr-cert-mockup.png";
+
+      const VERIFY_STUDENT_DB = {
+        "0501000000000": {
+          nombre: "Nicole Ramos",
+          identidad: "0501000000000",
+        },
+      };
+
+      const verifyId = verifyParams.get("verifyId");
+      if (verifyId && VERIFY_STUDENT_DB[verifyId]) {
+        localStorage.setItem("vib_user_name", VERIFY_STUDENT_DB[verifyId].nombre);
+        localStorage.setItem("vib_user_identity", VERIFY_STUDENT_DB[verifyId].identidad);
+        localStorage.setItem("vib_user_identidad", VERIFY_STUDENT_DB[verifyId].identidad);
+      }
+
+      // ── DATOS DEL CURSO (deben coincidir con curso-post.html) ──
+      const CURSO_DATA = (function () {
+        const stored = localStorage.getItem("vib_curso_activo");
+        if (stored) {
+          try {
+            return JSON.parse(stored);
+          } catch (e) {
+            console.error("Error parsing curso data", e);
+          }
+        }
+        // Fallback: primer curso UMA por defecto
+        return {
+          "id": 1,
+          "nombre": "Gestión Ambiental Municipal: Funciones, Ordenamiento y Desarrollo Sostenible",
+          "slug": "gestion-ambiental-municipal-2026",
+          "instructor": "Ing. Allan Izaguirre",
+          "instructorIniciales": "AI",
+          "instructorRol": "Especialista en gestión ambiental municipal",
+          "instructorBio": "Consultor en innovación y sostenibilidad ambiental, con experiencia en fortalecimiento institucional, gestión municipal y acompañamiento técnico a gobiernos locales.",
+          "instructorImagen": "instructor.webp",
+          "duracion": 60,
+          "duracionSemanas": 12,
+          "fechaInicio": "19/05/2026",
+          "nivel": "basico",
+          "precio": 138.0,
+          "descripcion": "Aprende a operar una UMA con claridad legal, planificación territorial, enfoque ODS y capacidad para acompañar el desarrollo económico local sin sacrificar los recursos naturales del municipio.",
+          "imagen": "curso.webp",
+          "badge": "Programa UMA",
+          "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+          "inscritos": 34,
+          "modulos": [
+            {
+              "titulo": "El ABC de la UMA: funciones y límites",
+              "clases": [
+                "Responsabilidades reales de la UMA y competencias del gobierno central",
+                "Organización diaria, semanal y mensual de la oficina ambiental"
+              ]
+            },
+            {
+              "titulo": "ODS aplicados a la alcaldía",
+              "clases": [
+                "Traducción de los ODS a acciones municipales concretas",
+                "Uso de los ODS para justificar proyectos y solicitar presupuesto"
+              ]
+            },
+            {
+              "titulo": "Ordenamiento territorial ambiental",
+              "clases": [
+                "Zonas permitidas y zonas restringidas: recarga hídrica, riesgo y expansión urbana",
+                "Uso de mapas básicos y criterios territoriales para decidir"
+              ]
+            },
+            {
+              "titulo": "Evaluación de proyectos y dictámenes locales",
+              "clases": [
+                "Revisión técnica de proyectos: lotificadoras, beneficios de café y gasolineras",
+                "Dictámenes ágiles sin regalar los recursos naturales"
+              ]
+            },
+            {
+              "titulo": "Medidas de mitigación y compromisos ambientales",
+              "clases": [
+                "Condiciones ambientales para aprobar proyectos municipales",
+                "Compromisos entre alcaldía y empresa privada"
+              ]
+            },
+            {
+              "titulo": "Economía circular y negocios verdes locales",
+              "clases": [
+                "Incentivos municipales para reciclaje, ahorro de agua y energía solar",
+                "Identificación de oportunidades verdes en la economía local"
+              ]
+            },
+            {
+              "titulo": "Fiscalización y control de la contaminación",
+              "clases": [
+                "Inspección de denuncias por agua, basura, humo o ruido",
+                "Requerimientos formales para corregir impactos ambientales"
+              ]
+            },
+            {
+              "titulo": "Régimen de sanciones y cero tolerancia",
+              "clases": [
+                "De la advertencia a la multa: criterios y cálculo",
+                "Paralización o clausura temporal de obras y negocios incumplidos"
+              ]
+            }
+          ]
+        };
+      })();
+
+      // ── HELPERS ──
+      function generarCodigo() {
+        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+        let id = "";
+        for (let i = 0; i < 8; i++)
+          id += chars[Math.floor(Math.random() * chars.length)];
+        return `VIB-${new Date().getFullYear()}-${id}`;
+      }
+
+      function formatearFecha(isoString) {
+        const date = isoString ? new Date(isoString) : new Date();
+        return date.toLocaleDateString("es-HN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+      }
+
+      // ── LEER / GENERAR DATOS DESDE LOCALSTORAGE ──
+      const storageKey = `vib_cert_${CURSO_DATA.slug}`;
+
+      let codigo = localStorage.getItem(storageKey + "_codigo");
+      if (!codigo) {
+        codigo = generarCodigo();
+        localStorage.setItem(storageKey + "_codigo", codigo);
+        localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
+      }
+
+      const fechaISO = localStorage.getItem(storageKey + "_fecha");
+      const fechaEmision = formatearFecha(fechaISO);
+      const userName =
+        localStorage.getItem("vib_user_name") || "Nombre del Estudiante";
+
+      // ── INYECTAR EN EL DOM ──
+      const elNombre = document.getElementById("studentName");
+      const elCodigo = document.getElementById("certIdValue");
+      const elEmision = document.getElementById("certEmision");
+      const elInicio = document.getElementById("certInicio");
+      const elDuracion = document.getElementById("certDuracion");
+      const elCurso = document.getElementById("certCurso");
+      const elInstructor3 = document.getElementById("certInstructorFirma");
+
+      if (elNombre) elNombre.textContent = userName;
+      if (elCodigo) elCodigo.textContent = codigo;
+      if (elEmision)
+        elEmision.textContent = fechaEmision;
+      if (elInicio)
+        elInicio.textContent = "Inicio: " + CURSO_DATA.fechaInicio;
+      if (elDuracion)
+        elDuracion.textContent =
+          CURSO_DATA.duracion + " horas académicas";
+      if (elCurso)
+        elCurso.textContent = "\u201C" + CURSO_DATA.nombre + "\u201D";
+      if (elInstructor3) elInstructor3.textContent = CURSO_DATA.instructor;
+
+      function getCourseDescription(course) {
+        return (
+          course.descripcion ||
+          course.description ||
+          course.resumen ||
+          course.subtitulo ||
+          course.objetivoGeneral ||
+          ""
+        );
+      }
+
+      function cleanValue(value, fallback = "—") {
+        if (value === null || value === undefined || value === "") return fallback;
+        return String(value);
+      }
+
+      function formatMoney(value) {
+        const number = Number(value);
+        if (!Number.isFinite(number)) return cleanValue(value);
+        return `$${number.toFixed(2)} USD`;
+      }
+
+      function getStudentIdentity() {
+        return (
+          localStorage.getItem("vib_user_identity") ||
+          localStorage.getItem("vib_user_identidad") ||
+          localStorage.getItem("vib_identity") ||
+          localStorage.getItem("vib_identidad") ||
+          "0501000000000"
+        );
+      }
+
+      function getApprovalGrade(course) {
+        return (
+          course.notaFinal ||
+          course.nota ||
+          course.calificacion ||
+          course.grade ||
+          (course.aprobacionMinima ? `${course.aprobacionMinima}%` : "Aprobado")
+        );
+      }
+
+      function splitModulesIntoPages(modules) {
+        const pages = [];
+        let current = [];
+        let weight = 0;
+        modules.forEach((modulo) => {
+          const moduleWeight = 1.05 + ((modulo.clases || []).length * 0.48);
+          const maxWeight = pages.length === 0 ? 21.5 : 24;
+          if (current.length && weight + moduleWeight > maxWeight) {
+            pages.push(current);
+            current = [];
+            weight = 0;
+          }
+          current.push(modulo);
+          weight += moduleWeight;
+        });
+        if (current.length) pages.push(current);
+        return pages.length ? pages : [[]];
+      }
+
+      function moduleMarkup(modulo, absoluteIndex) {
+        return `
+          <div class="curriculum-module">
+            <h3 class="curriculum-module-title"><span>${String(absoluteIndex + 1).padStart(2, "0")}</span>${modulo.titulo || `Módulo ${absoluteIndex + 1}`}</h3>
+            <ul>${(modulo.clases || []).map((clase) => `<li>${clase}</li>`).join("")}</ul>
+          </div>`;
+      }
+
+      function renderCurriculumPages() {
+        const curriculumArea = document.getElementById("curriculumPagesArea");
+        if (!curriculumArea) return;
+
+        const modules = Array.isArray(CURSO_DATA.modulos) ? CURSO_DATA.modulos : [];
+        const pages = splitModulesIntoPages(modules);
+        const courseDescription = getCourseDescription(CURSO_DATA);
+        const studentIdentity = getStudentIdentity();
+        const qrSource = document.getElementById("certQrImage")?.getAttribute("src") || CERT_QR_IMAGE;
+        let moduleIndex = 0;
+
+        curriculumArea.innerHTML = pages.map((pageModules, pageIndex) => {
+          const tableMarkup = pageIndex === 0 ? `
+            <div class="certificate-registry-card">
+              <div class="registry-title">Queda registrado este certificado</div>
+              <table class="registry-table" aria-label="Datos del certificado">
+                <tbody>
+                  <tr>
+                    <th>Código:</th>
+                    <td>${codigo}</td>
+                    <th>Fecha:</th>
+                    <td>${fechaEmision}</td>
+                    <td class="registry-qr-cell" rowspan="5">
+                      <div class="registry-qr-wrap">
+                        <img class="registry-qr-img" src="${qrSource}" alt="QR de verificación" />
+                        <span class="registry-qr-label">Verificación</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Curso:</th>
+                    <td colspan="3">${cleanValue(CURSO_DATA.nombre)}</td>
+                  </tr>
+                  <tr>
+                    <th>Estudiante:</th>
+                    <td>${cleanValue(userName)}</td>
+                    <th>Identidad:</th>
+                    <td>${cleanValue(studentIdentity)}</td>
+                  </tr>
+                  <tr>
+                    <th>Instructor:</th>
+                    <td>${cleanValue(CURSO_DATA.instructor)}</td>
+                    <th>Nota:</th>
+                    <td>${getApprovalGrade(CURSO_DATA)}</td>
+                  </tr>
+                  <tr>
+                    <th>Horas académicas:</th>
+                    <td>${cleanValue(CURSO_DATA.duracion)} horas</td>
+                    <th>Duración:</th>
+                    <td>${cleanValue(CURSO_DATA.duracionSemanas)} semanas</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>` : `<div class="curriculum-continuation-label">Continuación del temario</div>`;
+
+          const modulesMarkup = pageModules.map((modulo) => moduleMarkup(modulo, moduleIndex++)).join("");
+
+          return `
+            <div class="certificate certificate-extra-page">
+              <div class="curriculum-page-inner">
+                <div class="curriculum-logos-row">
+                  <div class="logo-left">
+                    <div class="logo-item">
+                      <img class="logo-img logo-academia-img" src="assets/img/logo-academia.png" alt="Logo VIB Academy" style="border-radius: 18px; padding: 6px 14px" />
+                    </div>
+                  </div>
+                  <div class="logo-right-group">
+                    <div class="logo-item">
+                      <img class="logo-img" src="assets/img/logo-vib.png" alt="Consultores VIB" style="border-radius: 18px; padding: 6px 12px" />
+                    </div>
+                  </div>
+                </div>
+                <div class="curriculum-header">
+                  <h2>${cleanValue(CURSO_DATA.nombre, "Nombre del curso")}</h2>
+                </div>
+                ${pageIndex === 0 && courseDescription ? `<p class="curriculum-description">${courseDescription}</p>` : ""}
+                ${tableMarkup}
+                <div class="curriculum-grid">${modulesMarkup}</div>
+              </div>
+            </div>`;
+        }).join("");
+      }
+
+      const elQrImageBeforeRender = document.getElementById("certQrImage");
+      if (elQrImageBeforeRender) elQrImageBeforeRender.src = CERT_QR_IMAGE;
+
+      renderCurriculumPages();
+
+      // ── DESCARGA PDF ──
+      const downloadBtn = document.getElementById("downloadPDFBtn");
+      const elementToExport = document.getElementById("certificateExport");
+
+      const elQrImage = document.getElementById("certQrImage");
+      if (elQrImage) elQrImage.src = CERT_QR_IMAGE;
+
+      const pdfOptions = {
+        margin: 0,
+        filename: `Certificado_${userName.replace(/\s+/g, "_")}_${codigo}.pdf`,
+        image: { type: "jpeg", quality: 0.98 },
+        pagebreak: { mode: ["css", "legacy"], avoid: ".certificate" },
+        html2canvas: {
+          scale: 3,
+          letterRendering: true,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#ffffff",
+        },
+        jsPDF: {
+          unit: "in",
+          format: "letter",
+          orientation: "landscape",
+        },
+      };
+
+      function getJsPDFConstructor() {
+        return (window.jspdf && window.jspdf.jsPDF) || window.jsPDF || null;
+      }
+
+      function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            if (existing.dataset.loaded === "true") return resolve();
+            existing.addEventListener("load", resolve, { once: true });
+            existing.addEventListener("error", reject, { once: true });
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = src;
+          script.async = true;
+          script.crossOrigin = "anonymous";
+          script.referrerPolicy = "no-referrer";
+          script.onload = () => {
+            script.dataset.loaded = "true";
+            resolve();
+          };
+          script.onerror = () => reject(new Error(`No se pudo cargar ${src}`));
+          document.head.appendChild(script);
+        });
+      }
+
+      async function ensurePdfLibraries() {
+        const html2canvasSources = [
+          "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+          "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
+          "https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js",
+        ];
+        const jspdfSources = [
+          "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
+          "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js",
+          "https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js",
+        ];
+
+        if (typeof window.html2canvas === "undefined") {
+          for (const src of html2canvasSources) {
             try {
-              return JSON.parse(stored);
-            } catch (e) {
-              console.error("Error parsing curso data", e);
+              await loadScriptOnce(src);
+              if (typeof window.html2canvas !== "undefined") break;
+            } catch (error) {
+              console.warn(error.message);
             }
           }
-          // Fallback por si no hay datos (curso por defecto)
-          return {
-            id: 1,
-            nombre:
-              "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-            slug: "matpel-2026",
-            instructor: "Lic. Iván Tamariz",
-            duracion: 32,
-            duracionSemanas: 4,
-            fechaInicio: "19/05/2026",
-            precio: 49.0,
-            descripcion:
-              "Domina los protocolos y normativas nacionales e internacionales...",
-            imagen: "curso.webp",
-            badge: "Matriculado",
-            nivel: "intermedio",
-          };
-        })();
-
-        // ── HELPERS ──
-        function generarCodigo() {
-          const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-          let id = "";
-          for (let i = 0; i < 8; i++)
-            id += chars[Math.floor(Math.random() * chars.length)];
-          return `VIB-CIAH-${new Date().getFullYear()}-${id}`;
         }
 
-        function formatearFecha(isoString) {
-          const date = isoString ? new Date(isoString) : new Date();
-          return date.toLocaleDateString("es-HN", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          });
-        }
-
-        // ── LEER / GENERAR DATOS DESDE LOCALSTORAGE ──
-        const storageKey = `vib_cert_${CURSO_DATA.slug}`;
-
-        let codigo = localStorage.getItem(storageKey + "_codigo");
-        if (!codigo) {
-          codigo = generarCodigo();
-          localStorage.setItem(storageKey + "_codigo", codigo);
-          localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
-        }
-
-        const fechaISO = localStorage.getItem(storageKey + "_fecha");
-        const fechaEmision = formatearFecha(fechaISO);
-        const userName =
-          localStorage.getItem("vib_user_name") || "Nombre del Estudiante";
-
-        // ── INYECTAR EN EL DOM ──
-        const elNombre = document.getElementById("studentName");
-        const elCodigo = document.getElementById("certIdValue");
-        const elEmision = document.getElementById("certEmision");
-        const elInicio = document.getElementById("certInicio");
-        const elDuracion = document.getElementById("certDuracion");
-        const elCurso = document.getElementById("certCurso");
-        const elInstructor3 = document.getElementById("certInstructorFirma");
-
-        if (elNombre) elNombre.textContent = userName;
-        if (elCodigo) elCodigo.textContent = codigo;
-        if (elEmision)
-          elEmision.textContent = "Emisión del Certificado: " + fechaEmision;
-        if (elInicio)
-          elInicio.textContent = "Inicio: " + CURSO_DATA.fechaInicio;
-        if (elDuracion)
-          elDuracion.textContent =
-            "Duración: " + CURSO_DATA.duracion + " horas";
-        if (elCurso)
-          elCurso.textContent = "\u201C" + CURSO_DATA.nombre + "\u201D";
-        if (elInstructor3) elInstructor3.textContent = CURSO_DATA.instructor;
-
-        // ── DESCARGA PDF ──
-        const downloadBtn = document.getElementById("downloadPDFBtn");
-        const elementToExport = document.getElementById("certificateContainer");
-
-        const pdfOptions = {
-          margin: 0,
-          filename: `Certificado_${userName.replace(/\s+/g, "_")}_${codigo}.pdf`,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: {
-            scale: 3,
-            letterRendering: true,
-            useCORS: true,
-            logging: false,
-            backgroundColor: "#ffffff",
-          },
-          jsPDF: {
-            unit: "in",
-            format: "letter",
-            orientation: "landscape",
-          },
-        };
-
-        async function downloadAsPDF() {
-          if (!elementToExport) return;
-          const originalBtnText = downloadBtn.innerHTML;
-          downloadBtn.innerHTML =
-            '<i class="fi fi-bs-loader"></i> Generando PDF...';
-          downloadBtn.disabled = true;
-          try {
-            await new Promise((r) => setTimeout(r, 200));
-            await html2pdf().set(pdfOptions).from(elementToExport).save();
-          } catch (error) {
-            console.error("Error al generar el PDF:", error);
-            alert(
-              "Hubo un problema al generar el PDF. Verifica que las imágenes estén disponibles.",
-            );
-          } finally {
-            downloadBtn.innerHTML = originalBtnText;
-            downloadBtn.disabled = false;
+        if (!getJsPDFConstructor()) {
+          for (const src of jspdfSources) {
+            try {
+              await loadScriptOnce(src);
+              if (getJsPDFConstructor()) break;
+            } catch (error) {
+              console.warn(error.message);
+            }
           }
         }
 
-        if (downloadBtn) {
-          downloadBtn.addEventListener("click", downloadAsPDF);
-        }
+        return {
+          html2canvasReady: typeof window.html2canvas !== "undefined",
+          JsPDFConstructor: getJsPDFConstructor(),
+          html2pdfReady: typeof window.html2pdf === "function",
+        };
+      }
 
-        console.log("✅ Certificado cargado:", {
-          userName,
-          codigo,
-          fechaEmision,
-        });
-      })();
-    </script>
-  </body>
+      async function waitForImages(container) {
+        const images = Array.from(container.querySelectorAll("img"));
+        await Promise.all(
+          images.map(async (img) => {
+            if (!img.getAttribute("src")) return;
+            if (img.complete && img.naturalWidth > 0) return;
+            try {
+              if (typeof img.decode === "function") {
+                await img.decode();
+                return;
+              }
+            } catch (_) {
+              // Si decode falla, intentamos esperar el evento load/error abajo.
+            }
+            await new Promise((resolve) => {
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+              setTimeout(resolve, 2500);
+            });
+          }),
+        );
+      }
+
+      async function downloadAsPDF() {
+        if (!elementToExport) return;
+        const originalBtnText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML =
+          '<i class="fi fi-bs-loader"></i> Generando PDF...';
+        downloadBtn.disabled = true;
+        try {
+          document.body.classList.add("pdf-exporting");
+          await waitForImages(elementToExport);
+          await new Promise((r) => setTimeout(r, 250));
+
+          const { html2canvasReady, JsPDFConstructor, html2pdfReady } = await ensurePdfLibraries();
+
+          if (html2canvasReady && JsPDFConstructor) {
+            const pdf = new JsPDFConstructor({ unit: "in", format: "letter", orientation: "landscape" });
+            const pages = Array.from(elementToExport.querySelectorAll(".certificate")).filter((page) => page.offsetWidth > 0 && page.offsetHeight > 0);
+
+            for (let i = 0; i < pages.length; i++) {
+              const canvas = await window.html2canvas(pages[i], {
+                scale: 3,
+                letterRendering: true,
+                useCORS: true,
+                allowTaint: true,
+                logging: false,
+                backgroundColor: "#ffffff",
+                width: pages[i].offsetWidth,
+                height: pages[i].offsetHeight,
+                windowWidth: pages[i].scrollWidth,
+                windowHeight: pages[i].scrollHeight,
+                scrollX: 0,
+                scrollY: 0,
+              });
+              if (i > 0) pdf.addPage("letter", "landscape");
+              pdf.addImage(canvas.toDataURL("image/jpeg", 0.98), "JPEG", 0, 0, 11, 8.5);
+            }
+
+            pdf.save(pdfOptions.filename);
+            return;
+          }
+
+          // Fallback: si el navegador bloquea la carga independiente de html2canvas/jsPDF,
+          // usamos el bundle de html2pdf cuando esté disponible.
+          if (html2pdfReady) {
+            await window.html2pdf().set(pdfOptions).from(elementToExport).save();
+            return;
+          }
+
+          throw new Error("No se pudieron cargar las librerías necesarias para generar el PDF.");
+        } catch (error) {
+          console.error("Error al generar el PDF:", error);
+          alert(
+            "Hubo un problema al generar el PDF porque el navegador no pudo cargar las librerías necesarias. Recarga la página e intenta de nuevo.",
+          );
+        } finally {
+          document.body.classList.remove("pdf-exporting");
+          downloadBtn.innerHTML = originalBtnText;
+          downloadBtn.disabled = false;
+        }
+      }
+
+      if (downloadBtn) {
+        downloadBtn.addEventListener("click", downloadAsPDF);
+      }
+
+      console.log("✅ Certificado cargado:", {
+        userName,
+        codigo,
+        fechaEmision,
+      });
+    })();
+  </script>
+</body>
+
 </html>

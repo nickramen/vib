@@ -1,2808 +1,2761 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Manejo Seguro de Materiales y Sustancias Peligrosas — VIB Academy
-    </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      /* ══════════════════════════════════════════════
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>
+    Manejo Seguro de Materiales y Sustancias Peligrosas — VIB Academy
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ══════════════════════════════════════════════
          GENERAR CERTIFICADO — sección CTA
       ══════════════════════════════════════════════ */
-      .fac-gencert-section {
-        margin-top: 4px;
-      }
-      .fac-gencert-box {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        background: linear-gradient(135deg, #f0fae8 0%, #e8f5e0 100%);
-        border: 1.5px solid #b8e08a;
-        border-radius: 16px;
-        padding: 28px 28px;
-      }
-      @media (max-width: 800px) {
-        .fac-gencert-box {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-      }
-      .fac-gencert-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: #7fd047;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        flex-shrink: 0;
-      }
-      .fac-gencert-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-gencert-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a2a10;
-        margin-bottom: 6px;
-      }
-      .fac-gencert-desc {
-        font-size: 13px;
-        color: #3a5020;
-        line-height: 1.6;
-        margin-bottom: 12px;
-      }
-      .fac-gencert-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 20px;
-      }
-      .badge-pendiente {
-        background: rgba(127, 208, 71, 0.15);
-        color: #4a7a20;
-        border: 1px solid #b8e08a;
-      }
-      .badge-listo {
-        background: #7fd047;
-        color: #fff;
-        border: 1px solid #6bb83a;
-      }
-      .fac-gencert-cta {
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      .fac-gencert-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: #7fd047;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        font-family: inherit;
-        transition:
-          background 0.2s,
-          transform 0.15s;
-        white-space: nowrap;
-      }
-      .fac-gencert-btn:hover:not(:disabled) {
-        background: #6bb83a;
-        transform: translateY(-1px);
-      }
-      .fac-gencert-btn:disabled {
-        background: #c8d8bc;
-        color: #8a9e7a;
-        cursor: not-allowed;
-        transform: none;
-      }
-      .fac-gencert-btn.loading {
-        opacity: 0.75;
-        cursor: wait;
-      }
-      .fac-gencert-hint {
-        font-size: 11px;
-        color: #6a8a50;
-        text-align: center;
-      }
+    .fac-gencert-section {
+      margin-top: 4px;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-gencert-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #f0fae8 0%, #e8f5e0 100%);
+      border: 1.5px solid #b8e08a;
+      border-radius: 16px;
+      padding: 28px 28px;
+    }
+
+    @media (max-width: 800px) {
+      .fac-gencert-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    .fac-gencert-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #008b72;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .fac-gencert-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-gencert-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a2a10;
+      margin-bottom: 6px;
+    }
+
+    .fac-gencert-desc {
+      font-size: 13px;
+      color: #3a5020;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .fac-gencert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .badge-pendiente {
+      background: rgba(127, 208, 71, 0.15);
+      color: #4a7a20;
+      border: 1px solid #b8e08a;
+    }
+
+    .badge-listo {
+      background: #008b72;
+      color: #fff;
+      border: 1px solid #6bb83a;
+    }
+
+    .fac-gencert-cta {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fac-gencert-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #008b72;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition:
+        background 0.2s,
+        transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .fac-gencert-btn:hover:not(:disabled) {
+      background: #6bb83a;
+      transform: translateY(-1px);
+    }
+
+    .fac-gencert-btn:disabled {
+      background: #c8d8bc;
+      color: #8a9e7a;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .fac-gencert-btn.loading {
+      opacity: 0.75;
+      cursor: wait;
+    }
+
+    .fac-gencert-hint {
+      font-size: 11px;
+      color: #6a8a50;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════════════════
          PLANTILLA PDF — oculta en pantalla
       ══════════════════════════════════════════════ */
-      #cert-pdf-template {
-        display: none;
-      }
-      .cert-page {
-        width: 900px;
-        min-height: 620px;
-        background: #fff;
-        font-family: "Georgia", serif;
-        padding: 0;
-        position: relative;
-        overflow: hidden;
-      }
-      /* Borde decorativo exterior */
-      .cert-border-outer {
-        position: absolute;
-        inset: 12px;
-        border: 3px solid #1a1f5e;
-        border-radius: 4px;
-        pointer-events: none;
-        z-index: 1;
-      }
-      .cert-border-inner {
-        position: absolute;
-        inset: 18px;
-        border: 1px solid #7fd047;
-        border-radius: 2px;
-        pointer-events: none;
-        z-index: 1;
-      }
-      /* Barra inferior azul */
-      .cert-bar-bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 22px;
-        background: #1a1f5e;
-        z-index: 2;
-      }
-      .cert-bar-accent {
-        position: absolute;
-        bottom: 22px;
-        left: 0;
-        right: 0;
-        height: 6px;
-        background: #7fd047;
-        z-index: 2;
-      }
-      /* Contenido centrado */
-      .cert-content {
-        position: relative;
-        z-index: 3;
-        padding: 36px 70px 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      /* Fila de logos arriba */
-      .cert-logos-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-      .cert-logo-img {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
-      }
-      /* Hojas decorativas esquinas — SVG inline */
-      .cert-leaf {
-        position: absolute;
-        z-index: 0;
-        opacity: 0.18;
-      }
-      .cert-leaf-tl {
-        top: 24px;
-        left: 24px;
-        width: 60px;
-      }
-      .cert-leaf-tr {
-        top: 24px;
-        right: 24px;
-        width: 60px;
-        transform: scaleX(-1);
-      }
-      .cert-leaf-bl {
-        bottom: 36px;
-        left: 24px;
-        width: 55px;
-      }
-      .cert-leaf-br {
-        bottom: 36px;
-        right: 24px;
-        width: 55px;
-        transform: scaleX(-1);
-      }
-      /* Tipografía */
-      .cert-subtitle {
-        font-family: "Geist", sans-serif;
-        font-size: 11px;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #555;
-        margin-bottom: 8px;
-      }
-      .cert-main-title {
-        font-size: 38px;
-        font-weight: 700;
-        color: #1a1f5e;
-        margin-bottom: 2px;
-        line-height: 1;
-      }
-      .cert-main-title span {
-        color: #7fd047;
-      }
-      .cert-divider-line {
-        width: 200px;
-        height: 2px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          #7fd047,
-          transparent
-        );
-        margin: 16px auto;
-      }
-      .cert-presented-to {
-        font-family: "Geist", sans-serif;
-        font-size: 11px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #888;
-        margin-bottom: 10px;
-      }
-      .cert-student-name {
-        font-size: 30px;
-        font-weight: 700;
-        color: #1a1f5e;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        margin-bottom: 6px;
-      }
-      .cert-completed-text {
-        font-style: italic;
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 6px;
-      }
-      .cert-course-name {
-        font-size: 22px;
-        font-weight: 700;
-        font-style: italic;
-        color: #1a1f5e;
-        margin-bottom: 20px;
-        line-height: 1.2;
-      }
-      /* Cuadro de datos */
-      .cert-data-box {
-        background: #f7f9f5;
-        border: 1px solid #dde8d2;
-        border-radius: 6px;
-        padding: 12px 24px;
-        display: flex;
-        gap: 0;
-        width: 100%;
-        margin-bottom: 20px;
-        font-family: "Geist", sans-serif;
-      }
-      .cert-data-col {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        padding: 0 16px;
-      }
-      .cert-data-col:not(:last-child) {
-        border-right: 1px solid #dde8d2;
-      }
-      .cert-data-col:first-child {
-        padding-left: 0;
-      }
-      .cert-data-col:last-child {
-        padding-right: 0;
-      }
-      .cert-data-row {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        font-size: 12px;
-        color: #333;
-      }
-      .cert-data-row strong {
-        color: #1a1f5e;
-        font-weight: 700;
-      }
-      .cert-data-icon {
-        width: 14px;
-        text-align: center;
-        color: #7fd047;
-        font-size: 11px;
-        flex-shrink: 0;
-      }
-      /* Código */
-      .cert-code {
-        font-family: "Geist", sans-serif;
-        font-size: 11px;
-        color: #888;
-        letter-spacing: 0.08em;
-        margin-bottom: 16px;
-      }
-      .cert-code strong {
-        color: #1a1f5e;
-      }
-      /* Firmas */
-      .cert-signatures-row {
-        display: flex;
-        justify-content: center;
-        gap: 60px;
-        width: 100%;
-        margin-top: 4px;
-      }
-      .cert-signature-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-      }
-      .cert-signature-imgs {
-        display: flex;
-        gap: 12px;
-        align-items: flex-end;
-        margin-bottom: 4px;
-      }
-      .cert-signature-img {
-        height: 48px;
-        width: auto;
-        object-fit: contain;
-      }
-      .cert-signature-line {
-        width: 140px;
-        height: 1px;
-        background: #aaa;
-      }
-      .cert-signature-name {
-        font-family: "Geist", sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        color: #1a1f5e;
-        text-align: center;
-      }
-      .cert-signature-role {
-        font-family: "Geist", sans-serif;
-        font-size: 10px;
-        color: #888;
-        text-align: center;
-      }
-    </style>
+    #cert-pdf-template {
+      display: none;
+    }
 
-    <style>
-      /* ══════════════════════════════════════════════
+    .cert-page {
+      width: 900px;
+      min-height: 620px;
+      background: #fff;
+      font-family: "Georgia", serif;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Borde decorativo exterior */
+    .cert-border-outer {
+      position: absolute;
+      inset: 12px;
+      border: 3px solid #42b8de;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cert-border-inner {
+      position: absolute;
+      inset: 18px;
+      border: 1px solid #008b72;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Barra inferior azul */
+    .cert-bar-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+      background: #42b8de;
+      z-index: 2;
+    }
+
+    .cert-bar-accent {
+      position: absolute;
+      bottom: 22px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: #008b72;
+      z-index: 2;
+    }
+
+    /* Contenido centrado */
+    .cert-content {
+      position: relative;
+      z-index: 3;
+      padding: 36px 70px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Fila de logos arriba */
+    .cert-logos-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .cert-logo-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    /* Hojas decorativas esquinas — SVG inline */
+    .cert-leaf {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.18;
+    }
+
+    .cert-leaf-tl {
+      top: 24px;
+      left: 24px;
+      width: 60px;
+    }
+
+    .cert-leaf-tr {
+      top: 24px;
+      right: 24px;
+      width: 60px;
+      transform: scaleX(-1);
+    }
+
+    .cert-leaf-bl {
+      bottom: 36px;
+      left: 24px;
+      width: 55px;
+    }
+
+    .cert-leaf-br {
+      bottom: 36px;
+      right: 24px;
+      width: 55px;
+      transform: scaleX(-1);
+    }
+
+    /* Tipografía */
+    .cert-subtitle {
+      font-family: "Geist", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .cert-main-title {
+      font-size: 38px;
+      font-weight: 700;
+      color: #42b8de;
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+
+    .cert-main-title span {
+      color: #008b72;
+    }
+
+    .cert-divider-line {
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(to right,
+          transparent,
+          #008b72,
+          transparent);
+      margin: 16px auto;
+    }
+
+    .cert-presented-to {
+      font-family: "Geist", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .cert-student-name {
+      font-size: 30px;
+      font-weight: 700;
+      color: #42b8de;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .cert-completed-text {
+      font-style: italic;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .cert-course-name {
+      font-size: 22px;
+      font-weight: 700;
+      font-style: italic;
+      color: #42b8de;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    /* Cuadro de datos */
+    .cert-data-box {
+      background: #f7f9f5;
+      border: 1px solid #dde8d2;
+      border-radius: 6px;
+      padding: 12px 24px;
+      display: flex;
+      gap: 0;
+      width: 100%;
+      margin-bottom: 20px;
+      font-family: "Geist", sans-serif;
+    }
+
+    .cert-data-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 16px;
+    }
+
+    .cert-data-col:not(:last-child) {
+      border-right: 1px solid #dde8d2;
+    }
+
+    .cert-data-col:first-child {
+      padding-left: 0;
+    }
+
+    .cert-data-col:last-child {
+      padding-right: 0;
+    }
+
+    .cert-data-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .cert-data-row strong {
+      color: #42b8de;
+      font-weight: 700;
+    }
+
+    .cert-data-icon {
+      width: 14px;
+      text-align: center;
+      color: #008b72;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    /* Código */
+    .cert-code {
+      font-family: "Geist", sans-serif;
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .cert-code strong {
+      color: #42b8de;
+    }
+
+    /* Firmas */
+    .cert-signatures-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .cert-signature-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cert-signature-imgs {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 4px;
+    }
+
+    .cert-signature-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .cert-signature-line {
+      width: 140px;
+      height: 1px;
+      background: #aaa;
+    }
+
+    .cert-signature-name {
+      font-family: "Geist", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #42b8de;
+      text-align: center;
+    }
+
+    .cert-signature-role {
+      font-family: "Geist", sans-serif;
+      font-size: 10px;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+
+  <style>
+    /* ══════════════════════════════════════════════
          LAYOUT BODY — 2 cols main + sidebar
       ══════════════════════════════════════════════ */
-      .fac-curso-body {
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: var(--fum-space-8);
-        align-items: start;
-      }
-      @media (max-width: 1100px) {
-        .fac-curso-body {
-          grid-template-columns: 1fr;
-        }
-      }
-      .fac-curso-main-col {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-12);
-        min-width: 0;
-      }
+    .fac-curso-body {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: var(--fum-space-8);
+      align-items: start;
+    }
 
-      /* ══════════════════════════════════════════════
+    @media (max-width: 1100px) {
+      .fac-curso-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fac-curso-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-12);
+      min-width: 0;
+    }
+
+    /* ══════════════════════════════════════════════
          HERO BANNER (dentro de main col, no full-width)
       ══════════════════════════════════════════════ */
+    .fac-curso-hero-banner {
+      position: relative;
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+      background: var(--fum-color-azul);
+      aspect-ratio: 2.5 / 1;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 700px) {
       .fac-curso-hero-banner {
-        position: relative;
-        border-radius: var(--fum-radius-lg);
-        overflow: hidden;
-        background: var(--fum-color-azul);
-        aspect-ratio: 2.5 / 1;
-        margin-bottom: 0;
+        aspect-ratio: 1 / 1;
       }
-      @media (max-width: 700px) {
-        .fac-curso-hero-banner {
-          aspect-ratio: 1 / 1;
-        }
-      }
-      .fac-curso-hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .fac-curso-hero-banner::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
+    }
+
+    .fac-curso-hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fac-curso-hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
           rgba(10, 14, 50, 0.78) 0%,
           rgba(10, 14, 50, 0.2) 55%,
-          transparent 100%
-        );
-        pointer-events: none;
-      }
-      .fac-curso-hero-banner-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        padding: var(--fum-space-6) var(--fum-space-7);
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: var(--fum-space-5);
-      }
-      @media (max-width: 600px) {
-        .fac-curso-hero-banner-content {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: var(--fum-space-5);
-        }
-      }
-      .fac-curso-hero-banner-left {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-      }
-      .fac-curso-hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: var(--fum-color-verde);
-        color: #fff;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.05em;
-        padding: 4px 10px;
-        border-radius: var(--fum-radius-sm);
-        text-transform: uppercase;
-        width: fit-content;
-        margin-bottom: 2px;
-      }
-      .fac-curso-hero-tag i {
-        font-size: 10px;
-      }
-      .fac-curso-hero-banner-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-bold);
-        color: #fff;
-        line-height: var(--fum-line-height-snug);
-        letter-spacing: -0.02em;
-        max-width: 520px;
-      }
-      @media (max-width: 700px) {
-        .fac-curso-hero-banner-title {
-          font-size: var(--fum-font-size-base);
-        }
-      }
-      .fac-curso-hero-banner-stats {
-        display: flex;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-        margin-top: 4px;
-      }
-      .fac-curso-hero-stat {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: var(--fum-font-weight-medium);
-      }
-      .fac-curso-hero-stat i {
-        font-size: 12px;
-        color: var(--fum-color-verde);
-      }
-      .fac-curso-hero-banner-right {
-        flex-shrink: 0;
-      }
-      .fac-brochure-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: var(--fum-space-2) var(--fum-space-4);
-        background: var(--fum-color-verde);
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-blanco);
-        font-family: inherit;
-        cursor: pointer;
-        border: none;
-        transition: background var(--fum-transition-fast);
-        text-decoration: none;
-      }
-      .fac-brochure-btn:hover {
-        background: var(--fum-color-verde-hover);
-        color: #fff;
-      }
+          transparent 100%);
+      pointer-events: none;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-curso-hero-banner-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: var(--fum-space-6) var(--fum-space-7);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--fum-space-5);
+    }
+
+    @media (max-width: 600px) {
+      .fac-curso-hero-banner-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--fum-space-5);
+      }
+    }
+
+    .fac-curso-hero-banner-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-2);
+    }
+
+    .fac-curso-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--fum-radius-sm);
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 2px;
+    }
+
+    .fac-curso-hero-tag i {
+      font-size: 10px;
+    }
+
+    .fac-curso-hero-banner-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-bold);
+      color: #fff;
+      line-height: var(--fum-line-height-snug);
+      letter-spacing: -0.02em;
+      max-width: 520px;
+    }
+
+    @media (max-width: 700px) {
+      .fac-curso-hero-banner-title {
+        font-size: var(--fum-font-size-base);
+      }
+    }
+
+    .fac-curso-hero-banner-stats {
+      display: flex;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .fac-curso-hero-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fum-font-size-xs);
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: var(--fum-font-weight-medium);
+    }
+
+    .fac-curso-hero-stat i {
+      font-size: 12px;
+      color: var(--fum-color-verde);
+    }
+
+    .fac-curso-hero-banner-right {
+      flex-shrink: 0;
+    }
+
+    .fac-brochure-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--fum-space-2) var(--fum-space-4);
+      background: var(--fum-color-verde);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-blanco);
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: background var(--fum-transition-fast);
+      text-decoration: none;
+    }
+
+    .fac-brochure-btn:hover {
+      background: var(--fum-color-verde-hover);
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════
          SECCIÓN GENÉRICA — igual que curso-pre
       ══════════════════════════════════════════════ */
-      .fac-curso-section {
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        padding: 0;
-      }
-      .fac-curso-section-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-5);
-      }
+    .fac-curso-section {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-curso-section-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-5);
+    }
+
+    /* ══════════════════════════════════════════════
          INFORMACIÓN GENERAL — descripción + 2 cards
       ══════════════════════════════════════════════ */
-      .fac-info-desc {
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        margin-bottom: var(--fum-space-6);
-      }
+    .fac-info-desc {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      margin-bottom: var(--fum-space-6);
+    }
+
+    .fac-info-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--fum-space-4);
+    }
+
+    @media (max-width: 700px) {
       .fac-info-cards-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--fum-space-4);
+        grid-template-columns: 1fr;
       }
-      @media (max-width: 700px) {
-        .fac-info-cards-row {
-          grid-template-columns: 1fr;
-        }
-      }
+    }
 
-      /* — Instructor card — */
-      .fac-instructor-card {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-        padding: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-instructor-header {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-      }
-      .fac-instructor-avatar {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: var(--fum-color-azul);
-        overflow: hidden;
-        flex-shrink: 0;
-      }
-      .fac-instructor-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .fac-instructor-meta {
-      }
-      .fac-instructor-name {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: var(--fum-color-negro);
-        margin-bottom: 2px;
-      }
-      .fac-instructor-role {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        font-weight: var(--fum-font-weight-semibold);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .fac-instructor-bio {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
+    /* — Instructor card — */
+    .fac-instructor-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-3);
+      padding: var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      background: var(--fum-color-bg-card);
+    }
 
-      /* — WhatsApp card — */
-      .fac-wa-card {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-        padding: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-      }
-      .fac-wa-header {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-      }
-      .fac-wa-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: #25d366;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 20px;
-        flex-shrink: 0;
-      }
-      .fac-wa-icon i {
-        display: flex;
-      }
-      .fac-wa-meta {
-      }
-      .fac-wa-title {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: #1a9e52;
-        margin-bottom: 2px;
-      }
-      .fac-wa-subtitle {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-wa-desc {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
-      .fac-wa-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        padding: var(--fum-space-3) var(--fum-space-4);
-        background: #25d366;
-        color: #fff;
-        border: none;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background var(--fum-transition-fast);
-        width: 100%;
-        margin-top: auto;
-      }
-      .fac-wa-btn:hover {
-        background: #1ebe5d;
-        color: #fff;
-      }
+    .fac-instructor-header {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-instructor-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--fum-color-azul);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .fac-instructor-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fac-instructor-meta {}
+
+    .fac-instructor-name {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+      margin-bottom: 2px;
+    }
+
+    .fac-instructor-role {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: var(--fum-font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .fac-instructor-bio {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    /* — WhatsApp card — */
+    .fac-wa-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-3);
+      padding: var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+    }
+
+    .fac-wa-header {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-wa-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .fac-wa-icon i {
+      display: flex;
+    }
+
+    .fac-wa-meta {}
+
+    .fac-wa-title {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: #1a9e52;
+      margin-bottom: 2px;
+    }
+
+    .fac-wa-subtitle {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-wa-desc {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: var(--fum-space-3) var(--fum-space-4);
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--fum-transition-fast);
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .fac-wa-btn:hover {
+      background: #1ebe5d;
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════
          LISTA DE CLASES
       ══════════════════════════════════════════════ */
-      .fac-clases-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-5);
-      }
-      .fac-clases-header-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-      }
-      .fac-clases-count {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        font-weight: var(--fum-font-weight-semibold);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-clases-list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-      }
-      .fac-clase-card {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        text-decoration: none;
-        transition: border-color var(--fum-transition-fast);
-        cursor: pointer;
-        position: relative;
-        background: var(--fum-color-bg-card);
-      }
-      .fac-clase-card.is-locked {
-        opacity: 0.55;
-        cursor: not-allowed;
-      }
-      .fac-clase-card.is-locked:hover {
-        border-color: var(--fum-color-border);
-      }
-      .fac-clase-num {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-bold);
-      }
-      .fac-clase-num i {
-        display: flex;
-      }
-      .fac-clase-num.num-completed {
-        background: var(--fum-color-verde);
-        color: #fff;
-        font-size: 14px;
-      }
-      .fac-clase-num.num-available {
-        background: #2b7fff;
-        color: var(--fum-color-blanco);
-      }
-      .fac-clase-num.num-locked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-        font-size: 13px;
-      }
-      .fac-clase-info {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-clase-semana {
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-        color: var(--fum-color-text-muted);
-        margin-bottom: 2px;
-      }
-      .fac-clase-titulo {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        line-height: var(--fum-line-height-snug);
-        margin-bottom: 4px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .fac-clase-card.is-locked .fac-clase-titulo {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-meta {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-      }
-      .fac-clase-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-meta-item i {
-        font-size: 11px;
-      }
+    .fac-clases-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .fac-clases-header-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-clases-count {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      font-weight: var(--fum-font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .fac-clases-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-2);
+    }
+
+    .fac-clase-card {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+      padding: var(--fum-space-4) var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      text-decoration: none;
+      transition: border-color var(--fum-transition-fast);
+      cursor: pointer;
+      position: relative;
+      background: var(--fum-color-bg-card);
+    }
+
+    .fac-clase-card.is-locked {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .fac-clase-card.is-locked:hover {
+      border-color: var(--fum-color-border);
+    }
+
+    .fac-clase-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-bold);
+    }
+
+    .fac-clase-num i {
+      display: flex;
+    }
+
+    .fac-clase-num.num-completed {
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .fac-clase-num.num-available {
+      background: #2b7fff;
+      color: var(--fum-color-blanco);
+    }
+
+    .fac-clase-num.num-locked {
+      background: var(--fum-color-border);
+      color: var(--fum-color-text-muted);
+      font-size: 13px;
+    }
+
+    .fac-clase-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-clase-semana {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--fum-color-text-muted);
+      margin-bottom: 2px;
+    }
+
+    .fac-clase-titulo {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      line-height: var(--fum-line-height-snug);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fac-clase-card.is-locked .fac-clase-titulo {
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-clase-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+    }
+
+    .fac-clase-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-clase-meta-item i {
+      font-size: 11px;
+    }
+
+    .fac-clase-badge {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--fum-radius-sm);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .fac-clase-badge i {
+      display: flex;
+      font-size: 10px;
+    }
+
+    .fac-clase-badge.badge-completed {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-clase-badge.badge-available {
+      background: #2b7fff;
+      color: #fff;
+    }
+
+    .fac-clase-badge.badge-locked {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-clase-badge.badge-upcoming {
+      background: #f0b100;
+      color: #fff;
+    }
+
+    @media (max-width: 500px) {
       .fac-clase-badge {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 4px 10px;
-        border-radius: var(--fum-radius-sm);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-      }
-      .fac-clase-badge i {
-        display: flex;
-        font-size: 10px;
-      }
-      .fac-clase-badge.badge-completed {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-clase-badge.badge-available {
-        background: #2b7fff;
-        color: #fff;
-      }
-      .fac-clase-badge.badge-locked {
-        background: var(--fum-color-bg-surface);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-badge.badge-upcoming {
-        background: #f0b100;
-        color: #fff;
-      }
-      @media (max-width: 500px) {
-        .fac-clase-badge {
-          display: none;
-        }
-        .fac-clase-titulo {
-          white-space: normal;
-        }
+        display: none;
       }
 
-      /* ══════════════════════════════════════════════
+      .fac-clase-titulo {
+        white-space: normal;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
          TEMARIO — acordeón
       ══════════════════════════════════════════════ */
-      .fac-temario-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-5);
-      }
-      .fac-temario-header-left {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-      .fac-temario-header-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-      }
-      .fac-temario-count {
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-tema-accordion {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-      }
-      .fac-tema-item {
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        overflow: hidden;
-        transition: border-color var(--fum-transition-fast);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-tema-btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: var(--fum-space-4) var(--fum-space-5);
-        font-family: inherit;
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        transition: background var(--fum-transition-fast);
-        gap: var(--fum-space-4);
-        background: transparent;
-      }
-      .fac-tema-chevron {
-        display: flex;
-        flex-shrink: 0;
-        font-size: 12px;
-        color: var(--fum-color-verde);
-        transition: transform var(--fum-transition-base);
-      }
-      .fac-tema-item.is-open .fac-tema-chevron {
-        transform: rotate(180deg);
-      }
-      .fac-tema-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      .fac-tema-body-inner {
-        padding: var(--fum-space-4) var(--fum-space-5);
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        border-top: 1px solid var(--fum-color-border);
-      }
-      .fac-tema-body-inner ul {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-        padding-left: var(--fum-space-4);
-      }
-      .fac-tema-body-inner li {
-        list-style: disc;
-        color: var(--fum-color-text-secondary);
-      }
+    .fac-temario-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--fum-space-5);
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-temario-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .fac-temario-header-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-temario-count {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .fac-tema-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-2);
+    }
+
+    .fac-tema-item {
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      overflow: hidden;
+      transition: border-color var(--fum-transition-fast);
+      background: var(--fum-color-bg-card);
+    }
+
+    .fac-tema-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--fum-space-4) var(--fum-space-5);
+      font-family: inherit;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--fum-transition-fast);
+      gap: var(--fum-space-4);
+      background: transparent;
+    }
+
+    .fac-tema-chevron {
+      display: flex;
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--fum-color-verde);
+      transition: transform var(--fum-transition-base);
+    }
+
+    .fac-tema-item.is-open .fac-tema-chevron {
+      transform: rotate(180deg);
+    }
+
+    .fac-tema-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .fac-tema-body-inner {
+      padding: var(--fum-space-4) var(--fum-space-5);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      border-top: 1px solid var(--fum-color-border);
+    }
+
+    .fac-tema-body-inner ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-2);
+      padding-left: var(--fum-space-4);
+    }
+
+    .fac-tema-body-inner li {
+      list-style: disc;
+      color: var(--fum-color-text-secondary);
+    }
+
+    /* ══════════════════════════════════════════════
          MATERIALES Y RECURSOS
       ══════════════════════════════════════════════ */
-      .fac-recursos-list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-      }
-      .fac-recurso-item {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-        text-decoration: none;
-        transition: border-color var(--fum-transition-fast);
-        cursor: pointer;
-      }
-      .fac-recurso-item.is-locked-recurso {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-      .fac-recurso-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: var(--fum-radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 16px;
-      }
-      .fac-recurso-icon i {
-        display: flex;
-      }
-      .fac-recurso-icon.type-pdf {
-        color: #fff;
-        background: #ff2056;
-      }
-      .fac-recurso-icon.type-doc {
-        color: #fff;
-        background: #2b7fff;
-      }
-      .fac-recurso-icon.type-link {
-        background: #f0b100;
-        color: #fff;
-      }
-      .fac-recurso-icon.type-blocked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-recurso-icon.type-video {
-        background: rgba(180, 0, 0, 0.1);
-        color: #b00000;
-      }
-      .fac-recurso-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-recurso-nombre {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .fac-recurso-desc {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        margin-top: 2px;
-      }
-      .fac-recurso-action {
-        flex-shrink: 0;
-        font-size: 14px;
-        color: var(--fum-color-verde);
-      }
-      .fac-recurso-action.locked {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-recurso-action i {
-        display: flex;
-      }
+    .fac-recursos-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-3);
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-recurso-item {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+      padding: var(--fum-space-4) var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      background: var(--fum-color-bg-card);
+      text-decoration: none;
+      transition: border-color var(--fum-transition-fast);
+      cursor: pointer;
+    }
+
+    .fac-recurso-item.is-locked-recurso {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .fac-recurso-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .fac-recurso-icon i {
+      display: flex;
+    }
+
+    .fac-recurso-icon.type-pdf {
+      color: #fff;
+      background: #ff2056;
+    }
+
+    .fac-recurso-icon.type-doc {
+      color: #fff;
+      background: #2b7fff;
+    }
+
+    .fac-recurso-icon.type-link {
+      background: #f0b100;
+      color: #fff;
+    }
+
+    .fac-recurso-icon.type-blocked {
+      background: var(--fum-color-border);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-recurso-icon.type-video {
+      background: rgba(180, 0, 0, 0.1);
+      color: #b00000;
+    }
+
+    .fac-recurso-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-recurso-nombre {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fac-recurso-desc {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      margin-top: 2px;
+    }
+
+    .fac-recurso-action {
+      flex-shrink: 0;
+      font-size: 14px;
+      color: var(--fum-color-verde);
+    }
+
+    .fac-recurso-action.locked {
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-recurso-action i {
+      display: flex;
+    }
+
+    /* ══════════════════════════════════════════════
          EVALUACIONES
       ══════════════════════════════════════════════ */
-      .fac-eval-list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-      }
+    .fac-eval-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-eval-card {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-4);
+      padding: var(--fum-space-4) var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      background: var(--fum-color-bg-card);
+    }
+
+    .fac-eval-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .fac-eval-icon i {
+      display: flex;
+    }
+
+    .fac-eval-icon.eval-open {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-eval-icon.eval-locked {
+      background: var(--fum-color-border);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-eval-icon.eval-done {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-eval-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-eval-nombre {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: 3px;
+    }
+
+    .fac-eval-meta {
+      display: flex;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+    }
+
+    .fac-eval-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-eval-meta-item i {
+      font-size: 11px;
+    }
+
+    .fac-eval-action {
+      flex-shrink: 0;
+    }
+
+    .fac-eval-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: background var(--fum-transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .fac-eval-btn.btn-open {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-eval-btn.btn-open:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .fac-eval-btn.btn-locked {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-muted);
+      cursor: not-allowed;
+    }
+
+    .fac-eval-btn.btn-done {
+      background: rgba(26, 31, 94, 0.08);
+      color: var(--fum-color-azul);
+    }
+
+    .fac-eval-score {
+      font-size: var(--fum-font-size-lg);
+      font-weight: var(--fum-font-weight-regular);
+      color: var(--fum-color-negro);
+      letter-spacing: -0.03em;
+      text-align: right;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+
+    .fac-eval-score span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 500px) {
       .fac-eval-card {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-eval-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: var(--fum-radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 18px;
-      }
-      .fac-eval-icon i {
-        display: flex;
-      }
-      .fac-eval-icon.eval-open {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-icon.eval-locked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-eval-icon.eval-done {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-eval-nombre {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: 3px;
-      }
-      .fac-eval-meta {
-        display: flex;
-        gap: var(--fum-space-4);
         flex-wrap: wrap;
       }
-      .fac-eval-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-eval-meta-item i {
-        font-size: 11px;
-      }
+
       .fac-eval-action {
-        flex-shrink: 0;
-      }
-      .fac-eval-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 7px 14px;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        border: none;
-        transition: background var(--fum-transition-fast);
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .fac-eval-btn.btn-open {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-btn.btn-open:hover {
-        background: var(--fum-color-verde-hover);
-      }
-      .fac-eval-btn.btn-locked {
-        background: var(--fum-color-bg-surface);
-        color: var(--fum-color-text-muted);
-        cursor: not-allowed;
-      }
-      .fac-eval-btn.btn-done {
-        background: rgba(26, 31, 94, 0.08);
-        color: var(--fum-color-azul);
-      }
-      .fac-eval-score {
-        font-size: var(--fum-font-size-lg);
-        font-weight: var(--fum-font-weight-regular);
-        color: var(--fum-color-negro);
-        letter-spacing: -0.03em;
-        text-align: right;
-        flex-shrink: 0;
-        min-width: 52px;
-      }
-      .fac-eval-score span {
-        display: block;
-        font-size: 10px;
-        font-weight: 600;
-        color: var(--fum-color-text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      @media (max-width: 500px) {
-        .fac-eval-card {
-          flex-wrap: wrap;
-        }
-        .fac-eval-action {
-          width: 100%;
-        }
-        .fac-eval-btn {
-          width: 100%;
-          justify-content: center;
-        }
+        width: 100%;
       }
 
-      /* ══════════════════════════════════════════════
+      .fac-eval-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
          CERTIFICADO
       ══════════════════════════════════════════════ */
-      .fac-cert-section-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-3);
-      }
-      .fac-cert-section-sub {
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        margin-bottom: var(--fum-space-6);
-      }
-      .fac-cert-layout {
-        display: grid;
-        grid-template-columns: 0.7fr 1fr;
-        gap: var(--fum-space-6);
-        align-items: start;
-      }
-      @media (max-width: 700px) {
-        .fac-cert-layout {
-          grid-template-columns: 1fr;
-        }
-      }
-      .fac-cert-includes {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-4);
-      }
-      .fac-cert-includes-title {
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-cert-item {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
-      .fac-cert-item-icon {
-        width: 28px;
-        height: 28px;
-        border-radius: var(--fum-radius-sm);
-        background-color: var(--fum-color-verde);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .fac-cert-item-icon i {
-        font-size: 12px;
-        display: flex;
-        color: #fff;
-      }
+    .fac-cert-section-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-3);
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-cert-section-sub {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      margin-bottom: var(--fum-space-6);
+    }
+
+    .fac-cert-layout {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      gap: var(--fum-space-6);
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .fac-cert-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fac-cert-includes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-4);
+    }
+
+    .fac-cert-includes-title {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .fac-cert-item {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-cert-item-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--fum-radius-sm);
+      background-color: var(--fum-color-verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fac-cert-item-icon i {
+      font-size: 12px;
+      display: flex;
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════
          SIDEBAR STICKY
       ══════════════════════════════════════════════ */
-      .fac-sidebar-col {
-        position: sticky;
-        top: calc(var(--fac-topbar-height) + 20px);
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-4);
-      }
+    .fac-sidebar-col {
+      position: sticky;
+      top: calc(var(--fac-topbar-height) + 20px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-4);
+    }
 
-      /* — Próxima clase card — */
-      .fac-proxima-card {
-        background: var(--fum-color-azul);
-        border-radius: var(--fum-radius-lg);
-        padding: var(--fum-space-5);
-        color: #fff;
-      }
-      .fac-proxima-label {
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--fum-color-verde);
-        margin-bottom: var(--fum-space-2);
-      }
-      .fac-proxima-titulo {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: #fff;
-        margin-bottom: var(--fum-space-3);
-        line-height: var(--fum-line-height-snug);
-      }
-      .fac-proxima-fecha {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: var(--fum-font-size-xs);
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: var(--fum-space-4);
-      }
-      .fac-proxima-fecha i {
-        color: var(--fum-color-verde);
-        font-size: 12px;
-      }
-      .fac-proxima-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        width: 100%;
-        padding: var(--fum-space-3);
-        background: var(--fum-color-verde);
-        color: #fff;
-        border: none;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        transition: background var(--fum-transition-fast);
-        text-decoration: none;
-      }
-      .fac-proxima-btn:hover {
-        background: var(--fum-color-verde-hover);
-        color: #fff;
-      }
+    /* — Próxima clase card — */
+    .fac-proxima-card {
+      background: var(--fum-color-azul);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-5);
+      color: #fff;
+    }
 
-      /* — Mi Progreso card (sidebar) — */
-      .fac-sidebar-progreso {
-        background: var(--fum-color-bg-card);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-lg);
-        padding: var(--fum-space-5);
-      }
-      .fac-sidebar-progreso-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-5);
-        text-align: center;
-      }
-      .fac-sidebar-pct-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-2);
-      }
-      .fac-sidebar-pct-label {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-sidebar-pct-num {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: var(--fum-color-negro);
-      }
-      .fac-sidebar-bar-wrap {
-        height: 8px;
-        background: var(--fum-color-bg-surface);
-        border-radius: var(--fum-radius-pill);
-        overflow: hidden;
-        margin-bottom: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-      }
-      .fac-sidebar-bar-fill {
-        height: 100%;
-        background: var(--fum-color-verde);
-        border-radius: var(--fum-radius-pill);
-      }
-      /* mini lista de clases en sidebar */
-      .fac-sidebar-clases-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .fac-sidebar-clase-row {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        padding: 8px 0;
-        border-bottom: 1px solid var(--fum-color-border);
-      }
-      .fac-sidebar-clase-row:last-child {
-        border-bottom: none;
-      }
-      .fac-sidebar-clase-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-      .fac-sidebar-clase-dot.dot-done {
-        background: var(--fum-color-verde);
-      }
-      .fac-sidebar-clase-dot.dot-active {
-        background: #2b7fff;
-      }
-      .fac-sidebar-clase-dot.dot-locked {
-        background: var(--fum-color-text-muted);
-        border: 1.5px solid var(--fum-color-text-muted);
-      }
-      .fac-sidebar-clase-label {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .fac-sidebar-clase-label.muted {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-sidebar-clase-status {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        flex-shrink: 0;
-      }
-      .fac-sidebar-clase-status.st-done {
-        color: var(--fum-color-verde);
-      }
-      .fac-sidebar-clase-status.st-active {
-        color: #2b7fff;
-      }
-      .fac-sidebar-clase-status.st-locked {
-        color: var(--fum-color-text-muted);
-      }
+    .fac-proxima-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fum-color-verde);
+      margin-bottom: var(--fum-space-2);
+    }
 
-      /* Announcements */
-      .fac-announcements {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        overflow: hidden;
-        min-width: 0;
-        height: 36px;
-      }
-      .fac-announcements-icon {
-        display: flex;
-        align-items: center;
-        color: var(--fum-color-verde);
-        font-size: 13px;
-        flex-shrink: 0;
-      }
-      .fac-announcements-icon i {
-        display: flex;
-      }
-      .fac-announcements-track {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        height: 100%;
-      }
-      .fac-announcement-item {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        transform: translateY(-50%) translateX(30px);
-        opacity: 0;
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
-        pointer-events: none;
-      }
-      .fac-announcement-item.active {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-        pointer-events: auto;
-      }
-      .fac-announcement-item.leaving {
-        opacity: 0;
-        transform: translateY(-50%) translateX(-30px);
-      }
-      .fac-announcement-item strong {
-        color: var(--fum-color-text-primary);
-        font-weight: var(--fum-font-weight-semibold);
-      }
-    </style>
-  </head>
+    .fac-proxima-titulo {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: #fff;
+      margin-bottom: var(--fum-space-3);
+      line-height: var(--fum-line-height-snug);
+    }
 
-  <body>
-    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="fac-layout">
-      <!-- SIDEBAR -->
-      <aside class="fac-sidebar" id="sidebar">
-        <div class="fac-sidebar-logo">
-          <span class="fac-sidebar-logo-text"
-            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
-          >
-        </div>
-        <nav class="fac-sidebar-nav">
-          <div class="fac-sidebar-menu">
-            <p class="fac-sidebar-section-label">Principal</p>
-            <a href="dashboard.html" class="fac-nav-item"
-              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
-            >
-            <a href="cursos.html" class="fac-nav-item fac-nav-item-active"
-              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
-            >
-            <a href="certificados.html" class="fac-nav-item"
-              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
-            >
-            <!-- <a href="instructores.html" class="fac-nav-item"
+    .fac-proxima-fecha {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fum-font-size-xs);
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: var(--fum-space-4);
+    }
+
+    .fac-proxima-fecha i {
+      color: var(--fum-color-verde);
+      font-size: 12px;
+    }
+
+    .fac-proxima-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      padding: var(--fum-space-3);
+      background: var(--fum-color-verde);
+      color: #fff;
+      border: none;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      transition: background var(--fum-transition-fast);
+      text-decoration: none;
+    }
+
+    .fac-proxima-btn:hover {
+      background: var(--fum-color-verde-hover);
+      color: #fff;
+    }
+
+    /* — Mi Progreso card (sidebar) — */
+    .fac-sidebar-progreso {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-5);
+    }
+
+    .fac-sidebar-progreso-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-5);
+      text-align: center;
+    }
+
+    .fac-sidebar-pct-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--fum-space-2);
+    }
+
+    .fac-sidebar-pct-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-pct-num {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-sidebar-bar-wrap {
+      height: 8px;
+      background: var(--fum-color-bg-surface);
+      border-radius: var(--fum-radius-pill);
+      overflow: hidden;
+      margin-bottom: var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+    }
+
+    .fac-sidebar-bar-fill {
+      height: 100%;
+      background: var(--fum-color-verde);
+      border-radius: var(--fum-radius-pill);
+    }
+
+    /* mini lista de clases en sidebar */
+    .fac-sidebar-clases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fac-sidebar-clase-row {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .fac-sidebar-clase-row:last-child {
+      border-bottom: none;
+    }
+
+    .fac-sidebar-clase-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .fac-sidebar-clase-dot.dot-done {
+      background: var(--fum-color-verde);
+    }
+
+    .fac-sidebar-clase-dot.dot-active {
+      background: #2b7fff;
+    }
+
+    .fac-sidebar-clase-dot.dot-locked {
+      background: var(--fum-color-text-muted);
+      border: 1.5px solid var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-clase-label {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-sidebar-clase-label.muted {
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-clase-status {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .fac-sidebar-clase-status.st-done {
+      color: var(--fum-color-verde);
+    }
+
+    .fac-sidebar-clase-status.st-active {
+      color: #2b7fff;
+    }
+
+    .fac-sidebar-clase-status.st-locked {
+      color: var(--fum-color-text-muted);
+    }
+
+    /* Announcements */
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: var(--fum-font-weight-semibold);
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="fac-layout">
+    <!-- SIDEBAR -->
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="cursos.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="certificados.html" class="fac-nav-item"><i
+              class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+          <!-- <a href="instructores.html" class="fac-nav-item"
               ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
             > -->
-          </div>
-          <div class="fac-sidebar-menu" style="margin-top: 6px">
-            <p class="fac-sidebar-section-label">Cuenta</p>
-            <a href="perfil.html" class="fac-nav-item"
-              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
-            >
-            <a href="notificaciones.html" class="fac-nav-item"
-              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
-            >
-            <a href="configuracion.html" class="fac-nav-item"
-              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
-              >Configuración</a
-            >
-            <a href="#" class="fac-nav-item"
-              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
-            >
-          </div>
-        </nav>
-        <div class="fac-sidebar-footer">
-          <div class="fac-sidebar-footer-socials">
-            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
-            <a href="#"><i class="fi fi-brands-facebook"></i></a>
-            <a href="#"><i class="fi fi-brands-instagram"></i></a>
-            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
-            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
-            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top: 6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="perfil.html" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="notificaciones.html" class="fac-nav-item"><i
+              class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a>
+          <a href="configuracion.html" class="fac-nav-item"><i
+              class="fi fi-rs-settings fac-nav-item-icon"></i>Configuración</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="fac-main">
+      <!-- TOPBAR -->
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle" aria-label="Abrir menú">
+          <i class="fi fi-bs-menu-burger"></i>
+        </button>
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active">Próxima clase:
+              <strong>Normativa Internacional MATPEL — Martes 27 de mayo, 7:00
+                PM</strong></span>
+            <span class="fac-announcement-item">Recuerda unirte al grupo de WhatsApp del curso para recibir las
+              <strong>notificaciones de clase</strong></span>
+            <span class="fac-announcement-item">Evaluación Parcial disponible a partir del
+              <strong>lunes 2 de junio</strong></span>
           </div>
         </div>
-      </aside>
-
-      <!-- MAIN -->
-      <div class="fac-main">
-        <!-- TOPBAR -->
-        <header class="fac-topbar">
-          <button
-            class="fac-topbar-mobile-toggle"
-            id="sidebarToggle"
-            aria-label="Abrir menú"
-          >
-            <i class="fi fi-bs-menu-burger"></i>
-          </button>
-          <div class="fac-announcements" role="marquee" aria-live="polite">
-            <span class="fac-announcements-icon"
-              ><i class="fi fi-rs-megaphone"></i
-            ></span>
-            <div class="fac-announcements-track" id="announcementsTrack">
-              <span class="fac-announcement-item active"
-                >Próxima clase:
-                <strong
-                  >Normativa Internacional MATPEL — Martes 27 de mayo, 7:00
-                  PM</strong
-                ></span
-              >
-              <span class="fac-announcement-item"
-                >Recuerda unirte al grupo de WhatsApp del curso para recibir las
-                <strong>notificaciones de clase</strong></span
-              >
-              <span class="fac-announcement-item"
-                >Evaluación Parcial disponible a partir del
-                <strong>lunes 2 de junio</strong></span
-              >
-            </div>
-          </div>
-          <div class="fac-topbar-actions">
-            <div class="fac-profile-menu" id="profileMenu">
-              <div
-                class="fac-topbar-avatar-btn"
-                id="profileToggle"
-                role="button"
-                tabindex="0"
-                aria-label="Perfil"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div class="fac-topbar-user-info">
-                  <span class="fac-topbar-username" id="navUserName"
-                    >Usuario</span
-                  >
-                  <span class="fac-topbar-userrole">Estudiante</span>
-                </div>
-                <div
-                  class="fac-avatar fac-avatar-img-wrap"
-                  style="width: 34px; height: 34px; font-size: 11px"
-                >
-                  <img
-                    src=""
-                    alt=""
-                    id="navUserPhoto"
-                    class="fac-avatar-img"
-                    onerror="
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0" aria-label="Perfil"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username" id="navUserName">Usuario</span>
+                <span class="fac-topbar-userrole">Estudiante</span>
+              </div>
+              <div class="fac-avatar fac-avatar-img-wrap" style="width: 34px; height: 34px; font-size: 11px">
+                <img src="" alt="" id="navUserPhoto" class="fac-avatar-img" onerror="
                       this.style.display = 'none';
                       this.parentElement.querySelector(
                         '.fac-avatar-initials',
                       ).style.display = 'flex';
-                    "
-                  />
-                  <span
-                    class="fac-avatar-initials"
-                    id="navUserInitials"
-                    style="display: none"
-                    >??</span
-                  >
-                </div>
-              </div>
-
-              <div
-                class="fac-profile-dropdown"
-                id="profileDropdown"
-                role="menu"
-              >
-                <div class="fac-profile-dropdown-header">
-                  <div
-                    class="fac-avatar fac-profile-dropdown-avatar"
-                    id="dropdownInitials"
-                  >
-                    ??
-                  </div>
-                  <div class="fac-profile-dropdown-info">
-                    <p class="fac-profile-dropdown-name" id="dropdownName">
-                      Usuario
-                    </p>
-                    <p class="fac-profile-dropdown-role">Estudiante</p>
-                  </div>
-                </div>
-                <div class="fac-profile-dropdown-divider"></div>
-                <a
-                  href="perfil.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-user"></i> Mi perfil
-                </a>
-                <a
-                  href="certificados.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-diploma"></i> Mis certificados
-                </a>
-                <a
-                  href="configuracion.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-settings"></i> Configuración
-                </a>
-                <div class="fac-profile-dropdown-divider"></div>
-                <button
-                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
-                  id="logoutBtn"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-sign-out-alt"></i>
-                  Cerrar sesión
-                </button>
+                    " />
+                <span class="fac-avatar-initials" id="navUserInitials" style="display: none">??</span>
               </div>
             </div>
-          </div>
-        </header>
 
-        <!-- CONTENIDO -->
-        <main class="fac-content">
-          <!-- BODY — 2 cols (hero está dentro de main col) -->
-          <div class="fac-curso-body">
-            <!-- ── Col principal ── -->
-            <div class="fac-curso-main-col">
-              <!-- HERO BANNER (no full-width, dentro de main col) -->
-              <div class="fac-curso-hero-banner">
-                <img
-                  src="curso.webp"
-                  alt="Manejo Seguro de Materiales y Sustancias Peligrosas"
-                />
-                <div class="fac-curso-hero-banner-content">
-                  <div class="fac-curso-hero-banner-left">
-                    <span class="fac-curso-hero-tag"
-                      ><i class="fi fi-rs-shield-check"></i> Matriculado</span
-                    >
-                    <h1 class="fac-curso-hero-banner-title">
-                      Manejo Seguro de Materiales y Sustancias Peligrosas
-                      (MATPEL)
-                    </h1>
-                    <div class="fac-curso-hero-banner-stats">
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-user"></i> Lic. Iván Tamariz</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-clock"></i> 4 Semanas</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-calendar"></i> Inicio
-                        19/05/2026</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-user-graduate"></i> 26
-                        inscritos</span
-                      >
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar" id="dropdownInitials">
+                  ??
+                </div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name" id="dropdownName">
+                    Usuario
+                  </p>
+                  <p class="fac-profile-dropdown-role">Estudiante</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="perfil.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-user"></i> Mi perfil
+              </a>
+              <a href="certificados.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-diploma"></i> Mis certificados
+              </a>
+              <a href="configuracion.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-settings"></i> Configuración
+              </a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout" id="logoutBtn" role="menuitem">
+                <i class="fi fi-rs-sign-out-alt"></i>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENIDO -->
+      <main class="fac-content">
+        <!-- BODY — 2 cols (hero está dentro de main col) -->
+        <div class="fac-curso-body">
+          <!-- ── Col principal ── -->
+          <div class="fac-curso-main-col">
+            <!-- HERO BANNER (no full-width, dentro de main col) -->
+            <div class="fac-curso-hero-banner">
+              <img src="curso.webp" alt="Manejo Seguro de Materiales y Sustancias Peligrosas" />
+              <div class="fac-curso-hero-banner-content">
+                <div class="fac-curso-hero-banner-left">
+                  <span class="fac-curso-hero-tag"><i class="fi fi-rs-shield-check"></i> Matriculado</span>
+                  <h1 class="fac-curso-hero-banner-title">
+                    Manejo Seguro de Materiales y Sustancias Peligrosas
+                    (MATPEL)
+                  </h1>
+                  <div class="fac-curso-hero-banner-stats">
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-user"></i> Lic. Iván Tamariz</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-clock"></i> 4 Semanas</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-calendar"></i> Inicio
+                      19/05/2026</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-user-graduate"></i> 26
+                      inscritos</span>
+                  </div>
+                </div>
+                <div class="fac-curso-hero-banner-right">
+                  <a href="#" class="fac-brochure-btn"><i class="fi fi-rs-file-download"></i> Descargar
+                    Brochure</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- INFORMACIÓN GENERAL -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Información general</h2>
+
+              <p class="fac-info-desc">
+                Este curso te prepara para identificar, manejar y responder
+                ante incidentes con materiales peligrosos aplicando los
+                protocolos y normativas nacionales e internacionales vigentes.
+                Aprenderás a usar herramientas técnicas como las Hojas de
+                Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias
+                (GRE), y a ejecutar acciones de control inicial mediante el
+                Sistema de Comando de Incidentes (SCI). El programa está
+                avalado por el Colegio de Ingenieros del Perú y diseñado para
+                profesionales del sector minero, industrial y de transporte.
+              </p>
+
+              <!-- Dos cards lado a lado: Instructor + WhatsApp -->
+              <div class="fac-info-cards-row">
+                <!-- Card Instructor -->
+                <div class="fac-instructor-card">
+                  <div class="fac-instructor-header">
+                    <div class="fac-instructor-avatar">
+                      <img src="instructor.webp" alt="Lic. Iván Tamariz" />
+                    </div>
+                    <div class="fac-instructor-meta">
+                      <div class="fac-instructor-name">Lic. Iván Tamariz</div>
+                      <div class="fac-instructor-role">
+                        Especialista en Seguridad Industrial
+                      </div>
                     </div>
                   </div>
-                  <div class="fac-curso-hero-banner-right">
-                    <a href="#" class="fac-brochure-btn"
-                      ><i class="fi fi-rs-file-download"></i> Descargar
-                      Brochure</a
-                    >
+                  <div class="fac-instructor-bio">
+                    Licenciado en Ingeniería Ambiental con más de 12 años de
+                    experiencia en gestión de riesgos y MATPEL. Ha capacitado
+                    a más de 2,000 profesionales en empresas mineras,
+                    industriales y de transporte. Instructor certificado por
+                    el Colegio de Ingenieros del Perú.
+                  </div>
+                </div>
+
+                <!-- Card WhatsApp -->
+                <div class="fac-wa-card">
+                  <div class="fac-wa-header">
+                    <div class="fac-wa-icon">
+                      <i class="fi fi-brands-whatsapp"></i>
+                    </div>
+                    <div class="fac-wa-meta">
+                      <div class="fac-wa-title">
+                        Grupo de WhatsApp del curso
+                      </div>
+                      <div class="fac-wa-subtitle">
+                        Comunicación directa con el instructor
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fac-wa-desc">
+                    Únete para recibir avisos de clases, materiales y
+                    comunicados del instructor en tiempo real. Todos los
+                    inscritos son bienvenidos.
+                  </div>
+                  <a href="https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX" target="_blank" class="fac-wa-btn">
+                    <i class="fi fi-brands-whatsapp"></i> Unirse al grupo
+                  </a>
+                </div>
+              </div>
+              <!-- /info-cards-row -->
+            </section>
+
+            <!-- LISTA DE CLASES -->
+            <section class="fac-curso-section">
+              <div class="fac-clases-header">
+                <h2 class="fac-clases-header-title">Clases del curso</h2>
+                <span class="fac-clases-count">4 clases · 4 semanas</span>
+              </div>
+              <div class="fac-clases-list">
+                <!-- Clase 1 — Completada -->
+                <div class="fac-clase-card is-completed" onclick="window.location.href = 'clase.html'">
+                  <div class="fac-clase-num num-completed">
+                    <i class="fi fi-ss-check"></i>
+                  </div>
+                  <div class="fac-clase-info">
+                    <div class="fac-clase-semana">Semana 1</div>
+                    <div class="fac-clase-titulo">
+                      Clase 1: Normativa Legal Nacional
+                    </div>
+                    <div class="fac-clase-meta">
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-calendar"></i> 19 may 2026, 7:00
+                        PM</span>
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-clock"></i> 2 horas</span>
+                    </div>
+                  </div>
+                  <span class="fac-clase-badge badge-completed"><i class="fi fi-rs-check-circle"></i> Completada</span>
+                </div>
+                <!-- Clase 2 — Próxima -->
+                <div class="fac-clase-card is-available" onclick="window.location.href = 'clase.html'">
+                  <div class="fac-clase-num num-available">
+                    <i class="fi fi-rs-book-alt"></i>
+                  </div>
+                  <div class="fac-clase-info">
+                    <div class="fac-clase-semana">Semana 2</div>
+                    <div class="fac-clase-titulo">
+                      Clase 2: Normativa y Estándares Internacionales
+                    </div>
+                    <div class="fac-clase-meta">
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-calendar"></i> 27 may 2026, 7:00
+                        PM</span>
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-clock"></i> 2 horas</span>
+                    </div>
+                  </div>
+                  <span class="fac-clase-badge badge-available"><i class="fi fi-rs-video-camera"></i> Próxima
+                    clase</span>
+                </div>
+                <!-- Clase 3 — Bloqueada -->
+                <div class="fac-clase-card is-locked">
+                  <div class="fac-clase-num num-locked">
+                    <i class="fi fi-rs-lock"></i>
+                  </div>
+                  <div class="fac-clase-info">
+                    <div class="fac-clase-semana">Semana 3</div>
+                    <div class="fac-clase-titulo">
+                      Clase 3: Niveles de Respuesta a Emergencias con MATPEL
+                    </div>
+                    <div class="fac-clase-meta">
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-calendar"></i> 3 jun 2026, 7:00
+                        PM</span>
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-clock"></i> 2 horas</span>
+                    </div>
+                  </div>
+                  <span class="fac-clase-badge badge-upcoming"><i class="fi fi-rs-time-past"></i> Se habilita sem.
+                    3</span>
+                </div>
+                <!-- Clase 4 — Bloqueada -->
+                <div class="fac-clase-card is-locked">
+                  <div class="fac-clase-num num-locked">
+                    <i class="fi fi-rs-lock"></i>
+                  </div>
+                  <div class="fac-clase-info">
+                    <div class="fac-clase-semana">Semana 4</div>
+                    <div class="fac-clase-titulo">
+                      Clase 4: Herramientas de Gestión para Incidentes MATPEL
+                    </div>
+                    <div class="fac-clase-meta">
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-calendar"></i> 10 jun 2026, 7:00
+                        PM</span>
+                      <span class="fac-clase-meta-item"><i class="fi fi-rs-clock"></i> 2 horas</span>
+                    </div>
+                  </div>
+                  <span class="fac-clase-badge badge-locked"><i class="fi fi-rs-lock"></i> Se habilita sem. 4</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- TEMARIO -->
+            <section class="fac-curso-section">
+              <div class="fac-temario-header">
+                <div class="fac-temario-header-left">
+                  <h2 class="fac-temario-header-title">Temario</h2>
+                  <span class="fac-temario-count">5 temas · 4 semanas</span>
+                </div>
+                <button class="fac-brochure-btn">
+                  <i class="fi fi-rs-file-download"></i> Descargar Brochure
+                </button>
+              </div>
+              <div class="fac-tema-accordion" id="temario">
+                <div class="fac-tema-item">
+                  <button class="fac-tema-btn" aria-expanded="false">
+                    <span>Tema 1: Normativa Legal Nacional</span>
+                    <i class="fi fi-rs-chevron-double-down fac-tema-chevron"></i>
+                  </button>
+                  <div class="fac-tema-body">
+                    <div class="fac-tema-body-inner">
+                      <ul>
+                        <li>
+                          Marco legal peruano sobre transporte de materiales
+                          peligrosos
+                        </li>
+                        <li>
+                          Reglamento Nacional de Administración de Transportes
+                          (RNAT)
+                        </li>
+                        <li>
+                          Normativa del Ministerio de Transportes y
+                          Comunicaciones
+                        </li>
+                        <li>Obligaciones y responsabilidades del operador</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-tema-item">
+                  <button class="fac-tema-btn" aria-expanded="false">
+                    <span>Tema 2: Normativa y/o Estándares Internacionales</span>
+                    <i class="fi fi-rs-chevron-double-down fac-tema-chevron"></i>
+                  </button>
+                  <div class="fac-tema-body">
+                    <div class="fac-tema-body-inner">
+                      <ul>
+                        <li>
+                          Recomendaciones de la ONU para el transporte de
+                          mercancías peligrosas
+                        </li>
+                        <li>
+                          Guía de Respuesta en caso de Emergencia (GRE/ERG)
+                        </li>
+                        <li>Acuerdo ADR y normativas internacionales</li>
+                        <li>
+                          Clasificación internacional de peligros NFPA y GHS
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-tema-item">
+                  <button class="fac-tema-btn" aria-expanded="false">
+                    <span>Tema 3: Los Distintos Niveles de Respuesta a
+                      Emergencias con MATPEL</span>
+                    <i class="fi fi-rs-chevron-double-down fac-tema-chevron"></i>
+                  </button>
+                  <div class="fac-tema-body">
+                    <div class="fac-tema-body-inner">
+                      <ul>
+                        <li>Nivel de Conocimiento (Awareness)</li>
+                        <li>Nivel de Actuación (Operations)</li>
+                        <li>Nivel Técnico (Technician) y Especialista</li>
+                        <li>Roles y responsabilidades por nivel</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-tema-item">
+                  <button class="fac-tema-btn" aria-expanded="false">
+                    <span>Tema 4: Métodos de Reconocimiento e Identificación de
+                      los MATPEL</span>
+                    <i class="fi fi-rs-chevron-double-down fac-tema-chevron"></i>
+                  </button>
+                  <div class="fac-tema-body">
+                    <div class="fac-tema-body-inner">
+                      <ul>
+                        <li>
+                          Etiquetas y placards de identificación (DOT, GHS)
+                        </li>
+                        <li>Hojas de Datos de Seguridad (SDS/MSDS)</li>
+                        <li>Colores y símbolos de peligro</li>
+                        <li>
+                          Uso de la Guía de Respuesta a Emergencias (GRE)
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-tema-item">
+                  <button class="fac-tema-btn" aria-expanded="false">
+                    <span>Tema 5: Herramientas de Gestión para Incidentes
+                      MATPEL</span>
+                    <i class="fi fi-rs-chevron-double-down fac-tema-chevron"></i>
+                  </button>
+                  <div class="fac-tema-body">
+                    <div class="fac-tema-body-inner">
+                      <ul>
+                        <li>Sistema de Comando de Incidentes (SCI/ICS)</li>
+                        <li>
+                          Evaluación inicial y notificación de emergencias
+                        </li>
+                        <li>Procedimientos de aislamiento y evacuación</li>
+                        <li>
+                          Equipos de protección personal (EPP) adecuados
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
+            </section>
 
-              <!-- INFORMACIÓN GENERAL -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Información general</h2>
-
-                <p class="fac-info-desc">
-                  Este curso te prepara para identificar, manejar y responder
-                  ante incidentes con materiales peligrosos aplicando los
-                  protocolos y normativas nacionales e internacionales vigentes.
-                  Aprenderás a usar herramientas técnicas como las Hojas de
-                  Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias
-                  (GRE), y a ejecutar acciones de control inicial mediante el
-                  Sistema de Comando de Incidentes (SCI). El programa está
-                  avalado por el Colegio de Ingenieros del Perú y diseñado para
-                  profesionales del sector minero, industrial y de transporte.
-                </p>
-
-                <!-- Dos cards lado a lado: Instructor + WhatsApp -->
-                <div class="fac-info-cards-row">
-                  <!-- Card Instructor -->
-                  <div class="fac-instructor-card">
-                    <div class="fac-instructor-header">
-                      <div class="fac-instructor-avatar">
-                        <img src="instructor.webp" alt="Lic. Iván Tamariz" />
-                      </div>
-                      <div class="fac-instructor-meta">
-                        <div class="fac-instructor-name">Lic. Iván Tamariz</div>
-                        <div class="fac-instructor-role">
-                          Especialista en Seguridad Industrial
-                        </div>
-                      </div>
+            <!-- MATERIALES Y RECURSOS -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Materiales y recursos</h2>
+              <div class="fac-recursos-list">
+                <a href="#" class="fac-recurso-item">
+                  <div class="fac-recurso-icon type-pdf">
+                    <i class="fi fi-rs-file-pdf"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Diapositivas — Clase 1: Normativa Legal Nacional
                     </div>
-                    <div class="fac-instructor-bio">
-                      Licenciado en Ingeniería Ambiental con más de 12 años de
-                      experiencia en gestión de riesgos y MATPEL. Ha capacitado
-                      a más de 2,000 profesionales en empresas mineras,
-                      industriales y de transporte. Instructor certificado por
-                      el Colegio de Ingenieros del Perú.
+                    <div class="fac-recurso-desc">
+                      PDF · Semana 1 · Disponible
                     </div>
                   </div>
-
-                  <!-- Card WhatsApp -->
-                  <div class="fac-wa-card">
-                    <div class="fac-wa-header">
-                      <div class="fac-wa-icon">
-                        <i class="fi fi-brands-whatsapp"></i>
-                      </div>
-                      <div class="fac-wa-meta">
-                        <div class="fac-wa-title">
-                          Grupo de WhatsApp del curso
-                        </div>
-                        <div class="fac-wa-subtitle">
-                          Comunicación directa con el instructor
-                        </div>
-                      </div>
+                  <div class="fac-recurso-action">
+                    <i class="fi fi-rs-download"></i>
+                  </div>
+                </a>
+                <a href="#" class="fac-recurso-item">
+                  <div class="fac-recurso-icon type-doc">
+                    <i class="fi fi-rs-document"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Guía de Respuesta a Emergencias (GRE) 2024
                     </div>
-                    <div class="fac-wa-desc">
-                      Únete para recibir avisos de clases, materiales y
-                      comunicados del instructor en tiempo real. Todos los
-                      inscritos son bienvenidos.
+                    <div class="fac-recurso-desc">
+                      PDF · Material de consulta permanente
                     </div>
-                    <a
-                      href="https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX"
-                      target="_blank"
-                      class="fac-wa-btn"
-                    >
-                      <i class="fi fi-brands-whatsapp"></i> Unirse al grupo
-                    </a>
+                  </div>
+                  <div class="fac-recurso-action">
+                    <i class="fi fi-rs-download"></i>
+                  </div>
+                </a>
+                <a href="#" class="fac-recurso-item">
+                  <div class="fac-recurso-icon type-link">
+                    <i class="fi fi-rs-link"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Reglamento Nacional RNAT — Portal MTC
+                    </div>
+                    <div class="fac-recurso-desc">
+                      Enlace externo · Normativa oficial
+                    </div>
+                  </div>
+                  <div class="fac-recurso-action">
+                    <i class="fi fi-rs-arrow-up-right-from-square"></i>
+                  </div>
+                </a>
+                <div class="fac-recurso-item is-locked-recurso">
+                  <div class="fac-recurso-icon type-blocked">
+                    <i class="fi fi-rs-file-pdf"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Diapositivas — Clase 2: Estándares Internacionales
+                    </div>
+                    <div class="fac-recurso-desc">
+                      PDF · Se habilita en Semana 2
+                    </div>
+                  </div>
+                  <div class="fac-recurso-action locked">
+                    <i class="fi fi-rs-lock"></i>
                   </div>
                 </div>
-                <!-- /info-cards-row -->
-              </section>
+                <div class="fac-recurso-item is-locked-recurso">
+                  <div class="fac-recurso-icon type-blocked">
+                    <i class="fi fi-rs-file-pdf"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Diapositivas — Clase 3: Niveles de Respuesta
+                    </div>
+                    <div class="fac-recurso-desc">
+                      PDF · Se habilita en Semana 3
+                    </div>
+                  </div>
+                  <div class="fac-recurso-action locked">
+                    <i class="fi fi-rs-lock"></i>
+                  </div>
+                </div>
+                <div class="fac-recurso-item is-locked-recurso">
+                  <div class="fac-recurso-icon type-blocked">
+                    <i class="fi fi-rs-file-pdf"></i>
+                  </div>
+                  <div class="fac-recurso-body">
+                    <div class="fac-recurso-nombre">
+                      Diapositivas — Clase 4: Herramientas de Gestión
+                    </div>
+                    <div class="fac-recurso-desc">
+                      PDF · Se habilita en Semana 4
+                    </div>
+                  </div>
+                  <div class="fac-recurso-action locked">
+                    <i class="fi fi-rs-lock"></i>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-              <!-- LISTA DE CLASES -->
-              <section class="fac-curso-section">
-                <div class="fac-clases-header">
-                  <h2 class="fac-clases-header-title">Clases del curso</h2>
-                  <span class="fac-clases-count">4 clases · 4 semanas</span>
+            <!-- EVALUACIONES -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Evaluaciones</h2>
+              <div class="fac-eval-list">
+                <div class="fac-eval-card">
+                  <div class="fac-eval-icon eval-done">
+                    <i class="fi fi-rs-diploma"></i>
+                  </div>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-nombre">Cuestionario — Semana 1</div>
+                    <div class="fac-eval-meta">
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> 24 may 2026</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 10
+                        preguntas</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 20 min</span>
+                    </div>
+                  </div>
+                  <div class="fac-eval-score">18/20<span>Nota</span></div>
                 </div>
-                <div class="fac-clases-list">
-                  <!-- Clase 1 — Completada -->
-                  <div
-                    class="fac-clase-card is-completed"
-                    onclick="window.location.href = 'clase.html'"
-                  >
-                    <div class="fac-clase-num num-completed">
-                      <i class="fi fi-ss-check"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 1</div>
-                      <div class="fac-clase-titulo">
-                        Clase 1: Normativa Legal Nacional
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 19 may 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-completed"
-                      ><i class="fi fi-rs-check-circle"></i> Completada</span
-                    >
+                <div class="fac-eval-card">
+                  <div class="fac-eval-icon eval-open">
+                    <i class="fi fi-rs-pencil"></i>
                   </div>
-                  <!-- Clase 2 — Próxima -->
-                  <div
-                    class="fac-clase-card is-available"
-                    onclick="window.location.href = 'clase.html'"
-                  >
-                    <div class="fac-clase-num num-available">
-                      <i class="fi fi-rs-book-alt"></i>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-nombre">Evaluación Parcial</div>
+                    <div class="fac-eval-meta">
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> Disponible desde 2
+                        jun 2026</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 25
+                        preguntas</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 45 min</span>
                     </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 2</div>
-                      <div class="fac-clase-titulo">
-                        Clase 2: Normativa y Estándares Internacionales
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 27 may 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-available"
-                      ><i class="fi fi-rs-video-camera"></i> Próxima clase</span
-                    >
                   </div>
-                  <!-- Clase 3 — Bloqueada -->
-                  <div class="fac-clase-card is-locked">
-                    <div class="fac-clase-num num-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 3</div>
-                      <div class="fac-clase-titulo">
-                        Clase 3: Niveles de Respuesta a Emergencias con MATPEL
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 3 jun 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-upcoming"
-                      ><i class="fi fi-rs-time-past"></i> Se habilita sem.
-                      3</span
-                    >
-                  </div>
-                  <!-- Clase 4 — Bloqueada -->
-                  <div class="fac-clase-card is-locked">
-                    <div class="fac-clase-num num-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 4</div>
-                      <div class="fac-clase-titulo">
-                        Clase 4: Herramientas de Gestión para Incidentes MATPEL
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 10 jun 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-locked"
-                      ><i class="fi fi-rs-lock"></i> Se habilita sem. 4</span
-                    >
-                  </div>
-                </div>
-              </section>
-
-              <!-- TEMARIO -->
-              <section class="fac-curso-section">
-                <div class="fac-temario-header">
-                  <div class="fac-temario-header-left">
-                    <h2 class="fac-temario-header-title">Temario</h2>
-                    <span class="fac-temario-count">5 temas · 4 semanas</span>
-                  </div>
-                  <button class="fac-brochure-btn">
-                    <i class="fi fi-rs-file-download"></i> Descargar Brochure
-                  </button>
-                </div>
-                <div class="fac-tema-accordion" id="temario">
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span>Tema 1: Normativa Legal Nacional</span>
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
+                  <div class="fac-eval-action">
+                    <button class="fac-eval-btn btn-open">
+                      <i class="fi fi-rs-pencil"></i> Rendir evaluación
                     </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Marco legal peruano sobre transporte de materiales
-                            peligrosos
-                          </li>
-                          <li>
-                            Reglamento Nacional de Administración de Transportes
-                            (RNAT)
-                          </li>
-                          <li>
-                            Normativa del Ministerio de Transportes y
-                            Comunicaciones
-                          </li>
-                          <li>Obligaciones y responsabilidades del operador</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 2: Normativa y/o Estándares Internacionales</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Recomendaciones de la ONU para el transporte de
-                            mercancías peligrosas
-                          </li>
-                          <li>
-                            Guía de Respuesta en caso de Emergencia (GRE/ERG)
-                          </li>
-                          <li>Acuerdo ADR y normativas internacionales</li>
-                          <li>
-                            Clasificación internacional de peligros NFPA y GHS
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 3: Los Distintos Niveles de Respuesta a
-                        Emergencias con MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>Nivel de Conocimiento (Awareness)</li>
-                          <li>Nivel de Actuación (Operations)</li>
-                          <li>Nivel Técnico (Technician) y Especialista</li>
-                          <li>Roles y responsabilidades por nivel</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 4: Métodos de Reconocimiento e Identificación de
-                        los MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Etiquetas y placards de identificación (DOT, GHS)
-                          </li>
-                          <li>Hojas de Datos de Seguridad (SDS/MSDS)</li>
-                          <li>Colores y símbolos de peligro</li>
-                          <li>
-                            Uso de la Guía de Respuesta a Emergencias (GRE)
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 5: Herramientas de Gestión para Incidentes
-                        MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>Sistema de Comando de Incidentes (SCI/ICS)</li>
-                          <li>
-                            Evaluación inicial y notificación de emergencias
-                          </li>
-                          <li>Procedimientos de aislamiento y evacuación</li>
-                          <li>
-                            Equipos de protección personal (EPP) adecuados
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
-              </section>
-
-              <!-- MATERIALES Y RECURSOS -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Materiales y recursos</h2>
-                <div class="fac-recursos-list">
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-pdf">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 1: Normativa Legal Nacional
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Semana 1 · Disponible
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-download"></i>
-                    </div>
-                  </a>
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-doc">
-                      <i class="fi fi-rs-document"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Guía de Respuesta a Emergencias (GRE) 2024
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Material de consulta permanente
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-download"></i>
-                    </div>
-                  </a>
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-link">
-                      <i class="fi fi-rs-link"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Reglamento Nacional RNAT — Portal MTC
-                      </div>
-                      <div class="fac-recurso-desc">
-                        Enlace externo · Normativa oficial
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-arrow-up-right-from-square"></i>
-                    </div>
-                  </a>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 2: Estándares Internacionales
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 2
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
+                <div class="fac-eval-card">
+                  <div class="fac-eval-icon eval-locked">
+                    <i class="fi fi-rs-lock"></i>
+                  </div>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-nombre">Evaluación Final</div>
+                    <div class="fac-eval-meta">
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> Se habilita en
+                        Semana 4</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 40
+                        preguntas</span>
+                      <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 60 min</span>
                     </div>
                   </div>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 3: Niveles de Respuesta
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 3
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                  </div>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 4: Herramientas de Gestión
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 4
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
+                  <div class="fac-eval-action">
+                    <button class="fac-eval-btn btn-locked" disabled>
+                      <i class="fi fi-rs-lock"></i> No disponible aún
+                    </button>
                   </div>
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <!-- EVALUACIONES -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Evaluaciones</h2>
-                <div class="fac-eval-list">
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-done">
-                      <i class="fi fi-rs-diploma"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Cuestionario — Semana 1</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 24 may 2026</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 10
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 20 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-score">18/20<span>Nota</span></div>
+            <!-- CERTIFICADO -->
+            <section class="fac-curso-section">
+              <h2 class="fac-cert-section-title">
+                Certificado oficial al completar el curso
+              </h2>
+              <p class="fac-cert-section-sub">
+                Al aprobar las evaluaciones, recibirás un certificado con
+                validez institucional y respaldo del Colegio de Ingenieros.
+              </p>
+              <div class="fac-cert-layout">
+                <div class="fac-cert-includes">
+                  <p class="fac-cert-includes-title">
+                    Tu certificado incluye
+                  </p>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-barcode"></i></span>Código único verificable de
+                    certificado
                   </div>
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-open">
-                      <i class="fi fi-rs-pencil"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Evaluación Parcial</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> Disponible desde 2
-                          jun 2026</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 25
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 45 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-action">
-                      <button class="fac-eval-btn btn-open">
-                        <i class="fi fi-rs-pencil"></i> Rendir evaluación
-                      </button>
-                    </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-user"></i></span>Nombres y apellidos del
+                    participante
                   </div>
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Evaluación Final</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> Se habilita en
-                          Semana 4</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 40
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 60 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-action">
-                      <button class="fac-eval-btn btn-locked" disabled>
-                        <i class="fi fi-rs-lock"></i> No disponible aún
-                      </button>
-                    </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-e-learning"></i></span>Nombre completo del curso
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-clock"></i></span>Horas académicas acreditadas
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-pen-field"></i></span>Firma y sello del gerente
+                    general
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-diploma"></i></span>Firma y sello de la
+                    coordinadora
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-list"></i></span>Temario completo del curso
                   </div>
                 </div>
-              </section>
-
-              <!-- CERTIFICADO -->
-              <section class="fac-curso-section">
-                <h2 class="fac-cert-section-title">
-                  Certificado oficial al completar el curso
-                </h2>
-                <p class="fac-cert-section-sub">
-                  Al aprobar las evaluaciones, recibirás un certificado con
-                  validez institucional y respaldo del Colegio de Ingenieros.
-                </p>
-                <div class="fac-cert-layout">
-                  <div class="fac-cert-includes">
-                    <p class="fac-cert-includes-title">
-                      Tu certificado incluye
-                    </p>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-barcode"></i></span
-                      >Código único verificable de certificado
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-user"></i></span
-                      >Nombres y apellidos del participante
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-e-learning"></i></span
-                      >Nombre completo del curso
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-clock"></i></span
-                      >Horas académicas acreditadas
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-pen-field"></i></span
-                      >Firma y sello del gerente general
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-diploma"></i></span
-                      >Firma y sello de la coordinadora
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-list"></i></span
-                      >Temario completo del curso
-                    </div>
-                  </div>
-                  <div class="fac-cert-preview">
-                    <img
-                      src="assets/img/certificado.png"
-                      alt="Ejemplo de certificado VIB Academy"
-                      style="
+                <div class="fac-cert-preview">
+                  <img src="assets/img/certificado.png" alt="Ejemplo de certificado VIB Academy" style="
                         width: 100%;
                         display: block;
                         border-radius: var(--fum-radius-md);
-                      "
-                    />
-                  </div>
+                      " />
                 </div>
-              </section>
-
-              <!-- GENERAR CERTIFICADO -->
-              <section class="fac-curso-section fac-gencert-section">
-                <div class="fac-gencert-box">
-                  <div class="fac-gencert-icon">
-                    <i class="fi fi-rs-diploma"></i>
-                  </div>
-                  <div class="fac-gencert-body">
-                    <h3 class="fac-gencert-title">
-                      ¿Listo para tu certificado?
-                    </h3>
-                    <p class="fac-gencert-desc">
-                      Una vez que completes el curso y apruebes todas las
-                      evaluaciones, podrás generar tu certificado oficial en
-                      formato PDF. Este documento tendrá validez institucional y
-                      un código único de verificación.
-                    </p>
-                    <div class="fac-gencert-estado">
-                      <span class="fac-gencert-badge badge-pendiente">
-                        <i class="fi fi-rs-lock"></i> Curso en progreso — 25%
-                        completado
-                      </span>
-                    </div>
-                  </div>
-                  <div class="fac-gencert-cta">
-                    <button class="fac-gencert-btn" id="btnGenerarCert">
-                      <i class="fi fi-rs-download"></i>
-                      Generar mi certificado
-                    </button>
-                    <p class="fac-gencert-hint">
-                      Se habilitará al completar el 100%
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <!-- /main col -->
-
-            <!-- ── SIDEBAR STICKY ── -->
-            <div class="fac-sidebar-col">
-              <!-- Próxima clase -->
-              <div class="fac-proxima-card">
-                <div class="fac-proxima-label">Próxima clase</div>
-                <div class="fac-proxima-titulo">
-                  Clase 2: Normativa y Estándares Internacionales
-                </div>
-                <div class="fac-proxima-fecha">
-                  <i class="fi fi-rs-calendar"></i> Martes 27 de mayo, 7:00 PM
-                </div>
-                <a href="#" class="fac-proxima-btn"
-                  ><i class="fi fi-rs-video-camera"></i> Ingresar a la clase</a
-                >
               </div>
+            </section>
 
-              <!-- Mi Progreso -->
-              <div class="fac-sidebar-progreso">
-                <div class="fac-sidebar-progreso-title">Mi progreso</div>
-                <div class="fac-sidebar-pct-wrap">
-                  <span class="fac-sidebar-pct-label">Avance general</span>
-                  <span class="fac-sidebar-pct-num">25%</span>
+            <!-- GENERAR CERTIFICADO -->
+            <section class="fac-curso-section fac-gencert-section">
+              <div class="fac-gencert-box">
+                <div class="fac-gencert-icon">
+                  <i class="fi fi-rs-diploma"></i>
                 </div>
-                <div class="fac-sidebar-bar-wrap">
-                  <div class="fac-sidebar-bar-fill" style="width: 25%"></div>
+                <div class="fac-gencert-body">
+                  <h3 class="fac-gencert-title">
+                    ¿Listo para tu certificado?
+                  </h3>
+                  <p class="fac-gencert-desc">
+                    Una vez que completes el curso y apruebes todas las
+                    evaluaciones, podrás generar tu certificado oficial en
+                    formato PDF. Este documento tendrá validez institucional y
+                    un código único de verificación.
+                  </p>
+                  <div class="fac-gencert-estado">
+                    <span class="fac-gencert-badge badge-pendiente">
+                      <i class="fi fi-rs-lock"></i> Curso en progreso — 25%
+                      completado
+                    </span>
+                  </div>
                 </div>
-                <div class="fac-sidebar-clases-list">
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-done"></div>
-                    <div class="fac-sidebar-clase-label">
-                      Clase 1: Normativa Legal Nacional
-                    </div>
-                    <div class="fac-sidebar-clase-status st-done">Hecha</div>
+                <div class="fac-gencert-cta">
+                  <button class="fac-gencert-btn" id="btnGenerarCert">
+                    <i class="fi fi-rs-download"></i>
+                    Generar mi certificado
+                  </button>
+                  <p class="fac-gencert-hint">
+                    Se habilitará al completar el 100%
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /main col -->
+
+          <!-- ── SIDEBAR STICKY ── -->
+          <div class="fac-sidebar-col">
+            <!-- Próxima clase -->
+            <div class="fac-proxima-card">
+              <div class="fac-proxima-label">Próxima clase</div>
+              <div class="fac-proxima-titulo">
+                Clase 2: Normativa y Estándares Internacionales
+              </div>
+              <div class="fac-proxima-fecha">
+                <i class="fi fi-rs-calendar"></i> Martes 27 de mayo, 7:00 PM
+              </div>
+              <a href="#" class="fac-proxima-btn"><i class="fi fi-rs-video-camera"></i> Ingresar a la clase</a>
+            </div>
+
+            <!-- Mi Progreso -->
+            <div class="fac-sidebar-progreso">
+              <div class="fac-sidebar-progreso-title">Mi progreso</div>
+              <div class="fac-sidebar-pct-wrap">
+                <span class="fac-sidebar-pct-label">Avance general</span>
+                <span class="fac-sidebar-pct-num">25%</span>
+              </div>
+              <div class="fac-sidebar-bar-wrap">
+                <div class="fac-sidebar-bar-fill" style="width: 25%"></div>
+              </div>
+              <div class="fac-sidebar-clases-list">
+                <div class="fac-sidebar-clase-row">
+                  <div class="fac-sidebar-clase-dot dot-done"></div>
+                  <div class="fac-sidebar-clase-label">
+                    Clase 1: Normativa Legal Nacional
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-active"></div>
-                    <div class="fac-sidebar-clase-label">
-                      Clase 2: Estándares Internacionales
-                    </div>
-                    <div class="fac-sidebar-clase-status st-active">
-                      Próxima
-                    </div>
+                  <div class="fac-sidebar-clase-status st-done">Hecha</div>
+                </div>
+                <div class="fac-sidebar-clase-row">
+                  <div class="fac-sidebar-clase-dot dot-active"></div>
+                  <div class="fac-sidebar-clase-label">
+                    Clase 2: Estándares Internacionales
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-locked"></div>
-                    <div class="fac-sidebar-clase-label muted">
-                      Clase 3: Niveles de Respuesta
-                    </div>
-                    <div class="fac-sidebar-clase-status st-locked">Sem. 3</div>
+                  <div class="fac-sidebar-clase-status st-active">
+                    Próxima
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-locked"></div>
-                    <div class="fac-sidebar-clase-label muted">
-                      Clase 4: Herramientas de Gestión
-                    </div>
-                    <div class="fac-sidebar-clase-status st-locked">Sem. 4</div>
+                </div>
+                <div class="fac-sidebar-clase-row">
+                  <div class="fac-sidebar-clase-dot dot-locked"></div>
+                  <div class="fac-sidebar-clase-label muted">
+                    Clase 3: Niveles de Respuesta
                   </div>
+                  <div class="fac-sidebar-clase-status st-locked">Sem. 3</div>
+                </div>
+                <div class="fac-sidebar-clase-row">
+                  <div class="fac-sidebar-clase-dot dot-locked"></div>
+                  <div class="fac-sidebar-clase-label muted">
+                    Clase 4: Herramientas de Gestión
+                  </div>
+                  <div class="fac-sidebar-clase-status st-locked">Sem. 4</div>
                 </div>
               </div>
             </div>
-            <!-- /sidebar -->
           </div>
-          <!-- /body -->
-        </main>
+          <!-- /sidebar -->
+        </div>
+        <!-- /body -->
+      </main>
 
-        <footer class="fac-footer">
-          <div class="fac-footer-inner">
-            <div class="fac-footer-links">
-              <a href="#" class="fac-footer-link">Términos de uso</a>
-              <a href="#" class="fac-footer-link">Política de privacidad</a>
-              <a href="#" class="fac-footer-link">Soporte</a>
-              <a
-                href="https://consultoresvib.com"
-                target="_blank"
-                class="fac-footer-link"
-                >consultoresvib.com</a
-              >
-            </div>
-            <p class="fac-footer-copy">
-              <span
-                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
-              >
-              <span
-                >Plataforma desarrollada por
-                <a href="https://nickramen.com/" target="_blank"
-                  >nickramen</a
-                ></span
-              >
-            </p>
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Términos de uso</a>
+            <a href="#" class="fac-footer-link">Política de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+            <a href="https://consultoresvib.com" target="_blank" class="fac-footer-link">consultoresvib.com</a>
           </div>
-        </footer>
-      </div>
+          <p class="fac-footer-copy">
+            <span>&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span>
+            <span>Plataforma desarrollada por
+              <a href="https://nickramen.com/" target="_blank">nickramen</a></span>
+          </p>
+        </div>
+      </footer>
     </div>
+  </div>
 
-    <script>
-      // Sidebar
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("sidebarOverlay");
-      const toggle = document.getElementById("sidebarToggle");
-      const openSidebar = () => {
-        sidebar.classList.add("is-open");
-        overlay.classList.add("is-active");
-        document.body.style.overflow = "hidden";
-      };
-      const closeSidebar = () => {
-        sidebar.classList.remove("is-open");
-        overlay.classList.remove("is-active");
-        document.body.style.overflow = "";
-      };
-      toggle.addEventListener("click", () =>
-        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
-      );
-      overlay.addEventListener("click", closeSidebar);
+  <script>
+    // Sidebar
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggle = document.getElementById("sidebarToggle");
+    const openSidebar = () => {
+      sidebar.classList.add("is-open");
+      overlay.classList.add("is-active");
+      document.body.style.overflow = "hidden";
+    };
+    const closeSidebar = () => {
+      sidebar.classList.remove("is-open");
+      overlay.classList.remove("is-active");
+      document.body.style.overflow = "";
+    };
+    toggle.addEventListener("click", () =>
+      sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+    );
+    overlay.addEventListener("click", closeSidebar);
 
-      // Profile dropdown
-      const profileToggle = document.getElementById("profileToggle");
-      const profileMenu = document.getElementById("profileMenu");
-      profileToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        profileMenu.classList.toggle("is-open");
-      });
-      document.addEventListener("click", (e) => {
-        if (!profileMenu.contains(e.target))
-          profileMenu.classList.remove("is-open");
-      });
+    // Profile dropdown
+    const profileToggle = document.getElementById("profileToggle");
+    const profileMenu = document.getElementById("profileMenu");
+    profileToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileMenu.classList.toggle("is-open");
+    });
+    document.addEventListener("click", (e) => {
+      if (!profileMenu.contains(e.target))
+        profileMenu.classList.remove("is-open");
+    });
 
-      // Announcements
-      (function () {
-        const items = document.querySelectorAll(".fac-announcement-item");
-        if (!items.length) return;
-        let current = 0;
-        function next() {
-          const prev = current;
-          current = (current + 1) % items.length;
-          items[prev].classList.add("leaving");
-          items[prev].classList.remove("active");
-          items[current].classList.add("active");
-          setTimeout(() => items[prev].classList.remove("leaving"), 600);
+    // Announcements
+    (function () {
+      const items = document.querySelectorAll(".fac-announcement-item");
+      if (!items.length) return;
+      let current = 0;
+      function next() {
+        const prev = current;
+        current = (current + 1) % items.length;
+        items[prev].classList.add("leaving");
+        items[prev].classList.remove("active");
+        items[current].classList.add("active");
+        setTimeout(() => items[prev].classList.remove("leaving"), 600);
+      }
+      setInterval(next, 5000);
+    })();
+
+    // Accordion temario
+    document.querySelectorAll(".fac-tema-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".fac-tema-item");
+        const body = item.querySelector(".fac-tema-body");
+        const isOpen = item.classList.contains("is-open");
+        document.querySelectorAll(".fac-tema-item").forEach((i) => {
+          i.classList.remove("is-open");
+          i.querySelector(".fac-tema-body").style.maxHeight = "0";
+          i.querySelector(".fac-tema-btn").setAttribute(
+            "aria-expanded",
+            "false",
+          );
+        });
+        if (!isOpen) {
+          item.classList.add("is-open");
+          body.style.maxHeight = body.scrollHeight + "px";
+          btn.setAttribute("aria-expanded", "true");
         }
-        setInterval(next, 5000);
-      })();
-
-      // Accordion temario
-      document.querySelectorAll(".fac-tema-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const item = btn.closest(".fac-tema-item");
-          const body = item.querySelector(".fac-tema-body");
-          const isOpen = item.classList.contains("is-open");
-          document.querySelectorAll(".fac-tema-item").forEach((i) => {
-            i.classList.remove("is-open");
-            i.querySelector(".fac-tema-body").style.maxHeight = "0";
-            i.querySelector(".fac-tema-btn").setAttribute(
-              "aria-expanded",
-              "false",
-            );
-          });
-          if (!isOpen) {
-            item.classList.add("is-open");
-            body.style.maxHeight = body.scrollHeight + "px";
-            btn.setAttribute("aria-expanded", "true");
-          }
-        });
       });
+    });
 
-      // Bloquear click en clases bloqueadas
-      document.querySelectorAll(".fac-clase-card.is-locked").forEach((card) => {
-        card.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        });
+    // Bloquear click en clases bloqueadas
+    document.querySelectorAll(".fac-clase-card.is-locked").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
       });
-    </script>
-    <!-- ══════════════════════════════════════════════
+    });
+  </script>
+  <!-- ══════════════════════════════════════════════
          PLANTILLA OCULTA DEL CERTIFICADO PDF
          Los src de imágenes son placeholders — cámbilos por
          rutas reales o base64 antes de producción.
     ══════════════════════════════════════════════ -->
-    <div id="cert-pdf-template">
-      <div class="cert-page" id="certPageEl">
-        <!-- Hojas decorativas esquinas (SVG inline, sin dependencia externa) -->
-        <svg
-          class="cert-leaf cert-leaf-tl"
-          viewBox="0 0 60 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10 70 C10 40 40 30 50 5 C50 5 60 35 30 55 C20 62 15 70 10 70Z"
-            fill="#1a1f5e"
-          />
-          <path
-            d="M30 55 C30 35 50 20 55 5"
-            stroke="#7fd047"
-            stroke-width="1.5"
-            fill="none"
-          />
-        </svg>
-        <svg
-          class="cert-leaf cert-leaf-tr"
-          viewBox="0 0 60 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10 70 C10 40 40 30 50 5 C50 5 60 35 30 55 C20 62 15 70 10 70Z"
-            fill="#1a1f5e"
-          />
-          <path
-            d="M30 55 C30 35 50 20 55 5"
-            stroke="#7fd047"
-            stroke-width="1.5"
-            fill="none"
-          />
-        </svg>
-        <svg
-          class="cert-leaf cert-leaf-bl"
-          viewBox="0 0 60 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M50 10 C50 40 20 50 10 75 C10 75 0 45 30 25 C40 18 45 10 50 10Z"
-            fill="#1a1f5e"
-          />
-        </svg>
-        <svg
-          class="cert-leaf cert-leaf-br"
-          viewBox="0 0 60 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M50 10 C50 40 20 50 10 75 C10 75 0 45 30 25 C40 18 45 10 50 10Z"
-            fill="#1a1f5e"
-          />
-        </svg>
+  <div id="cert-pdf-template">
+    <div class="cert-page" id="certPageEl">
+      <!-- Hojas decorativas esquinas (SVG inline, sin dependencia externa) -->
+      <svg class="cert-leaf cert-leaf-tl" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 70 C10 40 40 30 50 5 C50 5 60 35 30 55 C20 62 15 70 10 70Z" fill="#42b8de" />
+        <path d="M30 55 C30 35 50 20 55 5" stroke="#008b72" stroke-width="1.5" fill="none" />
+      </svg>
+      <svg class="cert-leaf cert-leaf-tr" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 70 C10 40 40 30 50 5 C50 5 60 35 30 55 C20 62 15 70 10 70Z" fill="#42b8de" />
+        <path d="M30 55 C30 35 50 20 55 5" stroke="#008b72" stroke-width="1.5" fill="none" />
+      </svg>
+      <svg class="cert-leaf cert-leaf-bl" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 C50 40 20 50 10 75 C10 75 0 45 30 25 C40 18 45 10 50 10Z" fill="#42b8de" />
+      </svg>
+      <svg class="cert-leaf cert-leaf-br" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 C50 40 20 50 10 75 C10 75 0 45 30 25 C40 18 45 10 50 10Z" fill="#42b8de" />
+      </svg>
 
-        <!-- Bordes decorativos -->
-        <div class="cert-border-outer"></div>
-        <div class="cert-border-inner"></div>
-        <!-- Barra inferior -->
-        <div class="cert-bar-accent"></div>
-        <div class="cert-bar-bottom"></div>
+      <!-- Bordes decorativos -->
+      <div class="cert-border-outer"></div>
+      <div class="cert-border-inner"></div>
+      <!-- Barra inferior -->
+      <div class="cert-bar-accent"></div>
+      <div class="cert-bar-bottom"></div>
 
-        <div class="cert-content">
-          <!-- Logos -->
-          <div class="cert-logos-row">
-            <!-- Logo VIB Academy (izquierda) — reemplaza src con tu logo real o base64 -->
-            <img
-              src="assets/img/logo-vib.png"
-              alt="VIB Academy"
-              class="cert-logo-img"
-              id="certLogoVib"
-              onerror="this.style.opacity = '0'"
-            />
-            <!-- Logo Colegio de Ingenieros (derecha) — reemplaza src -->
-            <img
-              src="assets/img/logo-colegio.png"
-              alt="Colegio de Ingenieros"
-              class="cert-logo-img"
-              id="certLogoColegio"
-              onerror="this.style.opacity = '0'"
-            />
-          </div>
+      <div class="cert-content">
+        <!-- Logos -->
+        <div class="cert-logos-row">
+          <!-- Logo VIB Academy (izquierda) — reemplaza src con tu logo real o base64 -->
+          <img src="assets/img/logo-vib.png" alt="VIB Academy" class="cert-logo-img" id="certLogoVib"
+            onerror="this.style.opacity = '0'" />
+          <!-- Logo Colegio de Ingenieros (derecha) — reemplaza src -->
+          <img src="assets/img/logo-colegio.png" alt="Colegio de Ingenieros" class="cert-logo-img" id="certLogoColegio"
+            onerror="this.style.opacity = '0'" />
+        </div>
 
-          <div class="cert-subtitle">Certificado Ambiental</div>
-          <h1 class="cert-main-title">Certificado <span>Ambiental</span></h1>
-          <div class="cert-divider-line"></div>
+        <div class="cert-subtitle">Certificado Ambiental</div>
+        <h1 class="cert-main-title">Certificado <span>Ambiental</span></h1>
+        <div class="cert-divider-line"></div>
 
-          <div class="cert-presented-to">Este certificado es presentado a</div>
-          <div class="cert-student-name" id="certStudentName">
-            NOMBRE DEL PARTICIPANTE
-          </div>
+        <div class="cert-presented-to">Este certificado es presentado a</div>
+        <div class="cert-student-name" id="certStudentName">
+          NOMBRE DEL PARTICIPANTE
+        </div>
 
-          <div class="cert-completed-text">
-            Por haber completado el curso de
-          </div>
-          <div class="cert-course-name" id="certCourseName">
-            Nombre del Curso
-          </div>
+        <div class="cert-completed-text">
+          Por haber completado el curso de
+        </div>
+        <div class="cert-course-name" id="certCourseName">
+          Nombre del Curso
+        </div>
 
-          <!-- Datos del certificado -->
-          <div class="cert-data-box">
-            <div class="cert-data-col">
-              <div class="cert-data-row">
-                <span class="cert-data-icon">📅</span>
-                <strong>Emisión</strong>
-              </div>
-              <div class="cert-data-row">
-                <span class="cert-data-icon">📆</span>
-                <span id="certFechaEmision">—</span>
-              </div>
-              <div class="cert-data-row">
-                <span class="cert-data-icon">🗓</span>
-                Inicio: <span id="certFechaInicio">—</span>
-              </div>
+        <!-- Datos del certificado -->
+        <div class="cert-data-box">
+          <div class="cert-data-col">
+            <div class="cert-data-row">
+              <span class="cert-data-icon">📅</span>
+              <strong>Emisión</strong>
             </div>
-            <div class="cert-data-col">
-              <div class="cert-data-row">
-                <span class="cert-data-icon">⏱</span>
-                <span id="certDuracion">—</span> horas académicas
-              </div>
-              <div class="cert-data-row">
-                <span class="cert-data-icon">👤</span>
-                Instructor: <strong id="certInstructor">—</strong>
-              </div>
+            <div class="cert-data-row">
+              <span class="cert-data-icon">📆</span>
+              <span id="certFechaEmision">—</span>
+            </div>
+            <div class="cert-data-row">
+              <span class="cert-data-icon">🗓</span>
+              Inicio: <span id="certFechaInicio">—</span>
             </div>
           </div>
-
-          <div class="cert-code">
-            CÓDIGO: <strong id="certCodigo">FAC-2026-XXXXXX</strong>
-          </div>
-
-          <!-- Firmas -->
-          <div class="cert-signatures-row">
-            <div class="cert-signature-block">
-              <div class="cert-signature-imgs">
-                <!-- Firma del instructor — reemplaza src -->
-                <img
-                  src="assets/img/firma-instructor.png"
-                  alt="Firma"
-                  class="cert-signature-img"
-                  id="certFirmaInstructor"
-                  onerror="this.style.opacity = '0'"
-                />
-                <!-- Sello — reemplaza src -->
-                <img
-                  src="assets/img/sello.png"
-                  alt="Sello"
-                  class="cert-signature-img"
-                  id="certSello"
-                  onerror="this.style.opacity = '0'"
-                />
-              </div>
-              <div class="cert-signature-line"></div>
-              <div class="cert-signature-name" id="certFirmaNombre">
-                Lic. Iván Tamariz
-              </div>
-              <div class="cert-signature-role">Instructor del curso</div>
+          <div class="cert-data-col">
+            <div class="cert-data-row">
+              <span class="cert-data-icon">⏱</span>
+              <span id="certDuracion">—</span> horas académicas
             </div>
+            <div class="cert-data-row">
+              <span class="cert-data-icon">👤</span>
+              Instructor: <strong id="certInstructor">—</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-code">
+          CÓDIGO: <strong id="certCodigo">FAC-2026-XXXXXX</strong>
+        </div>
+
+        <!-- Firmas -->
+        <div class="cert-signatures-row">
+          <div class="cert-signature-block">
+            <div class="cert-signature-imgs">
+              <!-- Firma del instructor — reemplaza src -->
+              <img src="assets/img/firma-instructor.png" alt="Firma" class="cert-signature-img" id="certFirmaInstructor"
+                onerror="this.style.opacity = '0'" />
+              <!-- Sello — reemplaza src -->
+              <img src="assets/img/sello.png" alt="Sello" class="cert-signature-img" id="certSello"
+                onerror="this.style.opacity = '0'" />
+            </div>
+            <div class="cert-signature-line"></div>
+            <div class="cert-signature-name" id="certFirmaNombre">
+              Lic. Iván Tamariz
+            </div>
+            <div class="cert-signature-role">Instructor del curso</div>
           </div>
         </div>
       </div>
     </div>
-    <!-- /cert-pdf-template -->
+  </div>
+  <!-- /cert-pdf-template -->
 
-    <!-- html2pdf via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- html2pdf via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <style>
-      /* ── MODAL CERTIFICADO ── */
-      #certModal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        background: rgba(10, 14, 50, 0.82);
-        backdrop-filter: blur(4px);
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        overflow-y: auto;
-      }
-      #certModal.is-open {
-        display: flex;
-      }
-      .cert-modal-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        width: 100%;
-        max-width: 960px;
-        animation: certModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      }
-      @keyframes certModalIn {
-        from {
-          opacity: 0;
-          transform: scale(0.94) translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-      .cert-modal-actions {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-      .cert-modal-btn-download {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 28px;
-        background: #7fd047;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-        font-family: inherit;
-        transition: background 0.2s;
-      }
-      .cert-modal-btn-download:hover {
-        background: #6bb83a;
-      }
-      .cert-modal-btn-close {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 20px;
-        background: rgba(255, 255, 255, 0.12);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: inherit;
-        transition: background 0.2s;
-      }
-      .cert-modal-btn-close:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-      /* El certificado en sí */
-      #certPreviewEl {
-        width: 900px;
-        max-width: 100%;
-        background: #fff;
-        font-family: Georgia, serif;
-        position: relative;
-        overflow: hidden;
-        border-radius: 4px;
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
-      }
-    </style>
+  <style>
+    /* ── MODAL CERTIFICADO ── */
+    #certModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10, 14, 50, 0.82);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
 
-    <!-- MODAL -->
-    <div
-      id="certModal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Vista previa del certificado"
-    >
-      <div class="cert-modal-inner">
-        <div class="cert-modal-actions">
-          <button class="cert-modal-btn-download" id="btnDescargarPDF">
-            <i class="fi fi-rs-download"></i> Descargar PDF
-          </button>
-          <button class="cert-modal-btn-close" id="btnCerrarModal">
-            <i class="fi fi-rs-cross"></i> Cerrar
-          </button>
-        </div>
-        <!-- El certificado se inyecta aquí -->
-        <div id="certPreviewEl"></div>
+    #certModal.is-open {
+      display: flex;
+    }
+
+    .cert-modal-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 960px;
+      animation: certModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes certModalIn {
+      from {
+        opacity: 0;
+        transform: scale(0.94) translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .cert-modal-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cert-modal-btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: #008b72;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .cert-modal-btn-download:hover {
+      background: #6bb83a;
+    }
+
+    .cert-modal-btn-close {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .cert-modal-btn-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* El certificado en sí */
+    #certPreviewEl {
+      width: 900px;
+      max-width: 100%;
+      background: #fff;
+      font-family: Georgia, serif;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+
+  <!-- MODAL -->
+  <div id="certModal" role="dialog" aria-modal="true" aria-label="Vista previa del certificado">
+    <div class="cert-modal-inner">
+      <div class="cert-modal-actions">
+        <button class="cert-modal-btn-download" id="btnDescargarPDF">
+          <i class="fi fi-rs-download"></i> Descargar PDF
+        </button>
+        <button class="cert-modal-btn-close" id="btnCerrarModal">
+          <i class="fi fi-rs-cross"></i> Cerrar
+        </button>
       </div>
+      <!-- El certificado se inyecta aquí -->
+      <div id="certPreviewEl"></div>
     </div>
+  </div>
 
-    <script>
-      // ── DATOS DEL CURSO ──
-      const CURSO_DATA = {
-        nombre: "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-        instructor: "Lic. Iván Tamariz",
-        duracion: 32,
-        fechaInicio: "19/05/2026",
-        slug: "matpel-2026",
-      };
+  <script>
+    // ── DATOS DEL CURSO ──
+    const CURSO_DATA = {
+      nombre: "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
+      instructor: "Lic. Iván Tamariz",
+      duracion: 32,
+      fechaInicio: "19/05/2026",
+      slug: "matpel-2026",
+    };
 
-      function generarCodigo() {
-        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-        let id = "";
-        for (let i = 0; i < 8; i++)
-          id += chars[Math.floor(Math.random() * chars.length)];
-        return `FAC-${new Date().getFullYear()}-${id}`;
-      }
+    function generarCodigo() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let id = "";
+      for (let i = 0; i < 8; i++)
+        id += chars[Math.floor(Math.random() * chars.length)];
+      return `FAC-${new Date().getFullYear()}-${id}`;
+    }
 
-      function formatearFecha(date) {
-        return date.toLocaleDateString("es-HN", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        });
-      }
+    function formatearFecha(date) {
+      return date.toLocaleDateString("es-HN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+    }
 
-      function buildCertHTML(userName, codigo, fechaHoy) {
-        return `
+    function buildCertHTML(userName, codigo, fechaHoy) {
+      return `
         <style>
           @import url("https://fonts.googleapis.com/css2?family=Updock&display=swap");
           .vib-cert-wrap {
@@ -2817,13 +2770,13 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 15px;
-            background: #7fd047;
+            background: #008b72;
           }
           .vib-cert-wrap::after {
             content: "";
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 40px;
-            background: #1a1f5e;
+            background: #42b8de;
           }
           .vib-cert-inner {
             padding: 1.8rem 2.2rem 5.5rem 2.2rem;
@@ -2848,12 +2801,12 @@
           .vib-logo-img { max-height: 64px; width: auto; object-fit: contain; }
           .vib-cert-title {
             font-size: 2rem; font-weight: 700; letter-spacing: -0.01em;
-            color: #1a1f5e; text-transform: uppercase;
+            color: #42b8de; text-transform: uppercase;
             text-align: center; margin-bottom: 0.3rem;
           }
           .vib-cert-title::after {
             content: ""; display: block;
-            width: 80px; height: 3px; background: #7fd047;
+            width: 80px; height: 3px; background: #008b72;
             margin: 8px auto 0; border-radius: 4px;
           }
           .vib-cert-sub {
@@ -2874,7 +2827,7 @@
             max-width: 82%; margin: 0 auto; line-height: 2;
             font-weight: 450; text-align: center;
           }
-          .vib-hl { color: #1a1f5e; font-weight: 600; border-bottom: 1px dashed #7fd047; }
+          .vib-hl { color: #42b8de; font-weight: 600; border-bottom: 1px dashed #008b72; }
           .vib-cert-id {
             margin-top: 1.2rem;
             display: flex; justify-content: center; align-items: center;
@@ -3013,90 +2966,91 @@
 
           </div>
         </div>`;
+    }
+
+    // ── BOTÓN PRINCIPAL ──
+    const btnCert = document.getElementById("btnGenerarCert");
+    const modal = document.getElementById("certModal");
+    const preview = document.getElementById("certPreviewEl");
+    const btnClose = document.getElementById("btnCerrarModal");
+    const btnPDF = document.getElementById("btnDescargarPDF");
+
+    btnCert.disabled = false;
+    document.querySelector(".fac-gencert-hint").textContent =
+      "Modo demo — habilitado para vista previa";
+
+    // ── ABRIR MODAL CON VISTA PREVIA ──
+    let certCodigo = null;
+    let certUserName = null;
+
+    btnCert.addEventListener("click", () => {
+      const storageKey = `vib_cert_${CURSO_DATA.slug}`;
+      certCodigo = localStorage.getItem(storageKey + "_codigo");
+      if (!certCodigo) {
+        certCodigo = generarCodigo();
+        localStorage.setItem(storageKey + "_codigo", certCodigo);
+        localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
       }
 
-      // ── BOTÓN PRINCIPAL ──
-      const btnCert = document.getElementById("btnGenerarCert");
-      const modal = document.getElementById("certModal");
-      const preview = document.getElementById("certPreviewEl");
-      const btnClose = document.getElementById("btnCerrarModal");
-      const btnPDF = document.getElementById("btnDescargarPDF");
+      certUserName = localStorage.getItem("vib_user_name") || "Participante";
+      const fechaHoy = formatearFecha(new Date());
 
-      btnCert.disabled = false;
-      document.querySelector(".fac-gencert-hint").textContent =
-        "Modo demo — habilitado para vista previa";
+      preview.innerHTML = buildCertHTML(certUserName, certCodigo, fechaHoy);
+      modal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    });
 
-      // ── ABRIR MODAL CON VISTA PREVIA ──
-      let certCodigo = null;
-      let certUserName = null;
-
-      btnCert.addEventListener("click", () => {
-        const storageKey = `vib_cert_${CURSO_DATA.slug}`;
-        certCodigo = localStorage.getItem(storageKey + "_codigo");
-        if (!certCodigo) {
-          certCodigo = generarCodigo();
-          localStorage.setItem(storageKey + "_codigo", certCodigo);
-          localStorage.setItem(storageKey + "_fecha", new Date().toISOString());
-        }
-
-        certUserName = localStorage.getItem("vib_user_name") || "Participante";
-        const fechaHoy = formatearFecha(new Date());
-
-        preview.innerHTML = buildCertHTML(certUserName, certCodigo, fechaHoy);
-        modal.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-      });
-
-      // ── CERRAR MODAL ──
-      btnClose.addEventListener("click", () => {
+    // ── CERRAR MODAL ──
+    btnClose.addEventListener("click", () => {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+    });
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
         modal.classList.remove("is-open");
         document.body.style.overflow = "";
-      });
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.classList.remove("is-open");
-          document.body.style.overflow = "";
-        }
-      });
+      }
+    });
 
-      // ── DESCARGAR PDF DESDE EL DOM VISIBLE ──
-      btnPDF.addEventListener("click", async () => {
-        btnPDF.disabled = true;
-        btnPDF.innerHTML = '<i class="fi fi-rs-loading"></i> Generando PDF...';
+    // ── DESCARGAR PDF DESDE EL DOM VISIBLE ──
+    btnPDF.addEventListener("click", async () => {
+      btnPDF.disabled = true;
+      btnPDF.innerHTML = '<i class="fi fi-rs-loading"></i> Generando PDF...';
 
-        const filename = `Certificado_VIBACADEMY_${certUserName.replace(/\s+/g, "_")}_${certCodigo}.pdf`;
+      const filename = `Certificado_VIBACADEMY_${certUserName.replace(/\s+/g, "_")}_${certCodigo}.pdf`;
 
-        const opt = {
-          margin: 0,
-          filename,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: {
-            scale: 3,
-            useCORS: true,
-            logging: false,
-            backgroundColor: "#ffffff",
-            letterRendering: true,
-          },
-          jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
-        };
+      const opt = {
+        margin: 0,
+        filename,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: {
+          scale: 3,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#ffffff",
+          letterRendering: true,
+        },
+        jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+      };
 
-        try {
-          await html2pdf().set(opt).from(preview).save();
-          btnPDF.innerHTML =
-            '<i class="fi fi-rs-check-circle"></i> ¡Descargado!';
-        } catch (e) {
-          console.error(e);
-          btnPDF.innerHTML = '<i class="fi fi-rs-download"></i> Descargar PDF';
-          alert("Error al generar el PDF. Intenta de nuevo.");
-        }
+      try {
+        await html2pdf().set(opt).from(preview).save();
+        btnPDF.innerHTML =
+          '<i class="fi fi-rs-check-circle"></i> ¡Descargado!';
+      } catch (e) {
+        console.error(e);
+        btnPDF.innerHTML = '<i class="fi fi-rs-download"></i> Descargar PDF';
+        alert("Error al generar el PDF. Intenta de nuevo.");
+      }
 
-        setTimeout(() => {
-          btnPDF.disabled = false;
-          btnPDF.innerHTML = '<i class="fi fi-rs-download"></i> Descargar PDF';
-        }, 3000);
-      });
-    </script>
+      setTimeout(() => {
+        btnPDF.disabled = false;
+        btnPDF.innerHTML = '<i class="fi fi-rs-download"></i> Descargar PDF';
+      }, 3000);
+    });
+  </script>
 
-    <script src="assets/js/datos-usuario.js"></script>
-  </body>
+  <script src="assets/js/datos-usuario.js"></script>
+</body>
+
 </html>

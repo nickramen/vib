@@ -1,348 +1,637 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cursos — VIB ACADEMY</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Cursos — Academia VIB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
-    />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
 
-    <style>
-      /* ══════════════════════════════════════════════
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ══════════════════════════════════════════════
          BARRA DE ANUNCIOS
       ══════════════════════════════════════════════ */
-      .fac-announcements {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        overflow: hidden;
-        min-width: 0;
-        height: 36px;
-      }
-      .fac-announcements-icon {
-        display: flex;
-        align-items: center;
-        color: var(--fum-color-verde);
-        font-size: 13px;
-        flex-shrink: 0;
-      }
-      .fac-announcements-icon i {
-        display: flex;
-      }
-      .fac-announcements-track {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        height: 100%;
-      }
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: var(--fum-font-weight-semibold);
+    }
+
+    @media (max-width: 1024px) {
       .fac-announcement-item {
+        display: none !important;
+      }
+
+      .fac-announcements-ticker {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: fac-ticker-scroll 32s linear infinite;
+        font-size: var(--fum-font-size-sm);
+        color: var(--fum-color-text-secondary);
         position: absolute;
         top: 50%;
         left: 0;
-        right: 0;
-        transform: translateY(-50%) translateX(30px);
-        opacity: 0;
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
-        pointer-events: none;
+        transform: translateY(-50%);
+        will-change: transform;
       }
-      .fac-announcement-item.active {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-        pointer-events: auto;
-      }
-      .fac-announcement-item.leaving {
-        opacity: 0;
-        transform: translateY(-50%) translateX(-30px);
-      }
-      .fac-announcement-item strong {
+
+      .fac-announcements-ticker strong {
         color: var(--fum-color-text-primary);
         font-weight: var(--fum-font-weight-semibold);
       }
-      @media (max-width: 1024px) {
-        .fac-announcement-item {
-          display: none !important;
-        }
-        .fac-announcements-ticker {
-          display: flex;
-          align-items: center;
-          white-space: nowrap;
-          animation: fac-ticker-scroll 32s linear infinite;
-          font-size: var(--fum-font-size-sm);
-          color: var(--fum-color-text-secondary);
-          position: absolute;
-          top: 50%;
-          left: 0;
-          transform: translateY(-50%);
-          will-change: transform;
-        }
-        .fac-announcements-ticker strong {
-          color: var(--fum-color-text-primary);
-          font-weight: var(--fum-font-weight-semibold);
-        }
-        .fac-ticker-sep {
-          display: inline-block;
-          margin: 0 20px;
-          color: var(--fum-color-verde);
-          opacity: 0.45;
-          font-size: 10px;
-        }
-        @keyframes fac-ticker-scroll {
-          0% {
-            transform: translateY(-50%) translateX(0);
-          }
-          100% {
-            transform: translateY(-50%) translateX(-50%);
-          }
-        }
-      }
-      @media (min-width: 1025px) {
-        .fac-announcements-ticker {
-          display: none;
-        }
+
+      .fac-ticker-sep {
+        display: inline-block;
+        margin: 0 20px;
+        color: var(--fum-color-verde);
+        opacity: 0.45;
+        font-size: 10px;
       }
 
-      /* ══════════════════════════════════════════════
+      @keyframes fac-ticker-scroll {
+        0% {
+          transform: translateY(-50%) translateX(0);
+        }
+
+        100% {
+          transform: translateY(-50%) translateX(-50%);
+        }
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .fac-announcements-ticker {
+        display: none;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
          COURSE CARDS — misma estructura que instructor cards
       ══════════════════════════════════════════════ */
 
-      /* Badge de tipo de curso (en lugar de duración sobre la imagen) */
-      .fac-course-card-type-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: var(--fum-color-verde);
-        color: #fff;
-        font-size: 10.5px;
-        font-weight: 700;
-        padding: 3px 8px;
-        border-radius: var(--fum-radius-sm);
-        letter-spacing: 0.01em;
-      }
+    /* Badge de tipo de curso (en lugar de duración sobre la imagen) */
+    .fac-course-card-type-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--fum-radius-sm);
+      letter-spacing: 0.01em;
+    }
 
-      /* Meta row: duración + estudiantes, igual que instructor meta */
-      .fac-course-meta-row {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-      }
-      .fac-course-meta-item {
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-muted);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .fac-course-meta-item i {
-        font-size: var(--fum-font-size-sm);
-        display: flex;
-      }
+    /* Meta row: duración + estudiantes, igual que instructor meta */
+    .fac-course-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+    }
 
-      /* Precio — en lugar del nivel */
-      .fac-course-price {
-        font-size: var(--fum-font-size-lg);
-        font-weight: var(--fum-font-weight-bold);
-        color: var(--fum-color-negro);
+    .fac-course-meta-item {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .fac-course-meta-item i {
+      font-size: var(--fum-font-size-sm);
+      display: flex;
+    }
+
+    /* Precio — en lugar del nivel */
+    .fac-course-price {
+      font-size: var(--fum-font-size-lg);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+    }
+
+    /* Footer del card — sin border-top */
+    .fac-course-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--fum-space-4);
+    }
+
+    .fac-course-enroll-btn {
+      display: inline-block;
+      padding: var(--fum-space-2) var(--fum-space-5);
+      background: var(--fum-color-verde);
+      color: #fff;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      transition:
+        background var(--fum-transition-fast),
+        transform var(--fum-transition-fast);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .fac-course-enroll-btn:hover {
+      background: var(--fum-color-verde-hover);
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+
+  <script>
+    // =====================================================
+    // DATOS DE LOS CURSOS UMA (basados en la propuesta VIB)
+    // =====================================================
+    const CURSOS_DISPONIBLES = [
+      {
+        "id": 1,
+        "nombre": "Gestión Ambiental Municipal: Funciones, Ordenamiento y Desarrollo Sostenible",
+        "slug": "gestion-ambiental-municipal-2026",
+        "instructor": "Ing. Allan Izaguirre",
+        "instructorIniciales": "AI",
+        "instructorRol": "Especialista en gestión ambiental municipal",
+        "instructorBio": "Consultor en innovación y sostenibilidad ambiental, con experiencia en fortalecimiento institucional, gestión municipal y acompañamiento técnico a gobiernos locales.",
+        "instructorImagen": "instructor.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "19/05/2026",
+        "nivel": "basico",
+        "precio": 138.0,
+        "descripcion": "Aprende a operar una UMA con claridad legal, planificación territorial, enfoque ODS y capacidad para acompañar el desarrollo económico local sin sacrificar los recursos naturales del municipio.",
+        "imagen": "curso.webp",
+        "badge": "Programa UMA",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 34,
+        "modulos": [
+          {
+            "titulo": "El ABC de la UMA: funciones y límites",
+            "clases": [
+              "Responsabilidades reales de la UMA y competencias del gobierno central",
+              "Organización diaria, semanal y mensual de la oficina ambiental"
+            ]
+          },
+          {
+            "titulo": "ODS aplicados a la alcaldía",
+            "clases": [
+              "Traducción de los ODS a acciones municipales concretas",
+              "Uso de los ODS para justificar proyectos y solicitar presupuesto"
+            ]
+          },
+          {
+            "titulo": "Ordenamiento territorial ambiental",
+            "clases": [
+              "Zonas permitidas y zonas restringidas: recarga hídrica, riesgo y expansión urbana",
+              "Uso de mapas básicos y criterios territoriales para decidir"
+            ]
+          },
+          {
+            "titulo": "Evaluación de proyectos y dictámenes locales",
+            "clases": [
+              "Revisión técnica de proyectos: lotificadoras, beneficios de café y gasolineras",
+              "Dictámenes ágiles sin regalar los recursos naturales"
+            ]
+          },
+          {
+            "titulo": "Medidas de mitigación y compromisos ambientales",
+            "clases": [
+              "Condiciones ambientales para aprobar proyectos municipales",
+              "Compromisos entre alcaldía y empresa privada"
+            ]
+          },
+          {
+            "titulo": "Economía circular y negocios verdes locales",
+            "clases": [
+              "Incentivos municipales para reciclaje, ahorro de agua y energía solar",
+              "Identificación de oportunidades verdes en la economía local"
+            ]
+          },
+          {
+            "titulo": "Fiscalización y control de la contaminación",
+            "clases": [
+              "Inspección de denuncias por agua, basura, humo o ruido",
+              "Requerimientos formales para corregir impactos ambientales"
+            ]
+          },
+          {
+            "titulo": "Régimen de sanciones y cero tolerancia",
+            "clases": [
+              "De la advertencia a la multa: criterios y cálculo",
+              "Paralización o clausura temporal de obras y negocios incumplidos"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "Regulación de Sectores Productivos y Producción Limpia",
+        "slug": "regulacion-sectores-productivos-2026",
+        "instructor": "Ing. María Fernanda Reyes",
+        "instructorIniciales": "MR",
+        "instructorRol": "Especialista en producción limpia",
+        "instructorBio": "Ingeniera ambiental con experiencia en auditorías, acuerdos de producción limpia y acompañamiento técnico a sectores agroindustriales y extractivos.",
+        "instructorImagen": "instructora.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "02/06/2026",
+        "nivel": "intermedio",
+        "precio": 138.0,
+        "descripcion": "Fortalece la capacidad de la UMA para regular café, agro, ganadería, minería y areneras mediante inspecciones técnicas, acuerdos de producción limpia y alternativas verdes para el territorio.",
+        "imagen": "curso-1.webp",
+        "badge": "Nuevo",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 28,
+        "modulos": [
+          {
+            "titulo": "Aguas mieles y agroquímicos",
+            "clases": [
+              "Inspección de beneficios de café y piletas de oxidación",
+              "Regulación de agroquímicos cerca de fuentes de agua"
+            ]
+          },
+          {
+            "titulo": "Ganadería, deforestación y quemas",
+            "clases": [
+              "Negociación de sistemas silvopastoriles",
+              "Control de quemas agrícolas e incendios forestales"
+            ]
+          },
+          {
+            "titulo": "Minería, areneras y cauces de ríos",
+            "clases": [
+              "Regulación de extracción de arena y grava",
+              "Prevención de desvíos de cauce e inundaciones"
+            ]
+          },
+          {
+            "titulo": "Auditorías sorpresa",
+            "clases": [
+              "Preparación de inspecciones a industrias, gasolineras y rastros",
+              "Revisión de manejo y disposición de desechos"
+            ]
+          },
+          {
+            "titulo": "Acuerdos de Producción Limpia",
+            "clases": [
+              "Negociación con cámaras de comercio locales",
+              "Compromisos voluntarios antes del conflicto legal"
+            ]
+          },
+          {
+            "titulo": "Cierre temporal de operaciones",
+            "clases": [
+              "Base legal y operativa para detener operaciones",
+              "Documentación mínima para sostener la medida"
+            ]
+          },
+          {
+            "titulo": "Ecoturismo local",
+            "clases": [
+              "Modelos de ingreso por protección del bosque",
+              "Senderos, fincas y experiencias comunitarias"
+            ]
+          },
+          {
+            "titulo": "Pagos por Servicios Ambientales",
+            "clases": [
+              "Diseño de esquemas PSA vinculados al recibo de agua",
+              "Compensación a comunidades que protegen nacimientos"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "nombre": "Mediación de Conflictos y Recuperación de la Confianza Social",
+        "slug": "mediacion-conflictos-confianza-social-2026",
+        "instructor": "MSc. Carla Molina",
+        "instructorIniciales": "CM",
+        "instructorRol": "Especialista en diálogo comunitario",
+        "instructorBio": "Facilitadora de procesos de diálogo social, gestión de conflictos ambientales y construcción de acuerdos entre comunidades, empresas y gobiernos locales.",
+        "instructorImagen": "instructora.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "09/06/2026",
+        "nivel": "intermedio",
+        "precio": 138.0,
+        "descripcion": "Aprende a identificar actores, entrar a comunidades en conflicto, facilitar mesas de diálogo y convertir acuerdos comunitarios en compromisos verificables para recuperar la confianza social.",
+        "imagen": "curso.webp",
+        "badge": "Alta demanda",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 31,
+        "modulos": [
+          {
+            "titulo": "Por qué protesta la gente",
+            "clases": [
+              "Mapeo de actores y problemas de agua, bosque o tierra",
+              "Relación con patronatos, juntas de agua y pueblos indígenas"
+            ]
+          },
+          {
+            "titulo": "Dar la cara sin salir golpeado",
+            "clases": [
+              "Primer contacto con comunidades enojadas",
+              "Técnicas básicas para calmar gritos y abrir conversación"
+            ]
+          },
+          {
+            "titulo": "Consulta ciudadana y cabildos abiertos",
+            "clases": [
+              "Cabildos reales antes de aprobar proyectos sensibles",
+              "Preguntas, actas y trazabilidad de la consulta"
+            ]
+          },
+          {
+            "titulo": "Mesas de diálogo",
+            "clases": [
+              "Diseño de una mesa con comunidad, empresa y alcaldía",
+              "Neutralidad, reglas de conversación y manejo de tensiones"
+            ]
+          },
+          {
+            "titulo": "Buscar el ganar-ganar",
+            "clases": [
+              "Soluciones intermedias cuando nadie quiere ceder",
+              "Priorización de compromisos viables"
+            ]
+          },
+          {
+            "titulo": "Redacción de acuerdos comunitarios",
+            "clases": [
+              "Quién hace qué, cuándo y con qué recursos",
+              "Actas, compromisos, responsables y seguimiento"
+            ]
+          },
+          {
+            "titulo": "Veeduría ciudadana",
+            "clases": [
+              "Comités de vecinos para vigilar cumplimiento",
+              "Indicadores simples para verificar acuerdos"
+            ]
+          },
+          {
+            "titulo": "Simulacro de conflicto",
+            "clases": [
+              "Role play: toma de alcaldía o paro por problema de agua",
+              "Evaluación de desempeño y lecciones aprendidas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "nombre": "Riesgos Climáticos y Supervivencia del Territorio",
+        "slug": "riesgos-climaticos-territorio-2026",
+        "instructor": "Dr. Víctor Hernández",
+        "instructorIniciales": "VH",
+        "instructorRol": "Especialista en resiliencia climática",
+        "instructorBio": "Consultor en gestión de riesgos, adaptación climática e infraestructura verde para municipios expuestos a sequías, inundaciones y deslizamientos.",
+        "instructorImagen": "instructor.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "16/06/2026",
+        "nivel": "intermedio",
+        "precio": 138.0,
+        "descripcion": "Prepara a la UMA para identificar zonas de peligro, organizar alertas comunitarias, coordinar emergencias y construir un plan municipal de adaptación frente a sequías e inundaciones.",
+        "imagen": "curso-1.webp",
+        "badge": "Próximamente",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 22,
+        "modulos": [
+          {
+            "titulo": "Identificación de zonas rojas",
+            "clases": [
+              "Uso de mapas sencillos y Google Earth",
+              "Barrios inundables, laderas inestables y puntos críticos"
+            ]
+          },
+          {
+            "titulo": "Restricciones de construcción",
+            "clases": [
+              "Cómo sustentar un no técnico y legal",
+              "Criterios para lotificaciones y viviendas en zona de riesgo"
+            ]
+          },
+          {
+            "titulo": "Corredor Seco y falta de agua",
+            "clases": [
+              "Sequía extrema y protección de fuentes subterráneas",
+              "Medidas municipales para cuidar el agua"
+            ]
+          },
+          {
+            "titulo": "Sistemas de Alerta Temprana comunitarios",
+            "clases": [
+              "Organización de vecinos río arriba",
+              "Alertas por radio, WhatsApp y rutas de comunicación"
+            ]
+          },
+          {
+            "titulo": "Obras de mitigación e infraestructura verde",
+            "clases": [
+              "Rondas hídricas, reforestación y barreras vivas",
+              "Soluciones de bajo costo para evitar deslaves"
+            ]
+          },
+          {
+            "titulo": "Relación de la UMA con los CODEM",
+            "clases": [
+              "Coordinación con bomberos, Copeco y Cruz Roja",
+              "Roles antes, durante y después de la tormenta"
+            ]
+          },
+          {
+            "titulo": "Resiliencia agrícola",
+            "clases": [
+              "Cosecha de agua lluvia y protección de cultivos",
+              "Prácticas para reducir pérdidas por sequía"
+            ]
+          },
+          {
+            "titulo": "Plan Municipal de Adaptación",
+            "clases": [
+              "Estructura básica del plan municipal",
+              "Acciones anuales frente al cambio climático"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "nombre": "Financiamiento y Formulación de Proyectos Verdes",
+        "slug": "financiamiento-proyectos-verdes-2026",
+        "instructor": "Lic. Roberto Aguilar",
+        "instructorIniciales": "RA",
+        "instructorRol": "Especialista en formulación de proyectos",
+        "instructorBio": "Consultor en formulación, presupuesto y presentación de proyectos ambientales para cooperación internacional, fondos verdes y gobiernos locales.",
+        "instructorImagen": "instructor.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "23/06/2026",
+        "nivel": "avanzado",
+        "precio": 138.0,
+        "descripcion": "Convierte necesidades ambientales municipales en proyectos financiables: identifica donantes, formula perfiles ejecutivos, arma presupuestos y presenta propuestas con transparencia y resultados medibles.",
+        "imagen": "curso.webp",
+        "badge": "Financiamiento",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 19,
+        "modulos": [
+          {
+            "titulo": "Realidad financiera de la UMA",
+            "clases": [
+              "Multas, permisos ambientales y generación de ingresos locales",
+              "Cómo defender presupuesto dentro de la alcaldía"
+            ]
+          },
+          {
+            "titulo": "Mapa de donantes",
+            "clases": [
+              "Embajadas, ONG internacionales, USAID, Unión Europea y fondos verdes",
+              "Cómo identificar convocatorias relevantes para municipios"
+            ]
+          },
+          {
+            "titulo": "Lo que piden los donantes",
+            "clases": [
+              "Transparencia, inclusión, mujeres y jóvenes",
+              "Requisitos mínimos para que un proyecto sea elegible"
+            ]
+          },
+          {
+            "titulo": "Árbol de problemas",
+            "clases": [
+              "Identificar la necesidad real del municipio",
+              "Convertir problemas en objetivos y títulos de proyecto"
+            ]
+          },
+          {
+            "titulo": "Perfil de 3 páginas",
+            "clases": [
+              "Resumen ejecutivo claro, directo y convincente",
+              "Estructura mínima de una propuesta corta"
+            ]
+          },
+          {
+            "titulo": "Presupuesto del proyecto",
+            "clases": [
+              "Cálculo de costos sin inflar precios",
+              "Contraparte municipal: terreno, mano de obra y recursos propios"
+            ]
+          },
+          {
+            "titulo": "Pitch ante cooperantes",
+            "clases": [
+              "Presentación de 15 minutos para vender la idea",
+              "Preguntas difíciles y defensa del proyecto"
+            ]
+          },
+          {
+            "titulo": "Transparencia y rendición de cuentas",
+            "clases": [
+              "Recibos, fotografías, informes y evidencias",
+              "Cómo demostrar resultados para abrir nuevas oportunidades"
+            ]
+          }
+        ]
       }
+    ];
 
-      /* Footer del card — sin border-top */
-      .fac-course-card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: var(--fum-space-4);
-      }
+    // Función para guardar curso activo y redirigir
+    function irAlCurso(curso) {
+      // Guardamos el objeto completo para que curso-pre, curso-post y el certificado
+      // puedan pintar objetivos, datos generales, temario y descripción sin hardcode.
+      localStorage.setItem("vib_curso_activo", JSON.stringify(curso));
+      window.location.href = "curso-pre.html";
+    }
 
-      .fac-course-enroll-btn {
-        display: inline-block;
-        padding: var(--fum-space-2) var(--fum-space-5);
-        background: var(--fum-color-verde);
-        color: #fff;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        transition:
-          background var(--fum-transition-fast),
-          transform var(--fum-transition-fast);
-        border: none;
-        cursor: pointer;
-        font-family: inherit;
-        text-decoration: none;
-        text-align: center;
-      }
+    function renderCourses() {
+      const container = document.getElementById("coursesGrid");
+      if (!container) return;
 
-      .fac-course-enroll-btn:hover {
-        background: var(--fum-color-verde-hover);
-        text-decoration: none;
-        color: #fff;
-      }
-    </style>
-
-    <script>
-      // =====================================================
-      // DATOS DE LOS CURSOS (4 cursos)
-      // =====================================================
-      const CURSOS_DISPONIBLES = [
-        {
-          id: 1,
-          nombre:
-            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-          slug: "matpel-2026",
-          instructor: "Lic. Iván Tamariz",
-          instructorIniciales: "IT",
-          instructorRol: "Especialista en Seguridad Industrial",
-          instructorBio:
-            "Licenciado en Ingeniería Ambiental con más de 12 años de experiencia en gestión de riesgos y MATPEL. Ha capacitado a más de 2,000 profesionales en empresas mineras, industriales y de transporte. Instructor certificado por el Colegio de Ingenieros del Perú.",
-          instructorImagen: "instructor.webp",
-          duracion: 32,
-          duracionSemanas: 4,
-          fechaInicio: "19/05/2026",
-          nivel: "intermedio",
-          precio: 49.0,
-          descripcion:
-            "Domina los protocolos y normativas nacionales e internacionales para identificar, manejar y responder ante incidentes con materiales peligrosos. Curso avalado por el Colegio de Ingenieros del Perú.",
-          imagen: "curso.webp",
-          badge: "Pronto a comenzar",
-          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
-          inscritos: 26,
-        },
-        {
-          id: 2,
-          nombre: "Gestión Integral de Residuos Sólidos",
-          slug: "residuos-solidos-2026",
-          instructor: "Ing. María Fernanda Reyes",
-          instructorIniciales: "MR",
-          instructorRol: "Especialista en Gestión Ambiental",
-          instructorBio:
-            "Ingeniera Ambiental con 10 años de experiencia en gestión de residuos sólidos. Ha liderado proyectos de segregación y reciclaje en municipalidades y empresas privadas.",
-          instructorImagen: "instructora.webp",
-          duracion: 40,
-          duracionSemanas: 5,
-          fechaInicio: "02/06/2026",
-          nivel: "basico",
-          precio: 49.0,
-          descripcion:
-            "Aprende las mejores prácticas para la gestión, clasificación, tratamiento y disposición final de residuos sólidos, cumpliendo con la normativa ambiental vigente.",
-          imagen: "curso-1.webp",
-          badge: "Inicio próximo",
-          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
-          inscritos: 18,
-        },
-        {
-          id: 3,
-          nombre:
-            "Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST)",
-          slug: "sg-sst-2026",
-          instructor: "Ing. Carlos Mendoza",
-          instructorIniciales: "CM",
-          instructorRol: "Especialista en Seguridad Industrial",
-          instructorBio:
-            "Ingeniero Industrial con certificación ISO 45001. Más de 15 años implementando sistemas de gestión en minería y construcción.",
-          instructorImagen: "instructor.webp",
-          duracion: 48,
-          duracionSemanas: 6,
-          fechaInicio: "09/06/2026",
-          nivel: "avanzado",
-          precio: 69.0,
-          descripcion:
-            "Implementa y audita sistemas de gestión de seguridad y salud ocupacional bajo estándares ISO 45001, preparándote para liderar equipos y procesos.",
-          imagen: "curso.webp",
-          badge: "Nuevo",
-          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
-          inscritos: 32,
-        },
-        {
-          id: 4,
-          nombre: "Evaluación de Impacto Ambiental (EIA) para Proyectos",
-          slug: "eia-proyectos-2026",
-          instructor: "Dra. Ana Lucía Torres",
-          instructorIniciales: "AT",
-          instructorRol: "Especialista en Impacto Ambiental",
-          instructorBio:
-            "Doctora en Ciencias Ambientales con 20 años de experiencia en evaluación de impacto ambiental. Ha participado en más de 50 proyectos mineros y de infraestructura.",
-          instructorImagen: "instructora.webp",
-          duracion: 56,
-          duracionSemanas: 7,
-          fechaInicio: "16/06/2026",
-          nivel: "avanzado",
-          precio: 89.0,
-          descripcion:
-            "Domina la metodología para elaborar, evaluar y gestionar Estudios de Impacto Ambiental, cumpliendo con los requisitos legales y técnicos del sector.",
-          imagen: "curso-1.webp",
-          badge: "Próximamente",
-          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
-          inscritos: 15,
-        },
-      ];
-
-      // Función para guardar curso activo y redirigir
-      function irAlCurso(curso) {
-        localStorage.setItem(
-          "vib_curso_activo",
-          JSON.stringify({
-            id: curso.id,
-            nombre: curso.nombre,
-            slug: curso.slug,
-            instructor: curso.instructor,
-            instructorRol: curso.instructorRol,
-            instructorBio: curso.instructorBio,
-            instructorImagen: curso.instructorImagen,
-            duracion: curso.duracion,
-            duracionSemanas: curso.duracionSemanas,
-            fechaInicio: curso.fechaInicio,
-            precio: curso.precio,
-            descripcion: curso.descripcion,
-            imagen: curso.imagen,
-            badge: curso.badge,
-            nivel: curso.nivel,
-            whatsappLink: curso.whatsappLink,
-            inscritos: curso.inscritos,
-          }),
-        );
-        window.location.href = "curso-pre.html";
-      }
-
-      function renderCourses() {
-        const container = document.getElementById("coursesGrid");
-        if (!container) return;
-
-        container.innerHTML = CURSOS_DISPONIBLES.map(
-          (curso) => `
+      container.innerHTML = CURSOS_DISPONIBLES.map(
+        (curso) => `
     <div class="fac-course-card" data-curso-id="${curso.id}">
       <div class="fac-course-card-thumb">
         <img 
@@ -371,7 +660,7 @@
           <span><i class="fi fi-rs-calendar"></i> ${curso.fechaInicio}</span>
         </div>
         <div class="fac-course-card-footer">
-          <span class="fac-course-card-price">$${curso.precio}</span>
+          <span class="fac-course-card-price">$${curso.precio.toFixed(2)}</span>
           <button class="fac-course-card-btn" data-curso='${JSON.stringify(curso)}'>
             Ver curso <i class="fi fi-rs-arrow-right"></i>
           </button>
@@ -379,309 +668,240 @@
       </div>
     </div>
   `,
-        ).join("");
+      ).join("");
 
-        // Event listeners para los botones
-        document.querySelectorAll(".fac-course-card-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const curso = JSON.parse(btn.dataset.curso);
-            irAlCurso(curso);
-          });
+      // Event listeners para los botones
+      document.querySelectorAll(".fac-course-card-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const curso = JSON.parse(btn.dataset.curso);
+          irAlCurso(curso);
         });
+      });
 
-        // Clic en toda la tarjeta
-        document.querySelectorAll(".fac-course-card").forEach((card) => {
-          card.addEventListener("click", () => {
-            const btn = card.querySelector(".fac-course-card-btn");
-            if (btn) btn.click();
-          });
+      // Clic en toda la tarjeta
+      document.querySelectorAll(".fac-course-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const btn = card.querySelector(".fac-course-card-btn");
+          if (btn) btn.click();
         });
-      }
+      });
+    }
 
-      // Llamar a renderCourses cuando el DOM esté listo
-      document.addEventListener("DOMContentLoaded", renderCourses);
-    </script>
-  </head>
-  <body>
-    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+    // Llamar a renderCourses cuando el DOM esté listo
+    document.addEventListener("DOMContentLoaded", renderCourses);
+  </script>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
 
-    <div class="fac-layout">
-      <!-- ══════════════════════════════════════════════
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="fac-layout">
+    <!-- ══════════════════════════════════════════════
            SIDEBAR — igual que instructores.html
       ══════════════════════════════════════════════ -->
-      <aside class="fac-sidebar" id="sidebar">
-        <div class="fac-sidebar-logo">
-          <span class="fac-sidebar-logo-text"
-            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
-          >
-          <!--
-          <img src="logo.png" alt="FUMIZA" class="fac-sidebar-logo-img" />
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+        <!--
+          
           -->
-        </div>
-        <nav class="fac-sidebar-nav">
-          <div class="fac-sidebar-menu">
-            <p class="fac-sidebar-section-label">Principal</p>
-            <a href="dashboard.html" class="fac-nav-item"
-              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
-            >
-            <a href="cursos.html" class="fac-nav-item fac-nav-item-active"
-              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
-            >
-            <a href="certificados.html" class="fac-nav-item"
-              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
-            >
-            <!-- <a href="instructores.html" class="fac-nav-item"
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="cursos.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="certificados.html" class="fac-nav-item"><i
+              class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+          <!-- <a href="instructores.html" class="fac-nav-item"
               ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
             > -->
-          </div>
-          <div class="fac-sidebar-menu" style="margin-top: 6px">
-            <p class="fac-sidebar-section-label">Cuenta</p>
-            <a href="perfil.html" class="fac-nav-item"
-              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
-            >
-            <a href="notificaciones.html" class="fac-nav-item"
-              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
-            >
-            <a href="configuracion.html" class="fac-nav-item"
-              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
-              >Configuración</a
-            >
-            <a href="soporte.html" class="fac-nav-item"
-              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
-            >
-          </div>
-        </nav>
-        <div class="fac-sidebar-footer">
-          <div class="fac-sidebar-footer-socials">
-            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
-            <a href="#"><i class="fi fi-brands-facebook"></i></a>
-            <a href="#"><i class="fi fi-brands-instagram"></i></a>
-            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
-            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
-            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+        <div class="fac-sidebar-menu" style="margin-top: 6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="perfil.html" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="notificaciones.html" class="fac-nav-item"><i
+              class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a>
+          <a href="configuracion.html" class="fac-nav-item"><i
+              class="fi fi-rs-settings fac-nav-item-icon"></i>Configuración</a>
+          <a href="soporte.html" class="fac-nav-item"><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="fac-main">
+      <!-- TOPBAR -->
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle" aria-label="Abrir menú">
+          <i class="fi fi-bs-menu-burger"></i>
+        </button>
+
+        <!-- ── Barra de anuncios ── -->
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active" data-type="info">Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong></span>
+            <span class="fac-announcement-item" data-type="promo">Descuento del <strong>20 % en todos los
+                cursos</strong> hasta
+              el 31 de enero. Usa el código <strong>ENERO25</strong></span>
+            <span class="fac-announcement-item" data-type="warning">Mantenimiento programado el
+              <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+              estará en pausa.</span>
+            <span class="fac-announcement-item" data-type="info">Nuevo curso disponible:
+              <strong>Bioindicadores Acuáticos</strong> — ya puedes
+              inscribirte</span>
+            <span class="fac-announcement-item" data-type="cancel">Clase del <strong>miércoles 15</strong> cancelada por
+              ajuste de
+              agenda. Reprogramada para el viernes.</span>
+            <!-- Ticker mobile: duplicado para loop continuo -->
+            <span class="fac-announcements-ticker" aria-hidden="true">
+              Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Descuento del <strong>20 % en todos los cursos</strong> hasta el
+              31 de enero — código <strong>ENERO25</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Mantenimiento programado el
+              <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+              estará en pausa.
+              <span class="fac-ticker-sep">◆</span>
+              Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+              puedes inscribirte
+              <span class="fac-ticker-sep">◆</span>
+              Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
+              para el viernes.
+              <span class="fac-ticker-sep">◆</span>
+              Próxima clase: Manejo Integrado de Plagas —
+              <strong>Lunes 20 de enero, 7:00 PM</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Descuento del <strong>20 % en todos los cursos</strong> hasta el
+              31 de enero — código <strong>ENERO25</strong>
+              <span class="fac-ticker-sep">◆</span>
+              Mantenimiento programado el
+              <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
+              estará en pausa.
+              <span class="fac-ticker-sep">◆</span>
+              Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
+              puedes inscribirte
+              <span class="fac-ticker-sep">◆</span>
+              Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
+              para el viernes.
+              <span class="fac-ticker-sep">◆</span>
+            </span>
           </div>
         </div>
-      </aside>
 
-      <!-- MAIN -->
-      <div class="fac-main">
-        <!-- TOPBAR -->
-        <header class="fac-topbar">
-          <button
-            class="fac-topbar-mobile-toggle"
-            id="sidebarToggle"
-            aria-label="Abrir menú"
-          >
-            <i class="fi fi-bs-menu-burger"></i>
-          </button>
-
-          <!-- ── Barra de anuncios ── -->
-          <div class="fac-announcements" role="marquee" aria-live="polite">
-            <span class="fac-announcements-icon"
-              ><i class="fi fi-rs-megaphone"></i
-            ></span>
-            <div class="fac-announcements-track" id="announcementsTrack">
-              <span class="fac-announcement-item active" data-type="info"
-                >Próxima clase: Manejo Integrado de Plagas —
-                <strong>Lunes 20 de enero, 7:00 PM</strong></span
-              >
-              <span class="fac-announcement-item" data-type="promo"
-                >Descuento del <strong>20 % en todos los cursos</strong> hasta
-                el 31 de enero. Usa el código <strong>ENERO25</strong></span
-              >
-              <span class="fac-announcement-item" data-type="warning"
-                >Mantenimiento programado el
-                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
-                estará en pausa.</span
-              >
-              <span class="fac-announcement-item" data-type="info"
-                >Nuevo curso disponible:
-                <strong>Bioindicadores Acuáticos</strong> — ya puedes
-                inscribirte</span
-              >
-              <span class="fac-announcement-item" data-type="cancel"
-                >Clase del <strong>miércoles 15</strong> cancelada por ajuste de
-                agenda. Reprogramada para el viernes.</span
-              >
-              <!-- Ticker mobile: duplicado para loop continuo -->
-              <span class="fac-announcements-ticker" aria-hidden="true">
-                Próxima clase: Manejo Integrado de Plagas —
-                <strong>Lunes 20 de enero, 7:00 PM</strong>
-                <span class="fac-ticker-sep">◆</span>
-                Descuento del <strong>20 % en todos los cursos</strong> hasta el
-                31 de enero — código <strong>ENERO25</strong>
-                <span class="fac-ticker-sep">◆</span>
-                Mantenimiento programado el
-                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
-                estará en pausa.
-                <span class="fac-ticker-sep">◆</span>
-                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
-                puedes inscribirte
-                <span class="fac-ticker-sep">◆</span>
-                Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
-                para el viernes.
-                <span class="fac-ticker-sep">◆</span>
-                Próxima clase: Manejo Integrado de Plagas —
-                <strong>Lunes 20 de enero, 7:00 PM</strong>
-                <span class="fac-ticker-sep">◆</span>
-                Descuento del <strong>20 % en todos los cursos</strong> hasta el
-                31 de enero — código <strong>ENERO25</strong>
-                <span class="fac-ticker-sep">◆</span>
-                Mantenimiento programado el
-                <strong>sábado 18 de enero de 2–4 AM</strong>. La plataforma
-                estará en pausa.
-                <span class="fac-ticker-sep">◆</span>
-                Nuevo curso: <strong>Bioindicadores Acuáticos</strong> — ya
-                puedes inscribirte
-                <span class="fac-ticker-sep">◆</span>
-                Clase del <strong>miércoles 15</strong> cancelada. Reprogramada
-                para el viernes.
-                <span class="fac-ticker-sep">◆</span>
-              </span>
-            </div>
-          </div>
-
-          <div class="fac-topbar-actions">
-            <div class="fac-profile-menu" id="profileMenu">
-              <div
-                class="fac-topbar-avatar-btn"
-                id="profileToggle"
-                role="button"
-                tabindex="0"
-                aria-label="Perfil"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div class="fac-topbar-user-info">
-                  <span class="fac-topbar-username" id="navUserName"
-                    >Usuario</span
-                  >
-                  <span class="fac-topbar-userrole">Estudiante</span>
-                </div>
-                <div
-                  class="fac-avatar fac-avatar-img-wrap"
-                  style="width: 34px; height: 34px; font-size: 11px"
-                >
-                  <img
-                    src=""
-                    alt=""
-                    id="navUserPhoto"
-                    class="fac-avatar-img"
-                    onerror="
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0" aria-label="Perfil"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username" id="navUserName">Usuario</span>
+                <span class="fac-topbar-userrole">Estudiante</span>
+              </div>
+              <div class="fac-avatar fac-avatar-img-wrap" style="width: 34px; height: 34px; font-size: 11px">
+                <img src="" alt="" id="navUserPhoto" class="fac-avatar-img" onerror="
                       this.style.display = 'none';
                       this.parentElement.querySelector(
                         '.fac-avatar-initials',
                       ).style.display = 'flex';
-                    "
-                  />
-                  <span
-                    class="fac-avatar-initials"
-                    id="navUserInitials"
-                    style="display: none"
-                    >??</span
-                  >
-                </div>
-              </div>
-
-              <div
-                class="fac-profile-dropdown"
-                id="profileDropdown"
-                role="menu"
-              >
-                <div class="fac-profile-dropdown-header">
-                  <div
-                    class="fac-avatar fac-profile-dropdown-avatar"
-                    id="dropdownInitials"
-                  >
-                    ??
-                  </div>
-                  <div class="fac-profile-dropdown-info">
-                    <p class="fac-profile-dropdown-name" id="dropdownName">
-                      Usuario
-                    </p>
-                    <p class="fac-profile-dropdown-role">Estudiante</p>
-                  </div>
-                </div>
-                <div class="fac-profile-dropdown-divider"></div>
-                <a
-                  href="perfil.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-user"></i> Mi perfil
-                </a>
-                <a
-                  href="certificados.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-diploma"></i> Mis certificados
-                </a>
-                <a
-                  href="configuracion.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-settings"></i> Configuración
-                </a>
-                <div class="fac-profile-dropdown-divider"></div>
-                <button
-                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
-                  id="logoutBtn"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-sign-out-alt"></i>
-                  Cerrar sesión
-                </button>
+                    " />
+                <span class="fac-avatar-initials" id="navUserInitials" style="display: none">??</span>
               </div>
             </div>
-          </div>
-        </header>
 
-        <!-- ══════════════════════════════════════════════
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar" id="dropdownInitials">
+                  ??
+                </div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name" id="dropdownName">
+                    Usuario
+                  </p>
+                  <p class="fac-profile-dropdown-role">Estudiante</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="perfil.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-user"></i> Mi perfil
+              </a>
+              <a href="certificados.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-diploma"></i> Mis certificados
+              </a>
+              <a href="configuracion.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-settings"></i> Configuración
+              </a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout" id="logoutBtn" role="menuitem">
+                <i class="fi fi-rs-sign-out-alt"></i>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ══════════════════════════════════════════════
              CONTENIDO
         ══════════════════════════════════════════════ -->
-        <main class="fac-content">
-          <!-- Page header -->
-          <div class="fac-page-header">
-            <h1 class="fac-page-title">Catálogo de cursos</h1>
-            <p class="fac-page-subtitle">
-              Aprende a cuidar el planeta con expertos en ciencias ambientales
-            </p>
-          </div>
+      <main class="fac-content">
+        <!-- Page header -->
+        <div class="fac-page-header">
+          <h1 class="fac-page-title">Catálogo de cursos</h1>
+          <p class="fac-page-subtitle">
+            Aprende a cuidar el planeta con expertos en ciencias ambientales
+          </p>
+        </div>
 
-          <!-- ─────────────────────────────────────
+        <!-- ─────────────────────────────────────
                TODOS LOS CURSOS
           ───────────────────────────────────── -->
-          <section aria-labelledby="catalogo-title">
-            <div class="fac-section-header">
-              <h2 class="fac-section-title" id="catalogo-title">
-                Todos los cursos
-              </h2>
+        <section aria-labelledby="catalogo-title">
+          <div class="fac-section-header">
+            <h2 class="fac-section-title" id="catalogo-title">
+              Todos los cursos
+            </h2>
+          </div>
+
+          <!-- Filtros -->
+          <div class="fac-filters">
+            <div class="fac-filter-right">
+              <select class="fac-sort-select" aria-label="Nivel">
+                <option>Todos los niveles</option>
+                <option>Básico</option>
+                <option>Intermedio</option>
+                <option>Avanzado</option>
+              </select>
+              <select class="fac-sort-select" aria-label="Nivel">
+                <option>Tipo de curso</option>
+                <option>Teledocencia</option>
+                <option>Pre grabado</option>
+              </select>
             </div>
+          </div>
 
-            <!-- Filtros -->
-            <div class="fac-filters">
-              <div class="fac-filter-right">
-                <select class="fac-sort-select" aria-label="Nivel">
-                  <option>Todos los niveles</option>
-                  <option>Básico</option>
-                  <option>Intermedio</option>
-                  <option>Avanzado</option>
-                </select>
-                <select class="fac-sort-select" aria-label="Nivel">
-                  <option>Tipo de curso</option>
-                  <option>Teledocencia</option>
-                  <option>Pre grabado</option>
-                </select>
-              </div>
-            </div>
+          <div class="fac-courses-grid" id="coursesGrid"></div>
 
-            <div class="fac-courses-grid" id="coursesGrid"></div>
-
-            <!-- Grid -->
-            <!-- <div class="fac-courses-grid">
+          <!-- Grid -->
+          <!-- <div class="fac-courses-grid">
               <article class="fac-course-card">
                 <div class="fac-course-card-thumb">
                   <img
@@ -718,7 +938,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -759,7 +979,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -800,7 +1020,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -841,7 +1061,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -882,7 +1102,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -923,7 +1143,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -964,7 +1184,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -1005,7 +1225,7 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
@@ -1047,123 +1267,109 @@
                     <a href="curso-pre.html" class="fac-course-enroll-btn"
                       >Inscribirse</a
                     >
-                    <span class="fac-course-price">$49.00</span>
+                    <span class="fac-course-price">$138.00 USD</span>
                   </div>
                 </div>
               </article>
             </div> -->
-          </section>
-        </main>
+        </section>
+      </main>
 
-        <!-- FOOTER -->
-        <footer class="fac-footer">
-          <div class="fac-footer-inner">
-            <div class="fac-footer-links">
-              <a href="#" class="fac-footer-link">Términos de uso</a>
-              <a href="#" class="fac-footer-link">Política de privacidad</a>
-              <a href="#" class="fac-footer-link">Soporte</a>
-              <a
-                href="https://consultoresvib.com"
-                target="_blank"
-                class="fac-footer-link"
-                >consultoresvib.com</a
-              >
-            </div>
-            <p class="fac-footer-copy">
-              <span
-                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
-              >
-              <span
-                >Plataforma desarrollada por
-                <a href="https://nickramen.com/" target="_blank"
-                  >nickramen</a
-                ></span
-              >
-            </p>
+      <!-- FOOTER -->
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Términos de uso</a>
+            <a href="#" class="fac-footer-link">Política de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+            <a href="https://consultoresvib.com" target="_blank" class="fac-footer-link">consultoresvib.com</a>
           </div>
-        </footer>
-      </div>
+
+        </div>
+      </footer>
     </div>
+  </div>
 
-    <script>
-      // Sidebar
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("sidebarOverlay");
-      const toggle = document.getElementById("sidebarToggle");
+  <script>
+    // Sidebar
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggle = document.getElementById("sidebarToggle");
 
-      function openSidebar() {
-        sidebar.classList.add("is-open");
-        overlay.classList.add("is-active");
-        document.body.style.overflow = "hidden";
-      }
-      function closeSidebar() {
-        sidebar.classList.remove("is-open");
-        overlay.classList.remove("is-active");
-        document.body.style.overflow = "";
-      }
+    function openSidebar() {
+      sidebar.classList.add("is-open");
+      overlay.classList.add("is-active");
+      document.body.style.overflow = "hidden";
+    }
+    function closeSidebar() {
+      sidebar.classList.remove("is-open");
+      overlay.classList.remove("is-active");
+      document.body.style.overflow = "";
+    }
 
-      toggle.addEventListener("click", () =>
-        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
-      );
-      overlay.addEventListener("click", closeSidebar);
+    toggle.addEventListener("click", () =>
+      sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+    );
+    overlay.addEventListener("click", closeSidebar);
 
-      // Filter tabs
-      document.querySelectorAll(".fac-filter-tab").forEach((tab) => {
-        tab.addEventListener("click", () => {
-          document.querySelectorAll(".fac-filter-tab").forEach((t) => {
-            t.classList.remove("active");
-            t.setAttribute("aria-selected", "false");
-          });
-          tab.classList.add("active");
-          tab.setAttribute("aria-selected", "true");
+    // Filter tabs
+    document.querySelectorAll(".fac-filter-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".fac-filter-tab").forEach((t) => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
         });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
       });
+    });
 
-      // Profile dropdown
-      const profileToggle = document.getElementById("profileToggle");
-      const profileDropdown = document.getElementById("profileDropdown");
-      const profileMenu = document.getElementById("profileMenu");
+    // Profile dropdown
+    const profileToggle = document.getElementById("profileToggle");
+    const profileDropdown = document.getElementById("profileDropdown");
+    const profileMenu = document.getElementById("profileMenu");
 
-      function openProfile() {
-        profileMenu.classList.add("is-open");
-        profileToggle.setAttribute("aria-expanded", "true");
+    function openProfile() {
+      profileMenu.classList.add("is-open");
+      profileToggle.setAttribute("aria-expanded", "true");
+    }
+    function closeProfile() {
+      profileMenu.classList.remove("is-open");
+      profileToggle.setAttribute("aria-expanded", "false");
+    }
+
+    profileToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileMenu.classList.contains("is-open")
+        ? closeProfile()
+        : openProfile();
+    });
+    document.addEventListener("click", (e) => {
+      if (!profileMenu.contains(e.target)) closeProfile();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeProfile();
+    });
+
+    // Rotación de anuncios
+    (function () {
+      const items = document.querySelectorAll(".fac-announcement-item");
+      if (!items.length) return;
+      let current = 0;
+
+      function next() {
+        const prev = current;
+        current = (current + 1) % items.length;
+        items[prev].classList.add("leaving");
+        items[prev].classList.remove("active");
+        items[current].classList.add("active");
+        setTimeout(() => items[prev].classList.remove("leaving"), 600);
       }
-      function closeProfile() {
-        profileMenu.classList.remove("is-open");
-        profileToggle.setAttribute("aria-expanded", "false");
-      }
 
-      profileToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        profileMenu.classList.contains("is-open")
-          ? closeProfile()
-          : openProfile();
-      });
-      document.addEventListener("click", (e) => {
-        if (!profileMenu.contains(e.target)) closeProfile();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeProfile();
-      });
+      setInterval(next, 5000);
+    })();
+  </script>
+  <script src="assets/js/datos-usuario.js"></script>
+</body>
 
-      // Rotación de anuncios
-      (function () {
-        const items = document.querySelectorAll(".fac-announcement-item");
-        if (!items.length) return;
-        let current = 0;
-
-        function next() {
-          const prev = current;
-          current = (current + 1) % items.length;
-          items[prev].classList.add("leaving");
-          items[prev].classList.remove("active");
-          items[current].classList.add("active");
-          setTimeout(() => items[prev].classList.remove("leaving"), 600);
-        }
-
-        setInterval(next, 5000);
-      })();
-    </script>
-    <script src="assets/js/datos-usuario.js"></script>
-  </body>
 </html>

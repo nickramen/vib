@@ -11,19 +11,31 @@
    1. TOKENS CORPORATIVOS FUMIZA (fum-*)
    ===================================================== */
 :root {
-  /* Paleta corporativa */
+  /* Paleta Academia VIB */
+  --vib-color-green-dark: #008b72;
+  --vib-color-green-light: #00bfa0;
+  --vib-color-blue-dark: #42b8de;
+  --vib-color-blue-light: #88cfe3;
+  --vib-color-orange-dark: #f57c00;
+  --vib-color-orange-light: #ffa126;
+  --vib-color-gray-dark: #626b72;
+  --vib-color-gray-light: #879199;
+
   --fum-color-blanco: #ffffff;
-  --fum-color-negro: #232323;
-  --fum-color-gris: #53555c;
-  --fum-color-verde: #7fd047;
-  --fum-color-verde-hover: #79c643;
-  --fum-color-verde-dark: #2d6a1f;
-  --fum-color-rojo: #e31e24;
-  --fum-color-azul: #1a1f5e;
-  --fum-color-azul-hover: #191d59;
+  --fum-color-negro: #1f2a30;
+  --fum-color-gris: var(--vib-color-gray-dark);
+  --fum-color-verde: var(--vib-color-green-dark);
+  --fum-color-verde-hover: var(--vib-color-green-light);
+  --fum-color-verde-dark: #006f5b;
+  --fum-color-rojo: #d92d20;
+  --fum-color-azul: var(--vib-color-blue-dark);
+  --fum-color-azul-hover: #2fa8cf;
+  --fum-color-naranja: var(--vib-color-orange-dark);
+  --fum-color-naranja-hover: var(--vib-color-orange-light);
 
   /* Fondos */
   --fum-color-bg: #ffffff;
+  --fum-color-bg-hover: #f9f9f9;
   --fum-color-bg-surface: #f7f9f7;
   --fum-color-bg-card: #ffffff;
   --fum-color-bg-input: #f4f4f3;
@@ -115,34 +127,34 @@
    ===================================================== */
 :root {
   /* Sidebar */
-  --fac-sidebar-bg: #0b1c09;
+  --fac-sidebar-bg: #008b72;
   --fac-sidebar-width: 240px;
   --fac-topbar-height: 60px;
 
   /* Tags categorías */
-  --fac-tag-clima-bg: #ddf0d8;
-  --fac-tag-clima-text: #2a6622;
-  --fac-tag-agua-bg: #d4eef7;
-  --fac-tag-agua-text: #1a6882;
-  --fac-tag-biodiversidad-bg: #fff0d4;
-  --fac-tag-biodiversidad-text: #8b5e10;
-  --fac-tag-suelo-bg: #ede8df;
-  --fac-tag-suelo-text: #6b5030;
-  --fac-tag-energia-bg: #e4f0e0;
-  --fac-tag-energia-text: #2f6830;
+  --fac-tag-clima-bg: #e6faf6;
+  --fac-tag-clima-text: #008b72;
+  --fac-tag-agua-bg: #eaf8fc;
+  --fac-tag-agua-text: #42b8de;
+  --fac-tag-biodiversidad-bg: #fff3df;
+  --fac-tag-biodiversidad-text: #f57c00;
+  --fac-tag-suelo-bg: #f2f4f5;
+  --fac-tag-suelo-text: #626b72;
+  --fac-tag-energia-bg: #e6faf6;
+  --fac-tag-energia-text: #008b72;
   --fac-tag-residuos-bg: #f2e8f5;
   --fac-tag-residuos-text: #703090;
-  --fac-tag-atmo-bg: #dde8f5;
-  --fac-tag-atmo-text: #1a3a6b;
+  --fac-tag-atmo-bg: #eaf8fc;
+  --fac-tag-atmo-text: #42b8de;
 
   /* Niveles */
-  --fac-level-basico: #56a446;
-  --fac-level-intermedio: #c4904a;
-  --fac-level-avanzado: #163d7c;
+  --fac-level-basico: #008b72;
+  --fac-level-intermedio: #f57c00;
+  --fac-level-avanzado: #42b8de;
 
   /* Stars */
-  --fac-star-fill: #f0a500;
-  --fac-star-empty: #dde0dd;
+  --fac-star-fill: #ffa126;
+  --fac-star-empty: #dfe4e7;
 }
 
 /* =====================================================
@@ -243,7 +255,7 @@ input {
   height: 70px;
   width: auto;
   object-fit: contain;
-  /*filter: brightness(0) invert(1);*/
+  filter: brightness(0) invert(1);
   flex-shrink: 0;
 }
 
@@ -299,7 +311,7 @@ input {
   transform: translateY(-50%);
   width: 3px;
   height: 18px;
-  background: var(--fum-color-verde);
+  background: #f57c00;
 }
 .fac-nav-item-icon {
   width: 15px;
@@ -625,6 +637,37 @@ input {
   display: flex;
   flex-direction: column;
 }
+.fac-course-card-btn {
+  display:flex;
+    align-items: center;
+    gap: var(--fum-space-2);
+    padding: 8px var(--fum-space-6);
+    background: var(--fum-color-verde);
+    color: #fff;
+    border-radius: var(--fum-radius-sm);
+    font-size: var(--fum-font-size-sm);
+    font-weight: var(--fum-font-weight-bold);
+    transition: background var(--fum-transition-fast);
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    width: fit-content;
+}
+
+.fac-course-card-btn i {
+  display: flex;
+}
+
+.fac-course-card-price {
+    font-size: var(--fum-font-size-md);
+    font-weight: var(--fum-font-weight-extrabold);
+    color: var(--fum-color-negro);
+    letter-spacing: -0.03em;
+    padding: 4px var(--fum-space-6);
+    border: 1px solid var(--fum-color-border);
+    border-radius: var(--fum-radius-sm);
+}
+
 
 /* — Thumbnail — */
 .fac-course-card-thumb {
@@ -656,7 +699,8 @@ input {
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.01em;
-  backdrop-filter: blur(4px);
+  background:#f57c00;
+  color: white;
 }
 
 /* — Duración — */
@@ -1268,4 +1312,27 @@ input {
   .fac-footer-copy {
     margin-left: 0;
   }
+}
+
+/* Demo VIB: logo real reemplazable */
+.fac-sidebar-logo-img,
+.fac-login-logo-img,
+.fac-right-logo-img {
+  display: block;
+  max-width: 180px;
+  max-height: 58px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+.fac-right-logo-img {
+  width: 10px !important; 
+}
+.fac-sidebar-logo-text { display: none; }
+.fac-demo-access-note {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--fum-color-text-secondary);
 }

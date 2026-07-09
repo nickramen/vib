@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Iniciar Sesión · Academia VIB</title>
+  <title>Iniciar Sesión · VIB ACADEMY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/x-icon" href="favicon.png" />
+
   <link rel="stylesheet"
     href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
   <link rel="stylesheet"
@@ -29,9 +30,16 @@
     }
 
     :root {
-      --accent: #008b72;
-      --orange: #ff7f50;
+      --fum-color-blanco: #ffffff;
+      --fum-color-negro: #1f2a30;
+      --fum-color-gris: #626b72;
+      --fum-color-verde: #008b72;
+      --fum-color-verde-hover: #00bfa0;
+      --fum-color-azul: #42b8de;
+      --fum-color-text-primary: var(--fum-color-negro);
+      --fum-color-text-secondary: var(--fum-color-gris);
       --fum-color-border: rgba(60, 60, 56, 0.12);
+      --fum-font-family: "Geist", sans-serif;
     }
 
     html,
@@ -152,7 +160,7 @@
       bottom: 0;
       left: 0;
       height: 3px;
-      background: var(--orange);
+      background: var(--accent);
       border-radius: 0 0 0 14px;
       width: 100%;
       transform-origin: left;
@@ -235,7 +243,7 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--fum-color-verde);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -255,6 +263,23 @@
       right: 48px;
     }
 
+    .fac-mascot-circle {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fac-mascot-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     /* footer: absolute bottom-left */
     .fac-left-footer {
       position: absolute;
@@ -264,7 +289,7 @@
     }
 
     .fac-left-footer a {
-      color: var(--accent);
+      color: var(--fum-color-verde);
       text-decoration: none;
       font-weight: 600;
     }
@@ -293,40 +318,128 @@
       gap: 10px;
       font-size: 20px;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--fum-color-verde);
       margin-bottom: 36px;
     }
 
     .fac-right-logo i {
       font-size: 24px;
-      color: var(--accent);
+      color: var(--fum-color-verde);
     }
 
-    .fac-right-logo img {
-      width: 70%;
+    /* ── LOGIN HEADER ── */
+    .fac-login-header {
+      margin-bottom: 28px;
     }
 
-    /* ── TABS ── */
-    .fac-tabs {
+    .fac-login-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1f2a30;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .fac-login-header p {
+      font-size: 14px;
+      color: #626b72;
+      line-height: 1.6;
+    }
+
+    /* ── CREATE ACCOUNT BUTTON ── */
+    .fac-btn-create {
       display: flex;
-      gap: 24px;
-      margin-bottom: 32px;
-      border-bottom: 2px solid #eef2f0;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 50px;
+      border: 1.5px solid rgba(60, 60, 56, 0.18);
+      border-radius: 12px;
+      background: white;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      color: #1f2a30;
+      cursor: pointer;
+      line-height: 1;
+      transition: all 0.2s ease;
+      margin-bottom: 28px;
+      text-decoration: none;
     }
 
-    .fac-tab {
-      padding-bottom: 12px;
-      font-weight: 600;
-      font-size: 18px;
-      cursor: pointer;
+    .fac-btn-create i {
+      display: flex;
+      font-size: 16px;
+    }
+
+    /* ── DIVIDER ── */
+    .fac-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .fac-divider::before,
+    .fac-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(60, 60, 56, 0.12);
+    }
+
+    .fac-divider span {
+      font-size: 13px;
       color: #879199;
-      transition: all 0.2s;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ── TABS (hidden, kept for JS compat) ── */
+    .fac-tabs {
+      display: none;
     }
 
     .fac-tab.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
+      color: var(--fum-color-verde);
+      border-bottom: 2px solid var(--fum-color-verde);
       margin-bottom: -2px;
+    }
+
+    /* ── PASSWORD WRAPPER ── */
+    .fac-password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .fac-password-wrapper input {
+      padding-right: 48px;
+    }
+
+    .fac-toggle-password {
+      position: absolute;
+      right: 14px;
+      line-height: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #626b72;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    .fac-toggle-password i {
+      display: flex;
+    }
+
+    .fac-toggle-password:hover {
+      color: var(--fum-color-verde);
     }
 
     /* ── FORM PANELS ── */
@@ -364,7 +477,7 @@
 
     .fac-form-group input:focus {
       outline: none;
-      border-color: var(--accent);
+      border-color: var(--fum-color-verde);
       box-shadow: 0 0 0 3px rgba(127, 208, 71, 0.1);
     }
 
@@ -375,22 +488,22 @@
 
     .fac-forgot a {
       font-size: 13px;
-      color: var(--accent);
+      color: var(--fum-color-verde);
       text-decoration: none;
     }
 
     .fac-btn-login {
       width: 100%;
-      height: 48px;
-      background: var(--accent);
-      color: white;
+      height: 50px;
       border: none;
       border-radius: 12px;
-      font-size: 16px;
+      background: var(--fum-color-verde);
+      color: white;
+      font-size: 15px;
       font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
       font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s ease;
     }
 
     .fac-btn-login:hover {
@@ -441,30 +554,12 @@
         margin-bottom: 14px;
       }
 
-      .fac-form-group label {
-        font-size: 12px;
-        margin-bottom: 6px;
-      }
-
-      .fac-form-group input {
-        height: 40px;
-        font-size: 13px;
-        padding: 0 13px;
-        border-radius: 10px;
-      }
-
       .fac-forgot {
         margin-bottom: 18px;
       }
 
       .fac-forgot a {
         font-size: 12px;
-      }
-
-      .fac-btn-login {
-        height: 42px;
-        font-size: 14px;
-        border-radius: 10px;
       }
 
       .fac-terms {
@@ -514,6 +609,11 @@
         right: 40px;
       }
 
+      .fac-mascot-circle {
+        width: 160px;
+        height: 160px;
+      }
+
       .fac-left-footer {
         left: 40px;
         bottom: 16px;
@@ -555,7 +655,8 @@
       <div class="fac-left-content">
         <h1>Transforma tu futuro profesional</h1>
         <p>
-          Demo privado de Academia VIB. El acceso está limitado para evitar cambios o errores durante el pitch.
+          Accede a cursos especializados en sostenibilidad, seguridad
+          ambiental y desarrollo profesional con certificación oficial.
         </p>
         <ul class="fac-feature-list">
           <li>
@@ -564,7 +665,7 @@
           </li>
           <li>
             <span class="check-icon"><i class="fi fi-rs-check"></i></span>
-            Certificados avalados por la alcaldía
+            Certificados avalados por el Colegio de Ingenieros
           </li>
           <li>
             <span class="check-icon"><i class="fi fi-rs-check"></i></span>
@@ -576,27 +677,60 @@
           </li>
         </ul>
       </div>
+      <!-- Mascota con position absolute -->
+      <div class="fac-mascot-wrap">
+        <div class="fac-mascot-circle">
+          <img src="#" alt="Mascota VIB Academy" />
+        </div>
+      </div>
+      <div class="fac-left-footer">
+        Plataforma desarrollada por <a href="https://nickramen.com" target="_blank">nickramen</a>
+      </div>
     </div>
 
     <div class="fac-login-right">
       <div class="fac-right-inner">
-        <div class="fac-right-logo"><img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-right-logo-img" />
-        </div>
+        <div class="fac-right-logo"><img src="" alt="Academia VIB" class="fac-right-logo-img" /></div>
+
+        <!-- Tabs ocultos (JS compat) -->
         <div class="fac-tabs">
           <div class="fac-tab active" data-tab="login">Iniciar sesión</div>
           <div class="fac-tab" data-tab="register">Crear cuenta</div>
         </div>
 
-        <!-- Panel Login -->
+        <!-- Header -->
+        <div class="fac-login-header">
+          <h1>Bienvenido de vuelta</h1>
+          <p>Ingresa con tu correo y contraseña para acceder a la plataforma.</p>
+        </div>
+
+        <!-- Botón crear cuenta -->
+        <button type="button" class="fac-btn-create" id="goToRegister">
+          <i class="fi fi-rs-user-add"></i>
+          Crear una cuenta nueva
+        </button>
+
+        <!-- Divisor -->
+        <div class="fac-divider">
+          <span>o inicia sesión</span>
+        </div>
+
+        <!-- Panel Login (siempre visible) -->
         <div id="loginPanel" class="fac-form-panel active">
           <form id="loginForm">
             <div class="fac-form-group">
               <label>Correo electrónico</label>
-              <input type="email" placeholder="nicole@nickramen.com" id="loginEmail" required />
+              <input type="email" placeholder="tu@email.com" id="loginEmail" required />
             </div>
             <div class="fac-form-group">
               <label>Contraseña</label>
-              <input type="password" placeholder="••••••••" id="loginPassword" required />
+              <div class="fac-password-wrapper">
+                <input type="password" placeholder="••••••••" id="loginPassword" required />
+                <button type="button" class="fac-toggle-password" aria-label="Mostrar contraseña"
+                  data-target="loginPassword">
+                  <i class="fi fi-rs-eye"></i>
+                </button>
+              </div>
             </div>
             <div class="fac-forgot">
               <a href="#">¿Olvidaste tu contraseña?</a>
@@ -606,12 +740,13 @@
             </button>
           </form>
           <div class="fac-terms">
-            Acceso restringido al público hasta lanzamiento oficial.<br />
-            <span class="fac-copyright">&copy; 2026 Academia VIB &middot; Todos los derechos reservados</span>
+            Al iniciar sesión aceptas nuestros <a href="#">Términos de uso</a> y
+            <a href="#">Política de privacidad</a>.<br />
+            <span class="fac-copyright">&copy; 2026 VIB ACADEMY &middot; Todos los derechos reservados</span>
           </div>
         </div>
 
-        <!-- Panel Registro -->
+        <!-- Panel Registro (oculto) -->
         <div id="registerPanel" class="fac-form-panel">
           <form id="registerForm">
             <div class="fac-form-group">
@@ -624,11 +759,23 @@
             </div>
             <div class="fac-form-group">
               <label>Contraseña</label>
-              <input type="password" placeholder="Crea una contraseña segura" id="regPassword" required />
+              <div class="fac-password-wrapper">
+                <input type="password" placeholder="Crea una contraseña segura" id="regPassword" required />
+                <button type="button" class="fac-toggle-password" aria-label="Mostrar contraseña"
+                  data-target="regPassword">
+                  <i class="fi fi-rs-eye"></i>
+                </button>
+              </div>
             </div>
             <div class="fac-form-group">
               <label>Confirmar contraseña</label>
-              <input type="password" placeholder="Repite tu contraseña" id="regConfirmPassword" required />
+              <div class="fac-password-wrapper">
+                <input type="password" placeholder="Repite tu contraseña" id="regConfirmPassword" required />
+                <button type="button" class="fac-toggle-password" aria-label="Mostrar contraseña"
+                  data-target="regConfirmPassword">
+                  <i class="fi fi-rs-eye"></i>
+                </button>
+              </div>
             </div>
             <button type="submit" class="fac-btn-login">
               Registrarme ahora
@@ -637,9 +784,10 @@
           <div class="fac-terms">
             Al registrarte aceptas nuestros <a href="#">Términos de uso</a> y
             <a href="#">Política de privacidad</a>.<br />
-            <span class="fac-copyright">&copy; 2026 Academia VIB &middot; Todos los derechos reservados</span>
+            <span class="fac-copyright">&copy; 2026 VIB ACADEMY &middot; Todos los derechos reservados</span>
           </div>
         </div>
+
       </div> <!-- /fac-right-inner -->
     </div>
   </div>
@@ -684,22 +832,48 @@
       setTimeout(dismiss, duration);
     }
 
-    /* ── TABS ── */
+    /* ── TABS / PANEL SWITCHING ── */
     const tabs = document.querySelectorAll(".fac-tab");
     const loginPanel = document.getElementById("loginPanel");
     const registerPanel = document.getElementById("registerPanel");
+    const btnCreate = document.getElementById("goToRegister");
+    const btnCreateWrap = document.querySelector(".fac-btn-create");
+    const divider = document.querySelector(".fac-divider");
+    const loginHeader = document.querySelector(".fac-login-header");
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        tabs.forEach((t) => t.classList.remove("active"));
-        tab.classList.add("active");
-        if (tab.dataset.tab === "login") {
-          loginPanel.classList.add("active");
-          registerPanel.classList.remove("active");
-        } else {
-          registerPanel.classList.add("active");
-          loginPanel.classList.remove("active");
-        }
+    function showLogin() {
+      loginPanel.classList.add("active");
+      registerPanel.classList.remove("active");
+      loginHeader.querySelector("h1").textContent = "Bienvenido de vuelta";
+      loginHeader.querySelector("p").textContent = "Ingresa con tu correo y contraseña para acceder a la plataforma.";
+      btnCreateWrap.style.display = "";
+      divider.style.display = "";
+      btnCreate.innerHTML = '<i class="fi fi-rs-user-add"></i> Crear una cuenta nueva';
+      btnCreate.onclick = showRegister;
+    }
+
+    function showRegister() {
+      registerPanel.classList.add("active");
+      loginPanel.classList.remove("active");
+      loginHeader.querySelector("h1").textContent = "Crear una cuenta";
+      loginHeader.querySelector("p").textContent = "Completa los campos para unirte a la plataforma.";
+      btnCreateWrap.style.display = "";
+      divider.style.display = "none";
+      btnCreate.innerHTML = '<i class="fi fi-rs-arrow-left"></i> Volver a iniciar sesión';
+      btnCreate.onclick = showLogin;
+    }
+
+    btnCreate.onclick = showRegister;
+
+    /* ── EYE TOGGLES ── */
+    document.querySelectorAll(".fac-toggle-password").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const input = document.getElementById(this.dataset.target);
+        const icon = this.querySelector("i");
+        const isHidden = input.type === "password";
+        input.type = isHidden ? "text" : "password";
+        icon.className = isHidden ? "fi fi-rs-crossed-eye" : "fi fi-rs-eye";
+        this.setAttribute("aria-label", isHidden ? "Ocultar contraseña" : "Mostrar contraseña");
       });
     });
 

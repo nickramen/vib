@@ -1,2485 +1,2825 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Manejo Seguro de Materiales y Sustancias Peligrosas — VIB Academy
-    </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      /* ══════════════════════════════════════════════
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>
+    Manejo Seguro de Materiales y Sustancias Peligrosas — VIB Academy
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-straight/css/uicons-regular-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+  <link rel="stylesheet"
+    href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ══════════════════════════════════════════════
          GENERAR CERTIFICADO — sección CTA
       ══════════════════════════════════════════════ */
-      .fac-gencert-section {
-        margin-top: 4px;
-      }
-      .fac-gencert-box {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        background: linear-gradient(135deg, #f0fae8 0%, #e8f5e0 100%);
-        border: 1.5px solid #b8e08a;
-        border-radius: 16px;
-        padding: 28px 28px;
-      }
-      @media (max-width: 800px) {
-        .fac-gencert-box {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-      }
-      .fac-gencert-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: #7fd047;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        flex-shrink: 0;
-      }
-      .fac-gencert-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-gencert-title {
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a2a10;
-        margin-bottom: 6px;
-      }
-      .fac-gencert-desc {
-        font-size: 13px;
-        color: #3a5020;
-        line-height: 1.6;
-        margin-bottom: 12px;
-      }
-      .fac-gencert-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 20px;
-      }
-      .badge-pendiente {
-        background: rgba(127, 208, 71, 0.15);
-        color: #4a7a20;
-        border: 1px solid #b8e08a;
-      }
-      .badge-listo {
-        background: #7fd047;
-        color: #fff;
-        border: 1px solid #6bb83a;
-      }
-      .fac-gencert-cta {
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      .fac-gencert-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: #7fd047;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        font-family: inherit;
-        transition:
-          background 0.2s,
-          transform 0.15s;
-        white-space: nowrap;
-      }
-      .fac-gencert-btn:hover:not(:disabled) {
-        background: #6bb83a;
-        transform: translateY(-1px);
-      }
-      .fac-gencert-btn:disabled {
-        background: #c8d8bc;
-        color: #8a9e7a;
-        cursor: not-allowed;
-        transform: none;
-      }
-      .fac-gencert-btn.loading {
-        opacity: 0.75;
-        cursor: wait;
-      }
-      .fac-gencert-hint {
-        font-size: 11px;
-        color: #6a8a50;
-        text-align: center;
-      }
+    .fac-gencert-section {
+      margin-top: 4px;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-gencert-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #f0fae8 0%, #e8f5e0 100%);
+      border: 1.5px solid #b8e08a;
+      border-radius: 16px;
+      padding: 28px 28px;
+    }
+
+    @media (max-width: 800px) {
+      .fac-gencert-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    .fac-gencert-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #008b72;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .fac-gencert-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-gencert-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a2a10;
+      margin-bottom: 6px;
+    }
+
+    .fac-gencert-desc {
+      font-size: 13px;
+      color: #3a5020;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .fac-gencert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .badge-pendiente {
+      background: rgba(127, 208, 71, 0.15);
+      color: #4a7a20;
+      border: 1px solid #b8e08a;
+    }
+
+    .badge-listo {
+      background: #008b72;
+      color: #fff;
+      border: 1px solid #6bb83a;
+    }
+
+    .fac-gencert-cta {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fac-gencert-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #008b72;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition:
+        background 0.2s,
+        transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .fac-gencert-btn:hover:not(:disabled) {
+      background: #6bb83a;
+      transform: translateY(-1px);
+    }
+
+    .fac-gencert-btn:disabled {
+      background: #c8d8bc;
+      color: #8a9e7a;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .fac-gencert-btn.loading {
+      opacity: 0.75;
+      cursor: wait;
+    }
+
+    .fac-gencert-hint {
+      font-size: 11px;
+      color: #6a8a50;
+      text-align: center;
+    }
+
+    /* ══════════════════════════════════════════════
          LAYOUT BODY — 2 cols main + sidebar
       ══════════════════════════════════════════════ */
-      .fac-curso-body {
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: var(--fum-space-8);
-        align-items: start;
-      }
-      @media (max-width: 1100px) {
-        .fac-curso-body {
-          grid-template-columns: 1fr;
-        }
-      }
-      .fac-curso-main-col {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-12);
-        min-width: 0;
-      }
+    .fac-curso-body {
+      display: grid;
+      grid-template-columns: 1fr 550px;
+      gap: var(--fum-space-16);
+      align-items: start;
+    }
 
-      /* ══════════════════════════════════════════════
+    /* — Contenido del curso y evaluaciones viven en la columna derecha:
+         más compactos que en la columna principal — */
+    .fac-sidebar-col .fac-clase-row {
+      padding-left: var(--fum-space-5);
+    }
+
+    .fac-sidebar-col .fac-clase-recursos {
+      padding-left: var(--fum-space-5);
+    }
+
+    .fac-sidebar-col .fac-modulo-meta {
+      display: none;
+    }
+
+    .fac-sidebar-col .fac-curso-section-title {
+      font-size: var(--fum-font-size-lg);
+    }
+
+    @media (max-width: 1100px) {
+      .fac-curso-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fac-curso-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-12);
+      min-width: 0;
+    }
+
+    /* ══════════════════════════════════════════════
          HERO BANNER (dentro de main col, no full-width)
       ══════════════════════════════════════════════ */
+    .fac-curso-hero-banner {
+      position: relative;
+      border-radius: var(--fum-radius-lg);
+      overflow: hidden;
+      background: var(--fum-color-azul);
+      aspect-ratio: 2.5 / 1;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 700px) {
       .fac-curso-hero-banner {
-        position: relative;
-        border-radius: var(--fum-radius-lg);
-        overflow: hidden;
-        background: var(--fum-color-azul);
-        aspect-ratio: 2.5 / 1;
-        margin-bottom: 0;
+        aspect-ratio: 1 / 1;
       }
-      @media (max-width: 700px) {
-        .fac-curso-hero-banner {
-          aspect-ratio: 1 / 1;
-        }
-      }
-      .fac-curso-hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .fac-curso-hero-banner::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
+    }
+
+    .fac-curso-hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fac-curso-hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
           rgba(10, 14, 50, 0.78) 0%,
           rgba(10, 14, 50, 0.2) 55%,
-          transparent 100%
-        );
-        pointer-events: none;
-      }
-      .fac-curso-hero-banner-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        padding: var(--fum-space-6) var(--fum-space-7);
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: var(--fum-space-5);
-      }
-      @media (max-width: 600px) {
-        .fac-curso-hero-banner-content {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: var(--fum-space-5);
-        }
-      }
-      .fac-curso-hero-banner-left {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-      }
-      .fac-curso-hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: var(--fum-color-verde);
-        color: #fff;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.05em;
-        padding: 4px 10px;
-        border-radius: var(--fum-radius-sm);
-        text-transform: uppercase;
-        width: fit-content;
-        margin-bottom: 2px;
-      }
-      .fac-curso-hero-tag i {
-        font-size: 10px;
-      }
-      .fac-curso-hero-banner-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-bold);
-        color: #fff;
-        line-height: var(--fum-line-height-snug);
-        letter-spacing: -0.02em;
-        max-width: 520px;
-      }
-      @media (max-width: 700px) {
-        .fac-curso-hero-banner-title {
-          font-size: var(--fum-font-size-base);
-        }
-      }
-      .fac-curso-hero-banner-stats {
-        display: flex;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-        margin-top: 4px;
-      }
-      .fac-curso-hero-stat {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: var(--fum-font-weight-medium);
-      }
-      .fac-curso-hero-stat i {
-        font-size: 12px;
-        color: var(--fum-color-verde);
-      }
-      .fac-curso-hero-banner-right {
-        flex-shrink: 0;
-      }
-      .fac-brochure-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: var(--fum-space-2) var(--fum-space-4);
-        background: var(--fum-color-verde);
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-blanco);
-        font-family: inherit;
-        cursor: pointer;
-        border: none;
-        transition: background var(--fum-transition-fast);
-        text-decoration: none;
-      }
-      .fac-brochure-btn:hover {
-        background: var(--fum-color-verde-hover);
-        color: #fff;
-      }
+          transparent 100%);
+      pointer-events: none;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-curso-hero-banner-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: var(--fum-space-6) var(--fum-space-7);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--fum-space-5);
+    }
+
+    @media (max-width: 600px) {
+      .fac-curso-hero-banner-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--fum-space-5);
+      }
+    }
+
+    .fac-curso-hero-banner-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-2);
+    }
+
+    .fac-curso-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--fum-radius-sm);
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 2px;
+    }
+
+    .fac-curso-hero-tag i {
+      font-size: 10px;
+    }
+
+    .fac-curso-hero-banner-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-bold);
+      color: #fff;
+      line-height: var(--fum-line-height-snug);
+      letter-spacing: -0.02em;
+      max-width: 520px;
+    }
+
+    @media (max-width: 700px) {
+      .fac-curso-hero-banner-title {
+        font-size: var(--fum-font-size-base);
+      }
+    }
+
+    .fac-curso-hero-banner-stats {
+      display: flex;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .fac-curso-hero-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fum-font-size-xs);
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: var(--fum-font-weight-medium);
+    }
+
+    .fac-curso-hero-stat i {
+      font-size: 12px;
+      color: var(--fum-color-verde);
+    }
+
+    .fac-curso-hero-banner-right {
+      flex-shrink: 0;
+    }
+
+    .fac-brochure-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--fum-space-2) var(--fum-space-4);
+      background: var(--fum-color-verde);
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-blanco);
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: background var(--fum-transition-fast);
+      text-decoration: none;
+    }
+
+    .fac-brochure-btn:hover {
+      background: var(--fum-color-verde-hover);
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════
          SECCIÓN GENÉRICA — igual que curso-pre
       ══════════════════════════════════════════════ */
-      .fac-curso-section {
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        padding: 0;
-      }
-      .fac-curso-section-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-5);
-      }
+    .fac-curso-section {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-curso-section-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-5);
+    }
+
+    /* ══════════════════════════════════════════════
          INFORMACIÓN GENERAL — descripción + 2 cards
       ══════════════════════════════════════════════ */
-      .fac-info-desc {
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        margin-bottom: var(--fum-space-6);
-      }
+    .fac-info-desc {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      margin-bottom: var(--fum-space-6);
+    }
+
+    .fac-info-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--fum-space-4);
+    }
+
+    @media (max-width: 700px) {
       .fac-info-cards-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--fum-space-4);
+        grid-template-columns: 1fr;
       }
-      @media (max-width: 700px) {
-        .fac-info-cards-row {
-          grid-template-columns: 1fr;
-        }
-      }
+    }
 
-      /* — Instructor card — */
-      .fac-instructor-card {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-        padding: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-instructor-header {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-      }
-      .fac-instructor-avatar {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: var(--fum-color-azul);
-        overflow: hidden;
-        flex-shrink: 0;
-      }
-      .fac-instructor-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .fac-instructor-meta {
-      }
-      .fac-instructor-name {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: var(--fum-color-negro);
-        margin-bottom: 2px;
-      }
-      .fac-instructor-role {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        font-weight: var(--fum-font-weight-semibold);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .fac-instructor-bio {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
+    /* — Card de información general (datos clave del curso) — */
+    .fac-info-grid-card {
+      margin-bottom: var(--fum-space-6);
+    }
 
-      /* — WhatsApp card — */
-      .fac-wa-card {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-        padding: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-      }
-      .fac-wa-header {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-      }
-      .fac-wa-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: #25d366;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 20px;
-        flex-shrink: 0;
-      }
-      .fac-wa-icon i {
-        display: flex;
-      }
-      .fac-wa-meta {
-      }
-      .fac-wa-title {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: #1a9e52;
-        margin-bottom: 2px;
-      }
-      .fac-wa-subtitle {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-wa-desc {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
-      .fac-wa-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        padding: var(--fum-space-3) var(--fum-space-4);
-        background: #25d366;
-        color: #fff;
-        border: none;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background var(--fum-transition-fast);
-        width: 100%;
-        margin-top: auto;
-      }
-      .fac-wa-btn:hover {
-        background: #1ebe5d;
-        color: #fff;
-      }
+    .fac-info-grid-card .fac-curso-section-title {
+      margin-bottom: var(--fum-space-4);
+    }
 
-      /* ══════════════════════════════════════════════
-         LISTA DE CLASES
+    .fac-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: var(--fum-space-4);
+      column-gap: var(--fum-space-6);
+    }
+
+    .fac-info-grid-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .fac-info-grid-item i {
+      display: flex;
+      flex-shrink: 0;
+      font-size: 20px;
+      color: var(--fum-color-verde);
+    }
+
+    .fac-info-grid-label {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+    }
+
+    .fac-info-grid-value {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-regular);
+      color: var(--fum-color-negro);
+    }
+
+    @media (max-width: 900px) {
+      .fac-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .fac-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+         CALIFICACIONES Y OPINIONES
       ══════════════════════════════════════════════ */
-      .fac-clases-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-5);
-      }
-      .fac-clases-header-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-      }
-      .fac-clases-count {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        font-weight: var(--fum-font-weight-semibold);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-clases-list {
-        display: flex;
+    .fac-reviews-summary {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-8);
+      flex-wrap: wrap;
+      padding-bottom: var(--fum-space-6);
+      margin-bottom: var(--fum-space-6);
+    }
+
+    .fac-reviews-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .fac-reviews-score-num {
+      font-size: var(--fum-font-size-4xl);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+      letter-spacing: var(--fum-letter-spacing-tight);
+      line-height: 1;
+    }
+
+    .fac-reviews-score-stars {
+      display: flex;
+      gap: 2px;
+      color: #f5b83d;
+      font-size: 14px;
+    }
+
+    .fac-reviews-bars {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .fac-reviews-bar-row {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-reviews-bar-label {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+      width: 32px;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-reviews-bar-label i {
+      font-size: 10px;
+      color: #f5b83d;
+    }
+
+    .fac-reviews-bar-track {
+      flex: 1;
+      height: 6px;
+      border-radius: var(--fum-radius-pill);
+      background: var(--fum-color-bg-surface);
+      overflow: hidden;
+    }
+
+    .fac-reviews-bar-fill {
+      height: 100%;
+      border-radius: var(--fum-radius-pill);
+      background: #f5b83d;
+    }
+
+    .fac-reviews-bar-pct {
+      flex-shrink: 0;
+      width: 34px;
+      text-align: right;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-5);
+    }
+
+    .fac-review-item {
+      display: flex;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-review-avatar {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-bold);
+      color: #fff;
+    }
+
+    .fac-review-avatar.avatar-1 {
+      background: var(--fum-color-azul);
+    }
+
+    .fac-review-avatar.avatar-2 {
+      background: var(--fum-color-verde-dark);
+    }
+
+    .fac-review-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fac-review-name {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-review-stars {
+      display: flex;
+      gap: 2px;
+      margin: 3px 0;
+      color: #f5b83d;
+      font-size: 11px;
+    }
+
+    .fac-review-comment {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-normal);
+    }
+
+    @media (max-width: 560px) {
+      .fac-reviews-summary {
         flex-direction: column;
-        gap: var(--fum-space-2);
+        align-items: flex-start;
       }
-      .fac-clase-card {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        text-decoration: none;
-        transition: border-color var(--fum-transition-fast);
-        cursor: pointer;
-        position: relative;
-        background: var(--fum-color-bg-card);
+    }
+
+    .fac-info-block+.fac-info-block {
+      margin-top: var(--fum-space-6);
+    }
+
+    .fac-info-subtitle {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-3);
+    }
+
+    .fac-info-dirigido {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-info-aprenderas-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--fum-space-3);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-info-aprenderas-item+.fac-info-aprenderas-item {
+      margin-top: var(--fum-space-2);
+    }
+
+    .fac-info-aprenderas-item i {
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--fum-color-verde);
+      color: #fff;
+      font-size: 9px;
+    }
+
+    /* — WhatsApp card — */
+    .fac-wa-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-3);
+      padding: var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+    }
+
+    .fac-wa-header {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-wa-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .fac-wa-icon i {
+      display: flex;
+    }
+
+    .fac-wa-meta {}
+
+    .fac-wa-title {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: #1a9e52;
+      margin-bottom: 2px;
+    }
+
+    .fac-wa-subtitle {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-wa-desc {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: var(--fum-space-3) var(--fum-space-4);
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--fum-transition-fast);
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .fac-wa-btn:hover {
+      background: #1ebe5d;
+      color: #fff;
+    }
+
+
+    /* ══════════════════════════════════════════════
+         CONTENIDO DEL CURSO — módulos con clases
+      ══════════════════════════════════════════════ */
+    .fac-temario-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .fac-temario-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .fac-temario-header-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-temario-count {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* — Barra de progreso del temario — */
+    .fac-temario-progreso {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: var(--fum-space-5);
+    }
+
+    .fac-temario-progreso-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .fac-temario-progreso-label {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+    }
+
+    .fac-temario-progreso-label strong {
+      color: var(--fum-color-negro);
+      font-weight: var(--fum-font-weight-bold);
+    }
+
+    .fac-temario-progreso-pct {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fac-temario-progreso-track {
+      position: relative;
+      height: 8px;
+      border-radius: var(--fum-radius-pill);
+      background: var(--fum-color-bg-surface);
+      border: 1px solid var(--fum-color-border);
+      overflow: hidden;
+    }
+
+    .fac-temario-progreso-fill {
+      position: relative;
+      height: 100%;
+      width: 0%;
+      border-radius: var(--fum-radius-pill);
+      background: var(--fum-color-verde);
+      transition: width 0.6s ease;
+    }
+
+    /* — Lista de módulos — */
+    .fac-modulos {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      overflow: hidden;
+      background: var(--fum-color-bg-card);
+    }
+
+    .fac-modulo-item {
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .fac-modulo-item:last-child {
+      border-bottom: none;
+    }
+
+    /* — Encabezado del módulo (dropdown trigger) — */
+    .fac-modulo-btn {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: var(--fum-space-4);
+      padding: var(--fum-space-4) var(--fum-space-5);
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--fum-transition-fast);
+    }
+
+    .fac-modulo-btn:hover {
+      background: var(--fum-color-bg-surface);
+    }
+
+    .fac-modulo-num {
+      flex-shrink: 0;
+      min-width: 22px;
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fac-modulo-titulo {
+      flex: 1;
+      min-width: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-negro);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-modulo-meta {
+      flex-shrink: 0;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      white-space: nowrap;
+    }
+
+    .fac-modulo-chevron {
+      display: flex;
+      flex-shrink: 0;
+      font-size: 13px;
+      color: var(--fum-color-text-muted);
+      transition: transform var(--fum-transition-base);
+    }
+
+    .fac-modulo-item.is-open .fac-modulo-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* — Cuerpo del módulo (clases dentro) — */
+    .fac-modulo-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .fac-modulo-body-inner {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--fum-color-border);
+    }
+
+    /* — Grupo: una clase + sus recursos anidados — */
+    .fac-clase-group+.fac-clase-group {
+      border-top: 1px solid var(--fum-color-border);
+    }
+
+    /* — Fila de clase, dentro del módulo — */
+    .fac-clase-row {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      padding: var(--fum-space-3) var(--fum-space-5) var(--fum-space-3) calc(var(--fum-space-5) + 22px + var(--fum-space-4));
+      cursor: pointer;
+      transition: background var(--fum-transition-fast);
+    }
+
+    .fac-clase-row:hover {
+      background: var(--fum-color-bg-card);
+    }
+
+    /* — Recursos anidados dentro de la clase — */
+    .fac-clase-recursos {
+      display: flex;
+      flex-direction: column;
+      padding: 0 var(--fum-space-5) var(--fum-space-3) calc(var(--fum-space-5) + 22px + var(--fum-space-4));
+      gap: 1px;
+    }
+
+    .fac-clase-recurso {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-2);
+      padding: 3px 0;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      text-decoration: none;
+      width: fit-content;
+      transition: color var(--fum-transition-fast);
+    }
+
+    .fac-clase-recurso:hover {
+      color: var(--fum-color-verde);
+      text-decoration: underline;
+    }
+
+    .fac-clase-recurso i {
+      flex-shrink: 0;
+      width: 13px;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .fac-clase-recurso.type-pdf i {
+      color: #ff2056;
+    }
+
+    .fac-clase-recurso.type-doc i {
+      color: #2b7fff;
+    }
+
+    .fac-clase-recurso.type-link i {
+      color: #f0b100;
+    }
+
+    .fac-clase-recurso.is-locked-recurso {
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .fac-clase-recurso.is-locked-recurso i {
+      color: var(--fum-color-text-muted);
+    }
+
+    @media (max-width: 560px) {
+      .fac-clase-recursos {
+        padding-left: var(--fum-space-5);
       }
-      .fac-clase-card.is-locked {
-        opacity: 0.55;
-        cursor: not-allowed;
-      }
-      .fac-clase-card.is-locked:hover {
-        border-color: var(--fum-color-border);
-      }
-      .fac-clase-num {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-bold);
-      }
-      .fac-clase-num i {
-        display: flex;
-      }
-      .fac-clase-num.num-completed {
-        background: var(--fum-color-verde);
-        color: #fff;
-        font-size: 14px;
-      }
-      .fac-clase-num.num-available {
-        background: #2b7fff;
-        color: var(--fum-color-blanco);
-      }
-      .fac-clase-num.num-locked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-        font-size: 13px;
-      }
-      .fac-clase-info {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-clase-semana {
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-        color: var(--fum-color-text-muted);
-        margin-bottom: 2px;
-      }
-      .fac-clase-titulo {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        line-height: var(--fum-line-height-snug);
-        margin-bottom: 4px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .fac-clase-card.is-locked .fac-clase-titulo {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-meta {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-      }
-      .fac-clase-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-meta-item i {
-        font-size: 11px;
-      }
-      .fac-clase-badge {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        padding: 4px 10px;
-        border-radius: var(--fum-radius-sm);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-      }
-      .fac-clase-badge i {
-        display: flex;
-        font-size: 10px;
-      }
-      .fac-clase-badge.badge-completed {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-clase-badge.badge-available {
-        background: #2b7fff;
-        color: #fff;
-      }
-      .fac-clase-badge.badge-locked {
-        background: var(--fum-color-bg-surface);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-clase-badge.badge-upcoming {
-        background: #f0b100;
-        color: #fff;
-      }
-      @media (max-width: 500px) {
-        .fac-clase-badge {
-          display: none;
-        }
-        .fac-clase-titulo {
-          white-space: normal;
-        }
+    }
+
+    /* Checkbox: clase activa */
+    .fac-clase-checkbox {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .fac-clase-check-visual {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      border: 1.5px solid var(--fum-color-border-input);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        background var(--fum-transition-fast),
+        border-color var(--fum-transition-fast);
+    }
+
+    .fac-clase-check-visual i {
+      display: none;
+      font-size: 10px;
+      color: #fff;
+    }
+
+    .fac-clase-checkbox:checked+.fac-clase-check-visual {
+      background: var(--fum-color-verde);
+      border-color: var(--fum-color-verde);
+    }
+
+    .fac-clase-checkbox:checked+.fac-clase-check-visual i {
+      display: flex;
+    }
+
+    .fac-clase-checkbox:focus-visible+.fac-clase-check-visual {
+      outline: 2px solid var(--fum-color-verde);
+      outline-offset: 2px;
+    }
+
+    .fac-clase-row.is-inactive .fac-clase-row-titulo {
+      color: var(--fum-color-text-muted);
+    }
+
+
+    .fac-clase-row-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: baseline;
+      gap: var(--fum-space-3);
+    }
+
+    .fac-clase-row-titulo {
+      min-width: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-negro);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-clase-row-meta {
+      flex-shrink: 0;
+      margin-left: auto;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 560px) {
+      .fac-modulo-meta {
+        display: none;
       }
 
-      /* ══════════════════════════════════════════════
-         TEMARIO — acordeón
-      ══════════════════════════════════════════════ */
-      .fac-temario-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-5);
+      .fac-clase-row {
+        padding-left: var(--fum-space-5);
       }
-      .fac-temario-header-left {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-      .fac-temario-header-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-      }
-      .fac-temario-count {
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-tema-accordion {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-      }
-      .fac-tema-item {
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        overflow: hidden;
-        transition: border-color var(--fum-transition-fast);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-tema-btn {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: var(--fum-space-4) var(--fum-space-5);
-        font-family: inherit;
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        transition: background var(--fum-transition-fast);
-        gap: var(--fum-space-4);
-        background: transparent;
-      }
-      .fac-tema-chevron {
-        display: flex;
-        flex-shrink: 0;
-        font-size: 12px;
-        color: var(--fum-color-verde);
-        transition: transform var(--fum-transition-base);
-      }
-      .fac-tema-item.is-open .fac-tema-chevron {
-        transform: rotate(180deg);
-      }
-      .fac-tema-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      .fac-tema-body-inner {
-        padding: var(--fum-space-4) var(--fum-space-5);
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        border-top: 1px solid var(--fum-color-border);
-      }
-      .fac-tema-body-inner ul {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-2);
-        padding-left: var(--fum-space-4);
-      }
-      .fac-tema-body-inner li {
-        list-style: disc;
-        color: var(--fum-color-text-secondary);
-      }
+    }
 
-      /* ══════════════════════════════════════════════
-         MATERIALES Y RECURSOS
+    /* ══════════════════════════════════════════════
+         EVALUACIONES — mismo patrón de acordeón que
+         "Contenido del curso": encabezado compacto,
+         detalle colapsable debajo.
       ══════════════════════════════════════════════ */
-      .fac-recursos-list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-      }
-      .fac-recurso-item {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-        text-decoration: none;
-        transition: border-color var(--fum-transition-fast);
-        cursor: pointer;
-      }
-      .fac-recurso-item.is-locked-recurso {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-      }
-      .fac-recurso-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: var(--fum-radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 16px;
-      }
-      .fac-recurso-icon i {
-        display: flex;
-      }
-      .fac-recurso-icon.type-pdf {
-        color: #fff;
-        background: #ff2056;
-      }
-      .fac-recurso-icon.type-doc {
-        color: #fff;
-        background: #2b7fff;
-      }
-      .fac-recurso-icon.type-link {
-        background: #f0b100;
-        color: #fff;
-      }
-      .fac-recurso-icon.type-blocked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-recurso-icon.type-video {
-        background: rgba(180, 0, 0, 0.1);
-        color: #b00000;
-      }
-      .fac-recurso-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-recurso-nombre {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .fac-recurso-desc {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-        margin-top: 2px;
-      }
-      .fac-recurso-action {
-        flex-shrink: 0;
-        font-size: 14px;
-        color: var(--fum-color-verde);
-      }
-      .fac-recurso-action.locked {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-recurso-action i {
-        display: flex;
-      }
+    .fac-eval-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-md);
+      overflow: hidden;
+      background: var(--fum-color-bg-card);
+    }
 
-      /* ══════════════════════════════════════════════
-         EVALUACIONES
-      ══════════════════════════════════════════════ */
-      .fac-eval-list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-3);
-      }
-      .fac-eval-card {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-4);
-        padding: var(--fum-space-4) var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-md);
-        background: var(--fum-color-bg-card);
-      }
-      .fac-eval-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: var(--fum-radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 18px;
-      }
-      .fac-eval-icon i {
-        display: flex;
-      }
-      .fac-eval-icon.eval-open {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-icon.eval-locked {
-        background: var(--fum-color-border);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-eval-icon.eval-done {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-body {
-        flex: 1;
-        min-width: 0;
-      }
-      .fac-eval-nombre {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: 3px;
-      }
-      .fac-eval-meta {
-        display: flex;
-        gap: var(--fum-space-4);
-        flex-wrap: wrap;
-      }
-      .fac-eval-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-eval-meta-item i {
-        font-size: 11px;
-      }
+    .fac-eval-count {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .fac-eval-item {
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .fac-eval-item:last-child {
+      border-bottom: none;
+    }
+
+    /* — Encabezado (dropdown trigger), calcado de .fac-modulo-btn — */
+    .fac-eval-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: var(--fum-space-4);
+      padding: var(--fum-space-4) var(--fum-space-5);
+      font-family: inherit;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--fum-transition-fast);
+    }
+
+    .fac-eval-header:hover {
+      background: var(--fum-color-bg-surface);
+    }
+
+    .fac-eval-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--fum-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .fac-eval-icon i {
+      display: flex;
+    }
+
+    .fac-eval-icon.eval-open,
+    .fac-eval-icon.eval-done {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-eval-icon.eval-locked {
+      background: var(--fum-color-border);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-eval-header-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .fac-eval-nombre {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-regular);
+      color: var(--fum-color-negro);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-eval-header-sub {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-eval-status-pill {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: var(--fum-radius-pill);
+      font-size: var(--fum-font-size-2xs);
+      font-weight: var(--fum-font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .fac-eval-status-pill.status-done {
+      background: rgba(45, 106, 31, 0.1);
+      color: var(--fum-color-verde);
+    }
+
+    .fac-eval-status-pill.status-open {
+      background: rgba(127, 208, 71, 0.16);
+      color: var(--fum-color-verde);
+    }
+
+    .fac-eval-status-pill.status-locked {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-eval-chevron {
+      display: flex;
+      flex-shrink: 0;
+      font-size: 13px;
+      color: var(--fum-color-text-muted);
+      transition: transform var(--fum-transition-base);
+    }
+
+    .fac-eval-item.is-open .fac-eval-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* — Cuerpo colapsable (detalle) — */
+    .fac-eval-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .fac-eval-body-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+      padding: var(--fum-space-4) var(--fum-space-5) var(--fum-space-4);
+      border-top: 1px solid var(--fum-color-border);
+    }
+
+    .fac-eval-meta {
+      display: flex;
+      gap: var(--fum-space-4);
+      flex-wrap: wrap;
+    }
+
+    .fac-eval-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-eval-meta-item i {
+      font-size: 11px;
+    }
+
+    .fac-eval-action {
+      flex-shrink: 0;
+    }
+
+    .fac-eval-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: background var(--fum-transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .fac-eval-btn.btn-open {
+      background: var(--fum-color-verde);
+      color: #fff;
+    }
+
+    .fac-eval-btn.btn-open:hover {
+      background: var(--fum-color-verde-hover);
+    }
+
+    .fac-eval-btn.btn-locked {
+      background: var(--fum-color-bg-surface);
+      color: var(--fum-color-text-muted);
+      cursor: not-allowed;
+    }
+
+    .fac-eval-btn.btn-done {
+      background: rgba(26, 31, 94, 0.08);
+      color: var(--fum-color-azul);
+    }
+
+    .fac-eval-score {
+      font-size: var(--fum-font-size-lg);
+      font-weight: var(--fum-font-weight-regular);
+      color: var(--fum-color-negro);
+      letter-spacing: -0.03em;
+      text-align: right;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+
+    .fac-eval-score span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--fum-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 500px) {
       .fac-eval-action {
-        flex-shrink: 0;
-      }
-      .fac-eval-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 7px 14px;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        border: none;
-        transition: background var(--fum-transition-fast);
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .fac-eval-btn.btn-open {
-        background: var(--fum-color-verde);
-        color: #fff;
-      }
-      .fac-eval-btn.btn-open:hover {
-        background: var(--fum-color-verde-hover);
-      }
-      .fac-eval-btn.btn-locked {
-        background: var(--fum-color-bg-surface);
-        color: var(--fum-color-text-muted);
-        cursor: not-allowed;
-      }
-      .fac-eval-btn.btn-done {
-        background: rgba(26, 31, 94, 0.08);
-        color: var(--fum-color-azul);
-      }
-      .fac-eval-score {
-        font-size: var(--fum-font-size-lg);
-        font-weight: var(--fum-font-weight-regular);
-        color: var(--fum-color-negro);
-        letter-spacing: -0.03em;
-        text-align: right;
-        flex-shrink: 0;
-        min-width: 52px;
-      }
-      .fac-eval-score span {
-        display: block;
-        font-size: 10px;
-        font-weight: 600;
-        color: var(--fum-color-text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      @media (max-width: 500px) {
-        .fac-eval-card {
-          flex-wrap: wrap;
-        }
-        .fac-eval-action {
-          width: 100%;
-        }
-        .fac-eval-btn {
-          width: 100%;
-          justify-content: center;
-        }
+        width: 100%;
       }
 
-      /* ══════════════════════════════════════════════
+      .fac-eval-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
          CERTIFICADO
       ══════════════════════════════════════════════ */
-      .fac-cert-section-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-3);
-      }
-      .fac-cert-section-sub {
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-        margin-bottom: var(--fum-space-6);
-      }
-      .fac-cert-layout {
-        display: grid;
-        grid-template-columns: 0.7fr 1fr;
-        gap: var(--fum-space-6);
-        align-items: start;
-      }
-      @media (max-width: 700px) {
-        .fac-cert-layout {
-          grid-template-columns: 1fr;
-        }
-      }
-      .fac-cert-includes {
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-4);
-      }
-      .fac-cert-includes-title {
-        font-size: var(--fum-font-size-xs);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .fac-cert-item {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        line-height: var(--fum-line-height-relaxed);
-      }
-      .fac-cert-item-icon {
-        width: 28px;
-        height: 28px;
-        border-radius: var(--fum-radius-sm);
-        background-color: var(--fum-color-verde);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .fac-cert-item-icon i {
-        font-size: 12px;
-        display: flex;
-        color: #fff;
-      }
+    .fac-cert-section-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-3);
+    }
 
-      /* ══════════════════════════════════════════════
+    .fac-cert-section-sub {
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+      margin-bottom: var(--fum-space-6);
+    }
+
+    .fac-cert-layout {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      gap: var(--fum-space-6);
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .fac-cert-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fac-cert-includes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-4);
+    }
+
+    .fac-cert-includes-title {
+      font-size: var(--fum-font-size-xs);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .fac-cert-item {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      line-height: var(--fum-line-height-relaxed);
+    }
+
+    .fac-cert-item-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--fum-radius-sm);
+      background-color: var(--fum-color-verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fac-cert-item-icon i {
+      font-size: 12px;
+      display: flex;
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════════
          SIDEBAR STICKY
       ══════════════════════════════════════════════ */
-      .fac-sidebar-col {
-        position: sticky;
-        top: calc(var(--fac-topbar-height) + 20px);
-        display: flex;
-        flex-direction: column;
-        gap: var(--fum-space-4);
-      }
+    .fac-sidebar-col {
+      position: sticky;
+      top: calc(var(--fac-topbar-height) + 20px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--fum-space-4);
+    }
 
-      /* — Próxima clase card — */
-      .fac-proxima-card {
-        background: var(--fum-color-azul);
-        border-radius: var(--fum-radius-lg);
-        padding: var(--fum-space-5);
-        color: #fff;
-      }
-      .fac-proxima-label {
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--fum-color-verde);
-        margin-bottom: var(--fum-space-2);
-      }
-      .fac-proxima-titulo {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: #fff;
-        margin-bottom: var(--fum-space-3);
-        line-height: var(--fum-line-height-snug);
-      }
-      .fac-proxima-fecha {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: var(--fum-font-size-xs);
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: var(--fum-space-4);
-      }
-      .fac-proxima-fecha i {
-        color: var(--fum-color-verde);
-        font-size: 12px;
-      }
-      .fac-proxima-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 7px;
-        width: 100%;
-        padding: var(--fum-space-3);
-        background: var(--fum-color-verde);
-        color: #fff;
-        border: none;
-        border-radius: var(--fum-radius-sm);
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        font-family: inherit;
-        cursor: pointer;
-        transition: background var(--fum-transition-fast);
-        text-decoration: none;
-      }
-      .fac-proxima-btn:hover {
-        background: var(--fum-color-verde-hover);
-        color: #fff;
-      }
+    /* — Próxima clase card — */
+    .fac-proxima-card {
+      background: var(--fum-color-azul);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-5);
+      color: #fff;
+    }
 
-      /* — Mi Progreso card (sidebar) — */
-      .fac-sidebar-progreso {
-        background: var(--fum-color-bg-card);
-        border: 1px solid var(--fum-color-border);
-        border-radius: var(--fum-radius-lg);
-        padding: var(--fum-space-5);
-      }
-      .fac-sidebar-progreso-title {
-        font-size: var(--fum-font-size-xl);
-        font-weight: var(--fum-font-weight-semibold);
-        color: var(--fum-color-negro);
-        margin-bottom: var(--fum-space-5);
-        text-align: center;
-      }
-      .fac-sidebar-pct-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: var(--fum-space-2);
-      }
-      .fac-sidebar-pct-label {
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-muted);
-      }
-      .fac-sidebar-pct-num {
-        font-size: var(--fum-font-size-sm);
-        font-weight: var(--fum-font-weight-bold);
-        color: var(--fum-color-negro);
-      }
-      .fac-sidebar-bar-wrap {
-        height: 8px;
-        background: var(--fum-color-bg-surface);
-        border-radius: var(--fum-radius-pill);
-        overflow: hidden;
-        margin-bottom: var(--fum-space-5);
-        border: 1px solid var(--fum-color-border);
-      }
-      .fac-sidebar-bar-fill {
-        height: 100%;
-        background: var(--fum-color-verde);
-        border-radius: var(--fum-radius-pill);
-      }
-      /* mini lista de clases en sidebar */
-      .fac-sidebar-clases-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .fac-sidebar-clase-row {
-        display: flex;
-        align-items: center;
-        gap: var(--fum-space-3);
-        font-size: var(--fum-font-size-xs);
-        color: var(--fum-color-text-secondary);
-        padding: 8px 0;
-        border-bottom: 1px solid var(--fum-color-border);
-      }
-      .fac-sidebar-clase-row:last-child {
-        border-bottom: none;
-      }
-      .fac-sidebar-clase-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-      .fac-sidebar-clase-dot.dot-done {
-        background: var(--fum-color-verde);
-      }
-      .fac-sidebar-clase-dot.dot-active {
-        background: #2b7fff;
-      }
-      .fac-sidebar-clase-dot.dot-locked {
-        background: var(--fum-color-text-muted);
-        border: 1.5px solid var(--fum-color-text-muted);
-      }
-      .fac-sidebar-clase-label {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .fac-sidebar-clase-label.muted {
-        color: var(--fum-color-text-muted);
-      }
-      .fac-sidebar-clase-status {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        flex-shrink: 0;
-      }
-      .fac-sidebar-clase-status.st-done {
-        color: var(--fum-color-verde);
-      }
-      .fac-sidebar-clase-status.st-active {
-        color: #2b7fff;
-      }
-      .fac-sidebar-clase-status.st-locked {
-        color: var(--fum-color-text-muted);
-      }
+    .fac-proxima-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fum-color-verde);
+      margin-bottom: var(--fum-space-2);
+    }
 
-      /* Announcements */
-      .fac-announcements {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        overflow: hidden;
-        min-width: 0;
-        height: 36px;
-      }
-      .fac-announcements-icon {
-        display: flex;
-        align-items: center;
-        color: var(--fum-color-verde);
-        font-size: 13px;
-        flex-shrink: 0;
-      }
-      .fac-announcements-icon i {
-        display: flex;
-      }
-      .fac-announcements-track {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        height: 100%;
-      }
-      .fac-announcement-item {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        transform: translateY(-50%) translateX(30px);
-        opacity: 0;
-        font-size: var(--fum-font-size-sm);
-        color: var(--fum-color-text-secondary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
-        pointer-events: none;
-      }
-      .fac-announcement-item.active {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-        pointer-events: auto;
-      }
-      .fac-announcement-item.leaving {
-        opacity: 0;
-        transform: translateY(-50%) translateX(-30px);
-      }
-      .fac-announcement-item strong {
-        color: var(--fum-color-text-primary);
-        font-weight: var(--fum-font-weight-semibold);
-      }
-    </style>
-  </head>
+    .fac-proxima-titulo {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: #fff;
+      margin-bottom: var(--fum-space-3);
+      line-height: var(--fum-line-height-snug);
+    }
 
-  <body>
-    <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="fac-layout">
-      <!-- SIDEBAR -->
-      <aside class="fac-sidebar" id="sidebar">
-        <div class="fac-sidebar-logo">
-          <span class="fac-sidebar-logo-text"
-            ><i class="fi fi-rs-sun-plant-wilt"></i> VIB ACADEMY</span
-          >
+    .fac-proxima-fecha {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fum-font-size-xs);
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: var(--fum-space-4);
+    }
+
+    .fac-proxima-fecha i {
+      color: var(--fum-color-verde);
+      font-size: 12px;
+    }
+
+    .fac-proxima-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      padding: var(--fum-space-3);
+      background: var(--fum-color-verde);
+      color: #fff;
+      border: none;
+      border-radius: var(--fum-radius-sm);
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      font-family: inherit;
+      cursor: pointer;
+      transition: background var(--fum-transition-fast);
+      text-decoration: none;
+    }
+
+    .fac-proxima-btn:hover {
+      background: var(--fum-color-verde-hover);
+      color: #fff;
+    }
+
+    /* — Mi Progreso card (sidebar) — */
+    .fac-sidebar-progreso {
+      background: var(--fum-color-bg-card);
+      border: 1px solid var(--fum-color-border);
+      border-radius: var(--fum-radius-lg);
+      padding: var(--fum-space-5);
+    }
+
+    .fac-sidebar-progreso-title {
+      font-size: var(--fum-font-size-xl);
+      font-weight: var(--fum-font-weight-semibold);
+      color: var(--fum-color-negro);
+      margin-bottom: var(--fum-space-5);
+      text-align: center;
+    }
+
+    .fac-sidebar-pct-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--fum-space-2);
+    }
+
+    .fac-sidebar-pct-label {
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-pct-num {
+      font-size: var(--fum-font-size-sm);
+      font-weight: var(--fum-font-weight-bold);
+      color: var(--fum-color-negro);
+    }
+
+    .fac-sidebar-bar-wrap {
+      height: 8px;
+      background: var(--fum-color-bg-surface);
+      border-radius: var(--fum-radius-pill);
+      overflow: hidden;
+      margin-bottom: var(--fum-space-5);
+      border: 1px solid var(--fum-color-border);
+    }
+
+    .fac-sidebar-bar-fill {
+      height: 100%;
+      background: var(--fum-color-verde);
+      border-radius: var(--fum-radius-pill);
+    }
+
+    /* mini lista de clases en sidebar */
+    .fac-sidebar-clases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .fac-sidebar-clase-row {
+      display: flex;
+      align-items: center;
+      gap: var(--fum-space-3);
+      font-size: var(--fum-font-size-xs);
+      color: var(--fum-color-text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--fum-color-border);
+    }
+
+    .fac-sidebar-clase-row:last-child {
+      border-bottom: none;
+    }
+
+    .fac-sidebar-clase-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .fac-sidebar-clase-dot.dot-done {
+      background: var(--fum-color-verde);
+    }
+
+    .fac-sidebar-clase-dot.dot-active {
+      background: #2b7fff;
+    }
+
+    .fac-sidebar-clase-dot.dot-locked {
+      background: var(--fum-color-text-muted);
+      border: 1.5px solid var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-clase-label {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fac-sidebar-clase-label.muted {
+      color: var(--fum-color-text-muted);
+    }
+
+    .fac-sidebar-clase-status {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .fac-sidebar-clase-status.st-done {
+      color: var(--fum-color-verde);
+    }
+
+    .fac-sidebar-clase-status.st-active {
+      color: #2b7fff;
+    }
+
+    .fac-sidebar-clase-status.st-locked {
+      color: var(--fum-color-text-muted);
+    }
+
+    /* Announcements */
+    .fac-announcements {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      overflow: hidden;
+      min-width: 0;
+      height: 36px;
+    }
+
+    .fac-announcements-icon {
+      display: flex;
+      align-items: center;
+      color: var(--fum-color-verde);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .fac-announcements-icon i {
+      display: flex;
+    }
+
+    .fac-announcements-track {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .fac-announcement-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%) translateX(30px);
+      opacity: 0;
+      font-size: var(--fum-font-size-sm);
+      color: var(--fum-color-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .fac-announcement-item.active {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+      pointer-events: auto;
+    }
+
+    .fac-announcement-item.leaving {
+      opacity: 0;
+      transform: translateY(-50%) translateX(-30px);
+    }
+
+    .fac-announcement-item strong {
+      color: var(--fum-color-text-primary);
+      font-weight: var(--fum-font-weight-semibold);
+    }
+  </style>
+  <script src="assets/js/vib-demo-auth.js"></script>
+</head>
+
+<body>
+  <div class="fac-sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="fac-layout">
+    <!-- SIDEBAR -->
+    <aside class="fac-sidebar" id="sidebar">
+      <div class="fac-sidebar-logo">
+        <img src="academiavib-logosvg.svg" alt="Academia VIB" class="fac-sidebar-logo-img" />
+      </div>
+      <nav class="fac-sidebar-nav">
+        <div class="fac-sidebar-menu">
+          <p class="fac-sidebar-section-label">Principal</p>
+          <a href="dashboard.html" class="fac-nav-item"><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a>
+          <a href="cursos.html" class="fac-nav-item fac-nav-item-active"><i
+              class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a>
+          <a href="verificar-certificado.html" class="fac-nav-item"><i
+              class="fi fi-rs-shield-check fac-nav-item-icon"></i>Validar Certificado</a>
+          <a href="certificados.html" class="fac-nav-item"><i
+              class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a>
+          <a href="instructores.html" class="fac-nav-item"><i
+              class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a>
         </div>
-        <nav class="fac-sidebar-nav">
-          <div class="fac-sidebar-menu">
-            <p class="fac-sidebar-section-label">Principal</p>
-            <a href="dashboard.html" class="fac-nav-item"
-              ><i class="fi fi-rs-apps fac-nav-item-icon"></i>Inicio</a
-            >
-            <a href="cursos.html" class="fac-nav-item fac-nav-item-active"
-              ><i class="fi fi-rs-e-learning fac-nav-item-icon"></i>Cursos</a
-            >
-            <a href="certificados.html" class="fac-nav-item"
-              ><i class="fi fi-rs-diploma fac-nav-item-icon"></i>Certificados</a
-            >
-            <a href="instructores.html" class="fac-nav-item"
-              ><i class="fi fi-rs-users fac-nav-item-icon"></i>Instructores</a
-            >
-          </div>
-          <div class="fac-sidebar-menu" style="margin-top: 6px">
-            <p class="fac-sidebar-section-label">Cuenta</p>
-            <a href="perfil.html" class="fac-nav-item"
-              ><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a
-            >
-            <a href="notificaciones.html" class="fac-nav-item"
-              ><i class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a
-            >
-            <a href="configuracion.html" class="fac-nav-item"
-              ><i class="fi fi-rs-settings fac-nav-item-icon"></i
-              >Configuración</a
-            >
-            <a href="#" class="fac-nav-item"
-              ><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a
-            >
-          </div>
-        </nav>
-        <div class="fac-sidebar-footer">
-          <div class="fac-sidebar-footer-socials">
-            <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
-            <a href="#"><i class="fi fi-brands-facebook"></i></a>
-            <a href="#"><i class="fi fi-brands-instagram"></i></a>
-            <a href="#"><i class="fi fi-brands-linkedin"></i></a>
-            <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
-            <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        <div class="fac-sidebar-menu" style="margin-top: 6px">
+          <p class="fac-sidebar-section-label">Cuenta</p>
+          <a href="perfil.html" class="fac-nav-item"><i class="fi fi-rs-user fac-nav-item-icon"></i>Mi perfil</a>
+          <a href="notificaciones.html" class="fac-nav-item"><i
+              class="fi fi-rs-bell fac-nav-item-icon"></i>Notificaciones</a>
+          <a href="configuracion.html" class="fac-nav-item"><i
+              class="fi fi-rs-settings fac-nav-item-icon"></i>Configuración</a>
+          <a href="#" class="fac-nav-item"><i class="fi fi-rs-user-headset fac-nav-item-icon"></i>Soporte</a>
+        </div>
+      </nav>
+      <div class="fac-sidebar-footer">
+        <div class="fac-sidebar-footer-socials">
+          <a href="#"><i class="fi fi-brands-whatsapp"></i></a>
+          <a href="#"><i class="fi fi-brands-facebook"></i></a>
+          <a href="#"><i class="fi fi-brands-instagram"></i></a>
+          <a href="#"><i class="fi fi-brands-linkedin"></i></a>
+          <a href="#"><i class="fi fi-brands-tik-tok"></i></a>
+          <a href="#"><i class="fi fi-brands-twitter-alt"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="fac-main">
+      <!-- TOPBAR -->
+      <header class="fac-topbar">
+        <button class="fac-topbar-mobile-toggle" id="sidebarToggle" aria-label="Abrir menú">
+          <i class="fi fi-bs-menu-burger"></i>
+        </button>
+        <div class="fac-announcements" role="marquee" aria-live="polite">
+          <span class="fac-announcements-icon"><i class="fi fi-rs-megaphone"></i></span>
+          <div class="fac-announcements-track" id="announcementsTrack">
+            <span class="fac-announcement-item active">Próxima clase:
+              <strong>Normativa Internacional MATPEL — Martes 27 de mayo, 7:00
+                PM</strong></span>
+            <span class="fac-announcement-item">Recuerda unirte al grupo de WhatsApp del curso para recibir las
+              <strong>notificaciones de clase</strong></span>
+            <span class="fac-announcement-item">Evaluación Parcial disponible a partir del
+              <strong>lunes 2 de junio</strong></span>
           </div>
         </div>
-      </aside>
-
-      <!-- MAIN -->
-      <div class="fac-main">
-        <!-- TOPBAR -->
-        <header class="fac-topbar">
-          <button
-            class="fac-topbar-mobile-toggle"
-            id="sidebarToggle"
-            aria-label="Abrir menú"
-          >
-            <i class="fi fi-bs-menu-burger"></i>
-          </button>
-          <div class="fac-announcements" role="marquee" aria-live="polite">
-            <span class="fac-announcements-icon"
-              ><i class="fi fi-rs-megaphone"></i
-            ></span>
-            <div class="fac-announcements-track" id="announcementsTrack">
-              <span class="fac-announcement-item active"
-                >Próxima clase:
-                <strong
-                  >Normativa Internacional MATPEL — Martes 27 de mayo, 7:00
-                  PM</strong
-                ></span
-              >
-              <span class="fac-announcement-item"
-                >Recuerda unirte al grupo de WhatsApp del curso para recibir las
-                <strong>notificaciones de clase</strong></span
-              >
-              <span class="fac-announcement-item"
-                >Evaluación Parcial disponible a partir del
-                <strong>lunes 2 de junio</strong></span
-              >
-            </div>
-          </div>
-          <div class="fac-topbar-actions">
-            <div class="fac-profile-menu" id="profileMenu">
-              <div
-                class="fac-topbar-avatar-btn"
-                id="profileToggle"
-                role="button"
-                tabindex="0"
-                aria-label="Perfil"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div class="fac-topbar-user-info">
-                  <span class="fac-topbar-username" id="navUserName"
-                    >Usuario</span
-                  >
-                  <span class="fac-topbar-userrole">Estudiante</span>
-                </div>
-                <div
-                  class="fac-avatar fac-avatar-img-wrap"
-                  style="width: 34px; height: 34px; font-size: 11px"
-                >
-                  <img
-                    src=""
-                    alt=""
-                    id="navUserPhoto"
-                    class="fac-avatar-img"
-                    onerror="
+        <div class="fac-topbar-actions">
+          <div class="fac-profile-menu" id="profileMenu">
+            <div class="fac-topbar-avatar-btn" id="profileToggle" role="button" tabindex="0" aria-label="Perfil"
+              aria-haspopup="true" aria-expanded="false">
+              <div class="fac-topbar-user-info">
+                <span class="fac-topbar-username" id="navUserName">Usuario</span>
+                <span class="fac-topbar-userrole">Estudiante</span>
+              </div>
+              <div class="fac-avatar fac-avatar-img-wrap" style="width: 34px; height: 34px; font-size: 11px">
+                <img src="" alt="" id="navUserPhoto" class="fac-avatar-img" onerror="
                       this.style.display = 'none';
                       this.parentElement.querySelector(
                         '.fac-avatar-initials',
                       ).style.display = 'flex';
-                    "
-                  />
-                  <span
-                    class="fac-avatar-initials"
-                    id="navUserInitials"
-                    style="display: none"
-                    >??</span
-                  >
-                </div>
-              </div>
-
-              <div
-                class="fac-profile-dropdown"
-                id="profileDropdown"
-                role="menu"
-              >
-                <div class="fac-profile-dropdown-header">
-                  <div
-                    class="fac-avatar fac-profile-dropdown-avatar"
-                    id="dropdownInitials"
-                  >
-                    ??
-                  </div>
-                  <div class="fac-profile-dropdown-info">
-                    <p class="fac-profile-dropdown-name" id="dropdownName">
-                      Usuario
-                    </p>
-                    <p class="fac-profile-dropdown-role">Estudiante</p>
-                  </div>
-                </div>
-                <div class="fac-profile-dropdown-divider"></div>
-                <a
-                  href="perfil.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-user"></i> Mi perfil
-                </a>
-                <a
-                  href="certificados.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-diploma"></i> Mis certificados
-                </a>
-                <a
-                  href="configuracion.html"
-                  class="fac-profile-dropdown-item"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-settings"></i> Configuración
-                </a>
-                <div class="fac-profile-dropdown-divider"></div>
-                <button
-                  class="fac-profile-dropdown-item fac-profile-dropdown-logout"
-                  id="logoutBtn"
-                  role="menuitem"
-                >
-                  <i class="fi fi-rs-sign-out-alt"></i>
-                  Cerrar sesión
-                </button>
+                    " />
+                <span class="fac-avatar-initials" id="navUserInitials" style="display: none">??</span>
               </div>
             </div>
-          </div>
-        </header>
 
-        <!-- CONTENIDO -->
-        <main class="fac-content">
-          <!-- BODY — 2 cols (hero está dentro de main col) -->
-          <div class="fac-curso-body">
-            <!-- ── Col principal ── -->
-            <div class="fac-curso-main-col">
-              <!-- HERO BANNER (no full-width, dentro de main col) -->
-              <div class="fac-curso-hero-banner">
-                <img
-                  src="curso.webp"
-                  alt="Manejo Seguro de Materiales y Sustancias Peligrosas"
-                />
-                <div class="fac-curso-hero-banner-content">
-                  <div class="fac-curso-hero-banner-left">
-                    <span class="fac-curso-hero-tag"
-                      ><i class="fi fi-rs-shield-check"></i> Matriculado</span
-                    >
-                    <h1 class="fac-curso-hero-banner-title">
-                      Manejo Seguro de Materiales y Sustancias Peligrosas
-                      (MATPEL)
-                    </h1>
-                    <div class="fac-curso-hero-banner-stats">
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-user"></i> Lic. Iván Tamariz</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-clock"></i> 4 Semanas</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-calendar"></i> Inicio
-                        19/05/2026</span
-                      >
-                      <span class="fac-curso-hero-stat"
-                        ><i class="fi fi-rs-user-graduate"></i> 26
-                        inscritos</span
-                      >
-                    </div>
+            <div class="fac-profile-dropdown" id="profileDropdown" role="menu">
+              <div class="fac-profile-dropdown-header">
+                <div class="fac-avatar fac-profile-dropdown-avatar" id="dropdownInitials">
+                  ??
+                </div>
+                <div class="fac-profile-dropdown-info">
+                  <p class="fac-profile-dropdown-name" id="dropdownName">
+                    Usuario
+                  </p>
+                  <p class="fac-profile-dropdown-role">Estudiante</p>
+                </div>
+              </div>
+              <div class="fac-profile-dropdown-divider"></div>
+              <a href="perfil.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-user"></i> Mi perfil
+              </a>
+              <a href="certificados.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-diploma"></i> Mis certificados
+              </a>
+              <a href="configuracion.html" class="fac-profile-dropdown-item" role="menuitem">
+                <i class="fi fi-rs-settings"></i> Configuración
+              </a>
+              <div class="fac-profile-dropdown-divider"></div>
+              <button class="fac-profile-dropdown-item fac-profile-dropdown-logout" id="logoutBtn" role="menuitem">
+                <i class="fi fi-rs-sign-out-alt"></i>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENIDO -->
+      <main class="fac-content">
+        <!-- BODY — 2 cols (hero está dentro de main col) -->
+        <div class="fac-curso-body">
+          <!-- ── Col principal ── -->
+          <div class="fac-curso-main-col">
+            <!-- HERO BANNER (no full-width, dentro de main col) -->
+            <div class="fac-curso-hero-banner">
+              <img src="curso.webp" alt="Manejo Seguro de Materiales y Sustancias Peligrosas" />
+              <div class="fac-curso-hero-banner-content">
+                <div class="fac-curso-hero-banner-left">
+                  <span class="fac-curso-hero-tag"><i class="fi fi-rs-shield-check"></i> Matriculado</span>
+                  <h1 class="fac-curso-hero-banner-title">
+                    Manejo Seguro de Materiales y Sustancias Peligrosas
+                    (MATPEL)
+                  </h1>
+                  <div class="fac-curso-hero-banner-stats">
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-user"></i> Lic. Iván Tamariz</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-clock"></i> 4 Semanas</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-calendar"></i> Inicio
+                      19/05/2026</span>
+                    <span class="fac-curso-hero-stat"><i class="fi fi-rs-user-graduate"></i> 26
+                      inscritos</span>
                   </div>
-                  <div class="fac-curso-hero-banner-right">
-                    <a href="#" class="fac-brochure-btn"
-                      ><i class="fi fi-rs-file-download"></i> Descargar
-                      Brochure</a
-                    >
+                </div>
+                <div class="fac-curso-hero-banner-right">
+                  <a href="#" class="fac-brochure-btn"><i class="fi fi-rs-file-download"></i> Descargar
+                    Brochure</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- INFORMACIÓN GENERAL -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Información general</h2>
+
+              <p class="fac-info-desc">
+                Este curso te prepara para identificar, manejar y responder
+                ante incidentes con materiales peligrosos aplicando los
+                protocolos y normativas nacionales e internacionales vigentes.
+                Aprenderás a usar herramientas técnicas como las Hojas de
+                Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias
+                (GRE), y a ejecutar acciones de control inicial mediante el
+                Sistema de Comando de Incidentes (SCI). El programa está
+                avalado por el Colegio de Ingenieros del Perú y diseñado para
+                profesionales del sector minero, industrial y de transporte.
+              </p>
+
+              <div class="fac-info-grid-card">
+                <h3 class="fac-curso-section-title">Datos del curso</h3>
+                <div class="fac-info-grid">
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-category"></i>
+                    <span><span class="fac-info-grid-label">Categoría:</span>
+                      <span class="fac-info-grid-value">Seguridad Industrial</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-stats"></i>
+                    <span><span class="fac-info-grid-label">Nivel:</span>
+                      <span class="fac-info-grid-value">Intermedio</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-laptop"></i>
+                    <span><span class="fac-info-grid-label">Modalidad:</span>
+                      <span class="fac-info-grid-value">Virtual en vivo</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-clock"></i>
+                    <span><span class="fac-info-grid-label">Duración:</span>
+                      <span class="fac-info-grid-value">40 horas académicas</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-sack-dollar"></i>
+                    <span><span class="fac-info-grid-label">Precio base:</span>
+                      <span class="fac-info-grid-value">$ 138.00</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-badge-percent"></i>
+                    <span><span class="fac-info-grid-label">Aprobación mínima:</span>
+                      <span class="fac-info-grid-value">80%</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-calendar"></i>
+                    <span><span class="fac-info-grid-label">Duración sugerida:</span>
+                      <span class="fac-info-grid-value">4 semanas</span></span>
+                  </div>
+                  <div class="fac-info-grid-item">
+                    <i class="fi fi-rs-user"></i>
+                    <span><span class="fac-info-grid-label">Instructor principal:</span>
+                      <span class="fac-info-grid-value">Lic. Iván Tamariz</span></span>
+                  </div>
+                </div>
+              </div>
+              <!-- /info-grid-card -->
+
+              <div class="fac-info-block">
+                <h3 class="fac-info-subtitle">Dirigido a</h3>
+                <p class="fac-info-dirigido">
+                  Técnicos de seguridad, supervisores HSE, personal de
+                  logística y transporte de materiales peligrosos, y
+                  profesionales de los sectores minero e industrial.
+                </p>
+              </div>
+
+              <div class="fac-info-block">
+                <h3 class="fac-info-subtitle">Lo que aprenderás</h3>
+                <div class="fac-info-aprenderas-item">
+                  <i class="fi fi-rs-check"></i>
+                  <span>Identificar y clasificar materiales peligrosos según
+                    normativa nacional e internacional (DOT, GHS, ADR).</span>
+                </div>
+                <div class="fac-info-aprenderas-item">
+                  <i class="fi fi-rs-check"></i>
+                  <span>Aplicar los niveles de respuesta ante emergencias
+                    (Awareness, Operations y Technician).</span>
+                </div>
+                <div class="fac-info-aprenderas-item">
+                  <i class="fi fi-rs-check"></i>
+                  <span>Usar herramientas técnicas como las Hojas de Datos
+                    de Seguridad (SDS) y la Guía de Respuesta a Emergencias
+                    (GRE).</span>
+                </div>
+                <div class="fac-info-aprenderas-item">
+                  <i class="fi fi-rs-check"></i>
+                  <span>Ejecutar acciones de control inicial mediante el
+                    Sistema de Comando de Incidentes (SCI).</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- CALIFICACIONES Y OPINIONES -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Calificaciones y opiniones</h2>
+
+              <div class="fac-reviews-summary">
+                <div class="fac-reviews-score">
+                  <span class="fac-reviews-score-num">4.9</span>
+                  <span class="fac-reviews-score-stars">
+                    <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                      class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
+                  </span>
+                </div>
+                <div class="fac-reviews-bars">
+                  <div class="fac-reviews-bar-row">
+                    <span class="fac-reviews-bar-label">5 <i class="fi fi-ss-star"></i></span>
+                    <div class="fac-reviews-bar-track">
+                      <div class="fac-reviews-bar-fill" style="width: 88%"></div>
+                    </div>
+                    <span class="fac-reviews-bar-pct">88%</span>
+                  </div>
+                  <div class="fac-reviews-bar-row">
+                    <span class="fac-reviews-bar-label">4 <i class="fi fi-ss-star"></i></span>
+                    <div class="fac-reviews-bar-track">
+                      <div class="fac-reviews-bar-fill" style="width: 10%"></div>
+                    </div>
+                    <span class="fac-reviews-bar-pct">10%</span>
+                  </div>
+                  <div class="fac-reviews-bar-row">
+                    <span class="fac-reviews-bar-label">3 <i class="fi fi-ss-star"></i></span>
+                    <div class="fac-reviews-bar-track">
+                      <div class="fac-reviews-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="fac-reviews-bar-pct">0%</span>
+                  </div>
+                  <div class="fac-reviews-bar-row">
+                    <span class="fac-reviews-bar-label">2 <i class="fi fi-ss-star"></i></span>
+                    <div class="fac-reviews-bar-track">
+                      <div class="fac-reviews-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="fac-reviews-bar-pct">0%</span>
+                  </div>
+                  <div class="fac-reviews-bar-row">
+                    <span class="fac-reviews-bar-label">1 <i class="fi fi-ss-star"></i></span>
+                    <div class="fac-reviews-bar-track">
+                      <div class="fac-reviews-bar-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="fac-reviews-bar-pct">0%</span>
                   </div>
                 </div>
               </div>
 
-              <!-- INFORMACIÓN GENERAL -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Información general</h2>
-
-                <p class="fac-info-desc">
-                  Este curso te prepara para identificar, manejar y responder
-                  ante incidentes con materiales peligrosos aplicando los
-                  protocolos y normativas nacionales e internacionales vigentes.
-                  Aprenderás a usar herramientas técnicas como las Hojas de
-                  Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias
-                  (GRE), y a ejecutar acciones de control inicial mediante el
-                  Sistema de Comando de Incidentes (SCI). El programa está
-                  avalado por el Colegio de Ingenieros del Perú y diseñado para
-                  profesionales del sector minero, industrial y de transporte.
-                </p>
-
-                <!-- Dos cards lado a lado: Instructor + WhatsApp -->
-                <div class="fac-info-cards-row">
-                  <!-- Card Instructor -->
-                  <div class="fac-instructor-card">
-                    <div class="fac-instructor-header">
-                      <div class="fac-instructor-avatar">
-                        <img src="instructor.webp" alt="Lic. Iván Tamariz" />
-                      </div>
-                      <div class="fac-instructor-meta">
-                        <div class="fac-instructor-name">Lic. Iván Tamariz</div>
-                        <div class="fac-instructor-role">
-                          Especialista en Seguridad Industrial
-                        </div>
-                      </div>
+              <div class="fac-reviews-list">
+                <div class="fac-review-item">
+                  <span class="fac-review-avatar avatar-1">DR</span>
+                  <div class="fac-review-body">
+                    <div class="fac-review-name">Delio Tomas Rodriguez Chavez</div>
+                    <div class="fac-review-stars">
+                      <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                        class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
                     </div>
-                    <div class="fac-instructor-bio">
-                      Licenciado en Ingeniería Ambiental con más de 12 años de
-                      experiencia en gestión de riesgos y MATPEL. Ha capacitado
-                      a más de 2,000 profesionales en empresas mineras,
-                      industriales y de transporte. Instructor certificado por
-                      el Colegio de Ingenieros del Perú.
-                    </div>
-                  </div>
-
-                  <!-- Card WhatsApp -->
-                  <div class="fac-wa-card">
-                    <div class="fac-wa-header">
-                      <div class="fac-wa-icon">
-                        <i class="fi fi-brands-whatsapp"></i>
-                      </div>
-                      <div class="fac-wa-meta">
-                        <div class="fac-wa-title">
-                          Grupo de WhatsApp del curso
-                        </div>
-                        <div class="fac-wa-subtitle">
-                          Comunicación directa con el instructor
-                        </div>
-                      </div>
-                    </div>
-                    <div class="fac-wa-desc">
-                      Únete para recibir avisos de clases, materiales y
-                      comunicados del instructor en tiempo real. Todos los
-                      inscritos son bienvenidos.
-                    </div>
-                    <a
-                      href="https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX"
-                      target="_blank"
-                      class="fac-wa-btn"
-                    >
-                      <i class="fi fi-brands-whatsapp"></i> Unirse al grupo
-                    </a>
+                    <p class="fac-review-comment">Excelente.</p>
                   </div>
                 </div>
-                <!-- /info-cards-row -->
-              </section>
-
-              <!-- LISTA DE CLASES -->
-              <section class="fac-curso-section">
-                <div class="fac-clases-header">
-                  <h2 class="fac-clases-header-title">Clases del curso</h2>
-                  <span class="fac-clases-count">4 clases · 4 semanas</span>
-                </div>
-                <div class="fac-clases-list">
-                  <!-- Clase 1 — Completada -->
-                  <div
-                    class="fac-clase-card is-completed"
-                    onclick="window.location.href = 'clase.html'"
-                  >
-                    <div class="fac-clase-num num-completed">
-                      <i class="fi fi-ss-check"></i>
+                <div class="fac-review-item">
+                  <span class="fac-review-avatar avatar-2">JU</span>
+                  <div class="fac-review-body">
+                    <div class="fac-review-name">Juan Carlos Cotrina Calderón</div>
+                    <div class="fac-review-stars">
+                      <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                        class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
                     </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 1</div>
-                      <div class="fac-clase-titulo">
-                        Clase 1: Normativa Legal Nacional
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 19 may 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-completed"
-                      ><i class="fi fi-rs-check-circle"></i> Completada</span
-                    >
-                  </div>
-                  <!-- Clase 2 — Próxima -->
-                  <div
-                    class="fac-clase-card is-available"
-                    onclick="window.location.href = 'clase.html'"
-                  >
-                    <div class="fac-clase-num num-available">
-                      <i class="fi fi-rs-book-alt"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 2</div>
-                      <div class="fac-clase-titulo">
-                        Clase 2: Normativa y Estándares Internacionales
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 27 may 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-available"
-                      ><i class="fi fi-rs-video-camera"></i> Próxima clase</span
-                    >
-                  </div>
-                  <!-- Clase 3 — Bloqueada -->
-                  <div class="fac-clase-card is-locked">
-                    <div class="fac-clase-num num-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 3</div>
-                      <div class="fac-clase-titulo">
-                        Clase 3: Niveles de Respuesta a Emergencias con MATPEL
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 3 jun 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-upcoming"
-                      ><i class="fi fi-rs-time-past"></i> Se habilita sem.
-                      3</span
-                    >
-                  </div>
-                  <!-- Clase 4 — Bloqueada -->
-                  <div class="fac-clase-card is-locked">
-                    <div class="fac-clase-num num-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-clase-info">
-                      <div class="fac-clase-semana">Semana 4</div>
-                      <div class="fac-clase-titulo">
-                        Clase 4: Herramientas de Gestión para Incidentes MATPEL
-                      </div>
-                      <div class="fac-clase-meta">
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 10 jun 2026, 7:00
-                          PM</span
-                        >
-                        <span class="fac-clase-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 2 horas</span
-                        >
-                      </div>
-                    </div>
-                    <span class="fac-clase-badge badge-locked"
-                      ><i class="fi fi-rs-lock"></i> Se habilita sem. 4</span
-                    >
                   </div>
                 </div>
-              </section>
-
-              <!-- TEMARIO -->
-              <section class="fac-curso-section">
-                <div class="fac-temario-header">
-                  <div class="fac-temario-header-left">
-                    <h2 class="fac-temario-header-title">Temario</h2>
-                    <span class="fac-temario-count">5 temas · 4 semanas</span>
+                <div class="fac-review-item">
+                  <span class="fac-review-avatar avatar-1">JH</span>
+                  <div class="fac-review-body">
+                    <div class="fac-review-name">Jhonny Alfredo Martinez Cohaila</div>
+                    <div class="fac-review-stars">
+                      <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                        class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
+                    </div>
+                    <p class="fac-review-comment">Excelente información.</p>
                   </div>
-                  <button class="fac-brochure-btn">
-                    <i class="fi fi-rs-file-download"></i> Descargar Brochure
+                </div>
+                <div class="fac-review-item">
+                  <span class="fac-review-avatar avatar-2">KA</span>
+                  <div class="fac-review-body">
+                    <div class="fac-review-name">Karen Tunque</div>
+                    <div class="fac-review-stars">
+                      <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                        class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
+                    </div>
+                    <p class="fac-review-comment">Muy interesante!</p>
+                  </div>
+                </div>
+                <div class="fac-review-item">
+                  <span class="fac-review-avatar avatar-1">ED</span>
+                  <div class="fac-review-body">
+                    <div class="fac-review-name">Eder Luis Avila Pinto</div>
+                    <div class="fac-review-stars">
+                      <i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i><i
+                        class="fi fi-ss-star"></i><i class="fi fi-ss-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- CONTENIDO DEL CURSO -->
+            <!-- CERTIFICADO -->
+            <section class="fac-curso-section">
+              <h2 class="fac-cert-section-title">
+                Certificado oficial al completar el curso
+              </h2>
+              <p class="fac-cert-section-sub">
+                Al aprobar las evaluaciones, recibirás un certificado con
+                validez institucional y respaldo del Colegio de Ingenieros.
+              </p>
+              <div class="fac-cert-layout">
+                <div class="fac-cert-includes">
+                  <p class="fac-cert-includes-title">
+                    Tu certificado incluye
+                  </p>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-barcode"></i></span>Código único verificable de
+                    certificado
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-user"></i></span>Nombres y apellidos del
+                    participante
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-e-learning"></i></span>Nombre completo del curso
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-clock"></i></span>Horas académicas acreditadas
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-pen-field"></i></span>Firma y sello del gerente
+                    general
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-diploma"></i></span>Firma y sello de la
+                    coordinadora
+                  </div>
+                  <div class="fac-cert-item">
+                    <span class="fac-cert-item-icon"><i class="fi fi-rs-list"></i></span>Temario completo del curso
+                  </div>
+                  <button class="fac-gencert-btn" id="btnGenerarCert">
+                    <i class="fi fi-rs-download"></i>
+                    Generar mi certificado
                   </button>
                 </div>
-                <div class="fac-tema-accordion" id="temario">
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span>Tema 1: Normativa Legal Nacional</span>
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Marco legal peruano sobre transporte de materiales
-                            peligrosos
-                          </li>
-                          <li>
-                            Reglamento Nacional de Administración de Transportes
-                            (RNAT)
-                          </li>
-                          <li>
-                            Normativa del Ministerio de Transportes y
-                            Comunicaciones
-                          </li>
-                          <li>Obligaciones y responsabilidades del operador</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 2: Normativa y/o Estándares Internacionales</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Recomendaciones de la ONU para el transporte de
-                            mercancías peligrosas
-                          </li>
-                          <li>
-                            Guía de Respuesta en caso de Emergencia (GRE/ERG)
-                          </li>
-                          <li>Acuerdo ADR y normativas internacionales</li>
-                          <li>
-                            Clasificación internacional de peligros NFPA y GHS
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 3: Los Distintos Niveles de Respuesta a
-                        Emergencias con MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>Nivel de Conocimiento (Awareness)</li>
-                          <li>Nivel de Actuación (Operations)</li>
-                          <li>Nivel Técnico (Technician) y Especialista</li>
-                          <li>Roles y responsabilidades por nivel</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 4: Métodos de Reconocimiento e Identificación de
-                        los MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>
-                            Etiquetas y placards de identificación (DOT, GHS)
-                          </li>
-                          <li>Hojas de Datos de Seguridad (SDS/MSDS)</li>
-                          <li>Colores y símbolos de peligro</li>
-                          <li>
-                            Uso de la Guía de Respuesta a Emergencias (GRE)
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="fac-tema-item">
-                    <button class="fac-tema-btn" aria-expanded="false">
-                      <span
-                        >Tema 5: Herramientas de Gestión para Incidentes
-                        MATPEL</span
-                      >
-                      <i
-                        class="fi fi-rs-chevron-double-down fac-tema-chevron"
-                      ></i>
-                    </button>
-                    <div class="fac-tema-body">
-                      <div class="fac-tema-body-inner">
-                        <ul>
-                          <li>Sistema de Comando de Incidentes (SCI/ICS)</li>
-                          <li>
-                            Evaluación inicial y notificación de emergencias
-                          </li>
-                          <li>Procedimientos de aislamiento y evacuación</li>
-                          <li>
-                            Equipos de protección personal (EPP) adecuados
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <!-- MATERIALES Y RECURSOS -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Materiales y recursos</h2>
-                <div class="fac-recursos-list">
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-pdf">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 1: Normativa Legal Nacional
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Semana 1 · Disponible
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-download"></i>
-                    </div>
-                  </a>
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-doc">
-                      <i class="fi fi-rs-document"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Guía de Respuesta a Emergencias (GRE) 2024
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Material de consulta permanente
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-download"></i>
-                    </div>
-                  </a>
-                  <a href="#" class="fac-recurso-item">
-                    <div class="fac-recurso-icon type-link">
-                      <i class="fi fi-rs-link"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Reglamento Nacional RNAT — Portal MTC
-                      </div>
-                      <div class="fac-recurso-desc">
-                        Enlace externo · Normativa oficial
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action">
-                      <i class="fi fi-rs-arrow-up-right-from-square"></i>
-                    </div>
-                  </a>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 2: Estándares Internacionales
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 2
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                  </div>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 3: Niveles de Respuesta
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 3
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                  </div>
-                  <div class="fac-recurso-item is-locked-recurso">
-                    <div class="fac-recurso-icon type-blocked">
-                      <i class="fi fi-rs-file-pdf"></i>
-                    </div>
-                    <div class="fac-recurso-body">
-                      <div class="fac-recurso-nombre">
-                        Diapositivas — Clase 4: Herramientas de Gestión
-                      </div>
-                      <div class="fac-recurso-desc">
-                        PDF · Se habilita en Semana 4
-                      </div>
-                    </div>
-                    <div class="fac-recurso-action locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <!-- EVALUACIONES -->
-              <section class="fac-curso-section">
-                <h2 class="fac-curso-section-title">Evaluaciones</h2>
-                <div class="fac-eval-list">
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-done">
-                      <i class="fi fi-rs-diploma"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Cuestionario — Semana 1</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> 24 may 2026</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 10
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 20 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-score">18/20<span>Nota</span></div>
-                  </div>
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-open">
-                      <i class="fi fi-rs-pencil"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Evaluación Parcial</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> Disponible desde 2
-                          jun 2026</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 25
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 45 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-action">
-                      <button class="fac-eval-btn btn-open">
-                        <i class="fi fi-rs-pencil"></i> Rendir evaluación
-                      </button>
-                    </div>
-                  </div>
-                  <div class="fac-eval-card">
-                    <div class="fac-eval-icon eval-locked">
-                      <i class="fi fi-rs-lock"></i>
-                    </div>
-                    <div class="fac-eval-body">
-                      <div class="fac-eval-nombre">Evaluación Final</div>
-                      <div class="fac-eval-meta">
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-calendar"></i> Se habilita en
-                          Semana 4</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-list-check"></i> 40
-                          preguntas</span
-                        >
-                        <span class="fac-eval-meta-item"
-                          ><i class="fi fi-rs-clock"></i> 60 min</span
-                        >
-                      </div>
-                    </div>
-                    <div class="fac-eval-action">
-                      <button class="fac-eval-btn btn-locked" disabled>
-                        <i class="fi fi-rs-lock"></i> No disponible aún
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <!-- CERTIFICADO -->
-              <section class="fac-curso-section">
-                <h2 class="fac-cert-section-title">
-                  Certificado oficial al completar el curso
-                </h2>
-                <p class="fac-cert-section-sub">
-                  Al aprobar las evaluaciones, recibirás un certificado con
-                  validez institucional y respaldo del Colegio de Ingenieros.
-                </p>
-                <div class="fac-cert-layout">
-                  <div class="fac-cert-includes">
-                    <p class="fac-cert-includes-title">
-                      Tu certificado incluye
-                    </p>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-barcode"></i></span
-                      >Código único verificable de certificado
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-user"></i></span
-                      >Nombres y apellidos del participante
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-e-learning"></i></span
-                      >Nombre completo del curso
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-clock"></i></span
-                      >Horas académicas acreditadas
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-pen-field"></i></span
-                      >Firma y sello del gerente general
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-diploma"></i></span
-                      >Firma y sello de la coordinadora
-                    </div>
-                    <div class="fac-cert-item">
-                      <span class="fac-cert-item-icon"
-                        ><i class="fi fi-rs-list"></i></span
-                      >Temario completo del curso
-                    </div>
-                  </div>
-                  <div class="fac-cert-preview">
-                    <img
-                      src="certificado.jpg"
-                      alt="Ejemplo de certificado VIB Academy"
-                      style="
+                <div class="fac-cert-preview">
+                  <img src="assets/img/certificado.png" alt="Ejemplo de certificado VIB Academy" style="
                         width: 100%;
                         display: block;
-                        border-radius: var(--fum-radius-md);
-                      "
-                    />
-                  </div>
+                      " />
                 </div>
-              </section>
 
-              <!-- GENERAR CERTIFICADO -->
-              <section class="fac-curso-section fac-gencert-section">
-                <div class="fac-gencert-box">
-                  <div class="fac-gencert-icon">
-                    <i class="fi fi-rs-diploma"></i>
-                  </div>
-                  <div class="fac-gencert-body">
-                    <h3 class="fac-gencert-title">
-                      ¿Listo para tu certificado?
-                    </h3>
-                    <p class="fac-gencert-desc">
-                      Una vez que completes el curso y apruebes todas las
-                      evaluaciones, podrás generar tu certificado oficial en
-                      formato PDF. Este documento tendrá validez institucional y
-                      un código único de verificación.
-                    </p>
-                    <div class="fac-gencert-estado">
-                      <span class="fac-gencert-badge badge-pendiente">
-                        <i class="fi fi-rs-lock"></i> Curso en progreso — 25%
-                        completado
-                      </span>
-                    </div>
-                  </div>
-                  <div class="fac-gencert-cta">
-                    <button class="fac-gencert-btn" id="btnGenerarCert">
-                      <i class="fi fi-rs-download"></i>
-                      Generar mi certificado
-                    </button>
-                    <p class="fac-gencert-hint">
-                      Se habilitará al completar el 100%
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <!-- /main col -->
+              </div>
+            </section>
 
-            <!-- ── SIDEBAR STICKY ── -->
-            <div class="fac-sidebar-col">
-              <!-- Próxima clase -->
-              <div class="fac-proxima-card">
-                <div class="fac-proxima-label">Próxima clase</div>
-                <div class="fac-proxima-titulo">
-                  Clase 2: Normativa y Estándares Internacionales
+          </div>
+          <!-- /main col -->
+
+          <!-- ── SIDEBAR STICKY ── -->
+          <div class="fac-sidebar-col">
+            <!-- Contenido del curso -->
+            <section class="fac-curso-section">
+              <div class="fac-temario-header">
+                <div class="fac-temario-header-left">
+                  <h2 class="fac-temario-header-title">
+                    Contenido del curso
+                  </h2>
+                  <span class="fac-temario-count">4 módulos · 7 clases · 4 semanas</span>
                 </div>
-                <div class="fac-proxima-fecha">
-                  <i class="fi fi-rs-calendar"></i> Martes 27 de mayo, 7:00 PM
-                </div>
-                <a href="#" class="fac-proxima-btn"
-                  ><i class="fi fi-rs-video-camera"></i> Ingresar a la clase</a
-                >
+                <button class="fac-brochure-btn">
+                  <i class="fi fi-rs-file-download"></i> Descargar Brochure
+                </button>
               </div>
 
-              <!-- Mi Progreso -->
-              <div class="fac-sidebar-progreso">
-                <div class="fac-sidebar-progreso-title">Mi progreso</div>
-                <div class="fac-sidebar-pct-wrap">
-                  <span class="fac-sidebar-pct-label">Avance general</span>
-                  <span class="fac-sidebar-pct-num">25%</span>
+              <div class="fac-temario-progreso" id="temarioProgreso">
+                <div class="fac-temario-progreso-top">
+                  <span class="fac-temario-progreso-label">
+                    <strong id="temarioProgresoCount">0</strong> de
+                    <span id="temarioProgresoTotal">0</span> clases completadas
+                  </span>
+                  <span class="fac-temario-progreso-pct" id="temarioProgresoPct">0%</span>
                 </div>
-                <div class="fac-sidebar-bar-wrap">
-                  <div class="fac-sidebar-bar-fill" style="width: 25%"></div>
+                <div class="fac-temario-progreso-track">
+                  <div class="fac-temario-progreso-fill" id="temarioProgresoFill"></div>
                 </div>
-                <div class="fac-sidebar-clases-list">
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-done"></div>
-                    <div class="fac-sidebar-clase-label">
-                      Clase 1: Normativa Legal Nacional
+              </div>
+
+              <div class="fac-modulos" id="temario">
+                <!-- Módulo 1 -->
+                <div class="fac-modulo-item">
+                  <button class="fac-modulo-btn" aria-expanded="false">
+                    <span class="fac-modulo-num">01</span>
+                    <span class="fac-modulo-titulo">Normativa Legal y Estándares</span>
+                    <span class="fac-modulo-meta">2 clases · 1h 40min</span>
+                    <i class="fi fi-rs-angle-small-down fac-modulo-chevron"></i>
+                  </button>
+                  <div class="fac-modulo-body">
+                    <div class="fac-modulo-body-inner">
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" checked />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 1: Marco legal peruano y RNAT</span>
+                            <span class="fac-clase-row-meta">50 min</span>
+                          </span>
+                        </label>
+                        <div class="fac-clase-recursos">
+                          <a href="#" class="fac-clase-recurso type-pdf">
+                            <i class="fi fi-rs-file-pdf"></i>
+                            <span>Diapositivas — Normativa Legal Nacional</span>
+                          </a>
+                          <a href="#" class="fac-clase-recurso type-link">
+                            <i class="fi fi-rs-link"></i>
+                            <span>Reglamento Nacional RNAT — Portal MTC</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" checked />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 2: Normativa internacional ADR y
+                              GHS</span>
+                            <span class="fac-clase-row-meta">50 min</span>
+                          </span>
+                        </label>
+                        <div class="fac-clase-recursos">
+                          <div class="fac-clase-recurso type-blocked is-locked-recurso">
+                            <i class="fi fi-rs-lock"></i>
+                            <span>Diapositivas — Estándares Internacionales (Semana 2)</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="fac-sidebar-clase-status st-done">Hecha</div>
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-active"></div>
-                    <div class="fac-sidebar-clase-label">
-                      Clase 2: Estándares Internacionales
-                    </div>
-                    <div class="fac-sidebar-clase-status st-active">
-                      Próxima
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="fac-modulo-item">
+                  <button class="fac-modulo-btn" aria-expanded="false">
+                    <span class="fac-modulo-num">02</span>
+                    <span class="fac-modulo-titulo">Niveles de Respuesta a Emergencias</span>
+                    <span class="fac-modulo-meta">1 clase · 2 horas</span>
+                    <i class="fi fi-rs-angle-small-down fac-modulo-chevron"></i>
+                  </button>
+                  <div class="fac-modulo-body">
+                    <div class="fac-modulo-body-inner">
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" checked />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 3: Awareness, Operations y
+                              Technician</span>
+                            <span class="fac-clase-row-meta">2 horas</span>
+                          </span>
+                        </label>
+                        <div class="fac-clase-recursos">
+                          <div class="fac-clase-recurso type-blocked is-locked-recurso">
+                            <i class="fi fi-rs-lock"></i>
+                            <span>Diapositivas — Niveles de Respuesta (Semana 3)</span>
+                          </div>
+                          <a href="#" class="fac-clase-recurso type-doc">
+                            <i class="fi fi-rs-document"></i>
+                            <span>Guía de Respuesta a Emergencias (GRE) 2024</span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-locked"></div>
-                    <div class="fac-sidebar-clase-label muted">
-                      Clase 3: Niveles de Respuesta
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="fac-modulo-item">
+                  <button class="fac-modulo-btn" aria-expanded="false">
+                    <span class="fac-modulo-num">03</span>
+                    <span class="fac-modulo-titulo">Identificación de Materiales Peligrosos</span>
+                    <span class="fac-modulo-meta">2 clases · 1h 45min</span>
+                    <i class="fi fi-rs-angle-small-down fac-modulo-chevron"></i>
+                  </button>
+                  <div class="fac-modulo-body">
+                    <div class="fac-modulo-body-inner">
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" checked />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 4: Etiquetas y placards (DOT,
+                              GHS)</span>
+                            <span class="fac-clase-row-meta">55 min</span>
+                          </span>
+                        </label>
+                      </div>
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 5: Hojas de Datos de Seguridad
+                              (SDS)</span>
+                            <span class="fac-clase-row-meta">50 min</span>
+                          </span>
+                        </label>
+                      </div>
                     </div>
-                    <div class="fac-sidebar-clase-status st-locked">Sem. 3</div>
                   </div>
-                  <div class="fac-sidebar-clase-row">
-                    <div class="fac-sidebar-clase-dot dot-locked"></div>
-                    <div class="fac-sidebar-clase-label muted">
-                      Clase 4: Herramientas de Gestión
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="fac-modulo-item">
+                  <button class="fac-modulo-btn" aria-expanded="false">
+                    <span class="fac-modulo-num">04</span>
+                    <span class="fac-modulo-titulo">Herramientas de Gestión para Incidentes</span>
+                    <span class="fac-modulo-meta">2 clases · 1h 50min</span>
+                    <i class="fi fi-rs-angle-small-down fac-modulo-chevron"></i>
+                  </button>
+                  <div class="fac-modulo-body">
+                    <div class="fac-modulo-body-inner">
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 6: Sistema de Comando de Incidentes
+                              (SCI)</span>
+                            <span class="fac-clase-row-meta">55 min</span>
+                          </span>
+                        </label>
+                        <div class="fac-clase-recursos">
+                          <div class="fac-clase-recurso type-blocked is-locked-recurso">
+                            <i class="fi fi-rs-lock"></i>
+                            <span>Diapositivas — Herramientas de Gestión (Semana 4)</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fac-clase-group">
+                        <label class="fac-clase-row">
+                          <input type="checkbox" class="fac-clase-checkbox" />
+                          <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+                          <span class="fac-clase-row-info">
+                            <span class="fac-clase-row-titulo">Clase 7: Aislamiento, evacuación y EPP</span>
+                            <span class="fac-clase-row-meta">55 min</span>
+                          </span>
+                        </label>
+                      </div>
                     </div>
-                    <div class="fac-sidebar-clase-status st-locked">Sem. 4</div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- /sidebar -->
-          </div>
-          <!-- /body -->
-        </main>
+            </section>
 
-        <footer class="fac-footer">
-          <div class="fac-footer-inner">
-            <div class="fac-footer-links">
-              <a href="#" class="fac-footer-link">Términos de uso</a>
-              <a href="#" class="fac-footer-link">Política de privacidad</a>
-              <a href="#" class="fac-footer-link">Soporte</a>
-              <a
-                href="https://consultoresvib.com"
-                target="_blank"
-                class="fac-footer-link"
-                >consultoresvib.com</a
-              >
-            </div>
-            <p class="fac-footer-copy">
-              <span
-                >&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span
-              >
-              <span
-                >Plataforma desarrollada por
-                <a href="https://nickramen.com/" target="_blank"
-                  >nickramen</a
-                ></span
-              >
-            </p>
+
+            <!-- Evaluaciones -->
+            <!-- EVALUACIONES -->
+            <section class="fac-curso-section">
+              <h2 class="fac-curso-section-title">Evaluaciones</h2>
+              <div class="fac-eval-list">
+                <div class="fac-eval-item">
+                  <button class="fac-eval-header" aria-expanded="false">
+                    <span class="fac-eval-icon eval-done">
+                      <i class="fi fi-rs-diploma"></i>
+                    </span>
+                    <span class="fac-eval-header-info">
+                      <span class="fac-eval-nombre">Cuestionario — Semana 1</span>
+                      <span class="fac-eval-header-sub">24 may 2026 · 10 preguntas</span>
+                    </span>
+                    <div class="fac-eval-score">18/20</div>
+                    <i class="fi fi-rs-angle-small-down fac-eval-chevron"></i>
+                  </button>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-body-inner">
+                      <div class="fac-eval-meta">
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> 24 may 2026</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 10
+                          preguntas</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 20 min</span>
+                      </div>
+                      <div class="fac-eval-score">18/20<span>Nota</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-eval-item">
+                  <button class="fac-eval-header" aria-expanded="false">
+                    <span class="fac-eval-icon eval-open">
+                      <i class="fi fi-rs-pencil"></i>
+                    </span>
+                    <span class="fac-eval-header-info">
+                      <span class="fac-eval-nombre">Evaluación Parcial</span>
+                      <span class="fac-eval-header-sub">Disponible desde 2 jun 2026 · 25 preguntas</span>
+                    </span>
+                    <span class="fac-eval-status-pill status-open">Disponible</span>
+                    <i class="fi fi-rs-angle-small-down fac-eval-chevron"></i>
+                  </button>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-body-inner">
+                      <div class="fac-eval-meta">
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> Disponible desde 2
+                          jun 2026</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 25
+                          preguntas</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 45 min</span>
+                      </div>
+                      <div class="fac-eval-action">
+                        <button class="fac-eval-btn btn-open">
+                          <i class="fi fi-rs-pencil"></i> Rendir evaluación
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fac-eval-item">
+                  <button class="fac-eval-header" aria-expanded="false">
+                    <span class="fac-eval-icon eval-locked">
+                      <i class="fi fi-rs-lock"></i>
+                    </span>
+                    <span class="fac-eval-header-info">
+                      <span class="fac-eval-nombre">Evaluación Final</span>
+                      <span class="fac-eval-header-sub">Se habilita en Semana 4 · 40 preguntas</span>
+                    </span>
+                    <span class="fac-eval-status-pill status-locked">Bloqueada</span>
+                    <i class="fi fi-rs-angle-small-down fac-eval-chevron"></i>
+                  </button>
+                  <div class="fac-eval-body">
+                    <div class="fac-eval-body-inner">
+                      <div class="fac-eval-meta">
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-calendar"></i> Se habilita en
+                          Semana 4</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-list-check"></i> 40
+                          preguntas</span>
+                        <span class="fac-eval-meta-item"><i class="fi fi-rs-clock"></i> 60 min</span>
+                      </div>
+                      <div class="fac-eval-action">
+                        <button class="fac-eval-btn btn-locked" disabled>
+                          <i class="fi fi-rs-lock"></i> No disponible aún
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
           </div>
-        </footer>
-      </div>
+          <!-- /sidebar -->
+        </div>
+        <!-- /body -->
+      </main>
+
+      <footer class="fac-footer">
+        <div class="fac-footer-inner">
+          <div class="fac-footer-links">
+            <a href="#" class="fac-footer-link">Términos de uso</a>
+            <a href="#" class="fac-footer-link">Política de privacidad</a>
+            <a href="#" class="fac-footer-link">Soporte</a>
+            <a href="https://consultoresvib.com" target="_blank" class="fac-footer-link">consultoresvib.com</a>
+          </div>
+          <p class="fac-footer-copy">
+            <span>&copy; 2026 VIB ACADEMY · Todos los derechos reservados</span>
+            <span>Plataforma desarrollada por
+              <a href="https://nickramen.com/" target="_blank">nickramen</a></span>
+          </p>
+        </div>
+      </footer>
     </div>
+  </div>
 
-    <script>
-      // Sidebar
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("sidebarOverlay");
-      const toggle = document.getElementById("sidebarToggle");
-      const openSidebar = () => {
-        sidebar.classList.add("is-open");
-        overlay.classList.add("is-active");
-        document.body.style.overflow = "hidden";
+  <script>
+    // Sidebar
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggle = document.getElementById("sidebarToggle");
+    const openSidebar = () => {
+      sidebar.classList.add("is-open");
+      overlay.classList.add("is-active");
+      document.body.style.overflow = "hidden";
+    };
+    const closeSidebar = () => {
+      sidebar.classList.remove("is-open");
+      overlay.classList.remove("is-active");
+      document.body.style.overflow = "";
+    };
+    toggle.addEventListener("click", () =>
+      sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+    );
+    overlay.addEventListener("click", closeSidebar);
+
+    // Profile dropdown
+    const profileToggle = document.getElementById("profileToggle");
+    const profileMenu = document.getElementById("profileMenu");
+    profileToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileMenu.classList.toggle("is-open");
+    });
+    document.addEventListener("click", (e) => {
+      if (!profileMenu.contains(e.target))
+        profileMenu.classList.remove("is-open");
+    });
+
+    // Announcements
+    (function () {
+      const items = document.querySelectorAll(".fac-announcement-item");
+      if (!items.length) return;
+      let current = 0;
+      function next() {
+        const prev = current;
+        current = (current + 1) % items.length;
+        items[prev].classList.add("leaving");
+        items[prev].classList.remove("active");
+        items[current].classList.add("active");
+        setTimeout(() => items[prev].classList.remove("leaving"), 600);
+      }
+      setInterval(next, 5000);
+    })();
+
+    // Contenido del curso — cada módulo se abre/cierra de forma
+    // independiente (no acordeón exclusivo), como un dropdown normal.
+    document.querySelectorAll(".fac-modulo-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".fac-modulo-item");
+        const body = item.querySelector(".fac-modulo-body");
+        const isOpen = item.classList.contains("is-open");
+        if (isOpen) {
+          item.classList.remove("is-open");
+          body.style.maxHeight = "0";
+          btn.setAttribute("aria-expanded", "false");
+        } else {
+          item.classList.add("is-open");
+          body.style.maxHeight = body.scrollHeight + "px";
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // Checkbox para activar/desactivar una clase dentro del módulo
+    document.querySelectorAll(".fac-clase-checkbox").forEach((checkbox) => {
+      const row = checkbox.closest(".fac-clase-row");
+      const syncState = () =>
+        row.classList.toggle("is-inactive", !checkbox.checked);
+      syncState();
+      checkbox.addEventListener("change", syncState);
+    });
+
+    // Evaluaciones — mismo acordeón que "Contenido del curso":
+    // cada evaluación se abre/cierra de forma independiente.
+    document.querySelectorAll(".fac-eval-header").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".fac-eval-item");
+        const body = item.querySelector(".fac-eval-body");
+        const isOpen = item.classList.contains("is-open");
+        if (isOpen) {
+          item.classList.remove("is-open");
+          body.style.maxHeight = "0";
+          btn.setAttribute("aria-expanded", "false");
+        } else {
+          item.classList.add("is-open");
+          body.style.maxHeight = body.scrollHeight + "px";
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // Barra de progreso del temario — se calcula a partir de las
+    // clases marcadas como completadas (.fac-clase-checkbox:checked)
+    (function () {
+      const checkboxes = document.querySelectorAll(".fac-clase-checkbox");
+      const fill = document.getElementById("temarioProgresoFill");
+      const pctLabel = document.getElementById("temarioProgresoPct");
+      const countLabel = document.getElementById("temarioProgresoCount");
+      const totalLabel = document.getElementById("temarioProgresoTotal");
+      if (!checkboxes.length || !fill) return;
+
+      function actualizarProgreso() {
+        const total = checkboxes.length;
+        const completadas = document.querySelectorAll(
+          ".fac-clase-checkbox:checked",
+        ).length;
+        const pct = Math.round((completadas / total) * 100);
+        fill.style.width = pct + "%";
+        pctLabel.textContent = pct + "%";
+        countLabel.textContent = completadas;
+        totalLabel.textContent = total;
+      }
+
+      checkboxes.forEach((cb) => cb.addEventListener("change", actualizarProgreso));
+      actualizarProgreso();
+    })();
+  </script>
+  <script>
+    // =====================================================
+    // LEER CURSO DESDE LOCALSTORAGE
+    // =====================================================
+    const CURSO_DATA = (function () {
+      const stored = localStorage.getItem("vib_curso_activo");
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch (e) {
+          console.error("Error parsing curso data", e);
+        }
+      }
+      // Fallback: primer curso UMA por defecto
+      return {
+        "id": 1,
+        "nombre": "Gestión Ambiental Municipal: Funciones, Ordenamiento y Desarrollo Sostenible",
+        "slug": "gestion-ambiental-municipal-2026",
+        "instructor": "Ing. Allan Izaguirre",
+        "instructorIniciales": "AI",
+        "instructorRol": "Especialista en gestión ambiental municipal",
+        "instructorBio": "Consultor en innovación y sostenibilidad ambiental, con experiencia en fortalecimiento institucional, gestión municipal y acompañamiento técnico a gobiernos locales.",
+        "instructorImagen": "instructor.webp",
+        "duracion": 60,
+        "duracionSemanas": 12,
+        "fechaInicio": "19/05/2026",
+        "nivel": "basico",
+        "precio": 138.0,
+        "descripcion": "Aprende a operar una UMA con claridad legal, planificación territorial, enfoque ODS y capacidad para acompañar el desarrollo económico local sin sacrificar los recursos naturales del municipio.",
+        "imagen": "curso.webp",
+        "badge": "Programa UMA",
+        "whatsappLink": "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+        "inscritos": 34,
+        "modulos": [
+          {
+            "titulo": "El ABC de la UMA: funciones y límites",
+            "clases": [
+              "Responsabilidades reales de la UMA y competencias del gobierno central",
+              "Organización diaria, semanal y mensual de la oficina ambiental"
+            ]
+          },
+          {
+            "titulo": "ODS aplicados a la alcaldía",
+            "clases": [
+              "Traducción de los ODS a acciones municipales concretas",
+              "Uso de los ODS para justificar proyectos y solicitar presupuesto"
+            ]
+          },
+          {
+            "titulo": "Ordenamiento territorial ambiental",
+            "clases": [
+              "Zonas permitidas y zonas restringidas: recarga hídrica, riesgo y expansión urbana",
+              "Uso de mapas básicos y criterios territoriales para decidir"
+            ]
+          },
+          {
+            "titulo": "Evaluación de proyectos y dictámenes locales",
+            "clases": [
+              "Revisión técnica de proyectos: lotificadoras, beneficios de café y gasolineras",
+              "Dictámenes ágiles sin regalar los recursos naturales"
+            ]
+          },
+          {
+            "titulo": "Medidas de mitigación y compromisos ambientales",
+            "clases": [
+              "Condiciones ambientales para aprobar proyectos municipales",
+              "Compromisos entre alcaldía y empresa privada"
+            ]
+          },
+          {
+            "titulo": "Economía circular y negocios verdes locales",
+            "clases": [
+              "Incentivos municipales para reciclaje, ahorro de agua y energía solar",
+              "Identificación de oportunidades verdes en la economía local"
+            ]
+          },
+          {
+            "titulo": "Fiscalización y control de la contaminación",
+            "clases": [
+              "Inspección de denuncias por agua, basura, humo o ruido",
+              "Requerimientos formales para corregir impactos ambientales"
+            ]
+          },
+          {
+            "titulo": "Régimen de sanciones y cero tolerancia",
+            "clases": [
+              "De la advertencia a la multa: criterios y cálculo",
+              "Paralización o clausura temporal de obras y negocios incumplidos"
+            ]
+          }
+        ]
       };
-      const closeSidebar = () => {
-        sidebar.classList.remove("is-open");
-        overlay.classList.remove("is-active");
-        document.body.style.overflow = "";
-      };
-      toggle.addEventListener("click", () =>
-        sidebar.classList.contains("is-open") ? closeSidebar() : openSidebar(),
+    })();
+
+
+    function textoNivel(nivel) {
+      const n = String(nivel || "intermedio").toLowerCase();
+      if (n === "basico" || n === "básico") return "Básico";
+      if (n === "avanzado") return "Avanzado";
+      return "Intermedio";
+    }
+
+    function getListaCurso(course, keys) {
+      for (const key of keys) {
+        const value = course[key];
+        if (Array.isArray(value)) return value.filter(Boolean);
+        if (typeof value === "string" && value.trim()) {
+          return value.split(/\n|;|•/).map((x) => x.trim()).filter(Boolean);
+        }
+      }
+      return [];
+    }
+
+    function getAprendizajesCurso(course) {
+      const directos = getListaCurso(course, ["aprendizajes", "loQueAprenderas", "objetivos", "objectives"]);
+      if (directos.length) return directos;
+      return (course.modulos || []).flatMap((m) => m.clases || []).slice(0, 5);
+    }
+
+    function renderTemarioCurso() {
+      const contenedor = document.getElementById("temario");
+      if (!contenedor || !CURSO_DATA.modulos) return;
+
+      const totalClases = CURSO_DATA.modulos.reduce((acc, modulo) => acc + (modulo.clases || []).length, 0);
+      const totalHorasModulo = (CURSO_DATA.duracion / Math.max(CURSO_DATA.modulos.length, 1)).toFixed(1);
+
+      contenedor.innerHTML = CURSO_DATA.modulos.map((modulo, index) => {
+        const clases = modulo.clases || [];
+        const clasesHtml = clases.map((clase, claseIndex) => `
+          <div class="fac-clase-group">
+            <label class="fac-clase-row">
+              <input type="checkbox" class="fac-clase-checkbox" ${index === 0 && claseIndex === 0 ? "checked" : ""} />
+              <span class="fac-clase-check-visual"><i class="fi fi-ss-check"></i></span>
+              <span class="fac-clase-row-info">
+                <span class="fac-clase-row-titulo">Clase ${index + 1}.${claseIndex + 1}: ${clase}</span>
+                <span class="fac-clase-row-meta">${Math.round((CURSO_DATA.duracion / Math.max(totalClases, 1)) * 60)} min</span>
+              </span>
+            </label>
+            <div class="fac-clase-recursos">
+              <div class="fac-clase-recurso type-blocked is-locked-recurso">
+                <i class="fi fi-rs-lock"></i>
+                <span>Material de clase — Semana ${index + 1}</span>
+              </div>
+            </div>
+          </div>`).join("");
+        return `
+          <div class="fac-modulo-item">
+            <button class="fac-modulo-btn" aria-expanded="false">
+              <span class="fac-modulo-num">${String(index + 1).padStart(2, "0")}</span>
+              <span class="fac-modulo-titulo">${modulo.titulo}</span>
+              <span class="fac-modulo-meta">${clases.length} clases · ${totalHorasModulo}h</span>
+              <i class="fi fi-rs-angle-small-down fac-modulo-chevron"></i>
+            </button>
+            <div class="fac-modulo-body">
+              <div class="fac-modulo-body-inner">${clasesHtml}</div>
+            </div>
+          </div>`;
+      }).join("");
+
+      const totalLabel = document.getElementById("temarioProgresoTotal");
+      if (totalLabel) totalLabel.textContent = totalClases;
+    }
+
+    // =====================================================
+    // ACTUALIZAR DOM CON DATOS DEL CURSO
+    // =====================================================
+    function actualizarDatosCurso() {
+      // Hero Banner - Título
+      const tituloElem = document.querySelector(
+        ".fac-curso-hero-banner-title",
       );
-      overlay.addEventListener("click", closeSidebar);
+      if (tituloElem) tituloElem.textContent = CURSO_DATA.nombre;
 
-      // Profile dropdown
-      const profileToggle = document.getElementById("profileToggle");
-      const profileMenu = document.getElementById("profileMenu");
-      profileToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        profileMenu.classList.toggle("is-open");
-      });
-      document.addEventListener("click", (e) => {
-        if (!profileMenu.contains(e.target))
-          profileMenu.classList.remove("is-open");
-      });
+      // Hero Banner - Stats: Instructor
+      const instructorStat = document.querySelector(
+        ".fac-curso-hero-banner-stats .fac-curso-hero-stat:first-child",
+      );
+      if (instructorStat) {
+        instructorStat.innerHTML = `<i class="fi fi-rs-user"></i> ${CURSO_DATA.instructor}`;
+      }
 
-      // Announcements
-      (function () {
-        const items = document.querySelectorAll(".fac-announcement-item");
-        if (!items.length) return;
-        let current = 0;
-        function next() {
-          const prev = current;
-          current = (current + 1) % items.length;
-          items[prev].classList.add("leaving");
-          items[prev].classList.remove("active");
-          items[current].classList.add("active");
-          setTimeout(() => items[prev].classList.remove("leaving"), 600);
-        }
-        setInterval(next, 5000);
-      })();
+      // Hero Banner - Stats: Duración
+      const duracionStat = document.querySelector(
+        ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(2)",
+      );
+      if (duracionStat) {
+        duracionStat.innerHTML = `<i class="fi fi-rs-clock"></i> ${CURSO_DATA.duracionSemanas} Semanas`;
+      }
 
-      // Accordion temario
-      document.querySelectorAll(".fac-tema-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const item = btn.closest(".fac-tema-item");
-          const body = item.querySelector(".fac-tema-body");
-          const isOpen = item.classList.contains("is-open");
-          document.querySelectorAll(".fac-tema-item").forEach((i) => {
-            i.classList.remove("is-open");
-            i.querySelector(".fac-tema-body").style.maxHeight = "0";
-            i.querySelector(".fac-tema-btn").setAttribute(
-              "aria-expanded",
-              "false",
-            );
-          });
-          if (!isOpen) {
-            item.classList.add("is-open");
-            body.style.maxHeight = body.scrollHeight + "px";
-            btn.setAttribute("aria-expanded", "true");
-          }
+      // Hero Banner - Stats: Fecha inicio
+      const fechaStat = document.querySelector(
+        ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(3)",
+      );
+      if (fechaStat) {
+        fechaStat.innerHTML = `<i class="fi fi-rs-calendar"></i> Inicio ${CURSO_DATA.fechaInicio}`;
+      }
+
+      // Hero Banner - Stats: Inscritos
+      const inscritosStat = document.querySelector(
+        ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(4)",
+      );
+      if (inscritosStat) {
+        inscritosStat.innerHTML = `<i class="fi fi-rs-user-graduate"></i> ${CURSO_DATA.inscritos} inscritos`;
+      }
+
+      // Hero Banner - Imagen
+      const heroImg = document.querySelector(".fac-curso-hero-banner img");
+      if (heroImg && CURSO_DATA.imagen) {
+        heroImg.src = CURSO_DATA.imagen;
+        heroImg.alt = CURSO_DATA.nombre;
+      }
+
+      // Descripción general
+      const descElem = document.querySelector(".fac-info-desc");
+      if (descElem) descElem.textContent = CURSO_DATA.descripcion;
+
+      const infoCategoria = document.querySelector(".fac-info-grid-item:nth-child(1) .fac-info-grid-value");
+      if (infoCategoria) infoCategoria.textContent = CURSO_DATA.categoria || CURSO_DATA.category || CURSO_DATA.tipo || "Gestión ambiental municipal";
+      const infoNivel = document.querySelector(".fac-info-grid-item:nth-child(2) .fac-info-grid-value");
+      if (infoNivel) infoNivel.textContent = textoNivel(CURSO_DATA.nivel);
+      const infoModalidad = document.querySelector(".fac-info-grid-item:nth-child(3) .fac-info-grid-value");
+      if (infoModalidad) infoModalidad.textContent = CURSO_DATA.modalidad || "Virtual en vivo";
+      const infoDuracion = document.querySelector(".fac-info-grid-item:nth-child(4) .fac-info-grid-value");
+      if (infoDuracion) infoDuracion.textContent = `${CURSO_DATA.duracion} horas académicas`;
+      const infoPrecio = document.querySelector(".fac-info-grid-item:nth-child(5) .fac-info-grid-value");
+      if (infoPrecio) infoPrecio.textContent = `$${Number(CURSO_DATA.precio || 0).toFixed(2)} USD`;
+      const infoAprobacion = document.querySelector(".fac-info-grid-item:nth-child(6) .fac-info-grid-value");
+      if (infoAprobacion) infoAprobacion.textContent = CURSO_DATA.aprobacionMinima || CURSO_DATA.aprobacion || "80%";
+      const infoSemanas = document.querySelector(".fac-info-grid-item:nth-child(7) .fac-info-grid-value");
+      if (infoSemanas) infoSemanas.textContent = `${CURSO_DATA.duracionSemanas} semanas`;
+
+      // Información general - Instructor principal (dentro de la grid,
+      // ya no hay card dedicada de instructor)
+      const infoInstructor = document.querySelector(
+        ".fac-info-grid-item:nth-child(8) .fac-info-grid-value",
+      );
+      if (infoInstructor) infoInstructor.textContent = CURSO_DATA.instructor;
+
+      const dirigido = document.querySelector(".fac-info-dirigido");
+      if (dirigido) dirigido.textContent = CURSO_DATA.dirigidoA || CURSO_DATA.dirigido || "Técnicos, profesionales y equipos municipales relacionados con la gestión ambiental, productiva y territorial.";
+
+      const aprenderasBlock = document.querySelector(".fac-info-block:last-of-type");
+      if (aprenderasBlock) {
+        const titulo = aprenderasBlock.querySelector(".fac-info-subtitle");
+        const aprendizajes = getAprendizajesCurso(CURSO_DATA);
+        aprenderasBlock.innerHTML = "";
+        if (titulo) aprenderasBlock.appendChild(titulo);
+        aprendizajes.forEach((item) => {
+          const div = document.createElement("div");
+          div.className = "fac-info-aprenderas-item";
+          div.innerHTML = `<i class="fi fi-rs-check"></i><span>${item}</span>`;
+          aprenderasBlock.appendChild(div);
         });
-      });
+      }
 
-      // Bloquear click en clases bloqueadas
-      document.querySelectorAll(".fac-clase-card.is-locked").forEach((card) => {
-        card.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        });
-      });
-    </script>
-    <script>
-      // =====================================================
-      // LEER CURSO DESDE LOCALSTORAGE
-      // =====================================================
-      const CURSO_DATA = (function () {
-        const stored = localStorage.getItem("vib_curso_activo");
-        if (stored) {
-          try {
-            return JSON.parse(stored);
-          } catch (e) {
-            console.error("Error parsing curso data", e);
-          }
-        }
-        // Fallback por si no hay datos (curso por defecto)
-        return {
-          id: 1,
-          nombre:
-            "Manejo Seguro de Materiales y Sustancias Peligrosas (MATPEL)",
-          slug: "matpel-2026",
-          instructor: "Lic. Iván Tamariz",
-          instructorBio:
-            "Licenciado en Ingeniería Ambiental con más de 12 años de experiencia en gestión de riesgos y MATPEL. Ha capacitado a más de 2,000 profesionales en empresas mineras, industriales y de transporte. Instructor certificado por el Colegio de Ingenieros del Perú.",
-          instructorRol: "Especialista en Seguridad Industrial",
-          instructorImagen: "instructor.webp",
-          duracion: 32,
-          duracionSemanas: 4,
-          fechaInicio: "19/05/2026",
-          precio: 49.0,
-          descripcion:
-            "Este curso te prepara para identificar, manejar y responder ante incidentes con materiales peligrosos aplicando los protocolos y normativas nacionales e internacionales vigentes. Aprenderás a usar herramientas técnicas como las Hojas de Datos de Seguridad (SDS) y la Guía de Respuesta a Emergencias (GRE), y a ejecutar acciones de control inicial mediante el Sistema de Comando de Incidentes (SCI). El programa está avalado por el Colegio de Ingenieros del Perú y diseñado para profesionales del sector minero, industrial y de transporte.",
-          imagen: "curso.webp",
-          badge: "Matriculado",
-          nivel: "intermedio",
-          inscritos: 26,
-          whatsappLink: "https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXX",
+      // WhatsApp link
+      const waLink = document.querySelector(".fac-wa-btn");
+      if (waLink && CURSO_DATA.whatsappLink) {
+        waLink.href = CURSO_DATA.whatsappLink;
+      }
+
+      renderTemarioCurso();
+
+      // Sidebar - Próxima clase
+      const proximaTitulo = document.querySelector(".fac-proxima-titulo");
+      if (proximaTitulo) {
+        proximaTitulo.textContent =
+          "Clase 2: Normativa y Estándares Internacionales";
+      }
+
+      // Sidebar - Fecha próxima clase
+      const proximaFecha = document.querySelector(".fac-proxima-fecha");
+      if (proximaFecha) {
+        const fechaInicio = new Date(
+          CURSO_DATA.fechaInicio.split("/").reverse().join("-"),
+        );
+        const semana2Fecha = new Date(fechaInicio);
+        semana2Fecha.setDate(fechaInicio.getDate() + 8);
+        const opciones = {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
         };
-      })();
-
-      // =====================================================
-      // ACTUALIZAR DOM CON DATOS DEL CURSO
-      // =====================================================
-      function actualizarDatosCurso() {
-        // Hero Banner - Título
-        const tituloElem = document.querySelector(
-          ".fac-curso-hero-banner-title",
+        const fechaFormateada = semana2Fecha.toLocaleDateString(
+          "es-ES",
+          opciones,
         );
-        if (tituloElem) tituloElem.textContent = CURSO_DATA.nombre;
-
-        // Hero Banner - Stats: Instructor
-        const instructorStat = document.querySelector(
-          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:first-child",
-        );
-        if (instructorStat) {
-          instructorStat.innerHTML = `<i class="fi fi-rs-user"></i> ${CURSO_DATA.instructor}`;
-        }
-
-        // Hero Banner - Stats: Duración
-        const duracionStat = document.querySelector(
-          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(2)",
-        );
-        if (duracionStat) {
-          duracionStat.innerHTML = `<i class="fi fi-rs-clock"></i> ${CURSO_DATA.duracionSemanas} Semanas`;
-        }
-
-        // Hero Banner - Stats: Fecha inicio
-        const fechaStat = document.querySelector(
-          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(3)",
-        );
-        if (fechaStat) {
-          fechaStat.innerHTML = `<i class="fi fi-rs-calendar"></i> Inicio ${CURSO_DATA.fechaInicio}`;
-        }
-
-        // Hero Banner - Stats: Inscritos
-        const inscritosStat = document.querySelector(
-          ".fac-curso-hero-banner-stats .fac-curso-hero-stat:nth-child(4)",
-        );
-        if (inscritosStat) {
-          inscritosStat.innerHTML = `<i class="fi fi-rs-user-graduate"></i> ${CURSO_DATA.inscritos} inscritos`;
-        }
-
-        // Hero Banner - Imagen
-        const heroImg = document.querySelector(".fac-curso-hero-banner img");
-        if (heroImg && CURSO_DATA.imagen) {
-          heroImg.src = CURSO_DATA.imagen;
-          heroImg.alt = CURSO_DATA.nombre;
-        }
-
-        // Descripción general
-        const descElem = document.querySelector(".fac-info-desc");
-        if (descElem) descElem.textContent = CURSO_DATA.descripcion;
-
-        // Card Instructor - Nombre
-        const instructorName = document.querySelector(".fac-instructor-name");
-        if (instructorName) instructorName.textContent = CURSO_DATA.instructor;
-
-        // Card Instructor - Rol
-        const instructorRol = document.querySelector(".fac-instructor-role");
-        if (instructorRol) instructorRol.textContent = CURSO_DATA.instructorRol;
-
-        // Card Instructor - Bio
-        const instructorBio = document.querySelector(".fac-instructor-bio");
-        if (instructorBio) instructorBio.textContent = CURSO_DATA.instructorBio;
-
-        // Card Instructor - Avatar (si existe la imagen)
-        const instructorAvatar = document.querySelector(
-          ".fac-instructor-avatar img",
-        );
-        if (instructorAvatar && CURSO_DATA.instructorImagen) {
-          instructorAvatar.src = CURSO_DATA.instructorImagen;
-          instructorAvatar.alt = CURSO_DATA.instructor;
-        }
-
-        // WhatsApp link
-        const waLink = document.querySelector(".fac-wa-btn");
-        if (waLink && CURSO_DATA.whatsappLink) {
-          waLink.href = CURSO_DATA.whatsappLink;
-        }
-
-        // Clases - Actualizar textos que dependen del curso
-        // (Manteniendo la estructura fija, solo actualizando datos relevantes)
-        const clase2Titulo = document.querySelector(
-          ".fac-clase-card.is-available .fac-clase-titulo",
-        );
-        if (clase2Titulo) {
-          clase2Titulo.textContent =
-            "Clase 2: Normativa y Estándares Internacionales";
-        }
-
-        const clase2Fecha = document.querySelector(
-          ".fac-clase-card.is-available .fac-clase-meta-item:first-child",
-        );
-        if (clase2Fecha) {
-          // Calcular fecha de semana 2 (fechaInicio + 8 días aprox)
-          const fechaInicio = new Date(
-            CURSO_DATA.fechaInicio.split("/").reverse().join("-"),
-          );
-          const semana2Fecha = new Date(fechaInicio);
-          semana2Fecha.setDate(fechaInicio.getDate() + 8);
-          const fechaFormateada = semana2Fecha
-            .toLocaleDateString("es-ES", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })
-            .replace(".", "");
-          clase2Fecha.innerHTML = `<i class="fi fi-rs-calendar"></i> ${fechaFormateada}, 7:00 PM`;
-        }
-
-        const clase3Titulo = document.querySelectorAll(
-          ".fac-clase-card.is-locked .fac-clase-titulo",
-        )[0];
-        if (clase3Titulo) {
-          clase3Titulo.textContent =
-            "Clase 3: Niveles de Respuesta a Emergencias con MATPEL";
-        }
-
-        const clase4Titulo = document.querySelectorAll(
-          ".fac-clase-card.is-locked .fac-clase-titulo",
-        )[1];
-        if (clase4Titulo) {
-          clase4Titulo.textContent =
-            "Clase 4: Herramientas de Gestión para Incidentes MATPEL";
-        }
-
-        // Sidebar - Próxima clase
-        const proximaTitulo = document.querySelector(".fac-proxima-titulo");
-        if (proximaTitulo) {
-          proximaTitulo.textContent =
-            "Clase 2: Normativa y Estándares Internacionales";
-        }
-
-        // Sidebar - Fecha próxima clase
-        const proximaFecha = document.querySelector(".fac-proxima-fecha");
-        if (proximaFecha) {
-          const fechaInicio = new Date(
-            CURSO_DATA.fechaInicio.split("/").reverse().join("-"),
-          );
-          const semana2Fecha = new Date(fechaInicio);
-          semana2Fecha.setDate(fechaInicio.getDate() + 8);
-          const opciones = {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          };
-          const fechaFormateada = semana2Fecha.toLocaleDateString(
-            "es-ES",
-            opciones,
-          );
-          const fechaCapitalized =
-            fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
-          proximaFecha.innerHTML = `<i class="fi fi-rs-calendar"></i> ${fechaCapitalized}, 7:00 PM`;
-        }
-
-        // Sidebar - Lista de clases (actualizar nombres)
-        const sidebarClases = document.querySelectorAll(
-          ".fac-sidebar-clase-label",
-        );
-        if (sidebarClases.length >= 4) {
-          sidebarClases[0].textContent = "Clase 1: Normativa Legal Nacional";
-          sidebarClases[1].textContent = "Clase 2: Estándares Internacionales";
-          sidebarClases[2].textContent = "Clase 3: Niveles de Respuesta";
-          sidebarClases[3].textContent = "Clase 4: Herramientas de Gestión";
-        }
-
-        // Temario - Actualizar semanas
-        const temarioCount = document.querySelector(".fac-temario-count");
-        if (temarioCount) {
-          temarioCount.textContent = `5 temas · ${CURSO_DATA.duracionSemanas} semanas`;
-        }
-
-        // Clases header
-        const clasesCount = document.querySelector(".fac-clases-count");
-        if (clasesCount) {
-          clasesCount.textContent = `4 clases · ${CURSO_DATA.duracionSemanas} semanas`;
-        }
+        const fechaCapitalized =
+          fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
+        proximaFecha.innerHTML = `<i class="fi fi-rs-calendar"></i> ${fechaCapitalized}, 7:00 PM`;
       }
 
-      // =====================================================
-      // GENERAR CERTIFICADO
-      // =====================================================
-      function generarCodigo() {
-        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-        let id = "";
-        for (let i = 0; i < 8; i++)
-          id += chars[Math.floor(Math.random() * chars.length)];
-        return `VIB-CIAH-${new Date().getFullYear()}-${id}`;
+      // Sidebar - Lista de clases (actualizar nombres)
+      const sidebarClases = document.querySelectorAll(
+        ".fac-sidebar-clase-label",
+      );
+      if (sidebarClases.length >= 4) {
+        sidebarClases[0].textContent = "Clase 1: Normativa Legal Nacional";
+        sidebarClases[1].textContent = "Clase 2: Estándares Internacionales";
+        sidebarClases[2].textContent = "Clase 3: Niveles de Respuesta";
+        sidebarClases[3].textContent = "Clase 4: Herramientas de Gestión";
       }
 
-      // =====================================================
-      // INICIALIZACIÓN
-      // =====================================================
-      document.addEventListener("DOMContentLoaded", () => {
-        actualizarDatosCurso();
+      // Temario - Actualizar semanas
+      const temarioCount = document.querySelector(".fac-temario-count");
+      if (temarioCount) {
+        temarioCount.textContent = `${(CURSO_DATA.modulos || []).length} módulos · ${(CURSO_DATA.modulos || []).reduce((acc, m) => acc + (m.clases || []).length, 0)} clases · ${CURSO_DATA.duracionSemanas} semanas`;
+      }
 
-        const btnCert = document.getElementById("btnGenerarCert");
-        if (btnCert) {
-          btnCert.disabled = false;
-          const hintElem = document.querySelector(".fac-gencert-hint");
-          if (hintElem)
-            hintElem.textContent = "Modo demo — habilitado para vista previa";
+      // Clases header
+      const clasesCount = document.querySelector(".fac-clases-count");
+      if (clasesCount) {
+        clasesCount.textContent = `${(CURSO_DATA.modulos || []).reduce((acc, m) => acc + (m.clases || []).length, 0)} clases · ${CURSO_DATA.duracionSemanas} semanas`;
+      }
+    }
 
-          btnCert.addEventListener("click", () => {
-            const storageKey = `vib_cert_${CURSO_DATA.slug}`;
-            let codigo = localStorage.getItem(storageKey + "_codigo");
-            if (!codigo) {
-              codigo = generarCodigo();
-              localStorage.setItem(storageKey + "_codigo", codigo);
-              localStorage.setItem(
-                storageKey + "_fecha",
-                new Date().toISOString(),
-              );
-            }
-            window.location.href = "cert-template.html";
-          });
-        }
+    // =====================================================
+    // GENERAR CERTIFICADO
+    // =====================================================
+    function generarCodigo() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let id = "";
+      for (let i = 0; i < 8; i++)
+        id += chars[Math.floor(Math.random() * chars.length)];
+      return `VIB-${new Date().getFullYear()}-${id}`;
+    }
+
+    // =====================================================
+    // INICIALIZACIÓN
+    // =====================================================
+    document.addEventListener("DOMContentLoaded", () => {
+      actualizarDatosCurso();
+      document.querySelectorAll("#temario .fac-modulo-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".fac-modulo-item");
+          const body = item.querySelector(".fac-modulo-body");
+          const isOpen = item.classList.contains("is-open");
+          item.classList.toggle("is-open", !isOpen);
+          btn.setAttribute("aria-expanded", String(!isOpen));
+          if (body) body.style.maxHeight = isOpen ? "0" : body.scrollHeight + "px";
+        });
       });
-    </script>
-    <script src="assets/js/datos-usuario.js"></script>
-  </body>
+
+      const btnCert = document.getElementById("btnGenerarCert");
+      if (btnCert) {
+        btnCert.disabled = false;
+        const hintElem = document.querySelector(".fac-gencert-hint");
+        if (hintElem)
+          hintElem.textContent = "Modo demo — habilitado para vista previa";
+
+        btnCert.addEventListener("click", () => {
+          const storageKey = `vib_cert_${CURSO_DATA.slug}`;
+          let codigo = localStorage.getItem(storageKey + "_codigo");
+          if (!codigo) {
+            codigo = generarCodigo();
+            localStorage.setItem(storageKey + "_codigo", codigo);
+            localStorage.setItem(
+              storageKey + "_fecha",
+              new Date().toISOString(),
+            );
+          }
+          window.location.href = "cert-template.html";
+        });
+      }
+    });
+  </script>
+  <script src="assets/js/datos-usuario.js"></script>
+</body>
+
 </html>
