@@ -12,27 +12,72 @@
     return String(email || "").trim().toLowerCase();
   }
 
-  function isAuthorized() {
-    return localStorage.getItem(AUTH_KEY) === "true" && normalizeEmail(localStorage.getItem(EMAIL_KEY)) === ALLOWED_EMAIL;
+  function clearSession() {
+    sessionStorage.removeItem(AUTH_KEY);
+    sessionStorage.removeItem(EMAIL_KEY);
+    sessionStorage.removeItem(NAME_KEY);
   }
 
-  function login(email, password) {
-    if (normalizeEmail(email) !== ALLOWED_EMAIL || !String(password || "").trim()) {
-      localStorage.removeItem(AUTH_KEY);
-      localStorage.removeItem(EMAIL_KEY);
+  function isAuthorized() {
+    return sessionStorage.getItem(AUTH_KEY) === "true" &&
+      normalizeEmail(sessionStorage.getItem(EMAIL_KEY)) === ALLOWED_EMAIL;
+  }
+
+  async function sha256(value) {
+    const bytes = new TextEncoder().encode(String(value));
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  async function getPasswordHash() {
+    const response = await fetch("assets/config/auth-config.json", {
+      cache: "no-store",
+      credentials: "same-origin",
+    });
+
+    if (!response.ok) {
+      throw new Error("Auth configuration is missing.");
+    }
+
+    const config = await response.json();
+    if (!/^[a-f0-9]{64}$/i.test(String(config.passwordHash || ""))) {
+      throw new Error("Auth configuration is invalid.");
+    }
+
+    return String(config.passwordHash).toLowerCase();
+  }
+
+  async function login(email, password) {
+    clearSession();
+
+    if (normalizeEmail(email) !== ALLOWED_EMAIL || !String(password || "")) {
       return false;
     }
 
-    localStorage.setItem(AUTH_KEY, "true");
-    localStorage.setItem(EMAIL_KEY, ALLOWED_EMAIL);
-    localStorage.setItem(NAME_KEY, "Nicole Ramos");
+    try {
+      const [enteredHash, allowedHash] = await Promise.all([
+        sha256(password),
+        getPasswordHash(),
+      ]);
+
+      if (enteredHash !== allowedHash) {
+        return false;
+      }
+    } catch (error) {
+      console.error("VIB demo authentication error:", error);
+      return false;
+    }
+
+    sessionStorage.setItem(AUTH_KEY, "true");
+    sessionStorage.setItem(EMAIL_KEY, ALLOWED_EMAIL);
+    sessionStorage.setItem(NAME_KEY, "Nicole Ramos");
     return true;
   }
 
   function logout() {
-    localStorage.removeItem(AUTH_KEY);
-    localStorage.removeItem(EMAIL_KEY);
-    localStorage.removeItem(NAME_KEY);
+    clearSession();
     window.location.href = "index.html";
   }
 

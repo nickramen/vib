@@ -878,7 +878,7 @@
     });
 
     /* ── LOGIN ── */
-    document.getElementById("loginForm").addEventListener("submit", (e) => {
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("loginEmail").value.trim();
       const password = document.getElementById("loginPassword").value;
@@ -892,10 +892,10 @@
         return;
       }
 
-      if (!window.VIB_DEMO_AUTH.login(email, password)) {
+      if (!(await window.VIB_DEMO_AUTH.login(email, password))) {
         showToast({
           title: "Acceso restringido",
-          message: "Este demo solo permite ingresar con nicole@nickramen.com.",
+          message: "El correo o la contraseña son incorrectos.",
           type: "error",
         });
         return;

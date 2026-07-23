@@ -285,13 +285,13 @@
   <script>
     document
       .getElementById("adminLoginForm")
-      .addEventListener("submit", function (e) {
+      .addEventListener("submit", async function (e) {
         e.preventDefault();
         const email = document.getElementById("adminEmail").value;
         const password = document.getElementById("adminPassword").value;
 
-        if (!window.VIB_DEMO_AUTH.login(email, password)) {
-          alert("Acceso restringido.");
+        if (!(await window.VIB_DEMO_AUTH.login(email, password))) {
+          alert("El correo o la contraseña son incorrectos.");
           return;
         }
 

@@ -1,0 +1,54 @@
+name: Deploy protected demo to GitHub Pages
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required secret
+        env:
+          VIB_DEMO_PASSWORD: ${{ secrets.VIB_DEMO_PASSWORD }}
+        run: |
+          if [ -z "$VIB_DEMO_PASSWORD" ]; then
+            echo "Repository secret VIB_DEMO_PASSWORD is required."
+            exit 1
+          fi
+
+      - name: Generate password configuration
+        env:
+          VIB_DEMO_PASSWORD: ${{ secrets.VIB_DEMO_PASSWORD }}
+        run: |
+          mkdir -p assets/config
+          HASH=$(printf '%s' "$VIB_DEMO_PASSWORD" | sha256sum | awk '{print $1}')
+          printf '{\n  "passwordHash": "%s"\n}\n' "$HASH" > assets/config/auth-config.json
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -416,3 +416,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Generated locally or by GitHub Actions; never commit it
+assets/config/auth-config.json
